@@ -1,0 +1,83 @@
+\documentclass[openany,twoside,a4paper]{book}
+
+\usepackage[main=vietnamese,english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[sexy]{evan}
+\usepackage{array}
+\usepackage{background}
+\usepackage{booktabs}
+\usepackage{cancel}
+\usepackage{CJKutf8}
+\usepackage{figchild}
+\usepackage{hyperref}
+% \usepackage{glossaries}
+\usepackage[automake]{glossaries-extra}
+\usepackage{listings}
+\usepackage{matchsticks}
+\usepackage{mathdots}
+\usepackage{pdfpages}
+\usepackage{subfiles}
+\usepackage{wrapfig}
+
+\usepackage{tocloft}
+\renewcommand{\cftchappresnum}{}
+	\renewcommand{\cftchapaftersnumb}{}
+	\setlength{\cftchapindent}{0em}
+	\setlength{\cftchapnumwidth}{3em} %
+    \addtolength{\cftsecnumwidth}{10pt}
+
+\newcommand\DeactivateBG{\backgroundsetup{contents={}}}
+\newcommand\ActivateBG{
+    \backgroundsetup{
+        position=current page.west,
+        angle=90,
+        nodeanchor=west,
+        vshift=-5mm,
+        opacity=1,
+        scale=1,
+        contents=Phiên bản \date{\today}.
+    }
+}
+
+\makeglossaries
+
+\subfile{./tex/glossary.tex}
+
+\title{Các Bài Toán Luyện Thi IMO}
+
+\date{\today}
+\author{Nghia Doan\\ \\Tạp chí Pi\\ Câu lộc bộ MCC}
+
+\begin{document}
+
+\DeactivateBG
+
+\maketitle
+
+\tableofcontents
+
+\ActivateBG
+
+\chapter*{Mở đầu}
+\subfile{./tex/intro.tex}
+
+\addcontentsline{toc}{chapter}{Introduction}
+
+\part{Lý thuyết Số}
+
+\chapter{Các Uớc Số}
+\subfile{./nbt/divisors.tex}
+
+\appendix
+
+\chapter*{Tiêu chuẩn Xếp hạng MOHS}
+\subfile{./tex/mohs.tex}
+
+\chapter*{Công cụ sử dụng}
+\subfile{./tex/tools.tex}
+
+\clearpage
+
+\printglossaries
+
+\end{document}
