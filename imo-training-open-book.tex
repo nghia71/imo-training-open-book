@@ -43,10 +43,10 @@
 
 \subfile{./tex/glossary.tex}
 
-\title{Các Bài Toán Luyện Thi IMO}
+\title{Các bài toán thi Olympic Quốc Gia và Thế Giới}
 
 \date{\today}
-\author{Nghia Doan\\ \\Tạp chí Pi\\ Câu lộc bộ MCC}
+\author{Ban biên soạn\\ \\Tạp chí Pi\\ Hội toán học Việt Nam}
 
 \begin{document}
 
@@ -63,18 +63,39 @@
 
 \addcontentsline{toc}{chapter}{Introduction}
 
-\part{Lý thuyết Số}
+\part{Lý thuyết chung}
 
-\chapter{Các Uớc Số}
-\subfile{./nbt/divisors.tex}
+\subfile{./tex/common-tools.tex}
+
+\part{Lý thuyết số}
+
+\chapter{Tính chia hết}
+\subfile{./nbt/01-divisibility.tex}
+
+\chapter{Cơ bản về số học đồng dư}
+\subfile{./nbt/02-modular-arithmetic-b.tex}
+
+\chapter{Các hàm số học}
+\subfile{./nbt/03-arithmetic-functions.tex}
+
+\chapter{Phương trình Diophantine}
+
+\chapter{Số học đồng dư nâng cao}
+
+\chapter{Luỹ thừa lớn nhất}
+\subfile{./nbt/05-largest-exponent.tex}
+
+\chapter{Đa thức nguyên}
+
+\chapter{Phần dư bậc hai}
+\subfile{./nbt/07-quadratic-residues.tex}
+
+\chapter{Chứng minh kiến tạo}
 
 \appendix
 
 \chapter*{Tiêu chuẩn Xếp hạng MOHS}
 \subfile{./tex/mohs.tex}
-
-\chapter*{Công cụ sử dụng}
-\subfile{./tex/tools.tex}
 
 \clearpage
 

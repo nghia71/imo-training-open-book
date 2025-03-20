@@ -1,0 +1,67 @@
+\documentclass[../05-largest-exponent.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\nameref{example:IMO-2015-P2}]\textbf{[\nameref{definition:30M}]}
+	Hãy tìm tất cả các bộ số nguyên dương $(a, b, c)$ sao cho mỗi số trong các số:
+	\[
+		ab - c, bc - a, ca - b
+	\]
+	là lũy thừa của 2.
+\end{example*}
+
+\begin{soln}\footnotemark(Cách 2)
+	Chúng ta sẽ chứng minh rằng các nghiệm duy nhất là \( (2,2,2) \), \( (2,2,3) \), \( (2,6,11) \) và \( (3,5,7) \), cùng với các hoán vị của chúng.
+
+	Không mất tính tổng quát, giả sử rằng \( a \geq b \geq c > 1 \), khi đó
+	\[
+		ab - c \geq ca - b \geq bc - a.
+	\]
+
+	Ta xét các trường hợp sau:
+
+	\textit{Trường hợp 1: Nếu \( a \) là số chẵn}, thì
+	\[
+		ca-b = \gcd (ab-c, ca-b) \leq \gcd (ab-c, a(ca-b) + ab-c) = \gcd\left( ab-c, c(a^2-1) \right).
+	\]
+	Vì \( a^2 - 1 \) là số lẻ, ta suy ra \( ca - b \leq c \).
+	Điều này dẫn đến \( a = b = c = 2 \).
+
+	\textit{Trường hợp 2: Nếu \( a \), \( b \), \( c \) đều là số lẻ}, thì \( a > b > c > 1 \).
+	Khi đó, cũng như trên:
+	\[
+		ca-b \leq \gcd (ab-c, c(a^2-1)) \leq 2^{\nu_2(a^2-1)} \leq 2a+2 \leq 3a-b.
+	\]
+	Do đó, \( c = 3 \) và \( a = b+2 \).
+	Vì \( 3a - b = ca - b \geq 2(bc-a) = 6b - 2a \), ta suy ra \( a=7 \) và \( b=5 \).
+
+	\textit{Trường hơp 3: Nếu \( a \) là số lẻ và \( b \), \( c \) là số chẵn}, thì
+	\[
+		\begin{aligned}
+			&\ bc - a = 1 \implies bc^2 - b - c = ca - b,\\
+			\implies&\ c^3 - b - c = (1 - c^2)(ab - c) + a(\underbrace{bc^2 - b - c}_{= ca-b}) + (ca - b),\\
+			\implies&\ \gcd(ab - c, ca - b) = \gcd(ab - c, c^3 - b - c,)\\
+			\implies&\ bc^2 - b - c = ca - b = \gcd(ab - c, ca - b) = \gcd(ab - c, c^3 - b - c).
+		\end{aligned}
+	\]
+	Khi đó, ta xét hai trường hợp con sau:
+
+	\textit{Trường hợp 3a: \( c^3 - b - c \neq 0 \)}, thì biểu thức trên dẫn đến 
+	\[
+		|c^3 - b - c| \geq bc^2 - b - c,\ b \geq c > 1 \implies b = c \implies a = c^2 - 1.
+	\]
+	Cuối cùng, \( ab - c = c(c^2 - 2) \) là một lũy thừa của 2, dẫn đến \( b = c = 2 \), nên \( a = 3 \).
+
+	\textit{Trường hợp 3b: \( c^3 - b - c = 0 \)}, tức là \( c^3 = c \). Từ
+	\[
+		bc - a = 1 \implies a = c^4 - c^2 - 1 \implies ca - b = c^5 - 2c^3 = c^3(c^2 - 2).
+	\]
+	Vì đây là một lũy thừa của 2, ta suy ra \( c = 2 \).
+	Khi đó, \( a = 11 \) và \( b = 6 \).
+
+	Vậy ta đã xét hết tất cả các trường hợp, hoàn tất chứng minh.
+\end{soln}
+
+\footnotetext{\samepage \href{https://artofproblemsolving.com/community/c6h1112743p5112544}{Lời giải của TelvCohl.}}
+
+\end{document}

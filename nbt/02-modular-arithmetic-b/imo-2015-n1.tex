@@ -1,0 +1,53 @@
+\documentclass[../02-modular-arithmetic-b.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{IMO 2015}/N1]\label{example:IMO-2015-N1}[\textbf{unrated}]
+    Xác định tất cả các số nguyên dương \( M \) sao cho dãy số \( a_0, a_1, a_2, \dots \) được xác định bởi  
+    \[
+        a_0 = M + \frac{1}{2}\quad \text{and}\quad a_{k+1} = a_k \lfloor a_k \rfloor \quad \text{với } k = 0, 1, 2, \dots
+    \]
+    chứa ít nhất một số nguyên.
+\end{example*}
+
+\begin{soln}\footnotemark(Cách 1)
+    Xét \( b_k = 2a_k \) với mọi \( k \geq 0 \). Khi đó,    
+    \[
+        b_{k+1} = 2a_{k+1} = 2a_k \lfloor a_k \rfloor = b_k \lfloor \frac{b_k}{2} \rfloor.
+    \]
+    
+    Vì \( b_0 \) là một số nguyên, suy ra \( b_k \) là một số nguyên với mọi \( k \geq 0 \).  
+    
+    Giả sử rằng dãy \( a_0, a_1, a_2, \dots \) không chứa số nguyên nào. Khi đó, \( b_k \) phải là số nguyên lẻ với mọi \( k \geq 0 \), do đó  
+    \[
+        b_{k+1} = b_k \lfloor b_k / 2 \rfloor = \frac{b_k (b_k - 1)}{2}. \tag{1}
+    \]
+    
+    Chúng ta cung cấp một cách khác để chứng minh rằng \( M = 1 \) một khi đã đạt đến phương trình (1). 
+    Chúng ta khẳng định rằng 
+    \begin{claim*} 
+        \(b_k \equiv 3 \pmod{2^m} \) với mọi \( k \geq 0 \) và \( m \geq 1 \).
+    \end{claim*}
+    \begin{subproof}
+        Ta chứng minh bằng \nameref{theorem:induction-principle} theo \( m \).  
+        
+        \textit{Bước cơ sở}: \( b_k \equiv 3 \pmod{2} \) đúng với mọi \( k \geq 0 \) vì \( b_k \) là số lẻ.  
+        
+        \textit{Bước quy nạp}: Giả sử rằng \( b_k \equiv 3 \pmod{2^m} \) với mọi \( k \geq 0 \). Do đó, tồn tại một số nguyên \( d_k \) sao cho  
+        \[
+            b_k = 2^m d_k + 3.
+        \]  
+          
+        Khi đó, ta có  
+        \[
+            3 \equiv b_{k+1} \equiv (2^m d_k + 3)(2^{m-1} d_k + 1) \equiv 3 \cdot 2^{m-1} d_k + 3 \pmod{2^{m+1}},
+        \]  
+        suy ra \( d_k \) phải là số chẵn. Điều này dẫn đến \( b_k \equiv 3 \pmod{2^{m+1}} \), như yêu cầu.      
+    \end{subproof}
+    
+    Từ khẳng định trên, ta có \( b_k = 3 \) với mọi \( k \geq 0 \), suy ra \( M = 1 \).  
+\end{soln}
+
+\footnotetext{\samepage \href{https://www.imo-official.org/problems/IMO2015SL.pdf}{Shortlist 2015 with solutions.}}
+
+\end{document}

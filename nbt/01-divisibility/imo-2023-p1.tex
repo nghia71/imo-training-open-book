@@ -1,15 +1,14 @@
-\documentclass[../../divisors.tex]{subfiles}
+\documentclass[../01-divisibility.tex]{subfiles}
 
 \begin{document}
 
-\begin{example*}[\gls{IMO 2023} P1/Columbia/\nameref{app:5M}]
-    \label{example:IMO-2023-P1}
+\begin{example*}[\gls{IMO 2023}/P1]\label{example:IMO-2023-P1}\textbf{[\nameref{definition:5M}]}
     Xác định tất cả các số nguyên hợp dương \( n \) thỏa mãn tính chất sau: nếu các ước số dương của \( n \) là $1 = d_1 < d_2 < \dots < d_k = n,$
     thì $d_i \mid (d_{i+1} + d_{i+2}) \quad \text{với mọi } 1 \leq i \leq k - 2.$
 \end{example*}
 
-\begin{soln}[1\footnotemark]
-    Dễ thấy rằng \( n = p^r \) với \( r \geq 2 \) thỏa mãn điều kiện vì 
+\begin{soln}(Cách 1)\footnotemark
+    Theo \nameref{theorem:fundamental-theorem-of-arithmetic}, dễ thấy rằng \( n = p^r \) với \( r \geq 2 \) thỏa mãn điều kiện vì 
     \[
         d_i = p^{i-1},\ \text{với } 1 \leq i \leq k = r+1\ \text{và rõ ràng}\ p^{i-1} \mid (p^i + p^{i+1}).
     \]
@@ -35,12 +34,9 @@
     Suy ra $p^j \mid q(p+1)$ dẫn đến $p \mid q$, mâu thuẫn với $p \neq q$. Vậy \( n \) phải là lũy thừa của một số nguyên tố.
 \end{soln}
 
-\begin{remark*}
-    Công cụ sử dụng: \nameref{theorem:Fundamental Theorem of Arithmetic}.
-\end{remark*}
+\bigbreak
 
-
-\begin{soln}[2\footnotemark[\value{footnote}]]
+\begin{soln}(Cách 2)\footnotemark[\value{footnote}]
     Vì \( d_i d_{k+1-i} = n \), ta có:
     \[
         d_{k-i-1} \mid d_{k-i} + d_{k-i+1} \Longleftrightarrow \frac{n}{d_{i+2}} \mid \left( \frac{n}{d_{i+1}} + \frac{n}{d_i} \right).
@@ -58,25 +54,30 @@
     
     Kết hợp với (2), suy ra \( d_i \mid d_{i+1}^2 \) với mọi \( 1 \leq i \leq k - 2 \).
     
-    Gọi \( d_2 = p \) là ước số nguyên tố nhỏ nhất của \( n \). Ta chứng minh bằng quy nạp: \( p \mid d_i \) với mọi \( 2 \leq i \leq k - 1 \).
-    Thật vậy, trường hợp $d_2 = p$ là hiển nhiên. Giả sử $p \mid d_j$ với $2 \le j \le k-2$, khi đó:
-    \[
-        p \mid d_j \mid {d_{j+1}}^2 \implies p \mid d_{j+1}\ (\text{vì}\ p\ \text{nguyên tố}). 
-    \]
+    Giả sử rằng \( d_2 = p \) là ước số nguyên tố nhỏ nhất của \( n \). Ta chứng minh bằng \nameref{theorem:induction-principle}:
+    \begin{claim*}
+        $p \mid d_i,\ \forall\ 2 \leq i \leq k - 1.$
+    \end{claim*}
+    \begin{subproof}
+        Thật vậy, trường hợp $d_2 = p$ là hiển nhiên. Giả sử $p \mid d_j$ với $2 \le j \le k-2$, khi đó:
+        \[
+            p \mid d_j \mid {d_{j+1}}^2 \implies p \mid d_{j+1}\ (\text{vì}\ p\ \text{nguyên tố}). 
+        \]
+    \end{subproof}
 
     Từ đó suy ra \( n \) là lũy thừa của một số nguyên tố vì nếu tồn tại một số nguyên tố $q \ne p$ mà cũng là ước số của $n$ thì $p\mid q$ và đó là điều vô lý.
 \end{soln}
 
-\begin{remark*}
-    Công cụ sử dụng: \nameref{theorem:Fundamental Theorem of Arithmetic}, \nameref{theorem:Induction Principle}.
-\end{remark*}
-    
-\begin{soln}[3\footnotemark[\value{footnote}]]
+\bigbreak
+
+\begin{soln}(Cách 3)\footnotemark[\value{footnote}]
     \begin{claim*}
         \( d_i \mid d_{i+1} \) với mọi \( 1 \leq i \leq k-1 \).
     \end{claim*}
     \begin{subproof}
-        Dùng quy nạp. Cơ sở quy nạp: \( d_1 = 1 \) là hiển nhiên. Giả sử \( d_{i-1} \mid d_i \). Từ điều kiện đề bài:
+        Ta dùng \nameref{theorem:induction-principle} để chứng minh.
+        
+        Bướcc cơ sở: \( d_1 = 1 \) là hiển nhiên. Giả sử \( d_{i-1} \mid d_i \). Từ điều kiện đề bài:
         \[
             d_{i-1} \mid d_i + d_{i+1} \Rightarrow d_{i-1} \mid d_{i+1}.
         \]
@@ -97,31 +98,6 @@
     Do đó, \( n \) phải là lũy thừa của một số nguyên tố, và các lũy thừa của số nguyên tố đều thỏa mãn điều kiện của bài toán.
 \end{soln}
 
-\begin{remark*}
-    Công cụ sử dụng: \nameref{theorem:Fundamental Theorem of Arithmetic}, \nameref{theorem:Induction Principle}.
-\end{remark*}
+\footnotetext{\samepage \href{https://www.imo-official.org/problems/IMO2023SL.pdf}{Shortlist 2023 with solutions.}}
 
-\begin{soln}[4\footnotemark[\value{footnote}]]
-    Tiếp tục từ Lời giải 1, ta sử dụng \( v_p(m) \) để biểu diễn chuẩn \( p \)-adic của \( m \). Lưu ý rằng:
-    \[
-        v_p \left( \frac{n}{q} \right) = v_p(n)\ \text{do}\ \gcd(p,q) = 1.
-    \]
-    và
-    \[
-        v_p \left( \frac{n}{p^j} (p+1) \right) = v_p(n) - j \ \text{do}\ \gcd(p,p+1) = 1.
-    \]
-
-    Từ (1), suy ra:
-    \[
-        v_p(n) = v_p \left( \frac{n}{q} \right) \leq v_p \left( \frac{n}{p^j} (p+1) \right) = v_p(n) - j,
-    \]
-    mâu thuẫn. Vậy \( n \) chỉ có một ước số nguyên tố, hoàn thành chứng minh.
-\end{soln}
-
-\begin{remark*}
-    Công cụ sử dụng: \nameref{theorem:Fundamental Theorem of Arithmetic}, \nameref{theorem:Induction Principle}, \nameref{theorem:p-adic valuation}.
-\end{remark*}
-
-\footnotetext{\href{https://www.imo-official.org/problems/IMO2023SL.pdf}{Shortlist 2023 with solutions.}}
-    
 \end{document}

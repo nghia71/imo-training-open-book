@@ -177,7 +177,9 @@
 \DeclareMathOperator*{\argmax}{arg max}
 
 %Convenient Environments
-\newenvironment{soln}{\begin{proof}[Lời giải]}{\end{proof}}
+\newenvironment{soln}[1][\textbf{Lời giải}]{%
+\begin{proof}[#1]}%
+{\end{proof}}
 \newenvironment{parlist}{\begin{inparaenum}[(i)]}{\end{inparaenum}}
 \newenvironment{gobble}{\setbox\z@\vbox\bgroup}{\egroup}
 
@@ -227,7 +229,7 @@
 \newcommand{\ii}{\item}
 
 % From Math 55 and Math 145 at Harvard
-\newenvironment{subproof}[1][Proof]{%
+\newenvironment{subproof}[1][Chứng minh]{%
 \begin{proof}[#1] \renewcommand{\qedsymbol}{$\blacksquare$}}%
 {\end{proof}}
 
@@ -713,10 +715,10 @@
     \declaretheorem[style=basehead,name=Answer,numbered=no]{answer*}
     \declaretheorem[style=basehead,name=Conjecture,sibling=theorem]{conjecture}
     \declaretheorem[style=basehead,name=Conjecture,numbered=no]{conjecture*}
-    \declaretheorem[style=basehead,name=Definition,sibling=theorem]{definition}
-    \declaretheorem[style=basehead,name=Definition,numbered=no]{definition*}
-    \declaretheorem[style=basehead,name=Exercise,sibling=theorem]{exercise}
-    \declaretheorem[style=basehead,name=Exercise,numbered=no]{exercise*}
+    \declaretheorem[style=basehead,name=Định nghĩa,sibling=theorem]{definition}
+    \declaretheorem[style=basehead,name=Định nghĩa,numbered=no]{definition*}
+    \declaretheorem[style=basehead,name=Bài tập,sibling=theorem]{exercise}
+    \declaretheorem[style=basehead,name=Bài tập,numbered=no]{exercise*}
     \declaretheorem[style=basehead,name=Fact,sibling=theorem]{fact}
     \declaretheorem[style=basehead,name=Fact,numbered=no]{fact*}
     \declaretheorem[style=basehead,name=Problem,sibling=theorem]{problem}

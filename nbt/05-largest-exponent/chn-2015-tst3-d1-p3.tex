@@ -1,0 +1,68 @@
+\documentclass[../05-largest-exponent.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{CHN 2015 TST}3/D1/P3]\label{example:CHN-2015-TST3-D1-P3}[\textbf{unrated}]
+	Cho \( a, b \) là hai số nguyên sao cho ước chung lớn nhất của chúng có ít nhất hai thừa số nguyên tố.  
+	Đặt  
+	\[
+		S = \{ x \mid x \in \mathbb{N}, x \equiv a \pmod{b} \}
+	\]
+	và gọi \( y \in S \) là \textit{không thể phân tích} nếu nó không thể được biểu diễn
+	dưới dạng tích của hai hoặc nhiều phần tử của \( S \) (không nhất thiết phải khác nhau).  
+	Chứng minh rằng tồn tại một số \( t \) sao cho mọi phần tử của \( S \) có thể được biểu diễn
+	dưới dạng tích của nhiều nhất \( t \) phần tử không thể phân tích.
+\end{example*}
+
+\begin{soln}(Cách 1)\footnotemark
+	Gọi \( g = \gcd(a, b) \), khi đó ta có:
+	\[
+		a = g a', \quad b = g b'.
+	\]
+	
+	Xét hai trường hợp:
+
+	\textit{Trường hợp 1: \( \gcd(b', g) > 1 \)}
+	Chọn một số nguyên tố \( p \) sao cho \( p \mid b' \) và \( p \mid g \). Khi đó, \( p \nmid a' \), suy ra:
+	\[
+		\nu_p(a) = \nu_p(g) < \nu_p(b).
+	\]
+	
+	Với mọi \( x \in S \), ta có \( \nu_p(x) = \nu_p(a) \), tức là mọi \( x \) đều có cùng số mũ tại \( p \).
+	Do đó, không thể phân tích thành tích của hai số khác trong \( S \), nên mọi \( x \) trong trường hợp này là không thể phân tích.
+	Trường hợp này là hiển nhiên.
+	
+	\textit{Trường hợp 2: \( \gcd(b', g) = 1 \)}
+	Chọn hai số nguyên tố \( p, q \) sao cho \( p, q \mid g \). Xét một phần tử \( x \in S \):
+	\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+		\item Nếu \( x \) không thể phân tích, ta hoàn thành chứng minh.
+		\item Nếu \( x \) có thể phân tích, viết \( x = uv \) với \( u, v \in S \).
+	\end{itemize}
+	
+	Ta sử dụng phép biến đổi:
+	\[
+		(u, v) \to \left(p^{\varphi(b')} u, \frac{v}{p^{\varphi(b')}}\right).
+	\]
+	
+	Lý do phép biến đổi hợp lệ là do:
+	\begin{enumerate}
+		\item Không thay đổi phần dư modulo \( b' \): Vì \( p^{\varphi(b')} \equiv 1 \pmod{b'} \).
+		\item Không thay đổi phần dư modulo \( b \): Vì chỉ làm tăng số mũ của thừa số nguyên tố trong \( g \), không ảnh hưởng đến \( \pmod{b} \).
+	\end{enumerate}
+	
+	Lặp lại quá trình này đến khi:
+	\[
+		\nu_p(v) \leq \varphi(b') + \nu_p(g), \quad \nu_q(u) \leq \varphi(b') + \nu_q(g).
+	\]
+	
+	Vì mọi phép phân tích tiếp theo của \( u, v \) yêu cầu mỗi thừa số phải chia hết cho \( p^{\nu_p(g)} \) và \( q^{\nu_q(g)} \), số thừa số bị chặn bởi:
+	\[
+		t = \frac{\varphi(b') + \nu_p(g)}{\nu_p(g)} + \frac{\varphi(b') + \nu_q(g)}{\nu_q(g)}.
+	\]
+	
+	Do \( t \) là số hữu hạn, mọi phần tử của \( S \) có thể được phân tích thành nhiều nhất \( t \) phần tử không thể phân tích, chứng minh được hoàn tất.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1069413p11175580}{Lời giải của MarkBcc168.}}
+
+\end{document}

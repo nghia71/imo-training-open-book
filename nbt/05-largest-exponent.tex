@@ -1,0 +1,50 @@
+\documentclass[../../imo-training-open-book.tex]{subfiles}
+
+\begin{document}
+
+\section{Lý thuyết}
+
+\begin{definition*}[\href{https://en.wikipedia.org/wiki/P-adic_valuation}{Chuẩn $p$-adic}] 
+    \label{theorem:p-adic-valuation}
+    Trong số học, chuẩn \( p \)-adic (hoặc bậc \( p \)-adic) của một số nguyên \( n \) là số mũ của lũy thừa lớn nhất của số nguyên tố \( p \) mà \( n \) chia hết.
+    \[
+        \nu_p(n) = 
+        \begin{cases}
+            \max \{ k \in \mathbb{N}_0 : p^k \mid n \} & \text{if } n \neq 0, \\
+            \infty & \text{if } n = 0,
+        \end{cases}
+    \]
+
+    Nói một cách khác, chuẩn \( p \)-adic là số mũ của \( p \) trong phân tích thừa số nguyên tố của \( n \):
+    \[
+        n={p_{1}}^{\alpha _{1}}{p_{2}}^{\alpha _{2}}{\dots }{p_{k}}^{\alpha _{k}} \implies \nu_{p_i}(n) = \alpha_i,\ \forall\ i=1,2,\ldots,k.
+    \]
+    trong đó $p_{1},p_{2},\ldots,p_{k}$ là các số nguyên tố và $\alpha _{1},\alpha _{2},\dots ,\alpha _{k}$ là các số nguyên dương.
+\end{definition*}
+
+\begin{theorem*}[Định lý Kummer]
+    \label{theorem:kummer-theorem}
+    Cho \( p \) là một số nguyên tố và \( m, n \) là hai số nguyên dương.
+    Khi đó, số mũ của \( p \) trong ước số nguyên tố của hệ số nhị thức \( \binom{m}{n} \) được xác định bởi:
+    \[
+        v_p \left( \binom{m}{n} \right) = \frac{S_p(m) - S_p(n) - S_p(m-n)}{p-1},
+    \]
+    trong đó \( S_p(x) \) là tổng các chữ số trong biểu diễn cơ số \( p \) của \( x \).
+\end{theorem*}
+
+\newpage
+
+\section{Các ví dụ}
+
+\subfile{./05-largest-exponent/chn-2015-mo-p4.tex}
+\subfile{./05-largest-exponent/chn-2015-tst3-d1-p3.tex}
+\subfile{./05-largest-exponent/imo-2015-p2.tex}
+\subfile{./05-largest-exponent/imo-2023-p1.tex}
+
+\newpage
+
+\section{Bài tập}
+
+\newpage
+
+\end{document}

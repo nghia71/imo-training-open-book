@@ -1,0 +1,64 @@
+\documentclass[../01-divisibility.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{CHN 2015 TST}1/D1/P2]\label{example:CHN-2015-TST1-D1-P2}[\textbf{unrated}]
+	Cho \( a_1, a_2, a_3, \dots \) là các số nguyên dương phân biệt, và \( 0 < c < \frac{3}{2} \).  
+	Chứng minh rằng: Tồn tại vô hạn số nguyên dương \( k \) sao cho  
+	\[
+		[a_k, a_{k+1}] > ck.
+	\]
+\end{example*}
+
+\begin{soln}(Cách 1)\footnotemark
+	Giả sử phản chứng rằng tồn tại một số nguyên dương \( K \) sao cho  
+	\[
+		\operatorname{lcm}(a_k, a_{k+1}) \leq ck
+	\]
+	với mọi số nguyên \( k \geq K \).
+	
+	\begin{claim*}
+		Với mọi \( k \geq K \), ta có
+		\[
+			\frac{1}{a_k} + \frac{1}{a_{k+1}} \geq \frac{3}{ck}.
+		\]
+	\end{claim*}
+	\begin{subproof}
+		Do \( a_k \neq a_{k+1} \), ta quan sát thấy rằng  
+		\[
+			a_k + a_{k+1} \geq 3\gcd(a_k, a_{k+1})
+		\]
+		vì \( \gcd(a_k, a_{k+1}) \) chia hết cho \( a_k + a_{k+1} \) và  
+		\[
+			a_k + a_{k+1} > 2\min\{a_k, a_{k+1}\} \geq 2\gcd(a_k, a_{k+1}).
+		\]
+		
+		Do đó,
+		\[
+			\frac{1}{a_k} + \frac{1}{a_{k+1}} = \frac{a_k + a_{k+1}}{\gcd(a_k, a_{k+1}) \cdot \operatorname{lcm}(a_k, a_{k+1})} 
+			\geq \frac{3}{\operatorname{lcm}(a_k, a_{k+1})} \geq \frac{3}{ck}.
+		\]	
+	\end{subproof}
+	
+	Cộng tổng từ \( k = K \) đến \( k = N \), với \( N \) tùy ý, ta có
+	\[
+		\sum_{i=K}^N \left( \frac{1}{a_i} + \frac{1}{a_{i+1}} \right) \geq \frac{3}{c} \left( \frac{1}{K} + \cdots + \frac{1}{N} \right).
+	\]
+	
+	Do \( a_K, \dots, a_{N+1} \) đều là các số khác nhau, nên trong tổng bên trái, mỗi số hạng \( \frac{1}{j} \) xuất hiện nhiều nhất hai lần.
+	Từ đó, ta suy ra:
+	\[
+		\sum_{i=K}^N \left( \frac{1}{a_i} + \frac{1}{a_{i+1}} \right) \leq \frac{2}{1} + \cdots + \frac{2}{N}.
+	\]
+	
+	Kết hợp hai bất đẳng thức trên và biến đổi lại, ta có:
+	\[
+		\frac{2}{1} + \cdots + \frac{2}{K} \geq \left( \frac{3}{c} - 2 \right) \left( \frac{1}{K} + \cdots + \frac{1}{N} \right).
+	\]
+	
+	Vì \( \frac{3}{c} > 2 \), vế trái là một giá trị cố định nhưng vế phải không bị chặn khi \( N \to \infty \), dẫn đến mâu thuẫn.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1062614p18497986}{Lời giải của TheUltimate123.}}
+
+\end{document}

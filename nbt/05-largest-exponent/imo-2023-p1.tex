@@ -1,0 +1,52 @@
+\documentclass[../05-largest-exponent.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\nameref{example:IMO-2023-P1}]\textbf{[\nameref{definition:5M}]}
+    Xác định tất cả các số nguyên hợp dương \( n \) thỏa mãn tính chất sau: nếu các ước số dương của \( n \) là $1 = d_1 < d_2 < \dots < d_k = n,$
+    thì $d_i \mid (d_{i+1} + d_{i+2}) \quad \text{với mọi } 1 \leq i \leq k - 2.$
+\end{example*}
+
+\begin{soln}(Cách 4)\footnotemark[\value{footnote}]
+    Dễ thấy rằng \( n = p^r \) với \( r \geq 2 \) thỏa mãn điều kiện vì 
+    \[
+        d_i = p^{i-1},\ \text{với } 1 \leq i \leq k = r+1\ \text{và rõ ràng}\ p^{i-1} \mid (p^i + p^{i+1}).
+    \]
+    
+    Bây giờ, giả sử tồn tại một số nguyên \( n \) thỏa mãn điều kiện đã cho và có ít nhất hai thừa số nguyên tố phân biệt,
+    gọi là \( p \) và \( q \), với \( p < q \) là hai thừa số nguyên tố nhỏ nhất của \( n \).
+    
+    Tồn tại số nguyên \( j \) sao cho:
+    \[
+        d_1 = 1, d_2 = p, \dots, d_j = p^{j-1}, d_{j+1} = p^j, d_{j+2} = q.
+    \]
+    
+    Ta cũng có:
+    \[
+        d_{k-j-1} = \frac{n}{q}, \quad d_{k-j} = \frac{n}{p^j}, \quad d_{k-j+1} = \frac{n}{p^{j-1}}, \dots, d_{k-1} = \frac{n}{p}, \quad d_k = n.
+    \]
+    
+    Từ điều kiện đề bài:
+    \[
+        d_{k-j-1} \mid (d_{k-i} + d_{k-j+1}) \implies \frac{n}{q} \mid \left( \frac{n}{p^j} + \frac{n}{p^{j-1}} \right)  \quad (1)
+    \]
+        
+    Ta sử dụng \( v_p(m) \) để biểu diễn \nameref{theorem:p-adic-valuation} của \( m \). Lưu ý rằng:
+    \[
+        v_p \left( \frac{n}{q} \right) = v_p(n)\ \text{do}\ \gcd(p,q) = 1.
+    \]
+    và
+    \[
+        v_p \left( \frac{n}{p^j} (p+1) \right) = v_p(n) - j \ \text{do}\ \gcd(p,p+1) = 1.
+    \]
+
+    Từ (1), suy ra:
+    \[
+        v_p(n) = v_p \left( \frac{n}{q} \right) \leq v_p \left( \frac{n}{p^j} (p+1) \right) = v_p(n) - j,
+    \]
+    mâu thuẫn. Vậy \( n \) chỉ có một ước số nguyên tố, hoàn thành chứng minh.
+\end{soln}
+
+\footnotetext{\samepage \href{https://www.imo-official.org/problems/IMO2023SL.pdf}{Shortlist 2023 with solutions.}}
+
+\end{document}
