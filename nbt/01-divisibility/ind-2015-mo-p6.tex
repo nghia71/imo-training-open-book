@@ -1,0 +1,47 @@
+\documentclass[../01-divisibility.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{IND 2015 MO}/P6]\label{example:IND-2015-N6}[\textbf{unrated}]
+	Chứng minh rằng từ một tập gồm \( 11 \) số chính phương, ta luôn có thể chọn ra sáu số \( a^2, b^2, c^2, d^2, e^2, f^2 \) sao cho:
+	\[
+		a^2 + b^2 + c^2 \equiv d^2 + e^2 + f^2 \Mod{12}
+	\]
+\end{example*}
+
+\begin{soln}
+	Xét các giá trị khả dĩ của một số chính phương modulo \( 12 \). Ta có:
+	\[
+		x^2 \equiv 0, 1, 4, 9 \pmod{12}
+	\]
+	
+	Giả sử tập \( S \) gồm 11 số chính phương. Xét tập \( S_r \) là đa tập các phần dư modulo 12 của các phần tử trong \( S \).
+	Tức là mỗi phần tử trong \( S_r \) thuộc \( \{0, 1, 4, 9\} \).
+	
+	Ta cần chứng minh rằng tồn tại hai tập con rời nhau \( A, B \subset S \), mỗi tập có đúng 3 phần tử, sao cho:
+	\[
+		\sum_{x \in A} x \equiv \sum_{y \in B} y \pmod{12}
+	\]
+	
+	Xét ba trường hợp.
+	
+	\textit{Trường hợp 1:} Trong \( S_r \) tồn tại ít nhất 6 phần tử có cùng phần dư.
+	Lúc này, ta có thể chia 6 phần tử đó thành hai tập con \( A, B \) có ba phần tử bằng nhau, suy ra tổng của mỗi tập bằng nhau, nên đương nhiên đồng dư modulo 12.
+	
+	\textit{Trường hợp 2:} Có một phần dư xuất hiện 4 hoặc 5 lần.
+	Do \( S \) có 11 phần tử, nên ít nhất phải có một phần dư khác xuất hiện ít nhất 2 lần (theo nguyên lý Dirichlet). Lúc này, ta có thể chọn ba phần tử từ nhóm 4–5 phần tử đó cho một tập, và ba phần tử còn lại (từ phần dư khác) cho tập còn lại. Tổng của mỗi tập là tổ hợp của các phần dư đã biết, nên tồn tại hai tổ hợp có cùng tổng modulo 12.
+	
+	\textit{Trường hợp 3:} Mỗi phần dư xuất hiện tối đa 3 lần.
+	Vì chỉ có 4 loại phần dư \( \{0, 1, 4, 9\} \), nên tổng số lượng phần tử tối đa nếu chỉ có hai loại phần dư với ít nhất 2 lần xuất hiện là:
+	\[
+		3 + 3 + 1 + 1 = 8 < 11,\ \text{mâu thuẫn.}
+	\]
+	
+	Do đó, phải có ít nhất 3 loại phần dư khác nhau với ít nhất 2 lần xuất hiện. Khi đó, ta dễ dàng chọn hai tổ hợp ba phần tử có tổng bằng nhau modulo 12 từ ba nhóm đó.
+
+	Trong mọi trường hợp, luôn tồn tại hai tập con rời nhau gồm ba số chính phương sao cho tổng của chúng đồng dư modulo 12.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h623456p3730860}{Dựa theo lời giải của Sahil.}}
+
+\end{document}

@@ -1,0 +1,50 @@
+\documentclass[../09-contruction-methods.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{IRN 2015 MO}/N5]\label{example:IRN-2015-N5}[\textbf{unrated}]
+	Cho \( p > 30 \) là một số nguyên tố. Chứng minh rằng tồn tại một số trong tập sau có dạng \( x^2 + y^2 \) với \( x, y \in \mathbb{Z} \):
+	\[
+		p + 1,\ 2p + 1,\ 3p + 1,\ \dots,\ (p - 3)p + 1
+	\]
+\end{example*}
+
+\begin{soln}(Cách 1)\footnotemark
+	Thực ra, mệnh đề này đúng với mọi \( p \geq 7 \), không chỉ \( p > 30 \).
+
+	Ta xét các phần tử \( x, y \in \left\{ 1, 2, \dots, \frac{p - 1}{2} \right\} \) sao cho:
+	\[
+		x \equiv \pm \frac{3}{5} \pmod{p}, \quad y \equiv \pm \frac{4}{5} \pmod{p}
+	\]
+	
+	Vì \( \gcd(5, p) = 1 \), nên \( \frac{3}{5}, \frac{4}{5} \in \mathbb{F}_p \) tồn tại. Do đó ta có:
+	\[
+		x^2 + y^2 \equiv \left( \frac{3}{5} \right)^2 + \left( \frac{4}{5} \right)^2 = \frac{9 + 16}{25} = 1 \pmod{p}
+	\]
+	
+	Tức là tồn tại \( x, y \) sao cho \( x^2 + y^2 \equiv 1 \pmod{p} \).
+	Mặt khác, ta đánh giá giá trị lớn nhất mà biểu thức \( x^2 + y^2 \) có thể nhận được trong miền xác định:
+	\[
+		x^2 + y^2 \leq 2 \left( \frac{p - 1}{2} \right)^2 = \frac{(p - 1)^2}{2} = \frac{p^2 - 2p + 1}{2}
+	\]
+	
+	Ta muốn tìm một số dạng \( mp + 1 \) (với \( 1 \leq m \leq p - 3 \)) có dạng \( x^2 + y^2 \). Vì:
+	\[
+		x^2 + y^2 \equiv 1 \pmod{p} \Rightarrow x^2 + y^2 = kp + 1 \quad \text{với } k \in \mathbb{N}
+	\]
+	
+	Và:
+	\[
+		x^2 + y^2 \leq \frac{(p - 1)^2}{2} = \frac{p^2 - 2p + 1}{2} < \frac{p(p - 1)}{2} + 1
+	\]
+	
+	Nên \( kp + 1 \leq \frac{p(p - 1)}{2} + 1 \Rightarrow k \leq \frac{p - 1}{2} \)
+	
+	Tức là tồn tại một giá trị \( kp + 1 \) với \( k \leq \frac{p - 1}{2} \), có dạng tổng hai bình phương.
+	
+	Như vậy có ít nhất một số trong dãy \( p + 1, 2p + 1, \dots, (p - 3)p + 1 \) là tổng của hai bình phương.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1139099p27598968}{Dựa theo lời giải của math90.}}
+
+\end{document}

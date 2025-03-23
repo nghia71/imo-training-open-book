@@ -1,0 +1,77 @@
+\documentclass[../09-contruction-methods.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{USA 2015 TST}/P2]\label{example:USA-2015-TST-P2}[\textbf{\nameref{definition:25M}}]
+	Chứng minh rằng với mọi \( n \in \mathbb{N} \), tồn tại một tập \( S \) gồm \( n \) số nguyên dương sao cho với mọi hai phần tử phân biệt \( a, b \in S \),
+	hiệu \( a - b \) chia hết cả \( a \) và \( b \), nhưng không chia hết bất kỳ phần tử nào khác trong \( S \).
+\end{example*}
+
+\begin{soln}(Cách 1)\footnotemark
+	Chúng ta xây dựng một dãy các hiệu \( d_1, d_2, \dots, d_{n-1} \) sao cho dãy số được tạo thành từ:
+	\[
+		s_1 = 0, \quad s_2 = d_1, \quad s_3 = d_1 + d_2, \quad \dots, \quad s_n = d_1 + \dots + d_{n-1}
+	\]
+	và đặt \( S = \{ a + s_1, a + s_2, \dots, a + s_n \} \) với một số \( a \in \mathbb{Z}_{>0} \) được chọn sao cho các tính chất sau được đảm bảo:
+	
+	\begin{enumerate}[topsep=0pt, partopsep=0pt, itemsep=0pt, label=(\roman*)]
+		\item Với mọi cặp chỉ số \( 1 \le i < j \le n \), đặt \( t_{i,j} = s_j - s_i = d_i + d_{i+1} + \dots + d_{j-1} \).
+		Ta yêu cầu rằng các số \( t_{i,j} \) không chia hết nhau, tức là không tồn tại \( (i, j) \ne (k, \ell) \) sao cho \( t_{i,j} \mid t_{k,\ell} \).
+		\item Có tồn tại một số \( a \in \mathbb{Z}_{>0} \) sao cho:
+		\[
+			a \equiv -s_i \pmod{t_{i,j}} \quad \text{với mọi } 1 \le i < j \le n.
+		\]
+	\end{enumerate}
+	
+	Với những điều kiện này, nếu đặt \( S = \{ a + s_1, a + s_2, \dots, a + s_n \} \) thì với mọi \( a', b' \in S \), ta có:
+	\[
+		|a' - b'| = t_{i,j} \mid a', b', \quad \text{nhưng không chia bất kỳ phần tử nào khác trong } S.
+	\]
+	
+	\textit{Bước cơ sở}: \( n = 3 \). Chọn \( d_1 = 2 \), \( d_2 = 3 \). Khi đó \( s_1 = 0, s_2 = 2, s_3 = 5 \), và:
+	\[
+		t_{1,2} = 2, \quad t_{2,3} = 3, \quad t_{1,3} = 5.
+	\]
+	
+	Rõ ràng \( 2, 3, 5 \) là các số nguyên tố phân biệt nên không chia hết nhau.  
+	Giải hệ:
+	\[
+		\left.
+		\begin{array}{rcl}
+			a \equiv &0& \pmod{2}, \\
+			a \equiv &-2& \pmod{3}, \\
+			a \equiv &0& \pmod{5}.
+		\end{array}
+		\right\}
+		\implies a \equiv 10 \pmod{30}.
+	\]
+	
+	Chọn \( a = 10 \), ta được \( S = \{10, 12, 15\} \).
+	Dễ thấy: 
+	\[ |12-10| = 2 \mid 10, 12,\  |15-12| = 3 \mid 12, 15,\ |15-10| = 5 \mid 10, 15 \]
+	nhưng các hiệu đó không chia hết phần tử còn lại.
+	
+	\textit{Bước quy nạp:} Giả sử đã xây dựng được \( d_1, \dots, d_{n-1} \) và \( a \) thỏa mãn (i) và (ii) cho \( n \) phần tử. Ta sẽ mở rộng thành \( n+1 \) phần tử như sau:
+	\begin{enumerate}[topsep=0pt, partopsep=0pt, itemsep=0pt, label=(\roman*)]
+		\item Chọn một số nguyên tố \( p \) sao cho \( p \nmid t_{i,j} \) với mọi \( 1 \le i < j \le n \). Điều này đảm bảo \( p \) không chia hết bất kỳ hiệu nào có sẵn.
+		\item Đặt \( M = \text{LCM} \left( t_{i,j} \mid 1 \le i < j \le n \right) \).
+		\item Thay mỗi \( d_i \) bởi \( d_i' = M \cdot d_i \), và đặt thêm hiệu mới \( d_n' = p \).
+	\end{enumerate}
+	
+	Từ đó xây dựng các \( s_1', \dots, s_{n+1}' \), và giữ nguyên \( a \) ban đầu.  
+	Do \( M \) chia hết tất cả \( t_{i,j} \), ta có:
+	\[
+		t_{i,j}' = M \cdot t_{i,j}, \quad \text{và } t_{i,n+1}' = M \cdot t_{i,n} + p.
+	\]
+	
+	Các hiệu mới đều nguyên tố cùng nhau, nên điều kiện (i) vẫn giữ nguyên.
+	
+	Về (ii): Vì các mô-đun \( t_{i,j}' \) vẫn nguyên tố cùng nhau, và \( t_{i,n+1}' \equiv p \pmod{M} \),
+	ta có thể mở rộng hệ đồng dư cũ để thêm điều kiện cho phần tử thứ \( n+1 \), sử dụng \nameref{theorem:chinese-remainder-theorem}.
+	
+	Kết luận: Bằng quy nạp, tồn tại một dãy hiệu \( d_1, \dots, d_{n-1} \) và một số \( a \) sao cho tập \( S = \{ a + s_1, \dots, a + s_n \} \) thỏa mãn yêu cầu đề bài.
+\end{soln}
+
+\footnotetext{\href{https://web.evanchen.cc/exams/sols-TST-IMO-2015.pdf}{Dựa theo lời giải của Evan Chen.}}
+
+\end{document}

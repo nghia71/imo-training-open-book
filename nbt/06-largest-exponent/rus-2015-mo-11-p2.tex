@@ -1,0 +1,79 @@
+\documentclass[../06-largest-exponent.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{RUS 2015 MO}11/P2]\label{example:RUS-2015-MO-11-P2}[\textbf{unrated}]
+	Cho số tự nhiên $n > 1$. Ta viết ra các phân số
+	\[
+	\frac{1}{n}, \frac{2}{n}, \dots, \frac{n-1}{n}
+	\]
+	và chỉ giữ lại những phân số tối giản. Gọi tổng các tử số (của những phân số tối giản đó) là $f(n)$.
+	Hỏi có những giá trị $n > 1$ nào sao cho một trong hai số $f(n)$ và $f(2015n)$ là số lẻ, còn số kia là số chẵn?
+\end{example*}
+
+\begin{soln}(Cách 1)\footnotemark
+	Rõ ràng với mọi $m < n$, các tử số rút gọn $\frac{m}{\gcd(m,n)}$ và $\frac{m}{\gcd(m,2015n)}$ có cùng tính chẵn lẻ.
+	Do đó, để so sánh tính chẵn lẻ của $f(n)$ và $f(2015n)$, ta chỉ cần xét tổng:
+	\[
+		\sum_{i=1}^{2015n - 1} \frac{i}{\gcd(i, 2015n)}.
+	\]
+	
+	Xét điều kiện để $\frac{i}{\gcd(i, 2015n)}$ là số lẻ:
+	\[
+		2 \nmid \frac{i}{\gcd(i, 2015n)} \iff v_2\left(\frac{i}{\gcd(i, 2015n)}\right) = 0.
+	\]
+	
+	Vì $\gcd(i, 2015n)$ chia hết cho $2^{\min(v_2(i), v_2(2015n))}$, nên biểu thức trên tương đương với:
+	\[
+		v_2(i) \le v_2(2015n) = v_2(n),\ \text{do 2015 là số lẻ.}
+	\]
+	
+	Suy ra, số lượng chỉ số $i \in [1, 2015n-1]$ sao cho $\frac{i}{\gcd(i,2015n)}$ là số lẻ bằng số lượng $i$ thỏa $v_2(i) \le v_2(n)$.
+	
+	Số lượng này lớn hơn một nửa tổng số và cụ thể là lẻ, vì số các $i$ với $v_2(i) = v_2(n)$ là bội của $2^{v_2(n)}$ và tạo thành cấp số cộng cách đều,
+	nên tổng số các giá trị $i$ thỏa mãn điều kiện là lẻ.
+	
+	Do đó tổng
+	\[
+		\sum_{i=1}^{2015n - 1} \frac{i}{\gcd(i, 2015n)}\ \text{là số lẻ,}
+	\]
+	kéo theo $f(2015n)$ và $f(n)$ có tính chẵn lẻ khác nhau.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1172743p26747135}{Lời giải của JAnatolGT\_00.}}
+
+\newpage
+
+\begin{soln}(Cách 2)\footnotemark
+	Gọi $v_2(n)$ là chuẩn 2-adic của $n$. 
+    
+	Phân số $\frac{i}{n}$ có tử số chẵn \textit{nếu và chỉ nếu} $v_2(i) > v_2(n)$.
+	Do đó, số lượng tử số lẻ là:
+	\[
+		f(n) \equiv n - 1 - \left\lfloor \frac{n}{2^{v_2(n)+1}} \right\rfloor \pmod{2}.
+	\]
+        
+	Tương tự:
+	\[
+		f(2015n) \equiv 2015n - 1 - \left\lfloor \frac{2015n}{2^{v_2(n)+1}} \right\rfloor \pmod{2}.
+	\]
+    
+	Do đó, khác biệt về chẵn lẻ giữa $f(n)$ và $f(2015n)$ phụ thuộc vào:
+	\[
+		\left\lfloor \frac{n}{2^{v_2(n)+1}} \right\rfloor \text{ và } \left\lfloor \frac{2015n}{2^{v_2(n)+1}} \right\rfloor.
+	\]
+
+    Đặt $n = 2^\alpha \beta$ với $\beta$ lẻ. Khi đó:
+    \[
+        \left\lfloor \frac{n}{2^{\alpha + 1}} \right\rfloor = \left\lfloor \frac{\beta}{2} \right\rfloor,
+        \left\lfloor \frac{2015n}{2^{\alpha + 1}} \right\rfloor = \left\lfloor \frac{2015\beta}{2} \right\rfloor = \left\lfloor 1007\beta + \frac{\beta}{2} \right\rfloor.
+    \]
+    
+	Vì $\beta$ lẻ nên $1007\beta$ lẻ, và do đó hai phần nguyên này có tính chẵn lẻ khác nhau.
+
+    Suy ra $f(n)$ và $f(2015n)$ có tính chẵn lẻ khác nhau với mọi $n > 1$.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1172743p6231783}{Lời giải của kreegyt.}}
+
+\end{document}

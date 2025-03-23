@@ -1,0 +1,42 @@
+\documentclass[../04-diophantine-equations.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{USA 2015 MO}/P1]\label{example:USA-2015-MO-P1}\textbf{[\nameref{definition:15M}]}
+	Giải trong tập số nguyên phương trình  
+	\[
+		x^2+xy+y^2 = \left(\frac{x+y}{3}+1\right)^3.
+	\]
+\end{example*}
+
+\begin{soln}(Cách 1)\footnotemark
+	Trước tiên ta nhận thấy cả hai vế đều phải là số nguyên, do đó $\frac{x+y}{3}$ phải là số nguyên.
+
+	Do đó ta đặt $x+y = 3t$ với $t$ là một số nguyên.
+	
+	Khi đó:
+	\[
+		\begin{aligned}
+			&(3t)^2 - xy = (t+1)^3 \implies 9t^2 + x (x - 3t) = t^3 + 3t^2 + 3t + 1\\
+			&4x^2 - 12xt + 9t^2 = 4t^3 - 15t^2 + 12t + 4 \implies (2x - 3t)^2 = (t - 2)^2(4t + 1)
+		\end{aligned}
+	\]
+	
+	$4t+1$ là bình phương của một số lẻ và có thể thay bằng $(2n+1)^2.$
+	Thay $t = n^2 + n$ ta được:
+	\[
+		\begin{aligned}
+			&(2x - 3n^2 - 3n)^2 = [(n^2 + n - 2)(2n+1)]^2 \implies 2x - 3n^2 - 3n = \pm (2n^3 + 3n^2 -3n -2)\\
+			&x = n^3 + 3n^2 - 1 \quad \text{hoặc} \quad x = -n^3 + 3n + 1
+		\end{aligned}
+	\]
+	
+	Thay ngược lại ta được các nghiệm: 
+	\[
+		(n^3 + 3n^2 - 1,\ -n^3 + 3n + 1) \cup (-n^3 + 3n + 1,\ n^3 + 3n^2 - 1).
+	\]
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/wiki/index.php/2015_USAMO_Problems/Problem_1}{Lời giải chính thức.}}
+
+\end{document}

@@ -1,0 +1,129 @@
+\documentclass[../01-divisibility.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{RUS 2015 TST}/D9/P1]\label{example:RUS-2015-TST-D9-P1}[\textbf{unrated}]
+	Tìm tất cả các cặp số tự nhiên $(a,b)$ sao cho:
+	\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+		\item $b - 1$ chia hết cho $a + 1$, và
+		\item $a^2 + a + 2$ chia hết cho $b$.
+	\end{itemize}
+\end{example*}
+
+\begin{soln}(Cách 1)\footnotemark
+	Đặt $c = a + 1 \ge 2$, khi đó các điều kiện tương đương:
+	\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+		\item $c \mid b - 1$,
+		\item $b \mid c^2 - c + 2$.
+	\end{itemize}
+
+	Điều này cho thấy $b$ và $c$ là hai số nguyên tố cùng nhau và đều chia hết cho biểu thức
+	\[
+		c^2 - c + 2 - 2b \implies bc \mid c^2 - c + 2 - 2b.
+	\]
+	
+	Dễ thấy rằng $\boxed{(a, 1)}$ là nghiệm với mọi $a \in \mathbb{N}$. Bây giờ ta xét trường hợp $b \ge 2$. Khi đó:
+	\[
+		c < b \implies bc > b^2 > c^2 \implies c^2 - c + 2 - 2b < bc.
+	\]
+
+	Đồng thời:
+	\[
+		c^2 - c + 2 - 2b > -2b \ge -bc \implies -bc < c^2 - c + 2 - 2b < bc \implies \text{giá trị này phải bằng 0}.
+	\]
+
+	Khi đó:
+	\[
+		c^2 - c + 2 = 2b \implies a^2 + a + 2 = 2b.
+	\]
+
+	Vậy điều kiện thứ hai trở thành:
+	\[
+		b \mid 2b \implies \text{luôn đúng}.
+	\]
+
+	Kiểm tra lại điều kiện thứ nhất:
+	\[
+		b = \frac{a^2 + a + 2}{2} \implies b - 1 = \frac{a^2 + a}{2} + 1.
+	\]
+
+	Ta cần:
+	\[
+		a + 1 \mid \frac{a^2 + a}{2} + 1.
+	\]
+
+	Biểu thức này chỉ là một số nguyên khi $a$ chẵn. Đặt $a = 2k$ thì:
+	\[
+		b = \frac{(2k)^2 + 2k + 2}{2} = \frac{4k^2 + 2k + 2}{2} = 2k^2 + k + 1.
+	\]
+
+	Do đó, thu được họ nghiệm thứ hai:
+	\[
+		\boxed{(a, b) = (2k, 2k^2 + k + 1), \quad k \in \mathbb{N}}.
+	\]
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h3057473p27559072}{Dựa theo lời giải của Tintam.}}
+
+\begin{soln}(Cách 2)\footnotemark
+	Đặt $t = a + 1$ ($\implies a = t - 1$). Điều kiện thứ nhất trở thành:
+	\[
+		t \mid b - 1 \implies b = tk + 1 \text{ với } k \in \mathbb{N}.
+	\]
+
+	Điều kiện thứ hai trở thành:
+	\[
+		b \mid a^2 + a + 2 = (t - 1)^2 + (t - 1) + 2 = t^2 - t + 2.
+	\]
+	
+	Do đó:
+	\[
+		tk + 1 \mid t^2 - t + 2.
+	\]
+	
+	Vì $tk + 1 \mid t^2 - t + 2$, và $tk + 1 \mid 2tk + 2$, suy ra:
+	\[
+		tk + 1 \mid (t^2 - t + 2) - (2tk + 2) = t^2 - t - 2tk = t(t - 2k - 1).
+	\]
+	
+	Mặt khác, vì $\gcd(t, tk + 1) = 1$, nên:
+	\[
+		tk + 1 \mid t - 2k - 1.
+	\]
+
+	\textit{Trường hợp 1:} $k = 0$.
+	Khi đó:
+	\[
+		b = 1, \quad a^2 + a + 2 \mid 1 \implies 1 \mid a^2 + a + 2 \text{ luôn đúng}.
+	\]
+
+	Vậy mọi $a \in \mathbb{N}$ đều thỏa mãn. Tập nghiệm:
+	\[
+		\boxed{(a, 1) \text{ với } a \in \mathbb{N}}.
+	\]
+
+	\textit{Trường hợp 2:} $k \ge 1$.
+	Từ điều kiện $tk + 1 \mid t - 2k - 1$, giả sử $t > 2k + 1$. Khi đó:
+	\[
+		t - 2k - 1 \ge tk + 1 \implies t \ge tk + 2k + 2 > t,\ \text{mâu thuẫn.}
+	\]
+	
+	Nếu $t < 2k + 1$, thì:
+	\[
+		2k + 1 \ge tk + t + 1 \implies t \le 1,\ \text{điều này vô lý vì}\ t = a + 1 \ge 2.
+	\]
+	
+	Do đó, chỉ còn lại:
+	\[
+		t = 2k + 1 \implies a = t - 1 = 2k, \quad b = tk + 1 = (2k + 1)k + 1 = 2k^2 + 2k + 1.
+	\]
+
+	Vậy ta thu được họ nghiệm thứ hai:
+	\[
+		\boxed{(a, b) = (2k, 2k^2 + 2k + 1), \quad k \in \mathbb{N}}.
+	\]
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h3057473p27562946}{Dựa theo lời giải của grupyorum.}}
+
+\end{document}

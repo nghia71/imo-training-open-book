@@ -1,0 +1,86 @@
+\documentclass[../09-contruction-methods.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{IRN 2015 TST}/D2-P1]\label{example:IRN-2015-TST-D2-P1}[\textbf{unrated}]
+	Cho trước số tự nhiên \( n \). Tìm giá trị nhỏ nhất của \( k \) sao cho với mọi tập \( A \) gồm \( k \) số tự nhiên,
+	luôn tồn tại một tập con của \( A \) có số phần tử chẵn và tổng các phần tử chia hết cho \( n \).
+\end{example*}
+
+\begin{soln}(Cách 1)\footnotemark
+	\begin{claim*}
+		Cho \( n \) là một số nguyên dương. Khi đó, trong mọi tập \( X = \{x_1, x_2, \dots, x_n\} \) gồm \( n \) số nguyên,
+		tồn tại một tập con \( A \subseteq X \) sao cho tổng các phần tử của \( A \) chia hết cho \( n \).
+	\end{claim*}
+	\begin{subproof}
+		Xét các tổng sau:
+		\[
+			A_1 = \{a_1\},\quad A_2 = \{a_1 + a_2\},\quad \dots,\quad A_n = \{a_1 + a_2 + \dots + a_n\}
+		\]
+		
+		Nếu tồn tại \( i \) sao cho \( \overline{A_i} \equiv 0 \pmod{n} \) thì ta đã xong.
+		Ngược lại, tồn tại hai tổng \( A_i, A_j \) với \( j > i \) sao cho \( \overline{A_i} \equiv \overline{A_j} \pmod{n} \), suy ra:
+		\[
+			\overline{A_j - A_i} = a_{i+1} + \dots + a_j \equiv 0 \pmod{n}
+		\]
+	\end{subproof}
+	
+	Xét ba trường hợp.
+
+	\textit{Trường hợp 1:} \( n = 2k \) là số chẵn và \( k \) là số lẻ.
+
+	Lấy \( n+1 \) số tự nhiên bất kỳ. Chia chúng thành hai tập: \( A = \{a_1, a_2, \dots, a_t\} \): chứa các số lẻ. \( B = \{b_1, b_2, \dots, b_s\} \): chứa các số chẵn
+	
+	Vì \( t + s = n + 1 \) là số lẻ, nên một trong hai số \( t, s \) là chẵn, số còn lại là lẻ. Giả sử \( t \) chẵn.
+	Ta chia các phần tử trong \( A \) thành \( \frac{t}{2} \) cặp:
+	\[
+		A_1 = \{a_1, a_2\},\quad A_2 = \{a_3, a_4\},\quad \dots,\quad A_{\frac{t}{2}} = \{a_{t-1}, a_t\}
+	\]
+	
+	Tương tự, bỏ \( b_s \) ra khỏi \( B \), và chia phần còn lại thành \( \frac{s - 1}{2} \) cặp:
+	\[
+		B_1 = \{b_1, b_2\},\quad B_2 = \{b_3, b_4\},\quad \dots,\quad B_{\frac{s - 1}{2}} = \{b_{s - 2}, b_{s - 1}\}
+	\]
+	
+	Gọi \( \overline{X} \) là tổng các phần tử trong tập \( X \). Ta thu được \( \frac{t + s - 1}{2} = \frac{n}{2} = k \) tổng.
+	Theo bổ đề, tồn tại một tập con gồm các tổng trên sao cho tổng của chúng chia hết cho \( k \).
+	Vì mỗi tổng là tổng của hai số và \( k \) lẻ, nên tổng này cũng chia hết cho \( 2k = n \).
+	Mỗi tổng được tạo bởi hai phần tử trong tập ban đầu, nên số phần tử trong tập con là chẵn.
+	
+	Trường hợp \( t \) lẻ thì làm tương tự.	
+	
+	\textit{Trường hợp 2:} \( 4 \mid n = 2k \).
+	Gọi \( A = \{a_1, a_2, \dots, a_{n+1}\} \) là tập gồm \( n + 1 \) số bất kỳ.
+	
+	Xét tập con \( A_1 = \{a_1, a_2, \dots, a_{k+1}\} \). Vì \( k \) chẵn, nên theo trường hợp (1),
+	tồn tại tập con \( X_1 \subseteq A_1 \) gồm số phần tử chẵn sao cho tổng chia hết cho \( k \), tức là \( \overline{X_1} = kt \).
+	
+	Do \( |X_1| < n + 1 \), phần còn lại \( A \setminus X_1 \) có ít nhất \( k + 1 \) phần tử.
+	Áp dụng lại như trên, ta có tập con \( X_2 \subseteq A \setminus X_1 \) chẵn phần tử sao cho \( \overline{X_2} = kl \).
+	
+	Nếu \( t \) hoặc \( l \) chẵn, thì \( kt \) hoặc \( kl \) chia hết cho \( n \). Nếu cả hai lẻ thì:
+	\[
+		\overline{X_1 \cup X_2} = k(t + l) = 2ks = n s
+	\]
+	Tập \( X_1 \cup X_2 \) có số phần tử chẵn. Vậy ta đã xong.
+	
+	\textit{Trường hợp 3:}  \( n \) là số lẻ.
+	Xét tập \( A = \{a_1, a_2, \dots, a_{2n}\} \)
+	
+	Chia thành hai nửa:
+	\[
+		A_1 = \{a_1, a_2, \dots, a_n\},\quad A_2 = \{a_{n+1}, a_{n+2}, \dots, a_{2n}\}
+	\]
+	
+	Áp dụng bổ đề cho \( A_1 \) và \( A_2 \), ta thu được hai tập con \( X_1 \subseteq A_1 \), \( X_2 \subseteq A_2 \) sao cho:
+	\[
+		\overline{X_1} \equiv \overline{X_2} \equiv 0 \pmod{n}
+	\]
+	
+	Nếu \( X_1 \) hoặc \( X_2 \) có số phần tử chẵn, ta đã xong. Ngược lại, nếu cả hai có số phần tử lẻ, thì \( |X_1 \cup X_2| \) chẵn và tổng chia hết cho \( n \).
+	Vậy \( X_1 \cup X_2 \) là tập con thỏa mãn yêu cầu.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1087607p5239629}{Dựa theo lời giải của andria.}}
+
+\end{document}

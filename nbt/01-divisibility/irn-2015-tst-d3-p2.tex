@@ -1,0 +1,83 @@
+\documentclass[../01-divisibility.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{IRN 2015 TST}/D3-P2]\label{example:IRN-2015-TST-D3-P2}[\textbf{unrated}]
+	Giả sử \( a_1, a_2, a_3 \) là ba số nguyên dương cho trước. Xét dãy số được xác định bởi công thức:
+	\[
+		a_{n+1} = \text{lcm}[a_n, a_{n-1}] - \text{lcm}[a_{n-1}, a_{n-2}] \quad \text{với } n \geq 3
+	\]
+	(Ở đây, \( [a, b] \) ký hiệu bội chung nhỏ nhất của \( a \) và \( b \), và chỉ được áp dụng với các số nguyên dương.)
+
+	Chứng minh rằng tồn tại một số nguyên dương \( k \leq a_3 + 4 \) sao cho \( a_k \leq 0 \).
+\end{example*}
+
+\begin{soln}(Cách 1)\footnotemark
+	Ta sẽ chứng minh điều mạnh hơn: Tồn tại \( k \leq a_3 + 3 \) sao cho \( a_k \leq 0 \).
+	Đặt
+	\[
+		b_n = \frac{a_n}{\text{lcm}(a_{n-2}, a_{n-3})} \quad \text{với mọi } n \geq 5
+	\]
+	
+	Ta có ngay rằng:
+	\[
+		a_{n-2} \mid a_n \quad \forall n \geq 4
+	\]
+
+	Điều này kéo theo \( a_{n-3} \mid a_n \) với mọi \( n \geq 5 \), do đó \( b_n \in \mathbb{N} \), tức là \( b_n \) nguyên.
+	
+	\begin{claim*}
+		Với mọi \( n \geq 5 \), ta có:
+		\[
+			b_{n+1} < b_n
+		\]
+	\end{claim*}
+	\begin{subproof}
+		Cố định \( n \geq 5 \). Khi đó,
+		\begin{align*}
+			a_{n+1} &= \text{lcm}[a_n, a_{n-1}] - \text{lcm}[a_{n-1}, a_{n-2}]
+			= \text{lcm}[b_n \cdot \text{lcm}(a_{n-2}, a_{n-3}), a_{n-1}] - \text{lcm}[a_{n-1}, a_{n-2}] \\
+			&= \text{lcm}[b_n, a_{n-2}, a_{n-3}, a_{n-1}] - \text{lcm}[a_{n-1}, a_{n-2}]
+		\end{align*}
+
+		Mà \( a_{n-3} \mid a_{n-1} \), nên:
+		\[
+			a_{n+1} = \text{lcm}[b_n, a_{n-2}, a_{n-1}] - \text{lcm}[a_{n-1}, a_{n-2}]
+			\implies b_{n+1} = \frac{a_{n+1}}{\text{lcm}[a_{n-1}, a_{n-2}]} < b_n.
+		\]
+	\end{subproof}
+	
+	Để hoàn tất chứng minh, ta chỉ cần chỉ ra rằng \( b_5 \leq a_3 - 2 \), bởi nếu vậy thì dãy \( b_n \) giảm dần,
+	nên sẽ đến lúc \( b_k = 0 \) với \( k \leq a_3 + 3 \), suy ra \( a_k = 0 \).
+	
+	Ta tính:
+	\[
+		a_4 = \text{lcm}(a_3, a_2) - \text{lcm}(a_2, a_1) = c a_2 \quad \text{với } c \leq a_3 - 1
+	\]
+	
+	Tiếp theo:
+	\begin{align*}
+		a_5 = \text{lcm}(a_4, a_3) - \text{lcm}(a_3, a_2) = \text{lcm}(c a_2, a_3) - \text{lcm}(a_3, a_2)
+	\end{align*}
+
+	Suy ra:
+	\[
+		b_5 = \frac{a_5}{\text{lcm}(a_3, a_2)} \leq c - 1 \leq a_3 - 2
+	\]
+	
+	Vậy ta đã chứng minh được rằng \( a_k = 0 \) với \( k \leq a_3 + 3 \). \hfill \( \blacksquare \)
+	
+	\textit{Chú ý:} Giới hạn trên là chặt.
+	Chẳng hạn, chọn \( a_1 = 1, a_2 = 2, a_3 = 3 \), ta có:
+	\begin{align*}
+		a_4 &= \text{lcm}(3,2) - \text{lcm}(2,1) = 6 - 2 = 4 \\
+		a_5 &= \text{lcm}(4,3) - \text{lcm}(3,2) = 12 - 6 = 6 \\
+		a_6 &= \text{lcm}(6,4) - \text{lcm}(4,3) = 12 - 12 = 0
+	\end{align*}
+	
+	Vậy giá trị nhỏ nhất thỏa mãn \( a_k \leq 0 \) là \( k = 6 = a_3 + 3 \).
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1100830p25301244}{Lời giải của guptaamitu1.}}
+
+\end{document}

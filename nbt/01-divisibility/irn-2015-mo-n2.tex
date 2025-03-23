@@ -1,0 +1,73 @@
+\documentclass[../01-divisibility.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{IRN 2015 MO}/N2]\label{example:IRN-2015-N2}[\textbf{unrated}]
+	Gọi \( M_0 \subset \mathbb{N} \) là một tập hợp hữu hạn, không rỗng các số tự nhiên. Ali tạo ra các tập \( M_1, M_2, \dots, M_n \) theo quy trình sau:
+	Tại bước \( n \), Ali chọn một phần tử \( b_n \in M_{n-1} \), sau đó định nghĩa tập:
+	\[
+		M_n = \left\{ b_n m + 1 \mid m \in M_{n-1} \right\}
+	\]
+	
+	Chứng minh rằng tồn tại một bước nào đó mà trong tập tạo ra, không có phần tử nào chia hết cho phần tử nào khác trong cùng tập.
+\end{example*}
+
+\begin{soln}(Cách 1)\footnotemark
+	Giả sử tại bước \( n \), tồn tại hai phần tử \( k, t \in M_{n-1} \) sao cho phần tử tương ứng trong \( M_n \) có quan hệ chia hết:
+	\[
+		b_n k + 1 \mid b_n t + 1
+	\]
+	
+	Điều này dẫn đến:
+	\[
+		b_n k + 1 \mid b_n(t - k) \implies b_n k + 1 \mid k - t
+	\]
+	
+	Vì vậy, nếu có tồn tại một phần tử trong \( M_n \) chia hết cho một phần tử khác,
+	thì hiệu giữa phần tử lớn nhất và nhỏ nhất trong \( M_{n-1} \) phải lớn hơn hoặc bằng phần tử nhỏ nhất của \( M_n \):
+	\[
+		\max(M_{n-1}) - \min(M_{n-1}) \geq \min(M_n) \tag{1}
+	\]
+	
+	Giờ ta đánh giá khoảng cách giữa phần tử lớn nhất và nhỏ nhất trong \( M_n \). Gọi \( M = \max(M_1) \), \( m = \min(M_1) \).
+	Dễ thấy rằng các phần tử trong \( M_n \) là:
+	\[
+		M_n = \{ b_n m + 1 \mid m \in M_{n-1} \}
+	\]
+	
+	Do đó:
+	\[
+		\max(M_n) - \min(M_n) = b_n b_{n-1} \cdots b_2 (M - m)
+	\]
+	và:
+	\[
+		\min(M_n) \geq b_n b_{n-1} \cdots b_2 m + b_{n-1} \cdots b_2
+	\]
+	
+	Thế vào bất đẳng thức (1), ta có:
+	\[
+		b_2 b_3 \cdots b_{n-1} (M - m - 1) \geq b_2 b_3 \cdots b_n m
+	\]
+	
+	Rút gọn vế trái và vế phải (chia cả hai vế cho \( b_2 \cdots b_{n-1} \)), ta được:
+	\[
+		\frac{M - m - 1}{m} \geq b_n
+	\]
+	
+	Tuy nhiên, theo quá trình xây dựng, vì \( b_n \in M_{n-1} \), và các phần tử trong chuỗi tăng nhanh, ta có:
+	\[
+		b_n \geq n - 2
+	\]
+	
+	Vậy nếu bất đẳng thức:
+	\[
+		\frac{M - m - 1}{m} < n - 2
+	\]
+	xảy ra, thì không thể tồn tại hai phần tử chia hết cho nhau trong \( M_n \). Tức là tại bước đó, không có phần tử nào chia hết cho phần tử nào khác trong cùng tập.
+	
+	Do đó, khi \( n \) đủ lớn, điều này chắc chắn xảy ra, và bài toán được chứng minh.	
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1139106p16859237}{Dựa theo lời giải của Arefe.}}
+
+\end{document}
