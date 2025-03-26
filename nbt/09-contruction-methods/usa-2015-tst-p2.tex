@@ -7,7 +7,17 @@
 	hiệu \( a - b \) chia hết cả \( a \) và \( b \), nhưng không chia hết bất kỳ phần tử nào khác trong \( S \).
 \end{example*}
 
-\begin{soln}(Cách 1)\footnotemark
+\begin{story*}
+    Bài toán yêu cầu xây dựng một tập \( S \) gồm \( n \) số nguyên dương sao cho hiệu giữa mọi hai phần tử bất kỳ chia hết chính xác hai phần tử đó,
+	nhưng không chia bất kỳ phần tử thứ ba nào. Ý tưởng chính là xây dựng một dãy các hiệu \( d_i \) rồi tích lũy tạo thành dãy \( s_i \),
+	và dùng đồng dư để chọn một số \( a \) sao cho mỗi phần tử trong \( S = \{ a + s_i \} \) thỏa mãn điều kiện đề bài.
+	Điều quan trọng là đảm bảo các hiệu không chia hết nhau (tính độc lập), và dùng \nameref{theorem:chinese-remainder-theorem} để giải hệ đồng dư cho \( a \).
+	Kỹ thuật này là một ví dụ tiêu biểu của phương pháp xây dựng qua đồng dư và bất biến tổ hợp.
+\end{story*}
+
+\bigbreak
+
+\begin{soln}\footnotemark
 	Chúng ta xây dựng một dãy các hiệu \( d_1, d_2, \dots, d_{n-1} \) sao cho dãy số được tạo thành từ:
 	\[
 		s_1 = 0, \quad s_2 = d_1, \quad s_3 = d_1 + d_2, \quad \dots, \quad s_n = d_1 + \dots + d_{n-1}
@@ -15,11 +25,10 @@
 	và đặt \( S = \{ a + s_1, a + s_2, \dots, a + s_n \} \) với một số \( a \in \mathbb{Z}_{>0} \) được chọn sao cho các tính chất sau được đảm bảo:
 	
 	\begin{enumerate}[topsep=0pt, partopsep=0pt, itemsep=0pt, label=(\roman*)]
-		\item Với mọi cặp chỉ số \( 1 \le i < j \le n \), đặt \( t_{i,j} = s_j - s_i = d_i + d_{i+1} + \dots + d_{j-1} \).
-		Ta yêu cầu rằng các số \( t_{i,j} \) không chia hết nhau, tức là không tồn tại \( (i, j) \ne (k, \ell) \) sao cho \( t_{i,j} \mid t_{k,\ell} \).
+		\item Với mọi cặp chỉ số \( 1 \le i < j \le n \), đặt \( t_{i,j} = s_j - s_i = d_i + d_{i+1} + \dots + d_{j-1} \). Ta yêu cầu rằng các số \( t_{i,j} \) không chia hết nhau, tức là không tồn tại \( (i, j) \ne (k, \ell) \) sao cho \( t_{i,j} \mid t_{k,\ell} \).
 		\item Có tồn tại một số \( a \in \mathbb{Z}_{>0} \) sao cho:
 		\[
-			a \equiv -s_i \pmod{t_{i,j}} \quad \text{với mọi } 1 \le i < j \le n.
+			a \equiv -s_i \Mod{t_{i,j}} \quad \text{với mọi } 1 \le i < j \le n.
 		\]
 	\end{enumerate}
 	
@@ -38,40 +47,42 @@
 	\[
 		\left.
 		\begin{array}{rcl}
-			a \equiv &0& \pmod{2}, \\
-			a \equiv &-2& \pmod{3}, \\
-			a \equiv &0& \pmod{5}.
+			a \equiv &0& \Mod{2}, \\
+			a \equiv &-2& \Mod{3}, \\
+			a \equiv &0& \Mod{5}.
 		\end{array}
 		\right\}
-		\implies a \equiv 10 \pmod{30}.
+		\implies a \equiv 10 \Mod{30}.
 	\]
 	
-	Chọn \( a = 10 \), ta được \( S = \{10, 12, 15\} \).
+	Chọn \( a = 10 \), ta được \( S = \{10, 12, 15\} \).  
 	Dễ thấy: 
-	\[ |12-10| = 2 \mid 10, 12,\  |15-12| = 3 \mid 12, 15,\ |15-10| = 5 \mid 10, 15 \]
+	\[
+		|12 - 10| = 2 \mid 10, 12,\quad |15 - 12| = 3 \mid 12, 15,\quad |15 - 10| = 5 \mid 10, 15
+	\]
 	nhưng các hiệu đó không chia hết phần tử còn lại.
 	
-	\textit{Bước quy nạp:} Giả sử đã xây dựng được \( d_1, \dots, d_{n-1} \) và \( a \) thỏa mãn (i) và (ii) cho \( n \) phần tử. Ta sẽ mở rộng thành \( n+1 \) phần tử như sau:
+	\textit{Bước quy nạp:} Giả sử đã xây dựng được \( d_1, \dots, d_{n-1} \) và \( a \) thỏa mãn (i) và (ii) cho \( n \) phần tử. Ta mở rộng thành \( n+1 \) phần tử như sau:
 	\begin{enumerate}[topsep=0pt, partopsep=0pt, itemsep=0pt, label=(\roman*)]
 		\item Chọn một số nguyên tố \( p \) sao cho \( p \nmid t_{i,j} \) với mọi \( 1 \le i < j \le n \). Điều này đảm bảo \( p \) không chia hết bất kỳ hiệu nào có sẵn.
-		\item Đặt \( M = \text{LCM} \left( t_{i,j} \mid 1 \le i < j \le n \right) \).
+		\item Đặt \( M = \mathrm{lcm} \left( t_{i,j} \mid 1 \le i < j \le n \right) \).
 		\item Thay mỗi \( d_i \) bởi \( d_i' = M \cdot d_i \), và đặt thêm hiệu mới \( d_n' = p \).
 	\end{enumerate}
 	
 	Từ đó xây dựng các \( s_1', \dots, s_{n+1}' \), và giữ nguyên \( a \) ban đầu.  
-	Do \( M \) chia hết tất cả \( t_{i,j} \), ta có:
+	Vì \( M \mid t_{i,j}' \), ta có:
 	\[
 		t_{i,j}' = M \cdot t_{i,j}, \quad \text{và } t_{i,n+1}' = M \cdot t_{i,n} + p.
 	\]
 	
 	Các hiệu mới đều nguyên tố cùng nhau, nên điều kiện (i) vẫn giữ nguyên.
 	
-	Về (ii): Vì các mô-đun \( t_{i,j}' \) vẫn nguyên tố cùng nhau, và \( t_{i,n+1}' \equiv p \pmod{M} \),
+	Về điều kiện (ii): Vì các mô-đun \( t_{i,j}' \) vẫn nguyên tố cùng nhau, và \( t_{i,n+1}' \equiv p \Mod{M} \),
 	ta có thể mở rộng hệ đồng dư cũ để thêm điều kiện cho phần tử thứ \( n+1 \), sử dụng \nameref{theorem:chinese-remainder-theorem}.
 	
 	Kết luận: Bằng quy nạp, tồn tại một dãy hiệu \( d_1, \dots, d_{n-1} \) và một số \( a \) sao cho tập \( S = \{ a + s_1, \dots, a + s_n \} \) thỏa mãn yêu cầu đề bài.
 \end{soln}
 
-\footnotetext{\href{https://web.evanchen.cc/exams/sols-TST-IMO-2015.pdf}{Dựa theo lời giải của Evan Chen.}}
+\footnotetext{\href{https://web.evanchen.cc/exams/sols-TST-IMO-2015.pdf}{Dựa theo lời giải của \textbf{Evan Chen}.}}
 
 \end{document}

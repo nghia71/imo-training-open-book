@@ -2,7 +2,7 @@
 
 \begin{document}
 
-\begin{example*}[\gls{IND 2015 TST}2/P1]\label{example:IND-2015-TST2-P1}[\textbf{unrated}]\footnotemark
+\begin{example*}[\gls{IND 2015 TST}2/P1]\label{example:IND-2015-TST2-P1}\textbf{[\nameref{definition:25M}]}\footnotemark
 	Cho số nguyên \( n \geq 2 \), và đặt:
 	\[
 		A_n = \{2^n - 2^k \mid k \in \mathbb{Z},\, 0 \leq k < n \}.
@@ -10,85 +10,67 @@
 	Tìm số nguyên dương lớn nhất không thể biểu diễn được dưới dạng tổng của một hay nhiều (không nhất thiết khác nhau) phần tử trong tập \( A_n \).
 \end{example*}
 
-\begin{soln}(Cách 1)
-	Trước hết, ta chứng minh rằng mọi số nguyên lớn hơn \( (n - 2) \cdot 2^n + 1 \) đều có thể biểu diễn dưới dạng tổng như yêu cầu.
-	Ta sẽ sử dụng quy nạp theo \( n \).
+\begin{story*}
+	Bài toán này liên quan đến cấu trúc của các số có dạng \( 2^n - 2^k \), với kỹ thuật chính là:
+	\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+	    \item \textbf{Chứng minh bao phủ}: dùng quy nạp để bao phủ mọi số lớn hơn một ngưỡng.
+	    \item \textbf{Tìm phần tử cực đại chưa biểu diễn được}: khai thác biểu diễn duy nhất với phần dư modulo \( 2^n \), từ đó tìm số nhỏ nhất không biểu diễn được.
+	    \item Sử dụng \textbf{tính duy nhất của biểu diễn nhị phân} để đảm bảo mâu thuẫn khi có lặp lại.
+	\end{itemize}
+\end{story*}
 
-	Với \( n = 2 \), ta có \( A_2 = \{2^2 - 2^0, 2^2 - 2^1\} = \{3, 2\} \).
-	Khi đó, mọi số nguyên dương \( m \neq 1 \) đều có thể viết dưới dạng tổng các phần tử của \( A_2 \):
-	nếu \( m \) chẵn thì \( m = 2 + 2 + \dots + 2 \); nếu \( m \) lẻ thì \( m = 3 + 2 + \dots + 2 \).
+\bigbreak
 
-	Giả sử mệnh đề đúng với mọi số nhỏ hơn \( n \), ta xét \( n > 2 \), và một số nguyên \( m > (n - 2) \cdot 2^n + 1 \).
+\begin{soln}
+	\textbf{Bước 1:} Chứng minh rằng mọi số lớn hơn \( (n - 2) \cdot 2^n + 1 \) đều có thể biểu diễn được bằng tổng các phần tử của \( A_n \).
+	Ta dùng quy nạp theo \( n \).
 
-	Nếu \( m \) là chẵn, xét:
+	\textit{Trường hợp cơ sở:} \( n = 2 \implies A_2 = \{3, 2\} \).  
+	Mọi số nguyên dương \( m \neq 1 \) đều biểu diễn được:  
+	nếu \( m \) chẵn thì dùng 2, nếu \( m \) lẻ thì dùng 3 rồi 2.
+
+	\textit{Giả sử mệnh đề đúng với \( n - 1 \)}, xét \( n > 2 \) và số \( m > (n - 2) \cdot 2^n + 1 \).
+
+	\textit{Trường hợp 1:} \( m \) chẵn. Khi đó, theo giả thiết quy nạp:
 	\[
-		\frac{m}{2} \geq \frac{(n - 2) \cdot 2^n + 2}{2} = (n - 2) \cdot 2^{n-1} + 1 > (n - 3) \cdot 2^{n-1} + 1.
+		\frac{m}{2} > (n - 3) \cdot 2^{n - 1} + 1
+		\implies \frac{m}{2} = \sum (2^{n-1} - 2^{k_i}) \implies m = \sum (2^n - 2^{k_i + 1}) \in A_n.
+	\]
+
+	\textit{Trường hợp 2:} \( m \) lẻ. Tương tự:
+	\[
+		\frac{m - (2^n - 1)}{2} > (n - 3) \cdot 2^{n - 1} + 1
+	\]
+	suy ra biểu diễn như trước, và thêm \( 2^n - 1 \in A_n \) để có \( m \).
+
+	\textbf{Bước 2:} Chứng minh rằng số \( (n - 2) \cdot 2^n + 1 \) không thể biểu diễn được.
+
+	Gọi \( N \) là số nguyên dương nhỏ nhất \( \equiv 1 \Mod{2^n} \) và biểu diễn được thành tổng phần tử từ \( A_n \). Khi đó:
+	\[
+		N = \sum (2^n - 2^{k_i}) \tag{1}
+	\]
+
+	Giả sử tồn tại \( k_i = k_j \), ta có thể giảm biểu diễn bằng cách thay: $2 \cdot (2^n - 2^k) \to 2^n - 2^{k + 1}$
+	và suy ra \( N - 2^n \) cũng biểu diễn được, mâu thuẫn với tính nhỏ nhất của \( N \).
+	Vậy các \( k_i \) phân biệt, nên:
+	\[
+		\sum 2^{k_i} \leq 2^0 + 2^1 + \dots + 2^{n-1} = 2^n - 1
 	\]
 	
-	Theo giả thiết quy nạp, tồn tại cách biểu diễn:
+	Nhưng từ (1) ta có:
 	\[
-		\frac{m}{2} = (2^{n-1} - 2^{k_1}) + (2^{n-1} - 2^{k_2}) + \dots + (2^{n-1} - 2^{k_r})
-	\]
-	với \( 0 \leq k_i < n - 1 \). Suy ra:
-	\[
-		m = (2^n - 2^{k_1 + 1}) + (2^n - 2^{k_2 + 1}) + \dots + (2^n - 2^{k_r + 1}),
-	\]
-	tức là tổng các phần tử trong \( A_n \).
-
-	Nếu \( m \) là lẻ, xét:
-	\[
-		\frac{m - (2^n - 1)}{2} > \frac{(n - 2) \cdot 2^n + 1 - (2^n - 1)}{2} = (n - 3) \cdot 2^{n-1} + 1.
+		\sum 2^{k_i} \equiv -N \equiv -1 \Mod{2^n} \implies \sum 2^{k_i} = 2^n - 1
 	\]
 
-	Theo giả thiết quy nạp, tồn tại biểu diễn:
+	Xảy ra khi \( \{k_i\} = \{0, 1, \dots, n-1\} \), và khi đó:
 	\[
-		\frac{m - (2^n - 1)}{2} = (2^{n-1} - 2^{k_1}) + \dots + (2^{n-1} - 2^{k_r}),
-	\]
-	với \( k_i < n - 1 \). Suy ra:
-	\[
-		m = (2^n - 2^{k_1 + 1}) + \dots + (2^n - 2^{k_r + 1}) + (2^n - 1),
-	\]
-	là tổng các phần tử thuộc \( A_n \).
-
-
-	Bây giờ ta chứng minh rằng số \( (n - 2) \cdot 2^n + 1 \) không thể biểu diễn được.
-
-	Gọi \( N \) là số nguyên dương nhỏ nhất sao cho \( N \equiv 1 \pmod{2^n} \) và \( N \) có thể biểu diễn được thành tổng các phần tử từ \( A_n \). Xét biểu diễn:
-	\[
-		N = (2^n - 2^{k_1}) + (2^n - 2^{k_2}) + \dots + (2^n - 2^{k_r}) \tag{1}
-	\]
-	với \( 0 \leq k_i < n \).
-
-	Giả sử tồn tại hai chỉ số \( i, j \) sao cho \( k_i = k_j \).
-
-	Nếu \( k_i = k_j = n - 1 \), thì:
-	\[
-		N - 2 \cdot (2^n - 2^{n-1}) = N - 2^n
-	\]
-	cũng có thể biểu diễn được, mâu thuẫn với tính nhỏ nhất của \( N \).
-
-	Nếu \( k_i = k_j = k < n - 1 \), thì:
-	\[
-		N - 2 \cdot (2^n - 2^k) + (2^n - 2^{k+1}) = N - 2^n
-	\]
-	cũng mâu thuẫn.
-
-	Vậy các \( k_i \) đều phân biệt, nên:
-	\[
-		2^{k_1} + \dots + 2^{k_r} \leq 2^0 + 2^1 + \dots + 2^{n-1} = 2^n - 1
+		N = n \cdot 2^n - (2^0 + \dots + 2^{n-1}) = (n - 1) \cdot 2^n + 1
 	\]
 
-	Mặt khác, từ (1) xét modulo \( 2^n \), ta có:
+	\textbf{Kết luận:} Vậy số nguyên dương lớn nhất không thể biểu diễn được là:
 	\[
-		2^{k_1} + \dots + 2^{k_r} \equiv -N \equiv -1 \pmod{2^n} \implies 2^{k_1} + \dots + 2^{k_r} = 2^n - 1
+		(n - 2) \cdot 2^n + 1
 	\]
-
-	Điều này xảy ra khi \( \{k_1, \dots, k_r\} = \{0, 1, \dots, n-1\} \), và khi đó:
-	\[
-		N = n \cdot 2^n - (2^0 + \dots + 2^{n-1}) = (n - 1) \cdot 2^n + 1.
-	\]
-
-	Do đó, số \( (n - 2) \cdot 2^n + 1 \) không thể biểu diễn được như yêu cầu.
 \end{soln}
 
 \footnotetext{\href{https://www.imo-official.org/problems/IMO2014SL.pdf}{IMO SL 2014 N1.}}

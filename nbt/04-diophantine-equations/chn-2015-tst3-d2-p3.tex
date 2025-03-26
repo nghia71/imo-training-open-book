@@ -1,0 +1,63 @@
+\documentclass[../04-diophantine-equations.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{CHN 2015 TST}3/D2/P3]\label{example:CHN-2015-TST3-D2-P3}[\textbf{\nameref{definition:30M}}]
+	Với mọi số tự nhiên \( n \), định nghĩa:
+	\[
+		f(n) = \tau(n!) - \tau((n-1)!),
+	\]
+	trong đó \( \tau(a) \) là số ước số dương của \( a \).  
+	
+	Chứng minh rằng tồn tại vô hạn số \( n \) là hợp số sao cho với mọi số tự nhiên \( m < n \), ta có:
+	\[
+		f(m) < f(n).
+	\]
+\end{example*}
+
+\begin{story*}
+    Hàm \( f(n) \) đo mức độ tăng thêm về số lượng ước số của \( n! \) so với \( (n-1)! \), nghĩa là xét sự đóng góp của chính số \( n \) vào \( n! \).  
+    Để tạo ra một giá trị \( f(n) \) lớn hơn tất cả các giá trị trước đó, ta sẽ lợi dụng một bước nhảy đột biến trong độ phức tạp của \( n! \).
+
+    Cụ thể, với mỗi số nguyên tố lẻ \( p \), ta dùng định lý Bertrand để đảm bảo tồn tại ít nhất một số nguyên tố giữa \( p \) và \( 2p \).  
+    Gọi \( q \) là số nguyên tố lớn nhất trong đoạn \( (p, 2p) \).  
+    Ta chứng minh rằng \( f(2p) > f(q) \), tức là tại \( n = 2p \) (một hợp số), hàm \( f(n) \) lớn hơn mọi giá trị trước đó.
+
+    Do đó, trong đoạn \( [1, 2p] \), \( f(n) \) đạt cực đại tại một \( n > q \), và vì không có số nguyên tố nào lớn hơn \( q \) mà nhỏ hơn \( n \), \( n \) phải là hợp số.  
+    Khi cho \( p \) chạy qua vô hạn số nguyên tố lẻ, ta thu được vô hạn giá trị \( n \) là hợp số thoả mãn yêu cầu bài toán.
+\end{story*}
+
+\bigbreak
+
+\begin{soln}\footnotemark
+	Cho \( p \) là một số nguyên tố lẻ. Theo \nameref{theorem:bertrand}, tồn tại số nguyên tố giữa \(p\) và \(2p\).  
+	Giả sử \( q \) là số nguyên tố lớn nhất trong các số nguyên tố giữa \( p \) và \( 2p \).  
+	Ta chứng minh khẳng định sau:
+
+	\begin{claim*}
+		\( f(2p) > f(q) \).
+	\end{claim*}
+
+	\begin{subproof}
+		Ta có:
+		\[
+			\begin{aligned} 
+				f(2p) &= \tau((2p)!) - \tau((2p-1)!) 
+				= \frac{3}{2} \cdot \tau\bigl(2(2p-1)!\bigr) - \tau\bigl((2p-1)!\bigr) \\ 
+			 	&= 3\tau\!\Bigl(\frac{2(2p-1)!}{q}\Bigr) - 2\tau\!\Bigl(\frac{(2p-1)!}{q}\Bigr) 
+			  	>\; \tau\!\Bigl(\frac{(2p-1)!}{q}\Bigr) \;\geq\; \tau\bigl((q-1)!\bigr) \;=\; f(q).
+			\end{aligned}
+		\]
+	\end{subproof}
+
+	Gọi \( n \) là số nguyên dương nhỏ nhất thỏa mãn \( n \leq 2p \) và \( f(n) \) đạt giá trị lớn nhất trong dãy \( f(1), f(2), \dots, f(2p) \).  
+			
+	Nếu \( n \leq q \), thì \( f(n) \leq \tau\bigl((q-1)!\bigr) = f(q) < f(2p) \), mâu thuẫn.  
+	Do đó, \( n > q \), và từ định nghĩa của \( q \), suy ra \( n \) là hợp số và \( f(n) > f(m) \) với mọi \( m < n \). 
+	
+	Vì \( n \in [p+1, 2p+1] \), ta thấy rằng khi cho \( p \) chạy qua vô hạn số nguyên tố lẻ, sẽ có vô hạn giá trị \( n \) là hợp số thoả mãn điều kiện của bài toán.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1069931p21493104}{Lời giải của \textbf{chirita.andrei}.}}
+
+\end{document}

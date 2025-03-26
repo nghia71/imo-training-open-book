@@ -1,0 +1,51 @@
+\documentclass[../05-modular-arithmetic-a.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{POL 2015 MO}/P3]\label{example:POL-2015-MO-P3}\textbf{[\nameref{definition:25M}]}
+    Cho \( a_n = |n(n+1) - 19| \) với \( n = 0, 1, 2, \ldots \) và \( n \ne 4 \).
+    Chứng minh rằng nếu \( \gcd(a_n, a_k) = 1 \) với mọi \( k < n \), thì \( a_n \) là một số nguyên tố.
+\end{example*}
+
+\begin{story*}
+	Dãy \( a_n = |n(n+1) - 19| \) được xây dựng từ một biểu thức bậc hai có tính đơn điệu từng đoạn.
+
+	Ý tưởng chính:
+	\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+		\item Nếu \( a_n \) không phải là số nguyên tố, thì tồn tại ước nguyên tố \( p \mid a_n \).
+		\item Do \( a_n < (n+1)^2 \), ta có \( p < n+1 \), nên tồn tại \( k < n \) sao cho \( k \equiv n \Mod{p} \).
+		\item Khi đó \( a_k \equiv a_n \Mod{p} \Rightarrow p \mid a_k \Rightarrow p \mid \gcd(a_k, a_n) \), mâu thuẫn với giả thiết.
+	\end{itemize}
+\end{story*}
+
+\bigbreak
+
+\begin{soln}\footnotemark
+	Ta nhận thấy \( a_n = 1 \) chỉ xảy ra tại \( n = 4 \), vì:
+	\[
+	n(n+1) = 19 \iff n^2 + n - 19 = 0 \Rightarrow n = \frac{-1 \pm \sqrt{1 + 76}}{2} = 4.
+	\]
+	Mà \( n = 4 \) đã bị loại trong đề bài.
+
+	Với \( n \ne 4 \), giả sử ngược lại rằng \( a_n \) không phải là số nguyên tố.
+	Khi đó tồn tại một số nguyên tố \( p \) sao cho \( p \mid a_n \).
+
+	Vì \( a_n = |n(n+1) - 19| < (n+1)^2 \), nên \( p^2 \le a_n < (n+1)^2 \Rightarrow p < n+1 \Rightarrow p \le n \).
+
+	Tồn tại \( k < n \) sao cho \( k \equiv n \Mod{p} \). Khi đó:
+	\[
+	a_k \equiv a_n \Mod{p} \Rightarrow p \mid a_k \Rightarrow p \mid \gcd(a_n, a_k),
+	\]
+	mâu thuẫn với giả thiết \( \gcd(a_n, a_k) = 1 \).
+
+	\textbf{Kết luận:} \( a_n \) phải là số nguyên tố.
+\end{soln}
+
+\begin{remark*}
+	Giá trị \( 19 \) không đóng vai trò then chốt trong lý luận — nó chỉ là một hằng số cố định tạo ra một dãy số có tính chất nguyên tố thú vị.
+	Một ví dụ nổi tiếng hơn là \( n(n+1) + 41 \), do Euler đề xuất, cho ra các số nguyên tố với nhiều giá trị nhỏ của \( n \).
+\end{remark*}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1059233p4583172}{Lời giải của \textbf{mavropnevma}.}}
+
+\end{document}

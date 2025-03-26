@@ -1,0 +1,32 @@
+\documentclass[../04-diophantine-equations.tex]{subfiles}
+
+\begin{document}
+
+\begin{exercise*}[\gls{FRA 2015 TST}/3/P6]\label{example:FRA-2015-TST3-P6}[\textbf{\nameref{definition:25M}}]
+    Tìm tất cả các cặp số nguyên \( (x, y) \) thỏa mãn:
+    \[
+        x^2 = y^2(y^4 + 2y^2 + x).
+    \]
+\end{exercise*}
+
+\begin{remark*}
+    Gợi ý: Thử cô lập \(x\) để bộc lộ tính chất của \(x\) liên quan đến đa thức bậc cao của \(y\).  
+    Có thể suy luận \(y\) không quá lớn hoặc dùng cách phân tích trường hợp \((y = 0)\), \((y \neq 0)\) và khống chế cỡ của \(x\) để tìm nghiệm hữu hạn.
+\end{remark*}
+
+\begin{story*}
+    Ta bắt đầu bằng cách đưa phương trình về dạng quen thuộc hơn để tách biến và phân tích điều kiện.  
+    Đặt lại phương trình:
+    \[
+        x^2 = y^6 + 2y^4 + xy^2.
+    \]
+    Chuyển vế:
+    \[
+        x^2 - xy^2 = y^6 + 2y^4 \Rightarrow x(x - y^2) = y^4(y^2 + 2).
+    \]
+    Từ đây, ta nhận được phương trình dạng tích \(x(x - y^2) = \text{đa thức theo } y\).  
+    Do vế phải không âm, ta xét giá trị \(y = 0\), sau đó giả sử \(y \ne 0\), phân tích từng giá trị nhỏ của \(y\), vì vế phải tăng nhanh theo \(y\).  
+    Đồng thời, vì phương trình chỉ chứa lũy thừa chẵn hoặc số dương, số nghiệm là hữu hạn và có thể liệt kê bằng phương pháp thử.
+\end{story*}
+
+\end{document}

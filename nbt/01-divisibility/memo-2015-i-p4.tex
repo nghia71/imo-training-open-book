@@ -1,0 +1,63 @@
+\documentclass[../01-divisibility.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{MEMO 2015}/I/P4]\label{example:MEMO-2015-I-P4}\textbf{[\nameref{definition:25M}]}
+	Tìm tất cả các cặp số nguyên dương \( (m, n) \) sao cho tồn tại hai số nguyên \( a, b > 1 \), nguyên tố cùng nhau, thỏa mãn:
+	\[
+		\frac{a^m + b^m}{a^n + b^n} \in \mathbb{Z}.
+	\]	
+\end{example*}
+
+\begin{story*}
+	Bài toán yêu cầu tìm tất cả các cặp \( (m, n) \) sao cho \( \dfrac{a^m + b^m}{a^n + b^n} \) là số nguyên với mọi cặp \( a, b > 1 \) nguyên tố cùng nhau.
+	Kỹ thuật sử dụng:
+	\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+		\item Sử dụng phân tích số mũ: đặt \( m = kn + r \) rồi chia từng vế để rút gọn.
+		\item Phân tích dư và suy ra điều kiện cần để tránh mẫu số không chia được tử số.
+		\item Xét các trường hợp với \( k \) chẵn hoặc lẻ để xử lý khi tử hoặc mẫu có thể bằng 0.
+	\end{itemize}
+\end{story*}
+
+\bigbreak
+
+\begin{soln}\footnotemark
+	Giả sử \( \gcd(a, b) = 1 \), \( a, b > 1 \), và phân số:
+	\[
+		\frac{a^m + b^m}{a^n + b^n}
+	\]
+	là một số nguyên.
+
+	Ta có \( a^n + b^n \mid a^m + b^m \), nên \( m \ge n \). Đặt \( m = kn + r \), với \( k \ge 1,\ 0 \le r < n \).
+
+	Ta phân tích:
+	\[
+		\frac{a^m + b^m}{a^n + b^n} = \frac{(a^n)^k a^r + (b^n)^k b^r}{a^n + b^n}
+	\]
+	Tử số là tổ hợp của \( a^n + b^n \) nhân với hệ số nào đó cộng với phần dư. Quá trình này lặp lại đến khi còn lại:
+	\[
+		\frac{a^r + b^r}{a^n + b^n}
+	\]
+
+	Nếu \( r > 0 \), thì \( a^r + b^r < a^n + b^n \), nên không thể chia hết, mâu thuẫn. Vậy \( r = 0 \implies m = kn \).
+
+	Ta kiểm tra điều kiện cần. Nếu \( k \) lẻ:
+	\[
+		a^m + b^m = (a^n)^k + (b^n)^k \equiv - (a^n + b^n) \Mod{a^n + b^n}
+	\implies \text{chia hết}.
+	\]
+
+	Nếu \( k \) chẵn, thử với \( a = -b \), thì:
+	\[
+		a^m + b^m = 0,\quad a^n + b^n = 0 \implies \text{phân số không xác định}.
+	\]
+
+	\textbf{Kết luận:} Tất cả các cặp thỏa mãn là:
+	\[
+		\boxed{(m, n) = (kn, n)\quad \text{với } k \text{ lẻ}}
+	\]
+\end{soln}
+
+\footnotetext{\href{http://memo2015.dmfa.si/files/solutions.pdf}{Lời giải chính thức.}}
+
+\end{document}

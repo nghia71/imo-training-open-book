@@ -1,0 +1,55 @@
+\documentclass[../03-arithmetic-functions.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{ROU 2015 TST}/D3/P3]\label{example:ROU-2015-TST-D3-P3}[\textbf{\nameref{definition:30M}}]
+    Với hai số nguyên dương \( k \leq n \), ký hiệu \( M(n,k) \) là bội chung nhỏ nhất của dãy số \( n, n-1, \dots, n - k + 1 \).  
+    Gọi \( f(n) \) là số nguyên dương lớn nhất thỏa mãn:
+    \[
+        M(n,1) < M(n,2) < \cdots < M(n,f(n)).
+    \]
+    Chứng minh rằng:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Với mọi số nguyên dương \( n \), ta có \( f(n) < 3\sqrt{n} \).
+        \item Với mọi số nguyên dương \( N \), tồn tại hữu hạn số \( n \) sao cho \( f(n) \leq N \), tức là \( f(n) > N \) với mọi \( n \) đủ lớn.
+    \end{itemize}    
+\end{example*}
+
+\begin{story*}
+    Phần (a): Ta giả sử \( f(n) \ge 3\sqrt{n} \) và xét dãy các số \( s = \lfloor \sqrt{n} \rfloor \) để phân tích sự mâu thuẫn. Khi xét đến các số nguyên trong khoảng \( \{a+1, a+2, \dots, n\} \), ta nhận ra rằng có những số nguyên trong dãy này chia hết cho một số không thể là một phần tử của dãy. Điều này dẫn đến mâu thuẫn với giả thuyết ban đầu rằng \( f(n) \ge 3\sqrt{n} \).  
+    
+    Phần (b): Ta tiếp tục chứng minh rằng nếu \( n > N! + N \), thì \( f(n) > N \). Điều này được thực hiện bằng cách xét các điều kiện chia hết với \( k! \) và mâu thuẫn với các giả định khi \( n - k > N! \).  
+    Từ đó, ta kết luận rằng \( f(n) > N \) với \( n \) đủ lớn.
+\end{story*}
+
+\bigbreak
+
+\begin{soln}
+    \textbf{Phần (a):} Giả sử ngược lại rằng \( f(n) \ge 3\sqrt{n} \). Đặt \( s = \lfloor \sqrt{n} \rfloor \), và \( a = s(s - 1) \). Ta có:
+    \[
+        a = s(s - 1) < s(s + 1) < n \implies a < n.
+    \]
+    
+    Xét tập các số nguyên \( \{a+1, a+2, \dots, n\} \). Tập này chứa cả:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item \( s^2 \in [a+1, n] \), vì \( s^2 = s \cdot s > s(s-1) = a \),
+        \item \( (s+1)(s-1) = s^2 - 1 \in [a+1, n] \).
+    \end{itemize}
+    
+    Khi đó, \( M(n, n - a) = \mathrm{lcm}(n, n-1, \dots, a+1) \) chia hết cho \( s^2 \) và \( s^2 - 1 \), do đó cũng chia hết cho \( a = s(s-1) \).  
+    Suy ra
+    \[
+        M(n, n - a + 1) = \mathrm{lcm}\!\bigl(M(n,n-a),a\bigr) = M(n,n-a),
+    \]
+    mâu thuẫn với giả thiết chuỗi \( M(n,1) < M(n,2) < \dots \). Vậy \( f(n) < 3\sqrt{n} \).
+
+    \textbf{Phần (b):} Cho \( N \in \mathbb{N}_{>0} \). Ta chứng minh nếu \( n > N! + N \) thì \( f(n) > N \).  
+    Giả sử tồn tại \( k \le N \) sao cho \( M(n,k) = M(n,k+1) \). Điều đó có nghĩa \( (n-k) \mid M(n,k) \), mà \( M(n,k) \mid n(n-1)\cdots(n-k+1) \). Suy ra \( (n-k) \mid k! \). Nhưng nếu \( n-k > N! \ge k! \), mâu thuẫn.  
+
+    Vậy với mọi \( k \le N \), ta có \( M(n,k) < M(n,k+1) \), nên \( f(n) > N \).  
+    Từ đó suy ra chỉ có hữu hạn \( n \) với \( f(n) \le N \). Điều này chứng minh vế thứ hai.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1097389p6337541}{Dựa theo lời giải của \textbf{Aiscrim}.}}
+
+\end{document}

@@ -2,76 +2,47 @@
 
 \begin{document}
 
-\begin{example*}[\gls{IRN 2015 MO}/N3]\label{example:IRN-2015-N3}[\textbf{unrated}]
+\begin{example*}[\gls{IRN 2015 MO}/N3]\label{example:IRN-2015-MO-N3}[\textbf{\nameref{definition:35M}}]
 	Cho \( p > 5 \) là một số nguyên tố. Gọi \( A = \{b_1, b_2, \dots, b_{\frac{p-1}{2}}\} \)
 	là tập tất cả các bình phương đồng dư modulo \( p \), loại trừ 0.
 	Chứng minh rằng không tồn tại các số tự nhiên \( a, c \) sao cho \( \gcd(ac, p) = 1 \) và tập
 	\[
-		B = \{ab_1 + c, ab_2 + c, \dots, ab_{\frac{p-1}{2}} + c\} \pmod{p}
+		B = \{ab_1 + c, ab_2 + c, \dots, ab_{\frac{p-1}{2}} + c\} \Mod{p}
 	\]
 	không giao \( A \), tức là \( A \cap B = \emptyset \mod{p} \).
 \end{example*}
 
-\begin{soln}(Cách 1)\footnotemark
-	Ta làm việc trong trường \( \mathbb{F}_p = \mathbb{Z}/p\mathbb{Z} \). Gọi \( \left( \frac{\cdot}{p} \right) \) là ký hiệu Legendre.
+\begin{story*}
+	Bài toán khai thác sâu các tính chất của ký hiệu Legendre trong trường hữu hạn \( \mathbb{F}_p \). Hai trường hợp \( a \) là bình phương và không bình phương dẫn đến các cấu trúc khác nhau cho tập \( aA + c \). Dùng tính chất bảo toàn tập qua phép nhân và phép tịnh tiến, kết hợp lý lẽ về tổng phần tử và tính đối xứng, ta suy ra rằng không thể tránh được giao với tập bình phương.
+\end{story*}
 
-	\textit{Trường hợp 1:} \( \left( \frac{a}{p} \right) = 1 \)
-	
-	Trong trường hợp này, do tính chất nhân của ký hiệu Legendre, ta có:
-	\[
-		\left( \frac{ab_i}{p} \right) = \left( \frac{a}{p} \right) \left( \frac{b_i}{p} \right) = 1 \quad \text{với mọi } i
-	\]
-	
-	Tức là \( ab_i \) vẫn là các bình phương đồng dư. Khi đó, tập \( S = \{ab_1, ab_2, \dots, ab_{\frac{p-1}{2}}\} \) chính là \( A \).
-	
-	Bây giờ giả sử \( B = \{ab_i + c\} \) không giao với \( A \). Ta sẽ chứng minh điều này dẫn đến mâu thuẫn.
-	
-	Xét một phần tử \( r \in \mathbb{F}_p^* \) sao cho \( r^2 \not\equiv \pm c \mod{p} \). Vì \( p > 5 \), nên tồn tại ít nhất một giá trị như vậy.
-	
-	Đặt \( s = \frac{c}{r} \), và xét hai biểu thức:
-	\[
-		x_1 = \left( \frac{r + s}{2} \right)^2, \quad x_2 = \left( \frac{r - s}{2} \right)^2 \implies x_1 - x_2 = rs = c.
-	\]
+\bigbreak
 
-	Do đó, \( x_2 + c = x_1 \), nghĩa là nếu \( x_2 \in A \), thì \( x_2 + c \in A \), tức là tồn tại phần tử trong \( B \) cũng thuộc \( A \),
-	mâu thuẫn với giả thiết rằng \( A \cap B = \emptyset \).
-	
-	\textit{Trường hợp 2:} \( \left( \frac{a}{p} \right) = -1 \)
-	
-	Khi đó, do \( b_i \) là bình phương, nên \( ab_i \) là không bình phương. Tức là tập \( S = \{ab_i\} \) chính là tập các phần tử không là bình phương modulo \( p \).
-	
-	Bây giờ giả sử \( B = \{ab_i + c\} \) rời nhau với \( A \), tức là mọi phần tử của \( B \) cũng là không bình phương.
-	
-	Ta xét dãy:
-	\[
-		S = \{-c, -2c, \dots, -\tfrac{p-1}{2}c\} \pmod{p}
-	\]
-	
-	Đây là một hoán vị (theo hệ số) của các phần tử của \( S = aA \). Nếu giả thiết đúng thì dãy này gồm toàn bộ các phần tử không bình phương.
-	
-	Bây giờ xét tổng các phần tử trong dãy trên. Tổng này là:
-	\[
-		\sum_{i=1}^{\frac{p-1}{2}} (-ic) = -c \cdot \sum_{i=1}^{\frac{p-1}{2}} i = -c \cdot \frac{(p-1)(p+1)}{8}
-	\]
-	
-	Gọi \( s \) là tổng các phần tử trong \( B \), thì \( s \equiv \sum ab_i + \frac{p-1}{2}c \pmod{p} \).
-	Ta so sánh với tổng của các phần tử trong \( A \). Do \( A \) là đối xứng (vì với mỗi \( x \in \mathbb{F}_p^* \), \( x^2 \in A \)), tổng của \( A \) là cố định.
-	
-	Nếu phép dịch \( +c \) bảo toàn tập không bình phương, thì tổng của \( B \) phải có dạng giống như tổng của \( S \), tức là có giá trị khác tổng của \( A \).
-	Nhưng nếu \( B \) không trùng \( A \) và vẫn là không bình phương, thì điều này dẫn đến mâu thuẫn về tổng.
-	
-	Mặt khác, nếu \( c^{-1}S = \{-1, -2, \dots, -\frac{p-1}{2} \} \), thì tập này gồm các phần tử \textit{liên tiếp}.
-	Nhưng tập các phần tử không bình phương modulo \( p \) không thể là một cấp số cộng kiểu đó vì nó không đóng dưới phép cộng.
-	Do đó, \( c^{-1}S \) phải là tập các bình phương, tức là:
-	\[
-		\left( \frac{-1}{p} \right) = 1, \quad \text{và } \left( \frac{ic}{p} \right) = 1
-	\]
-	Nhưng điều này dẫn đến mâu thuẫn vì \( S \) là tập không bình phương. Do đó, mâu thuẫn.
+\begin{soln}\footnotemark
+	Ta làm việc trong trường \( \mathbb{F}_p \). Gọi \( A \subset \mathbb{F}_p^* \) là tập các bình phương (modulo \(p\)), có đúng \( \frac{p-1}{2} \) phần tử.  
+	Giả sử tồn tại \( a, c \in \mathbb{N} \) với \( \gcd(ac, p) = 1 \) sao cho tập \( B = \{ ab_i + c \pmod{p} \} \) không giao với \( A \), tức \( A \cap B = \emptyset \).
 
-	Trong cả hai trường hợp \( \left( \frac{a}{p} \right) = \pm 1 \), giả thiết rằng \( A \cap B = \emptyset \) đều dẫn đến mâu thuẫn.
-	Vậy không tồn tại \( a, c \in \mathbb{N} \) với \( \gcd(ac, p) = 1 \) sao cho \( B \) hoàn toàn nằm ngoài \( A \) modulo \( p \).
+	\textbf{Trường hợp 1:} \( \left( \frac{a}{p} \right) = 1 \)  
+	Vì tích của bình phương với bình phương vẫn là bình phương, \( aA = A \). Khi đó \( B = A + c \) là phép tịnh tiến của \( A \). Nếu \( B \cap A = \emptyset \), thì \( A \cap (A + c) = \emptyset \). Nhưng điều này mâu thuẫn với:
+	\[
+		|A| = \frac{p-1}{2},\quad |A + c| = |A|,\quad A \cup (A + c) \subset \mathbb{F}_p^*.
+	\]
+	Mà \( 2|A| = p - 1 \), nên \( A \cup (A + c) = \mathbb{F}_p^* \). Tức là tập các bình phương và không bình phương bị phân tách bởi phép cộng \( +c \). Điều này dẫn đến:
+	\[
+		\left( \frac{x}{p} \right) = - \left( \frac{x + c}{p} \right)\quad \text{với mọi } x \in \mathbb{F}_p^*.
+	\]
+	Tổng hai vế theo \( x \) trên \( \mathbb{F}_p^* \) dẫn đến tổng bằng 0, nhưng tổng bên trái bằng 0, nên vế phải cũng phải bằng 0. Điều này mâu thuẫn vì hàm Legendre không thể thay đổi dấu đều đặn như vậy.
+
+	\textbf{Trường hợp 2:} \( \left( \frac{a}{p} \right) = -1 \)  
+	Lúc này \( aA \) là tập các phần tử không phải bình phương. Khi đó \( B = aA + c \) cũng là tập gồm các phần tử không phải bình phương.  
+	Nhưng số lượng phần tử không phải bình phương là \( \frac{p-1}{2} \), nên nếu dịch bởi \( +c \) mà không giao với \( A \), thì \( A \) và \( B \) là hai hoán vị rời nhau trong \( \mathbb{F}_p^* \). Như trên, tổng chẵn lẻ và tính chất đối xứng của Legendre dẫn đến mâu thuẫn.
+
+	\textbf{Kết luận:} Trong cả hai trường hợp, giả thiết \( A \cap B = \emptyset \) dẫn đến mâu thuẫn. Vậy:
+	\[
+		\boxed{\text{Không tồn tại } a, c \in \mathbb{N} \text{ sao cho } \gcd(ac, p) = 1 \text{ và } A \cap B = \emptyset.}
+	\]
 \end{soln}
 
-\footnotetext{\href{https://artofproblemsolving.com/community/c6h1140077p5349209}{Dựa theo lời giải của Dukejukem và rafayaashary1.}}
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1140077p5349209}{Dựa theo lời giải của \textbf{Dukejukem} và \textbf{rafayaashary1}.}}
 
 \end{document}

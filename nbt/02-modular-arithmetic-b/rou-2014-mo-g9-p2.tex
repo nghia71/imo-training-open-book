@@ -1,0 +1,28 @@
+\documentclass[../02-modular-arithmetic-b.tex]{subfiles}
+
+\begin{document}
+
+\begin{exercise*}[\gls{ROU 2014 MO}/G9/P2]\label{example:ROU-2014-MO-G9-P2}[\textbf{\nameref{definition:15M}}]
+    Cho \( a \) là một số tự nhiên lẻ không phải là một số chính phương, và \( m, n \in \mathbb{N} \). Khi đó:
+
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item \( \left\{ m\left( a+\sqrt{a} \right) \right\} \neq \left\{ n\left( a-\sqrt{a} \right) \right\} \)
+        \item \( \left[ m\left( a+\sqrt{a} \right) \right] \neq \left[ n\left( a-\sqrt{a} \right) \right] \)
+    \end{itemize}
+
+    Trong đó, \( \{\cdot\} \) ký hiệu phần thập phân (phần lẻ), và \( [\cdot] \) ký hiệu phần nguyên.
+\end{exercise*}
+
+\begin{remark*}
+    Gợi ý: Sử dụng tính chất vô tỷ của \( \sqrt{a} \) để tách biệt giá trị phần thập phân và phần nguyên trong hai biểu thức \( a+\sqrt{a} \) và \( a-\sqrt{a} \).  
+    Kiểm tra các trường hợp xấp xỉ để thấy rằng \( \{m(a+\sqrt{a})\} \neq \{n(a-\sqrt{a})\} \).
+\end{remark*}
+
+\begin{story*}
+    Vì \( \sqrt{a} \) là số vô tỉ (do \( a \) không phải là số chính phương), hai biểu thức \( a+\sqrt{a} \) và \( a-\sqrt{a} \) là liên hợp, có tổng nguyên nhưng đối xứng về trục.  
+    Tuy nhiên, \( a+\sqrt{a} > a \), còn \( a-\sqrt{a} < a \), nên phần thập phân của chúng không thể trùng nhau sau khi nhân với số nguyên.  
+    Đồng thời, vì hiệu \( m(a+\sqrt{a}) - n(a-\sqrt{a}) \) không thể là số nguyên, nên phần nguyên của chúng cũng khác nhau.  
+    Bài toán thực chất khai thác tính bất đối xứng của hai biểu thức liên hợp khi nhân với số nguyên, để chứng minh sự khác biệt cả về phần thập phân và phần nguyên.
+\end{story*}
+
+\end{document}

@@ -1,0 +1,54 @@
+\documentclass[../03-arithmetic-functions.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\nameref{example:IMO-2015-N1}][\textbf{\nameref{definition:20M}}]
+    Xác định tất cả các số nguyên dương \( M \) sao cho dãy số \( a_0, a_1, a_2, \dots \) được xác định bởi  
+    \[
+        a_0 = M + \frac{1}{2} \quad \text{và} \quad a_{k+1} = a_k \lfloor a_k \rfloor \quad \text{với } k = 0, 1, 2, \dots
+    \]
+    chứa ít nhất một số nguyên.
+\end{example*}
+
+\begin{story*}
+    Đặt \( b_k = 2a_k \). Khi đó \( b_0 = 2a_0 = 2M + 1 \), là số nguyên lẻ, suy ra mọi \( b_k \) đều là số nguyên. 
+
+    Nếu dãy \( (a_k) \) không bao giờ là số nguyên, thì các \( b_k \) đều là số lẻ. Khi đó công thức truy hồi trở thành:
+    \[
+        b_{k+1} = \frac{b_k(b_k - 1)}{2}.
+    \]
+    Ta chứng minh bằng phương pháp mâu thuẫn rằng không thể xảy ra điều này mãi mãi, vì hiệu \( b_k - 3 \) giảm nhanh hơn cấp số nhân, dẫn đến mâu thuẫn với nguyên lý cực hạn.
+
+    Do đó \( b_0 - 3 \le 0 \Rightarrow b_0 = 3 \Rightarrow M = 1 \) là giá trị nhỏ nhất thỏa mãn. Với \( M = 1 \), \( a_0 = \tfrac{3}{2} \), và ta có \( a_1 = \tfrac{9}{2} \), \( a_2 = \tfrac{405}{2} \), \( a_3 = \tfrac{82005}{2} \), v.v... không có số nguyên nào xuất hiện. Từ đó suy ra chỉ khi \( M = 1 \), dãy không chứa số nguyên.
+
+    Vậy để dãy chứa ít nhất một số nguyên thì cần và đủ \( \boxed{M \ne 1} \).
+\end{story*}
+
+\bigbreak
+
+\begin{soln}(Cách 2)\footnotemark
+    Xét \( b_k = 2a_k \). Khi đó,    
+    \[
+        b_{k+1} \;=\; 2a_{k+1} = b_k \Bigl\lfloor \frac{b_k}{2} \Bigr\rfloor.
+    \]
+    Nếu dãy \( (a_k) \) không chứa số nguyên, thì mọi \( b_k \) là số lẻ và ta có:
+    \[
+        b_{k+1} = \frac{b_k (b_k - 1)}{2}.
+    \]
+    Xét hiệu \( b_k - 3 \), ta thấy:
+    \[
+        b_0 - 3 = 2M + 1 - 3 = 2(M - 1),
+    \]
+    mà theo truy hồi trên, hiệu \( b_k - 3 \) giảm nhanh theo bậc số mũ. Điều này mâu thuẫn với nguyên lý cực hạn, vì một dãy số nguyên dương không thể giảm mãi mà vẫn dương.
+
+    Suy ra, chỉ có thể xảy ra khi \( b_0 - 3 \le 0 \Rightarrow b_0 \le 3 \Rightarrow M = 1 \). Khi đó \( a_0 = \tfrac{3}{2} \), và dãy tiếp theo không bao giờ đạt giá trị nguyên.
+
+    Vậy điều kiện để dãy chứa ít nhất một số nguyên là:
+    \[
+        \boxed{M \ne 1}.
+    \]
+\end{soln}
+
+\footnotetext{\samepage \href{https://www.imo-official.org/problems/IMO2015SL.pdf}{Lời giải chính thức – IMO Shortlist 2015.}}
+
+\end{document}

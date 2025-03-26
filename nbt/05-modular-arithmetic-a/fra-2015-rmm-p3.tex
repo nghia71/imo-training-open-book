@@ -1,0 +1,64 @@
+\documentclass[../05-modular-arithmetic-a.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{FRA 2015 RMM}/P3]\label{example:FRA-2015-RMM-P3}[\textbf{\nameref{definition:30M}}]
+	Cho số nguyên tố \( p \geq 5 \). Chứng minh rằng tập hợp
+	\[
+		K = \left\{ a \in \mathbb{Z} \mid a^{p-1} \equiv 1 \Mod{p^2} \right\}
+	\]
+	chứa ít nhất hai số nguyên tố lẻ phân biệt nhỏ hơn \( p \).
+\end{example*}
+
+\begin{story*}
+    Bài toán yêu cầu chứng minh rằng trong tập
+    \[
+        K = \left\{ a \in \mathbb{Z} \mid a^{p-1} \equiv 1 \Mod{p^2} \right\},
+    \]
+    có ít nhất hai số nguyên tố lẻ phân biệt nhỏ hơn \( p \).  
+
+    Ta xét các ý tưởng chính sau:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Tập \( K \) là một nhóm con (subgroup) của \( \mathbb{Z}_p^* \) theo phép nhân, mở rộng lên modulo \( p^2 \).
+        \item Dùng khai triển nhị thức để khảo sát điều kiện \( (a + kp)^{p-1} \equiv 1 \pmod{p^2} \).
+        \item Xét các số nguyên tố nhỏ hơn \( p \), chứng minh rằng nếu chỉ có một số như vậy thuộc \( K \), sẽ dẫn đến mâu thuẫn.
+    \end{itemize}
+
+    Ý tưởng then chốt là giả sử ngược lại rằng \( K \) chỉ chứa một số nguyên tố lẻ nhỏ hơn \( p \), rồi phân tích các trường hợp đặc biệt như \( p-1, p+1 \) không thuộc \( K \), hoặc xây dựng một phần tử thuộc \( K \) theo cách mâu thuẫn với tính chất của \( K \).
+\end{story*}
+
+\bigbreak
+
+\begin{soln}(Cách 1)\footnotemark
+	Trước hết, bài toán là hiển nhiên nếu \( p = 5 \), vì khi đó
+	\[
+		2^{p-1} \equiv 16 \not\equiv 1 \pmod{p^2}
+		\quad\text{và}\quad
+		3^{p-1} \equiv 6 \not\equiv 1 \pmod{p^2}.
+	\]  
+	
+	Giả sử từ đây \( p \geq 7 \). Đặt 
+	\[
+		K = \{\,n\in \mathbb{Z}\,\mid\,n^{p-1}\equiv 1 \pmod{p^2}\}.
+	\]
+	
+	(a) \(K\) đóng dưới phép nhân.  
+	(b) Nếu \(a\in K\) (tức \(a\not\equiv0\pmod{p}\)) và \(k\in\mathbb{Z}\), ta tính:
+	\[
+		(a + kp)^{p-1} \;\equiv\; a^{p-1} + (p-1)a^{p-2}\,k\,p \;\equiv\;1 - kp\,a^{p-2}\pmod{p^2}.
+	\]
+	Vậy \(a+kp\in K\iff k\in p\mathbb{Z}\).  
+
+	Tiếp theo, vì \(\{-1,1\}\subset K\), phải có \(\{p-1,p+1\}\not\subset K\).
+	Thế nên tồn tại hai số nguyên tố \(q \mid (p-1)\) và \(r \mid (p+1)\) với \(\{q,r\}\cap K=\emptyset\).
+	Khi \(q\ne r\), ta được hai số nguyên tố lẻ phân biệt \(\le p\). Nếu \(q=r\), thì \(q=2\), cũng suy ra 2 \(\notin K\).  
+
+	Trong trường hợp còn lại (tức mọi số nguyên tố lẻ \(\le p-1\) đều thuộc \(K\)) sẽ dẫn đến mâu thuẫn:
+	ta chọn \(\theta=1\) hoặc 5 tùy \(p\mod3\), từ đó suy ra \(2p+\theta\in K\) trong khi \(\theta\in K\) và \(\theta\notin p\mathbb{Z}\), gây nghịch lý.  
+
+	Vậy kết luận, ắt phải có hai số nguyên tố lẻ < \(p\) nằm trong \(K\).  
+\end{soln}
+
+\footnotetext{\href{http://maths-olympiques.fr/wp-content/uploads/2017/10/ofm-2014-2015-test-rmm-corrige.pdf}{Lời giải chính thức.}}
+
+\end{document}

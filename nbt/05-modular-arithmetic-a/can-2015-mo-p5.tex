@@ -1,0 +1,61 @@
+\documentclass[../05-modular-arithmetic-a.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{CAN 2015 MO}/P5]\label{example:CAN-2015-MO-P5}\textbf{[\nameref{definition:30M}]}
+	Cho \( p \) là một số nguyên tố sao cho \( \frac{p - 1}{2} \) cũng là số nguyên tố, và cho \( a, b, c \) là các số nguyên không chia hết cho \( p \).
+	Chứng minh rằng có nhiều nhất \( 1 + \sqrt{2p} \) số nguyên dương \( n \) sao cho \( n < p \) và \( p \mid (a^n + b^n + c^n) \).
+\end{example*}
+
+\begin{story*}
+    Bài toán yêu cầu ước lượng số nghiệm nguyên \( n < p \) sao cho \( a^n + b^n + c^n \equiv 0 \Mod{p} \).  
+    Hướng giải chính dựa trên hai ý tưởng then chốt:
+    
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Phân tích bậc lũy thừa của các số modulo \( p \), cụ thể là bậc của các thương như \( ab^{-1} \) hoặc \( ba^{-1} \).
+        \item Đếm số cặp sai khác \( t = i - j \) giữa các nghiệm \( n \in S \), và sử dụng tính chất về số lần sai khác lặp lại để chặn trên kích thước tập \( S \).
+    \end{itemize}
+
+    Từ định lý Fermat nhỏ và giả thiết về \( \frac{p-1}{2} \) là số nguyên tố, bậc của các phần tử khác \( \pm 1 \) trong \( \mathbb{F}_p^\times \) bị giới hạn.  
+    Kết hợp với đếm tổ hợp và bất đẳng thức, ta suy ra \( |S| \le \sqrt{2p} + 1 \).
+\end{story*}
+
+\bigbreak
+
+\begin{soln}(Cách 1)\footnotemark
+	Giả sử trước hết rằng \( b \equiv \pm a \Mod{p} \) và \( c \equiv \pm b \Mod{p} \). Khi đó:
+	\[
+		a^n + b^n + c^n \equiv \pm a^n \text{ hoặc } \pm 3a^n \Mod{p} \implies \text{không thể chia hết cho } p.
+	\]
+
+	Không mất tính tổng quát, giả sử \( b \not\equiv \pm a \Mod{p} \implies ba^{-1} \not\equiv \pm 1 \Mod{p} \).
+
+	Đặt \( q = \frac{p - 1}{2} \). Theo định lý Fermat nhỏ, bậc lũy thừa của \( ba^{-1} \Mod{p} \) là \( q \) hoặc \( 2q \).
+
+	Gọi \( S \) là tập các \( n < p \) sao cho \( a^n + b^n + c^n \equiv 0 \Mod{p} \), và \( s_t \) là số cặp có thứ tự \( (i, j) \subseteq S \) sao cho \( i - j \equiv t \Mod{p - 1} \).
+
+	\begin{lemma*}
+		Nếu \( t < 2q \), \( t \ne q \), thì \( s_t \le 2 \).
+	\end{lemma*}
+	\begin{subproof}
+		Giả sử tồn tại \( i, j \in S \) với \( j - i \equiv t \Mod{p - 1} \). Khi đó:
+		\[
+			a^i + b^i + c^i \equiv 0 \Mod{p},\quad a^j + b^j + c^j \equiv 0 \Mod{p}.
+		\]
+		Vì \( j = i + t \), nên:
+		\[
+			a^i(c^t - a^t) \equiv b^i(b^t - c^t) \Mod{p} \implies (ab^{-1})^i \equiv \frac{b^t - c^t}{c^t - a^t} \Mod{p}.
+		\]
+		Vế phải là hằng số theo \( t \). Vì \( ab^{-1} \) có bậc \( q \) hoặc \( 2q \), nên \( i \) có nhiều nhất 2 nghiệm. Do đó \( s_t \le 2 \).
+	\end{subproof}
+
+	Mỗi \( i \in S \) tạo ra \( |S| - 1 \) sai khác, ít nhất \( |S| - 2 \) trong số đó khác \( q \). Tổng các \( s_t \) (với \( t \ne q \)) bị chặn bởi:
+	\[
+		|S|(|S| - 2) \le \sum_{t \ne q} s_t \le 2(p - 2)
+	\implies (|S| - 1)^2 \le 2p - 3 \implies \boxed{|S| < \sqrt{2p} + 1}
+	\]
+\end{soln}
+
+\footnotetext{\href{https://cms.math.ca/wp-content/uploads/2019/07/sol2015.pdf}{Lời giải chính thức.}}
+
+\end{document}

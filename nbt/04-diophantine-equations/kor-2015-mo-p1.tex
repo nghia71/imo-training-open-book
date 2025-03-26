@@ -2,7 +2,7 @@
 
 \begin{document}
 
-\begin{example*}[\gls{KOR 2015 MO}/P1]\label{example:KOR-2015-MO-P1}\textbf{[unrated]}
+\begin{example*}[\gls{KOR 2015 MO}/P1]\label{example:KOR-2015-MO-P1}[\textbf{\nameref{definition:30M}}]
 	Với mỗi số nguyên dương \( m \), \( (x, y) \) là một cặp số nguyên dương thỏa mãn hai điều kiện:
 	\begin{enumerate}[topsep=0pt, partopsep=0pt, itemsep=0pt]
 		\item[(i)] \( x^2 - 3y^2 + 2 = 16m \),
@@ -11,45 +11,93 @@
 	Chứng minh rằng số lượng các cặp như vậy là số chẵn hoặc bằng 0.
 \end{example*}
 
-\begin{soln}(Cách 1)\footnotemark
-	Nếu không tồn tại nghiệm nào, ta có số nghiệm là \( 0 \), thỏa yêu cầu.  
-	Giả sử tồn tại một nghiệm \( (u, v) \in \mathbb{Z}_{>0}^2 \) thỏa mãn hai điều kiện.
-	
-	Định nghĩa ánh xạ:
-	\[
-		(u, v) \longmapsto (u', v') = (2u - 3v,\ u - 2v).
-	\]
-	
-	\textit{Bước 1.} \( (u', v') \in \mathbb{Z}_{>0}^2 \).  
-	Từ điều kiện \( u - 1 \ge 2v \implies u \ge 2v + 1 \), ta có:
-	\[
-		u' = 2u - 3v \ge 2(2v + 1) - 3v = v + 2 \ge 3,\quad v' = u - 2v \ge 1.
-	\]
-	
-	\textit{Bước 2.} Ánh xạ bảo toàn phương trình:
-	\begin{align*}
-		(u')^2 - 3(v')^2 + 2 &= (2u - 3v)^2 - 3(u - 2v)^2 + 2
-		&= u^2 - 3v^2 + 2 = 16m.
-	\end{align*}
-	
-	\textit{Bước 3.} Ánh xạ bảo toàn bất đẳng thức:
-	\[
-		2v' \le u' - 1 \Leftrightarrow 2(u - 2v) \le (2u - 3v) - 1 \Leftrightarrow v \ge 1.
-	\]
-	
-	\textit{Bước 4.} Ánh xạ là một \nameref{definition:involution-function}:
-	\[
-		T(T(u, v)) = (u, v).
-	\]
-	
-	\textit{Bước 5.} Không có điểm bất biến (tức nghiệm cố định).
-	Nếu \( (u, v) = (2u - 3v,\ u - 2v) \implies u = 3v \), thay vào:
-	\[
-		x = 3v \implies x^2 - 3y^2 + 2 = 6v^2 + 2 = 16m
-		\implies v^2 = \frac{16m - 2}{6} \implies v^2 \equiv 5 \pmod{8},\ \text{vô lý.}
-	\]
-	
-	Do đó, ánh xạ chia tập nghiệm thành các cặp phân biệt, nên số nghiệm là số chẵn hoặc 0.
+\begin{remark*}
+	Gợi ý: Sử dụng ánh xạ \( (x, y) \mapsto (2x - 3y, x - 2y) \), kiểm tra xem có bảo toàn điều kiện hay không, đồng thời xem nó có là ánh xạ nghịch đảo và có điểm cố định hay không.
+\end{remark*}
+
+\begin{story*}
+    Để giải bài toán, ta xây dựng một ánh xạ từ một nghiệm \( (x, y) \) sang một nghiệm khác, sao cho ánh xạ này bảo toàn hai điều kiện đề bài.  
+    Cụ thể, ta định nghĩa ánh xạ \( \mathrm{T}(x, y) = (2x - 3y,\; x - 2y) \).  
+    Dễ thấy đây là một ánh xạ nghịch đảo chính nó (tức là \( \mathrm{T}(\mathrm{T}(x, y)) = (x, y) \)), gọi là một \textit{ánh xạ nghịch đảo} (involution).  
+    Nếu ánh xạ này không có điểm bất biến, thì các nghiệm được ghép thành từng cặp khác nhau.
+
+    Việc kiểm tra kỹ cho thấy:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Ánh xạ bảo toàn điều kiện (i), tức là hai cặp liên tiếp cho ra cùng một giá trị \( x^2 - 3y^2 + 2 = 16m \).
+        \item Ánh xạ cũng bảo toàn điều kiện (ii), tức là bất đẳng thức \( 2y \le x - 1 \) vẫn đúng sau khi biến đổi.
+        \item Ánh xạ không có nghiệm cố định: nếu \( T(x, y) = (x, y) \), thì \( x = 3y \). Thay vào điều kiện (i) dẫn đến mâu thuẫn.
+    \end{itemize}
+
+    Do đó, mọi nghiệm (nếu có) đều xuất hiện thành từng cặp. Suy ra số lượng nghiệm là số chẵn hoặc bằng 0.
+\end{story*}
+
+\bigbreak
+
+\begin{soln}\footnotemark
+    Nếu không có nghiệm thì rõ ràng số lượng là 0. Giả sử tồn tại ít nhất một nghiệm \( (x, y) \in \mathbb{Z}_{>0}^2 \) thỏa mãn hai điều kiện.
+
+    Định nghĩa ánh xạ:
+    \[
+        \mathrm{T}(x, y) = (x', y') = (2x - 3y,\; x - 2y).
+    \]
+
+    \textbf{Bước 1.} Kiểm tra \( (x', y') \) vẫn là số nguyên dương:  
+    Từ bất đẳng thức \( 2y \le x - 1 \Rightarrow x \ge 2y + 1 \), suy ra:
+    \[
+        x' = 2x - 3y \ge 2(2y + 1) - 3y = 4y + 2 - 3y = y + 2 \ge 3,
+    \]
+    \[
+        y' = x - 2y \ge 2y + 1 - 2y = 1.
+    \]
+    Do đó \( x', y' \in \mathbb{Z}_{>0} \).
+
+    \textbf{Bước 2.} Kiểm tra bảo toàn phương trình:
+    \[
+        (2x - 3y)^2 - 3(x - 2y)^2 + 2
+        = 4x^2 - 12xy + 9y^2 - 3(x^2 - 4xy + 4y^2) + 2
+    \]
+    \[
+        = 4x^2 - 12xy + 9y^2 - 3x^2 + 12xy - 12y^2 + 2
+        = x^2 - 3y^2 + 2 = 16m.
+    \]
+    Vậy điều kiện (i) được bảo toàn.
+
+    \textbf{Bước 3.} Kiểm tra điều kiện (ii) sau ánh xạ:
+    \[
+        2y' = 2(x - 2y) = 2x - 4y,\quad x' - 1 = 2x - 3y - 1.
+    \]
+    So sánh:
+    \[
+        2x - 4y \le 2x - 3y - 1 \iff -4y \le -3y - 1 \iff -y \le -1 \iff y \ge 1,
+    \]
+    điều này luôn đúng với \( y \in \mathbb{Z}_{>0} \).
+
+    \textbf{Bước 4.} Chứng minh \( \mathrm{T} \) là một ánh xạ nghịch đảo (involution):
+    \[
+        \mathrm{T}(\mathrm{T}(x, y)) = \mathrm{T}(2x - 3y,\; x - 2y) = (2(2x - 3y) - 3(x - 2y),\; (2x - 3y) - 2(x - 2y)),
+    \]
+    \[
+        = (4x - 6y - 3x + 6y,\; 2x - 3y - 2x + 4y) = (x, y).
+    \]
+
+    \textbf{Bước 5.} Không có điểm bất biến:  
+    Giả sử \( \mathrm{T}(x, y) = (x, y) \Rightarrow x = 2x - 3y,\; y = x - 2y \).  
+    Giải hệ này:
+    \[
+        x = 3y,\quad y = 3y - 2y = y.
+    \]
+    Thay vào phương trình:
+    \[
+        x^2 - 3y^2 + 2 = 9y^2 - 3y^2 + 2 = 6y^2 + 2.
+    \]
+    Phần này phải chia hết cho 16:
+    \[
+        6y^2 + 2 \equiv 0 \pmod{16} \Rightarrow 6y^2 \equiv -2 \pmod{16}.
+    \]
+    Nhưng \( 6y^2 \pmod{16} \in \{0, 6, 8, 14, 2, 10, 12\} \), không có giá trị nào cho ra \( -2 \equiv 14 \). Mâu thuẫn.
+
+    Vậy không có điểm bất biến, và ánh xạ chia các nghiệm thành từng cặp hoán vị.  
+    Do đó số nghiệm là số chẵn, hoặc bằng 0.
 \end{soln}
 
 \footnotetext{\href{https://artofproblemsolving.com/community/c6h1158057p5501392}{Lời giải chính thức.}}

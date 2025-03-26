@@ -1,0 +1,25 @@
+\documentclass[../07-integer-polynomials.tex]{subfiles}
+
+\begin{document}
+
+\begin{exercise*}[\gls{FRA 2015 TST}/3/P1]\label{example:FRA-2015-TST3-P1}[\textbf{\nameref{definition:10M}}]
+    Tìm tất cả các đa thức \( f \) với hệ số nguyên sao cho với mọi số nguyên \( n > 0 \), ta có:
+    \[
+        f(n) \mid 3n - 1.
+    \]
+\end{exercise*}
+
+\begin{remark*}
+    Xét hệ số cao nhất và giới hạn giá trị tuyệt đối của \( f(n) \) so với \( 3n - 1 \).
+    Thử thế \( n = 1, 2, 3, \dots \) để kiểm tra giả thiết và loại trừ trường hợp \( \deg f > 0 \).
+\end{remark*}
+
+\begin{story*}
+    Vì \( f(n) \mid 3n - 1 \) với mọi \( n > 0 \), nên ta có \( |f(n)| \le |3n - 1| \). Nếu \( f \) là đa thức bậc dương, thì \( |f(n)| \) sẽ tăng nhanh hơn \( 3n - 1 \), điều này dẫn đến mâu thuẫn khi \( n \) lớn. Vậy \( f \) là đa thức hằng.
+
+    Khi đó, điều kiện trở thành: tồn tại \( c \in \mathbb{Z} \setminus \{0\} \) sao cho \( c \mid 3n - 1 \) với mọi \( n > 0 \). Nhưng \( 3n - 1 \) chạy qua vô hạn giá trị nguyên có phần dư khác nhau modulo \( c \), nên điều này chỉ xảy ra khi \( c = \pm1 \).
+
+    Kết luận: các đa thức thỏa mãn là \( \boxed{f(X) = \pm1} \).
+\end{story*}
+
+\end{document}

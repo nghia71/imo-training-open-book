@@ -2,11 +2,28 @@
 
 \begin{document}
 
-\begin{exercise*}[\gls{RUS 2015 TST}/D10/P1]\label{example:RUS-2015-TST-D10-P1}[\textbf{unrated}]
+\begin{exercise*}[\gls{RUS 2015 TST}/D10/P1]\label{example:RUS-2015-TST-D10-P1}[\textbf{\nameref{definition:15M}}]
     Chứng minh rằng tồn tại hai số nguyên dương \( a, b \) sao cho với mọi cặp số nguyên dương \( m, n \) nguyên tố cùng nhau, ta có:
     \[
         |a - m| + |b - n| > 1000.
     \]
 \end{exercise*}
+
+\begin{remark*}
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Hãy thử chọn \( a \) và \( b \) đủ lớn và cùng chia hết cho một số lớn, ví dụ như \( a = b = 1000! \).
+        \item Khi đó, \( m, n \) nguyên tố cùng nhau không thể cùng chia hết cho các thừa số nguyên tố của \( a \) hoặc \( b \), khiến khoảng cách tuyệt đối không thể nhỏ.
+        \item Ý tưởng là buộc \( m \ne a \) và \( n \ne b \) bằng điều kiện chia hết.
+    \end{itemize}
+\end{remark*}
+
+\begin{story*}
+    Bài toán yêu cầu xây dựng hai số cố định \( a, b \) sao cho bất kỳ cặp số \( m, n \) nguyên tố cùng nhau nào cũng không thể nằm gần \( (a, b) \).
+    Ta xét việc chọn \( a = b = N! \) với \( N \) lớn (ví dụ \( N = 1000 \)).
+    Khi đó, mọi số nhỏ hơn hoặc bằng \( N \) đều chia hết \( a \) và \( b \),
+    trong khi \( m, n \) nguyên tố cùng nhau không thể đồng thời chia hết cho cùng các thừa số nguyên tố của \( N! \).
+    Vì vậy, \( m \ne a \) và \( n \ne b \), và sự khác biệt tuyệt đối với từng hoán vị là lớn.
+    Ta kiểm soát được giá trị \( |a - m| + |b - n| \) bằng việc ép \( m, n \) không thể gần \( a, b \). Từ đó ta đảm bảo giá trị luôn vượt quá 1000.
+\end{story*}
 
 \end{document}

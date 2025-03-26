@@ -1,0 +1,31 @@
+\documentclass[../05-modular-arithmetic-a.tex]{subfiles}
+
+\begin{document}
+
+\begin{exercise*}[\gls{THA 2015 MO}/P8]\label{example:THA-2015-MO-P8}\textbf{[\nameref{definition:25M}]}
+    Cho \( m, n \) là các số nguyên dương sao cho \( m - n \) là số lẻ. Chứng minh rằng biểu thức
+    \[
+        (m + 3n)(5m + 7n)
+    \]
+    không thể là số chính phương.
+\end{exercise*}
+
+\begin{remark*}
+    Gợi ý: Sử dụng lập luận modulo 4 hoặc modulo 8 để loại trừ khả năng biểu thức là một số chính phương.
+    Ngoài ra, hãy xét tính chẵn/lẻ của hai thừa số, và tổng quát hoá bằng phân tích đồng dư.
+\end{remark*}
+
+\begin{story*}
+    Bài toán yêu cầu chứng minh rằng biểu thức \( (m + 3n)(5m + 7n) \) không thể là số chính phương nếu \( m - n \) là số lẻ.
+
+    Ta xét biểu thức modulo 4:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Nếu \( m \equiv n \pmod{2} \), thì \( m - n \) chẵn — loại.
+        \item Nếu \( m - n \) lẻ, thì \( m \not\equiv n \pmod{2} \). Vậy \((m,n) \in \{(0,1), (1,0)\} \pmod{2}\).
+        \item Xét từng trường hợp theo modulo 4 và đánh giá đồng dư của biểu thức.
+    \end{itemize}
+
+    Ý tưởng chính là nếu biểu thức \( (m + 3n)(5m + 7n) \equiv r \pmod{4} \), mà \( r \notin \{0,1\} \), thì biểu thức không thể là số chính phương.
+\end{story*}
+
+\end{document}

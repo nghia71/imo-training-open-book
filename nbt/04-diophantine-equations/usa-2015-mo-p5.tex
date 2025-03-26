@@ -10,47 +10,49 @@
 	Chứng minh rằng \( ac + bd \) là một hợp số.
 \end{example*}
 
-\begin{soln}(Cách 1)\footnotemark
-	Giả sử ngược lại rằng \( ac + bd \) là một số nguyên tố.
+\begin{story*}
+	Giả sử ngược lại rằng \( ac + bd \) là một số nguyên tố.  
+	Sử dụng giả thiết \( a^4 + b^4 = c^4 + d^4 = e^5 \), ta biến đổi biểu thức
+	\[
+		(a^4 + b^4)c^2d^2 - (c^4 + d^4)a^2b^2,
+	\]
+	để thu được tích bốn nhân tử gồm \( ac + bd \), \( ac - bd \), \( ad + bc \), \( ad - bc \).  
+	Vì tất cả các biến phân biệt, không nhân tử nào trong số đó bằng 0.
 
-	Không mất tính tổng quát, giả sử \( a > d \). Vì \( a^4 + b^4 = c^4 + d^4 \), nên suy ra \( b < c \).
-	
+	Từ đó, ta suy ra \( ac + bd \mid e^5(cd - ab)(cd + ab) \). Nếu \( ac + bd \) là số nguyên tố, thì nó phải chia \( e^5 \), dẫn đến \( ac + bd \mid e^5 \).  
+	Nhưng điều này mâu thuẫn với tính chất lũy thừa bậc 5 của \( e \). Vậy \( ac + bd \) không thể là số nguyên tố — tức là hợp số.
+\end{story*}
+
+\bigbreak
+
+\begin{soln}\footnotemark
+	Giả sử ngược lại rằng \(ac + bd\) là một số nguyên tố.
+
+	Không mất tính tổng quát, giả sử \(a > d\). Từ \(a^4 + b^4 = c^4 + d^4\), suy ra \(b < c\).  
 	Xét biểu thức:
 	\[
-		(a^4 + b^4)c^2d^2 - (c^4 + d^4)a^2b^2 = (a^2c^2 - b^2d^2)(a^2d^2 - b^2c^2).
+		(a^4 + b^4)c^2d^2 - (c^4 + d^4)a^2b^2
+		= (a^2c^2 - b^2d^2)(a^2d^2 - b^2c^2).
 	\]
-	
-	Vì \( a^4 + b^4 = c^4 + d^4 = e^5 \), ta có:
+	Vì \(a^4 + b^4 = c^4 + d^4 = e^5\), nên:
 	\[
-		e^5 (cd - ab)(cd + ab) = (ac - bd)(ac + bd)(ad - bc)(ad + bc).
+		e^5(cd - ab)(cd + ab) 
+		= (ac - bd)(ac + bd)(ad - bc)(ad + bc).
 	\]
-	
-	Nếu \( ac - bd = 0 \) hoặc \( ad - bc = 0 \), thì ta sẽ có \( \dfrac{a}{b} = \dfrac{c}{d} \) hoặc \( \dfrac{a}{b} = \dfrac{d}{c} \).
-	Điều này mâu thuẫn với giả thiết rằng \( a^4 + b^4 = c^4 + d^4 \) và các số \( a, b, c, d \) đều phân biệt.
-	
-	Do đó, tất cả các thừa số ở vế phải đều khác 0, nên \( ac + bd \) phải chia hết vế trái:
+	Nếu \(ac - bd = 0\) hoặc \(ad - bc = 0\), thì ta có tỉ lệ \(\tfrac{a}{b} = \tfrac{c}{d}\) hoặc \(\tfrac{a}{b} = \tfrac{d}{c}\), mâu thuẫn với giả thiết các số đều phân biệt.  
+	Vậy mọi nhân tử đều khác 0.
+
+	Khi đó, \( ac + bd \mid e^5(cd - ab)(cd + ab) \).  
+	Nhưng vì \( ac + bd > cd + ab \), ta thấy \( ac + bd \nmid cd + ab \) và cũng không chia hết \( cd - ab \).  
+	Suy ra \( ac + bd \mid e^5 \). Gọi \( ac + bd = p \), khi đó \( p \mid e^5 \Rightarrow p \le e \).  
+
+	Nhưng:
 	\[
-		ac + bd \mid e^5 (cd - ab)(cd + ab).
+		e = \sqrt[5]{a^4 + b^4} \le \sqrt[5]{2a^4} = a^{4/5} \cdot 2^{1/5} < a.
 	\]
-	
-	Giả sử \( ac + bd \) là một số nguyên tố. Xét hiệu:
-	\[
-		(ac + bd) - (cd + ab) = (a - d)(c - b) > 0,
-	\]
-	suy ra \( ac + bd > cd + ab > cd - ab \), nên không thể \( ac + bd \) chia hết \( cd + ab \) hoặc \( cd - ab \). Do đó, \( ac + bd \) phải chia hết \( e^5 \).
-	
-	Suy ra tồn tại \( k \in \mathbb{Z}^+ \) sao cho:
-	\[
-		e = k(ac + bd)^{1/5}.
-	\]
-	
-	Nhưng điều này là vô lý vì khi đó:
-	\[
-		(k(ac + bd))^5 > a^4 + b^4 = e^5.
-	\]
-	Mâu thuẫn.
-	
-	Vậy giả thiết ban đầu sai. Suy ra \( ac + bd \) không thể là số nguyên tố. Do đó, \( ac + bd \) là một hợp số.
+	Vì \( ac + bd > ab \), thì \( p > ab \), mâu thuẫn với \( p \le e < a \le ab \).  
+
+	Vậy \( ac + bd \) không thể là số nguyên tố, tức là nó là hợp số.
 \end{soln}
 
 \footnotetext{\href{https://artofproblemsolving.com/wiki/index.php/2015_USAMO_Problems/Problem_5}{Lời giải chính thức.}}

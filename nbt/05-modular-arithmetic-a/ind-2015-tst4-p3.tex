@@ -1,0 +1,68 @@
+\documentclass[../05-modular-arithmetic-a.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{IND 2015 TST}4/P3]\label{example:IND-2015-TST4-P3}\textbf{[\nameref{definition:25M}]}
+	Cho \( n > 1 \) là một số nguyên. Chứng minh rằng có vô hạn phần tử của dãy \( (a_k)_{k \ge 1} \), được xác định bởi
+	\[
+		a_k = \left\lfloor \frac{n^k}{k} \right\rfloor,
+	\]
+	là số lẻ. (Với số thực \( x \), ký hiệu \( \lfloor x \rfloor \) là phần nguyên của \( x \).)
+\end{example*}
+
+\begin{story*}
+    Dãy \( a_k = \left\lfloor \frac{n^k}{k} \right\rfloor \) có giá trị gần với \( \frac{n^k}{k} \), vốn là một số gần nguyên khi \( n \) lớn.  
+    Mục tiêu là chứng minh tồn tại vô hạn chỉ số \( k \) sao cho \( a_k \) là số lẻ.
+
+    Hướng tiếp cận chia hai trường hợp:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item \textbf{\( n \) lẻ:} Lấy \( k = n^m \). Khi đó \( a_k = n^{n^m - m} \) là lẻ vì lũy thừa của số lẻ vẫn lẻ.
+        \item \textbf{\( n \) chẵn:} Viết \( n = 2t \), xét \( k = p \cdot 2^m \), trong đó \( p \) là ước nguyên tố lẻ của \( \frac{n^{2^m} - 2^m}{2^m} \). Khi đó biểu thức \( a_k = \left\lfloor \frac{n^k}{k} \right\rfloor \) được tính ra là lẻ.
+    \end{itemize}
+
+    Do có vô hạn lựa chọn cho \( m \), ta có vô hạn chỉ số \( k \) sao cho \( a_k \) là số lẻ.
+\end{story*}
+
+\bigbreak
+
+\begin{soln}\footnotemark
+	\textbf{Trường hợp \( n \) lẻ:} Đặt \( k = n^m \), với \( m \in \mathbb{Z}_{>0} \). Khi đó:
+	\[
+		a_k = \left\lfloor \frac{n^k}{k} \right\rfloor = n^{n^m - m},
+	\]
+	là lũy thừa của \( n \), mà \( n \) lẻ \( \implies a_k \) lẻ. Có vô hạn \( m \) \( \implies \) có vô hạn \( k \) sao cho \( a_k \) lẻ.
+
+	\textbf{Trường hợp \( n \) chẵn:} Đặt \( n = 2t \) với \( t \in \mathbb{Z}_{>0} \).
+
+	Với mỗi \( m \ge 2 \), xét số:
+	\[
+		n^{2^m} - 2^m = 2^m \cdot \left(2^{2^m - m} \cdot t^{2^m} - 1\right).
+	\]
+	Vì \( 2^m - m > 1 \), biểu thức trong ngoặc có ước nguyên tố lẻ \( p \).
+
+	Đặt \( k = p \cdot 2^m \Rightarrow n^k \equiv 2^m \Mod{p} \) theo định lý Fermat nhỏ.
+
+	Mặt khác:
+	\[
+		n^k - 2^m < n^k < n^k + 2^m(p - 1)
+	\Rightarrow \frac{n^k}{k} \in \left(\frac{n^k - 2^m}{k},\ \frac{n^k + 2^m(p - 1)}{k}\right).
+	\]
+
+	Ta có:
+	\[
+		a_k = \left\lfloor \frac{n^k}{k} \right\rfloor = \frac{n^k - 2^m}{p \cdot 2^m} = \frac{\frac{n^k}{2^m} - 1}{p}.
+	\]
+
+	Vì \( \frac{n^k}{2^m} - 1 \in \mathbb{Z} \) và lẻ \( \implies a_k \) là số lẻ.
+
+	Với mỗi \( m \) khác nhau ta thu được \( k = p \cdot 2^m \) khác nhau (vì số mũ của 2 khác nhau trong phân tích thừa số nguyên tố của \( k \)).
+
+	\textbf{Kết luận:} Trong cả hai trường hợp,
+	\[
+		\boxed{\text{Có vô hạn giá trị } k \text{ sao cho } a_k \text{ là số lẻ.}}
+	\]
+\end{soln}
+
+\footnotetext{\href{https://www.imo-official.org/problems/IMO2014SL.pdf}{IMO SL 2014 N4.}}
+
+\end{document}

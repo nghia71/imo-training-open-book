@@ -1,0 +1,78 @@
+\documentclass[../04-diophantine-equations.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{GER 2015 TST}/P4]\label{example:GER-2015-TST-P4}[\textbf{\nameref{definition:30M}}]
+	Tìm tất cả các cặp số nguyên dương \((x, y)\) sao cho
+	\[
+		\sqrt[3]{7x^2 - 13xy + 7y^2} = |x - y| + 1.
+	\]
+\end{example*}
+
+\begin{story*}
+    Đặt \( u = |x - y| \), khi đó biểu thức dưới dấu căn trở thành hàm của \( u \) và \( xy \).  
+    Gọi thêm \( v = xy \), ta có phương trình:
+    \[
+        \sqrt[3]{7u^2 + v} = u + 1 \Rightarrow 7u^2 + v = (u + 1)^3.
+    \]
+    Khai triển vế phải và rút gọn để tìm ra:
+    \[
+        v = u^3 - 4u^2 + 3u + 1.
+    \]
+    Mặt khác, từ biểu thức \( x = y + u \), ta có \( v = x y = y(y + u) = y^2 + uy \).  
+    Đặt hai biểu thức của \( v \) bằng nhau, ta giải được phương trình bậc hai theo \( y \), với biểu thức trong căn là:
+    \[
+        (u - 2)^2(4u + 1).
+    \]
+    Vì căn này phải là số chính phương, nên \( 4u + 1 \) cũng là số chính phương. Đặt \( 4u + 1 = (2m + 1)^2 \), ta tìm được:
+    \[
+        u = m^2 + m.
+    \]
+    Từ đó, biểu diễn lại \( y \) và \( x = y + u \) theo \( m \), suy ra nghiệm tổng quát của bài toán.  
+    Trường hợp \( u = 0 \) (tức \( x = y \)) cũng cần được kiểm tra riêng. Kết quả là có nghiệm đơn \( (1,1) \), còn các nghiệm khác tạo thành dãy với \( m \ge 2 \).
+\end{story*}
+
+\bigbreak
+
+\begin{soln}\footnotemark
+	Không mất tính tổng quát, giả sử \( x \ge y \). Đặt \( u = x - y \), khi đó phương trình trở thành:
+	\[
+		\sqrt[3]{7(x - y)^2 + xy} = u + 1.
+	\]
+	Đặt \( v = xy \), ta được:
+	\[
+		7u^2 + v = (u + 1)^3 \Rightarrow v = u^3 - 4u^2 + 3u + 1.
+	\]
+	
+	Mặt khác, \( x = y + u \Rightarrow v = x y = (y + u)y = y^2 + uy \). Suy ra:
+	\[
+		y^2 + uy = u^3 - 4u^2 + 3u + 1 
+		\Rightarrow y = \frac{-u \pm \sqrt{u^2 + 4(u^3 - 4u^2 + 3u + 1)}}{2}.
+	\]
+	
+	Yêu cầu biểu thức trong căn là số chính phương:
+	\[
+		u^2 + 4(u^3 - 4u^2 + 3u + 1) = (u - 2)^2 (4u + 1).
+	\]
+	Suy ra \( 4u + 1 = \ell^2 \), với \( \ell \) là số lẻ. Đặt \( \ell = 2m + 1 \Rightarrow u = m^2 + m \).
+
+	\textit{Trường hợp \( m = 0 \)}: \( u = 0 \Rightarrow x = y \). Thay vào phương trình gốc:
+	\[
+		\sqrt[3]{7x^2 - 13x^2 + 7x^2} = \sqrt[3]{x^2} = |x - y| + 1 = 1 \Rightarrow x^2 = 1 \Rightarrow x = y = 1.
+	\]
+	
+	\textit{Trường hợp \( m \ge 1 \)}:  
+	\[
+		u = m^2 + m, \quad y = m^3 + m^2 - 2m - 1, \quad x = y + u = m^3 + 2m^2 - m - 1.
+	\]
+	
+	Với \( m \ge 2 \), \( y > 0 \). Như vậy, các nghiệm nguyên dương của bài toán là:
+	\[
+		(x, y) = (1, 1) \quad \text{và} \quad \left(m^3 + 2m^2 - m - 1,\; m^3 + m^2 - 2m - 1\right),\; m \ge 2,
+	\]
+	cùng các hoán vị \((y,x)\) (do phương trình đối xứng theo \( |x - y| \)).
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1113196p11637064}{Lời giải của \textbf{pad}.}}
+
+\end{document}

@@ -1,0 +1,25 @@
+\documentclass[../01-divisibility.tex]{subfiles}
+
+\begin{document}
+
+\begin{exercise*}[\gls{ROU 2015 MO}/G10/P2]\label{example:ROU-2015-MO-G10-P2}[\textbf{\nameref{definition:25M}}]
+    Xét một số tự nhiên \( n \) sao cho tồn tại một số tự nhiên \( k \) và \( k \) số nguyên tố phân biệt sao cho \( n = p_1 \cdot p_2 \cdots p_k \).
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Tìm số lượng các hàm \( f : \{1, 2, \ldots, n\} \longrightarrow \{1, 2, \ldots, n\} \) sao cho tích \( f(1) \cdot f(2) \cdots f(n) \) chia hết \( n \).
+        \item Với \( n = 6 \), hãy tìm số lượng các hàm \( f : \{1, 2, 3, 4, 5, 6\} \longrightarrow \{1, 2, 3, 4, 5, 6\} \)
+        sao cho tích \( f(1)\cdot f(2)\cdot f(3)\cdot f(4)\cdot f(5)\cdot f(6) \) chia hết cho \( 36 \).
+    \end{itemize}
+
+    \begin{remark*}
+        Gợi ý: Xem xét những giá trị của \(f(i)\) phải chứa đủ các ước nguyên tố của \(n\).
+        Lưu ý nếu một trong số các \(f(i)\) luôn chọn được bội của tất cả số nguyên tố \((p_1, p_2, \dots)\) thì tích sẽ chia hết \(n\).
+    \end{remark*}
+
+    \begin{story*}
+        Ở đây, ta cần đếm số hàm \(f\) sao cho \(f(1)\cdot f(2)\cdots f(n)\) (hoặc \(\dots f(6)\) cho trường hợp \(n=6\)) có đủ các ước nguyên tố
+        để tạo ra bội số của \(n\). Xét cấu hình giá trị của \(f\) và phân phối ước nguyên tố giữa các \(f(i)\).
+        Việc tính toán có thể sử dụng phân tích tổ hợp hoặc chọn cách “phân loại” giá trị của \(f(i)\) theo chia hết \(p_1, p_2, \dots, p_k\).
+    \end{story*}
+\end{exercise*}
+
+\end{document}

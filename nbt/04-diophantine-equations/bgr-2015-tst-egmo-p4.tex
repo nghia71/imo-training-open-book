@@ -1,0 +1,28 @@
+\documentclass[../04-diophantine-equations.tex]{subfiles}
+
+\begin{document}
+
+\begin{exercise*}[\gls{BGR 2015 EGMO TST}/P4]\label{example:BGR-2015-EGMO-TST-P4}[\textbf{\nameref{definition:30M}}]
+	\footnotemark Chứng minh rằng với mọi số nguyên dương \( m \), tồn tại vô số cặp số nguyên dương \( (x, y) \) nguyên tố cùng nhau sao cho:
+	\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+		\item \( x \mid y^2 + m \),
+		\item \( y \mid x^2 + m \).
+	\end{itemize}
+\end{exercise*}
+
+\begin{remark*}
+	Gợi ý: Tìm cách xây dựng (hoặc suy luận) các nghiệm từ công thức tham số.  
+	Thử coi \((x,y)\) vừa đủ điều kiện chia, kết hợp với sự nguyên tố cùng nhau của \((x,y)\).  
+	Xem định lý Euclid về vô hạn số nguyên tố để tạo dãy vô hạn đáp ứng yêu cầu.
+\end{remark*}
+
+\begin{story*}
+    Ta cần tìm vô số cặp số nguyên dương \( (x, y) \) nguyên tố cùng nhau sao cho mỗi số chia hết tổng bình phương của số còn lại cộng với \( m \).  
+    Ý tưởng là xây dựng một dãy các cặp nghiệm bằng cách chọn một số hằng \( y \) trước, rồi biểu diễn \( x \) sao cho \( x \mid y^2 + m \), tức \( y^2 + m = xk \), từ đó tính \( x \) và kiểm tra điều kiện ngược lại \( y \mid x^2 + m \).  
+    Sau đó cần đảm bảo \( \gcd(x, y) = 1 \). Việc chọn các \( y \) nguyên tố hoặc thoả mãn điều kiện đặc biệt sẽ giúp điều đó xảy ra.  
+    Với mỗi \( m \), ta có thể kiểm soát việc chọn \( y \) sao cho có vô hạn cách tạo \( x \) phù hợp, dẫn đến vô hạn nghiệm.
+\end{story*}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c3943}{IMO SL 1992 P1.}}
+
+\end{document}

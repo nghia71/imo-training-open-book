@@ -1,0 +1,43 @@
+\documentclass[../03-arithmetic-functions.tex]{subfiles}
+
+\begin{document}
+
+\begin{exercise*}[\gls{ROU 2015 TST}/D4/P2]\label{example:ROU-2015-TST-D4-P2}\textbf{[\nameref{definition:30M}]}
+    Cho \( n \) là một số nguyên dương. Nếu \( \sigma \) là một hoán vị của \( n \) số nguyên dương đầu tiên,
+    định nghĩa \( S(\sigma) \) là tập hợp tất cả các tổng phân đoạn khác nhau có dạng:
+    \[
+        \sum_{i=k}^{l} \sigma(i)
+    \]
+    với \( 1 \le k \le l \le n \).
+    
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item[(a)] Hãy chỉ ra một hoán vị \( \sigma \) của \( \{1, 2, \ldots, n\} \) sao cho:
+        \[
+            |S(\sigma)| \geq \left\lfloor \frac{(n+1)^2}{4} \right\rfloor.
+        \]
+        \item[(b)] Chứng minh rằng với mọi hoán vị \( \sigma \), ta có:
+        \[
+            |S(\sigma)| > \frac{n\sqrt{n}}{4\sqrt{2}}.
+        \]
+    \end{itemize}
+\end{exercise*}
+
+\begin{remark*}
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Phần (a) là một bài toán xây dựng hoán vị \(\sigma\) để tối đa hóa số tổng phân đoạn khác nhau.
+        \item Phần (b) yêu cầu chứng minh một bất đẳng thức tổng quát áp dụng cho mọi hoán vị, với ý tưởng sử dụng bất đẳng thức Cauchy–Schwarz để ước lượng số lượng phần tử của tập \( S(\sigma) \).
+    \end{itemize}
+\end{remark*}
+
+\begin{story*}
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Phần (a): Đây là một bài toán xây dựng. Ta có thể lấy hoán vị \(\sigma(i) = i\) với mọi \( i \in \{1, \dots, n\} \).
+        Khi đó, tổng đoạn từ \( i \) đến \( j \) là \( \frac{(j - i + 1)(i + j)}{2} \), và dễ kiểm tra rằng số lượng tổng đoạn phân biệt là ít nhất \( \left\lfloor \frac{(n+1)^2}{4} \right\rfloor \).
+
+        \item Phần (b): Với mọi hoán vị \(\sigma\), ta cần chứng minh rằng \( |S(\sigma)| \) luôn lớn.
+        Ý tưởng là sử dụng bất đẳng thức Cauchy–Schwarz để giới hạn số lần một tổng đoạn có thể lặp lại,
+        rồi từ đó suy ra rằng \( |S(\sigma)| > \frac{n\sqrt{n}}{4\sqrt{2}} \).
+    \end{itemize}
+\end{story*}
+
+\end{document}

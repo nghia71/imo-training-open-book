@@ -1,0 +1,70 @@
+\documentclass[../05-modular-arithmetic-a.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{RMM 2015}/P5]\label{example:RMM-2015-P5}\textbf{[\nameref{definition:25M}]}
+	Cho số nguyên tố \( p \ge 5 \). Với mỗi số nguyên dương \( k \), định nghĩa \( R(k) \) là phần dư khi chia \( k \) cho \( p \), tức là \( 0 \le R(k) < p \).
+	Tìm tất cả các số nguyên dương \( a < p \) sao cho với mọi \( m = 1, 2, \dots, p - 1 \), ta có:
+	\[
+		m + R(ma) > a.
+	\]
+\end{example*}
+
+\begin{story*}
+	Bài toán yêu cầu tìm các giá trị \( a \in \{1, 2, \dots, p-1\} \) sao cho bất đẳng thức \( m + R(ma) > a \) đúng với mọi \( 1 \le m < p \). Ý tưởng:
+	\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+		\item Kiểm tra trường hợp đặc biệt \( a = p - 1 \).
+		\item Với \( a < p - 1 \), phân tích cấu trúc \( p = aq + r \) với \( 0 < r < a \), và kiểm soát phần dư \( R(ma) \).
+		\item Chứng minh rằng chỉ những \( a = \left\lfloor \tfrac{p}{q} \right\rfloor \) với \( q \in \{2, \dots, p-1\} \) là chấp nhận được.
+	\end{itemize}
+\end{story*}
+
+\bigbreak
+
+\begin{soln}\footnotemark
+	Ta chia làm hai phần: chứng minh điều kiện đủ và điều kiện cần.
+
+	\textbf{Phần 1: Chứng minh điều kiện đủ.}
+
+	\textit{Trường hợp 1: \( a = p - 1 \).}
+
+	Ta có:
+	\[
+		ma \equiv -m \pmod{p} \Rightarrow R(ma) = p - m \Rightarrow m + R(ma) = p > a.
+	\]
+
+	\textit{Trường hợp 2: \( a = \left\lfloor \frac{p}{q} \right\rfloor \) với \( q \in \{2, \dots, p - 1\} \).}
+
+	Giả sử \( p = aq + r \) với \( 0 < r < q \), xét \( m = xq + y \) với \( 0 \le x \), \( 1 \le y \le q \), ta có:
+	\[
+		ma = a(xq + y) = x(p - r) + ay \Rightarrow R(ma) = ay - xr < aq < p.
+	\]
+	Suy ra:
+	\[
+		m + R(ma) \ge xq + y + ay - xr = x(q - r) + y(a + 1) > a.
+	\]
+	Vậy bất đẳng thức luôn đúng.
+
+	\textbf{Phần 2: Chứng minh điều kiện cần.}
+
+	Giả sử \( a \) thỏa mãn bất đẳng thức, đặt \( p = aq + r \) với \( 0 < r < a \). Chọn \( m = q + 1 \) (vì \( m < p \)):
+
+	\[
+		ma = a(q + 1) = p + (a - r) \Rightarrow R(ma) = a - r,
+	\]
+	\[
+		m + R(ma) = q + 1 + a - r > a \Rightarrow r < q + 1.
+	\]
+	Từ \( p = aq + r \), suy ra \( a = \left\lfloor \frac{p}{q} \right\rfloor \).
+
+	\textbf{Kết luận:} Các giá trị thỏa mãn là:
+	\[
+		\boxed{
+			a = \left\lfloor \frac{p}{q} \right\rfloor \text{ với } q \in \{2, \dots, p - 1\}, \quad \text{hoặc} \quad a = p - 1.
+		}
+	\]
+\end{soln}
+
+\footnotetext{\href{https://rmms.lbi.ro/rmm2015/index.php?id=solutions_math}{Lời giải chính thức.}}
+
+\end{document}

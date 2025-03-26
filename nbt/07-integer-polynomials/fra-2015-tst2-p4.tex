@@ -1,0 +1,77 @@
+\documentclass[../07-integer-polynomials.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{FRA 2015 TST}/2/P4]\label{example:FRA-2015-TST2-P4}[\textbf{\nameref{definition:20M}}]
+	Xác định tất cả các đa thức nguyên \( P(X), Q(X) \) sao cho với dãy \( (x_n) \) được xác định bởi:
+	\[
+		x_0 = 2015,\quad x_{2n+1} = P(x_{2n}),\quad x_{2n+2} = Q(x_{2n+1}),
+	\]
+	ta có: với mọi số nguyên dương \( m \), tồn tại một số hạng \( x_n \ne 0 \) sao cho \( m \mid x_n \).
+\end{example*}
+
+\begin{story*}
+	Bài toán yêu cầu điều kiện để dãy \( (x_n) \) nhận giá trị chia hết cho mọi số nguyên dương \( m \) tại ít nhất một chỉ số \( n \).
+	Ta xét khi \( P, Q \) là các đa thức bậc nhất \( P(X) = aX + b \), \( Q(X) = cX + d \), và khảo sát các dãy con \( x_{2n} \), \( x_{2n+1} \) là cấp số cộng.
+	Sử dụng tính chất chia hết của cấp số cộng, ta rút ra điều kiện \( ad + b \mid 2015 \) hoặc \( bc + d \mid a \cdot 2015 + d \).
+	Kết luận rằng bộ nghiệm là:
+	\[
+		P(X) = \varepsilon X + b,\quad Q(X) = \varepsilon X + d,\quad \varepsilon = \pm 1,\quad b + \varepsilon d \mid 2005.
+	\]
+\end{story*}
+
+\bigbreak
+
+\begin{soln}\footnotemark
+	Gọi một dãy \( (y_n) \) có \textit{tính chất D} nếu với mọi \( m > 0 \), tồn tại \( y_n \ne 0 \) sao cho \( m \mid y_n \).
+
+	Ta sử dụng các bổ đề sau:
+	\begin{theorem*}[Bổ đề 1]
+		Một dãy \( (x_n) \) có tính chất D nếu và chỉ nếu một trong các dãy con \( (x_{kn}), (x_{kn+1}), \dots, (x_{kn + k - 1}) \) có tính chất D.
+	\end{theorem*}
+
+	\begin{theorem*}[Bổ đề 2]
+		Nếu đa thức \( T \in \mathbb{Z}[X] \) sinh ra dãy có tính chất D thì \( \deg T = 1 \) và hệ số bậc nhất \( \rho \) thỏa \( |\rho| < 4 \).
+	\end{theorem*}
+
+	\begin{theorem*}[Bổ đề 3]
+		Nếu \( T(X) = \rho X + \theta \) có tính chất D thì \( \rho = 1 \).
+	\end{theorem*}
+
+	Áp dụng cho bài toán, ta xét:
+	\[
+		H(X) = P(Q(X)),\quad K(X) = Q(P(X)).
+	\]
+	
+	Theo các bổ đề trên, \( \deg P = \deg Q = 1 \), và các hệ số bậc nhất bằng \( \pm 1 \). Đặt:
+	\[
+		P(X) = aX + b,\quad Q(X) = cX + d,\quad \text{với } a, c \in \{\pm 1\}.
+	\]
+
+	Xét các dãy con:
+	\begin{align*}
+		x_{2n} &= x_0 + n(ad + b), \\
+		x_{2n+1} &= a x_0 + d + n(bc + d).
+	\end{align*}
+
+	Mỗi dãy số học \( y_n = y_0 + nr \) có tính chất D khi \( r \mid y_0 \). Suy ra:
+	\[
+		ad + b \mid x_0 = 2015 \quad \text{hoặc} \quad bc + d \mid a \cdot 2015 + d.
+	\]
+
+	Ta chú ý rằng:
+	\[
+		|ad + b| = |bc + d|.
+	\]
+
+	Vậy bộ nghiệm là:
+	\[
+		\boxed{
+		P(X) = \varepsilon X + b,\quad Q(X) = \varepsilon X + d,\quad \varepsilon = \pm 1,\quad b + \varepsilon d \mid 2005.
+		}
+	\]
+\end{soln}
+
+\footnotetext{\href{http://maths-olympiques.fr/wp-content/uploads/2017/10/ofm-2014-2015-test-fevrier-corrige.pdf}{Lời giải chính thức.}}
+
+\end{document}

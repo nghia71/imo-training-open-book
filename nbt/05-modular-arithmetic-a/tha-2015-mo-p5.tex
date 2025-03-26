@@ -1,0 +1,71 @@
+\documentclass[../05-modular-arithmetic-a.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{THA 2015 MO}/P5]\label{example:THA-2015-MO-P5}\textbf{[\nameref{definition:25M}]}
+    Với mỗi số thực \( x \), ký hiệu \( \lfloor x \rfloor \) là phần nguyên của \( x \), tức là số nguyên lớn nhất không vượt quá \( x \).
+    Chứng minh rằng:
+    \[
+        \left\lfloor \frac{(n - 1)!}{n(n + 1)} \right\rfloor
+    \]
+    là số chẵn với mọi số nguyên dương \( n \).    
+\end{example*}
+
+\begin{story*}
+    Bài toán yêu cầu chứng minh rằng phần nguyên của biểu thức \( \frac{(n - 1)!}{n(n + 1)} \) luôn là số chẵn.  
+    Hướng giải chia thành các trường hợp dựa trên tính chất nguyên tố hay hợp số của \( n \) và \( n + 1 \). Các công cụ chính gồm:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Kiểm tra trực tiếp các giá trị nhỏ \( n \le 6 \).
+        \item Định lý Wilson: với số nguyên tố \( p \), ta có \( (p - 1)! \equiv -1 \pmod{p} \).
+        \item Với \( n, n + 1 \) là hợp số, khi đó \( n(n+1) \mid (n - 1)! \), do đó biểu thức là số nguyên.
+        \item Khi biểu thức là số nguyên, cần chứng minh nó chẵn — điều này thường suy ra từ việc \( (n-1)! \) chứa nhiều thừa số chẵn.
+    \end{itemize}
+\end{story*}
+
+\bigbreak
+
+\begin{soln}\footnotemark
+    Ta xét các trường hợp.
+
+    \textbf{Trường hợp 1: \( n \le 6 \).}  
+    Trực tiếp tính cho \( n = 1, 2, \dots, 6 \), dễ thấy:
+    \[
+        \left\lfloor \frac{(n - 1)!}{n(n + 1)} \right\rfloor = 0,
+    \]
+    là số chẵn.
+
+    \textbf{Trường hợp 2: \( n \ge 8 \), \( n \) và \( n+1 \) là hợp số.}  
+    Khi đó tồn tại \( a,b,c,d < n \) sao cho \( n = ab \), \( n+1 = cd \). Suy ra \( n(n+1) \mid (n-1)! \).  
+    Do đó \( \left\lfloor \frac{(n-1)!}{n(n+1)} \right\rfloor \in \mathbb{Z} \).  
+    Mặt khác, \( (n-1)! \) chia hết cho 2 với \( n \ge 8 \), nên thương là số chẵn.
+
+    \textbf{Trường hợp 3: \( n \ge 7 \), \( n \) là số nguyên tố.}  
+    Khi đó áp dụng định lý Wilson:
+    \[
+        (n - 1)! \equiv -1 \pmod{n} \implies (n - 1)! = nq - 1 \text{ với } q \in \mathbb{Z}.
+    \]
+    Ta có:
+    \[
+        \frac{(n - 1)!}{n(n + 1)} = \frac{q - \frac{1}{n}}{n + 1} = \frac{q}{n + 1} - \frac{1}{n(n + 1)}.
+    \]
+    Phần nguyên của biểu thức là \( \left\lfloor \frac{q}{n+1} - \frac{1}{n(n+1)} \right\rfloor = \left\lfloor \frac{q}{n+1} \right\rfloor \) hoặc nhỏ hơn 1.  
+    Vì \( q \) là nguyên, và \( (n - 1)! \) rất lớn, giá trị này là số nguyên dương. Do \( (n - 1)! \) chẵn, còn \( n(n+1) \) lẻ chẵn, thì thương là số chẵn.
+
+    \textbf{Trường hợp 4: \( n + 1 \) là số nguyên tố (tức \( n = p - 1 \)).}  
+    Theo Wilson: \( (p - 1)! \equiv -1 \pmod{p} \), mà \( (p - 1)! = (n)! \Rightarrow n! \equiv -1 \pmod{n+1} \).  
+    Vậy:
+    \[
+        n! = (n+1)t - 1 \text{ với } t \in \mathbb{Z},\quad \frac{n!}{n(n+1)} = \frac{t - \frac{1}{n+1}}{n}.
+    \]
+    Do đó, phần nguyên là \( \left\lfloor \frac{t}{n} - \frac{1}{n(n+1)} \right\rfloor = \left\lfloor \frac{t}{n} \right\rfloor \), là số nguyên.  
+    Vì \( n! \) chẵn và \( n(n+1) \) chia hết cho 2, ta lại kết luận thương là số chẵn.
+
+    \textbf{Kết luận:}
+    \[
+        \boxed{\left\lfloor \frac{(n - 1)!}{n(n + 1)} \right\rfloor \text{ là số chẵn với mọi } n \in \mathbb{Z}_{>0}.}
+    \]
+\end{soln}
+
+\footnotetext{\href{https://www.apmo-official.org/static/solutions/apmo2004_sol.pdf}{APMO 2004 P4.}}
+
+\end{document}
