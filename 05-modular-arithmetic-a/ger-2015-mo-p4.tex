@@ -1,0 +1,50 @@
+\documentclass[../05-modular-arithmetic-a.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{GER 2015 MO}/P4]\label{example:GER-2015-MO-P4}[\textbf{\nameref{definition:20M}}]
+	Cho số nguyên dương \( k \). Định nghĩa \( n_k \) là số có dạng thập phân \( 70\underbrace{00\ldots0}_{k \text{ chữ số } 0}1 \).
+	Chứng minh rằng:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Không có số nào trong các số \( n_k \) chia hết cho 13.
+        \item Có vô số số \( n_k \) chia hết cho 17.
+    \end{itemize}
+\end{example*}
+
+\begin{story*}
+    Xét \( n_k = 70\underbrace{00\ldots0}_{k\text{ chữ số }0}1 = 7 \cdot 10^{k+1} + 1 \).  
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Với modulo \(13\): Cần \(10^{k+1} \equiv 11 \pmod{13}\), nhưng chu kỳ \( 10^t \pmod{13} \) không có giá trị 11, nên không có \( k \) thỏa mãn.
+        \item Với modulo \(17\): Cần \( 10^{k+1} \equiv 12 \pmod{17} \), và chu kỳ \( 10^t \pmod{17} \) có giá trị 12 tại \( t = 15 \), nên \( k + 1 \equiv 15 \pmod{16} \), dẫn đến vô số \( n_k \) chia hết cho 17.
+    \end{itemize}
+\end{story*}
+
+\bigbreak
+
+\begin{soln}\footnotemark
+	\[
+		n_k = 7 \cdot 10^{k+1} + 1.
+	\]
+	
+	\textbf{(a)} Ta cần xét \(\;n_k\equiv 0\pmod{13}\iff 7\cdot 10^{k+1}\equiv -1\pmod{13}\).  
+	
+	Khi \(\;7^{-1}\equiv 2\pmod{13}\;\), điều này tương đương \(10^{k+1}\equiv 11\pmod{13}\).  
+
+	Dãy \(\{10^t\bmod13\}\) có chu kỳ 6: 
+	\[
+		10^1\equiv10,\;10^2\equiv9,\;10^3\equiv12,\;10^4\equiv3,\;10^5\equiv4,\;10^6\equiv1,\dots
+	\]
+	không bao giờ bằng 11. Vậy không tồn tại \(k\) để \(n_k\equiv0\pmod{13}\).  
+
+	\textbf{(b)} Tương tự, \(\;n_k\equiv0\pmod{17}\iff 7\cdot 10^{k+1}\equiv -1\pmod{17}\iff 10^{k+1}\equiv -7^{-1}\pmod{17}\).  
+	
+	Bởi \(7^{-1}\equiv5\pmod{17}\implies -7^{-1}\equiv -5\equiv12\pmod{17}\).  
+	
+	Xem \(\{10^t\bmod17\}\) có chu kỳ 16, tìm \(10^{k+1}\equiv12\). Quả thật \(10^{15}\equiv12\pmod{17}\).
+	
+	Vậy \(k+1\equiv15\pmod{16}\implies k\equiv14\pmod{16}\). Suy ra vô hạn \(k\) chia hết cho 17.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1442524p8218443}{Dựa theo giải của \textbf{RagvaloD}.}}
+
+\end{document}

@@ -1,0 +1,56 @@
+\documentclass[../06-largest-exponent.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{CHN 2015 TST}3/D1/P3]\label{example:CHN-2015-TST3-D1-P3}[\textbf{\nameref{definition:25M}}]
+	Cho \( a, b \) là hai số nguyên sao cho ước chung lớn nhất của chúng có ít nhất hai thừa số nguyên tố.  
+	Đặt  
+	\[
+		S = \{ x \mid x \in \mathbb{N},\, x \equiv a \pmod{b} \}
+	\]
+	và gọi \( y \in S \) là \textit{không thể phân tích} nếu nó không thể được viết
+	dưới dạng tích của hai (hoặc nhiều) phần tử khác trong \( S \).  
+	Chứng minh rằng tồn tại một số \( t \) sao cho mọi phần tử của \( S \) có thể được biểu diễn
+	dưới dạng tích của nhiều nhất \( t \) phần tử không thể phân tích.
+\end{example*}
+
+\begin{story*}
+	Gọi \(g=\gcd(a,b)\), và viết \(a = ga'\), \(b = gb'\). Với giả thiết rằng \(g\) có ít nhất hai thừa số nguyên tố.
+
+	Ta chia làm hai trường hợp:
+	\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+		\item Nếu \( \gcd(b', g) > 1 \), thì tồn tại số nguyên tố \( p \mid b' \cap g \). Do đó \( \nu_p(x) = \nu_p(g) \) với mọi \( x \in S \), khiến không thể phân tích \( x \) thành tích các phần tử khác trong \( S \).
+		\item Nếu \( \gcd(b', g) = 1 \), chọn hai số nguyên tố \( p, q \mid g \). Với mỗi phần tử \( x \in S \), ta dùng thao tác biến đổi \( (u, v) \mapsto (p^{\varphi(b')}u, v/p^{\varphi(b')}) \) để điều chỉnh chỉ số \( \nu_p, \nu_q \), giới hạn chúng, từ đó giới hạn số lượng thừa số không thể phân tích.
+	\end{itemize}
+	Ta thu được một cận trên \( t \) cho số lượng thừa số không thể phân tích.
+\end{story*}
+
+\begin{soln}\footnotemark
+	Gọi \( g = \gcd(a,b) \), rồi viết \( a = ga' \), \( b = gb' \). Theo giả thiết, \(g\) có ít nhất hai thừa số nguyên tố. Xét hai trường hợp:
+
+	\textbf{Trường hợp 1:} \(\gcd(b',g) > 1\).  
+	Chọn một số nguyên tố \(p\) sao cho \(p \mid b'\) và \(p \mid g\). Vì \(p \nmid a'\), ta có \(\nu_p(a) = \nu_p(g) < \nu_p(b)\). Khi đó với mọi \(x \equiv a \pmod{b}\), ta có \(\nu_p(x) = \nu_p(a)\). Do đó, \(x\) không thể là tích của hai phần tử khác có cùng chỉ số \(p\), nên mỗi \(x \in S\) là phần tử không thể phân tích.
+
+	\textbf{Trường hợp 2:} \(\gcd(b', g) = 1\).  
+	Chọn hai số nguyên tố \(p, q \mid g\). Xét một phần tử \(x \in S\). Nếu \(x\) đã là phần tử không thể phân tích thì xong. Nếu không, tức là \(x = uv\) với \(u, v \in S\). Ta thực hiện thao tác chuyển đổi:
+	\[
+		(u, v) \mapsto \left( p^{\varphi(b')} u,\; \frac{v}{p^{\varphi(b')}} \right).
+	\]
+
+	Vì \(\gcd(b', p) = 1\), ta có \(p^{\varphi(b')} \equiv 1 \pmod{b'}\), nên \(u\) vẫn thuộc lớp đồng dư \(a \pmod{b}\). Lặp lại quá trình này đến khi:
+	\[
+		\nu_p(v) \le \varphi(b') + \nu_p(g),\quad
+		\nu_q(u) \le \varphi(b') + \nu_q(g).
+	\]
+
+	Mỗi lần phân tích thêm đều yêu cầu chỉ số nguyên tố lớn hơn hoặc bằng \(\nu_p(g)\) (hoặc \(\nu_q(g)\)) cho các thừa số, nên tổng số thừa số bị chặn trên bởi:
+	\[
+		t = \frac{\varphi(b') + \nu_p(g)}{\nu_p(g)} + \frac{\varphi(b') + \nu_q(g)}{\nu_q(g)}.
+	\]
+
+	Vì \(t\) là hữu hạn, mọi phần tử trong \(S\) có thể được biểu diễn thành tích của không quá \(t\) phần tử không thể phân tích.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1069413p11175580}{Lời giải của \textbf{MarkBcc168}.}}
+
+\end{document}

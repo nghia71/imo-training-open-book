@@ -1,0 +1,19 @@
+\documentclass[../04-diophantine-equations.tex]{subfiles}
+
+\begin{document}
+
+\begin{exercise*}[\gls{GBR 2015 TST}/F1/P2]\label{example:GBR-2015-TST-F1-P2}[\textbf{\nameref{definition:20M}}]
+    Cho dãy số nguyên \( (a_n)_{n \ge 0} \) thỏa mãn:
+    \[
+        a_0 = 1, \quad a_1 = 3, \quad \text{và} \quad a_{n+2} = 1 + \left\lfloor \frac{a_{n+1}^2}{a_n} \right\rfloor \text{ với mọi } n \ge 0.
+    \]
+    
+    Chứng minh rằng với mọi \(n \ge 0\), ta có: $a_n a_{n+2} - a_{n+1}^2 = 2^n.$
+\end{exercise*}
+
+\begin{remark*}
+    Gợi ý: Thử áp dụng quy nạp theo \(n\), và phân tích biểu thức \(a_{n+2} - 1 = \left\lfloor \dfrac{a_{n+1}^2}{a_n} \right\rfloor\) để liên hệ với \(a_n\),
+    từ đó tính sai khác \(a_n a_{n+2} - a_{n+1}^2\) và chứng minh bằng lũy thừa của 2.
+\end{remark*}
+
+\end{document}

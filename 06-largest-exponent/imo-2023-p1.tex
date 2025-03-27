@@ -1,0 +1,68 @@
+\documentclass[../06-largest-exponent.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{IMO 2023}/P1]\label{example:IMO-2023-P1}\textbf{[\nameref{definition:5M}]}
+    Xác định tất cả các số nguyên hợp dương \( n \) thỏa mãn tính chất sau: nếu các ước số dương của \( n \) là \( 1 = d_1 < d_2 < \dots < d_k = n \), thì:
+    \[
+        d_i \mid (d_{i+1} + d_{i+2}) \quad \text{với mọi } 1 \leq i \leq k - 2.
+    \]
+\end{example*}
+
+\begin{story*}
+    Bài toán yêu cầu tìm các số nguyên hợp dương \( n \) sao cho mọi bộ ba ước liên tiếp \( (d_i, d_{i+1}, d_{i+2}) \) trong dãy các ước số dương tăng dần của \( n \), đều thỏa mãn \( d_i \mid (d_{i+1} + d_{i+2}) \).
+
+    Hướng tiếp cận:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Kiểm tra trước các số dạng \( n = p^r \) với \( p \) là số nguyên tố, thấy rằng chúng đều thỏa mãn điều kiện.
+        \item Giả sử \( n \) có ít nhất hai thừa số nguyên tố phân biệt, xét các ước liên tiếp và đưa về đánh giá chuẩn \( p \)-adic.
+        \item Sử dụng mâu thuẫn về chỉ số \( p \)-adic để loại trừ trường hợp \( n \) có nhiều hơn một thừa số nguyên tố.
+    \end{itemize}
+\end{story*}
+
+\begin{soln}
+    Trước tiên, ta chứng minh rằng mọi số dạng \( n = p^r \) với \( r \ge 2 \) (tức là lũy thừa bậc cao của một số nguyên tố) đều thỏa mãn điều kiện.
+
+    Thật vậy, các ước số dương của \( p^r \) là:
+    \[
+        1 = p^0 < p^1 < p^2 < \dots < p^r.
+    \]
+    Ta có:
+    \[
+        p^i \mid (p^{i+1} + p^{i+2}) = p^i(p + p^2),
+    \]
+    nên điều kiện \( d_i \mid (d_{i+1} + d_{i+2}) \) được thỏa mãn với mọi \( i \).
+
+    Bây giờ giả sử \( n \) là hợp số có ít nhất hai thừa số nguyên tố phân biệt. Gọi \( p < q \) là hai thừa số nguyên tố nhỏ nhất của \( n \). Khi đó \( n \) chia hết cho \( pq \), nên có các ước:
+    \[
+        d = \frac{n}{q}, \quad d' = \frac{n}{p^j} \text{ với một số } j, \quad d'' = \frac{n}{p^{j-1}}.
+    \]
+
+    Điều kiện bài toán yêu cầu:
+    \[
+        \frac{n}{q} \mid \left( \frac{n}{p^j} + \frac{n}{p^{j-1}} \right) = \frac{n}{p^j}(p + 1).
+    \]
+
+    Xét chuẩn \( p \)-adic hai vế:
+    \[
+        \nu_p\left( \frac{n}{q} \right) = \nu_p(n) \quad \text{vì } p \nmid q,\ \text{trong khi:}\ \nu_p\left( \frac{n}{p^j}(p + 1) \right) = \nu_p(n) - j.
+    \]
+    
+    Vì \( p \nmid (p + 1) \), nên \( \nu_p(p + 1) = 0 \).  
+    Suy ra:
+    \[
+        \nu_p\left( \frac{n}{q} \right) > \nu_p\left( \frac{n}{p^j}(p + 1) \right),
+    \]
+    điều này mâu thuẫn với giả thiết rằng \( \frac{n}{q} \mid \left( \frac{n}{p^j} + \frac{n}{p^{j-1}} \right) \).  
+
+    Do đó, \( n \) không thể có nhiều hơn một thừa số nguyên tố.  
+
+    \textbf{Kết luận:} Mọi số \( n \) thỏa mãn bài toán là các số có dạng:
+    \[
+        \boxed{n = p^r,\ \text{với } p\ \text{nguyên tố},\ r \ge 2.}
+    \]
+\end{soln}
+
+\footnotetext{\samepage \href{https://www.imo-official.org/problems/IMO2023SL.pdf}{Shortlist 2023 with solutions.}}
+
+\end{document}

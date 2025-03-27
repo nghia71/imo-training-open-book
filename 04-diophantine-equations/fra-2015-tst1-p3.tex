@@ -1,0 +1,73 @@
+\documentclass[../04-diophantine-equations.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{FRA 2015 TST}/1/P3]\label{example:FRA-2015-TST1-P3}[\textbf{\nameref{definition:25M}}]
+	Cho \( n \) là một số nguyên dương sao cho \( n(n + 2015) \) là một số chính phương.
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Chứng minh rằng \( n \) không phải là số nguyên tố.
+        \item Cho một ví dụ về số nguyên \( n \) như vậy.
+    \end{itemize}
+\end{example*}
+
+\begin{story*}
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item \textbf{Phần (a):} Giả sử \( n \) là số nguyên tố và \( n(n + 2015) = m^2 \) là số chính phương.  
+        Khi đó \( n \mid m^2 \Rightarrow n \mid m \), đặt \( m = nr \). Ta suy ra phương trình:  
+        \[
+            2015 = n(r^2 - 1).
+        \]
+        Vì \( n \mid 2015 \), nên chỉ có thể là một trong các ước nguyên tố của 2015 là \( 5, 13, 31 \).  
+        Kiểm tra từng giá trị cho thấy không có giá trị nào cho \( r^2 \) nguyên, từ đó suy ra \( n \) không thể là số nguyên tố.
+        
+        \item \textbf{Phần (b):} Ta cần xây dựng một ví dụ cụ thể sao cho \( n(n + 2015) \) là số chính phương.  
+        Sử dụng kỹ thuật đặt biến: nếu \( n(n + 2015) = \left(\frac{(2n + 2015)^2 - 2015^2}{4} \right) \), ta đưa phương trình về dạng hiệu hai bình phương.  
+        Từ đó, chọn các cặp số \( (a, b) \) sao cho \( ab = 2015^2 \), rồi giải hệ để tìm được \( n \).  
+        Chọn \( a = 2015 \cdot 5, b = 2015/5 \) ta tìm được \( n = 1612 \), là một nghiệm phù hợp.
+    \end{itemize}
+\end{story*}
+
+\begin{soln}\footnotemark
+	\textit{(a)} Giả sử \( n \) là số nguyên tố và tồn tại \( m \in \mathbb{Z} \) sao cho \( n(n + 2015) = m^2 \).  
+	Khi đó, \( n \mid m^2 \Rightarrow n \mid m \). Đặt \( m = nr \), ta có:
+	\[
+		n(n + 2015) = n^2 r^2 \Rightarrow n + 2015 = nr^2 \Rightarrow 2015 = n(r^2 - 1).
+	\]
+	Vì \( 2015 = 5 \cdot 13 \cdot 31 \), nên \( n \in \{5, 13, 31\} \).  
+	Ta kiểm tra từng giá trị:
+	\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+	    \item \( n = 5 \Rightarrow r^2 = 1 + \frac{2015}{5} = 1 + 403 = 404 \), không là số chính phương.
+	    \item \( n = 13 \Rightarrow r^2 = 1 + \frac{2015}{13} = 1 + 155 = 156 \), không là số chính phương.
+	    \item \( n = 31 \Rightarrow r^2 = 1 + \frac{2015}{31} = 1 + 65 = 66 \), không là số chính phương.
+	\end{itemize}
+	Không giá trị nào cho \( r^2 \) nguyên, nên \( n \) không thể là số nguyên tố.
+
+	\textit{(b)} Ta xét biểu thức:
+	\[
+		(2m)^2 = 4n(n + 2015) = (2n + 2015)^2 - 2015^2.
+	\]
+	Đặt \( 2n + 2015 + 2m = a \), \( 2n + 2015 - 2m = b \), ta có:
+	\[
+		ab = 2015^2.
+	\]
+	Chọn:
+	\[
+		a = 2015 \cdot 5 = 10075,\quad b = \frac{2015}{5} = 403.
+	\]
+	Suy ra:
+	\[
+		2n + 2015 = \frac{a + b}{2} = \frac{10075 + 403}{2} = 5239.
+	\]
+	\[
+		n = \frac{5239 - 2015}{2} = \frac{3224}{2} = 1612.
+	\]
+	Khi đó:
+	\[
+		n(n + 2015) = 1612 \cdot 3627 = \left( \frac{10075 - 403}{2} \right)^2 = m^2,
+	\]
+	là một số chính phương. Vậy \( n = 1612 \) là một ví dụ thoả mãn.
+\end{soln}
+
+\footnotetext{\href{http://maths-olympiques.fr/wp-content/uploads/2017/10/ofm-2014-2015-test-janvier-corrige.pdf}{Lời giải chính thức.}}
+
+\end{document}

@@ -1,0 +1,61 @@
+\documentclass[../03-arithmetic-functions.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{ROU 2015 TST}/D1/P4]\label{example:ROU-2015-TST-D1-P4}[\textbf{\nameref{definition:25M}}]
+    Gọi \( k \) là một số nguyên dương sao cho \( k \equiv 1 \Mod{4} \), và \( k \) không phải là số chính phương. Đặt
+    \[
+        a = \frac{1 + \sqrt{k}}{2}.
+    \]
+    
+    Chứng minh rằng
+    \[
+        \left\{ \left\lfloor a^2 n \right\rfloor - \left\lfloor a \left\lfloor a n \right\rfloor \right\rfloor : n \in \mathbb{N}_{>0} \right\} = \{ 1, 2, \ldots, \left\lfloor a \right\rfloor \}.
+    \]
+\end{example*}
+
+\begin{story*}
+    Đặt \(a = \tfrac{1 + \sqrt{k}}{2}\) với \(k \equiv 1 \Mod{4}\) và \(k\) không phải chính phương. Ta có \(a^2 = a + t\) cho một \(t \in \mathbb{Z}_{>0}\). Mấu chốt là xét \(\lfloor a^2 n \rfloor\) và so sánh với \(\lfloor a \lfloor a n \rfloor \rfloor\), rồi sử dụng tính vô tỷ của \(a\) để chứng minh dãy các hiệu \(\lfloor a^2 n \rfloor - \lfloor a \lfloor a n \rfloor\rfloor\) phân bố đủ các giá trị \(\{1,2,\dots,\lfloor a\rfloor\}\).
+\end{story*}
+
+\bigbreak
+
+\begin{soln}
+    Đặt \( a = \frac{1 + \sqrt{k}}{2} \), với \( k \equiv 1 \Mod{4} \) và \( k \) không phải là số chính phương. Khi đó
+    \[
+        a^2 = a + \frac{k - 1}{4} = a + t, \quad \text{với } t \in \mathbb{Z}_{>0}.
+    \]
+    
+    Đặt \( \varepsilon_n = a n - \lfloor a n \rfloor \in (0,1) \). Khi đó
+    \[
+        a^2 n = a n + t n = \lfloor a n \rfloor + \varepsilon_n + t n.
+    \]
+    
+    Vậy
+    \[
+        \lfloor a^2 n \rfloor = \lfloor a n \rfloor + t n + \delta_n, \quad \delta_n \in \{0,1\}.
+    \]
+
+    Đặt \( m_n = \lfloor a n \rfloor \). Khi đó
+    \[
+        \lfloor a m_n \rfloor = \lfloor a (\lfloor a n \rfloor) \rfloor.
+    \]
+    
+    Vậy
+    \[
+        \lfloor a^2 n \rfloor \;-\; \lfloor a \lfloor a n \rfloor \rfloor 
+        = t n + \lfloor a n \rfloor - \lfloor a m_n \rfloor + \delta_n.
+    \]
+    
+    Vì \( a \) là vô tỷ, \( \varepsilon_n \) phân bố đều trong khoảng \( (0,1) \), và \((a - 1)\varepsilon_n\) cũng phân bố đều trong \( (0, a - 1) \).  
+    Do đó
+    \[
+        \left\{ 
+            \lfloor a^2 n \rfloor - \lfloor a \lfloor a n \rfloor \rfloor 
+            \;:\; n \in \mathbb{N}_{>0} 
+        \right\}
+    \]
+    là tập hợp chính xác \(\{1, 2, \ldots, \lfloor a \rfloor\}\), vì mỗi giá trị nguyên như vậy xuất hiện chính xác một lần nhờ vào sự phân bố đồng đều của các phần thập phân.
+\end{soln}
+
+\end{document}

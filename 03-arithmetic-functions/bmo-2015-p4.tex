@@ -1,0 +1,73 @@
+\documentclass[../03-arithmetic-functions.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{BMO 2015}/P4]\label{example:BMO-2015-P4}[\textbf{\nameref{definition:20M}}]
+    Chứng minh rằng trong bất kỳ dãy \( 20 \) số nguyên dương liên tiếp nào cũng tồn tại một số nguyên \( d \) sao cho với mọi số nguyên dương \( n \),
+    bất đẳng thức sau luôn đúng:
+    \[
+        n \sqrt{d} \cdot \left\{n \sqrt{d} \right\} > \frac{5}{2},
+    \]
+    trong đó \( \left\{ x \right\} \) ký hiệu phần thập phân của \( x \), tức là \( \left\{ x \right\} = x - \lfloor x \rfloor \).
+\end{example*}
+
+\begin{story*}
+    Ta chọn \( d \) thuộc dạng \( 5(4k + 3) \) trong dãy 20 số nguyên liên tiếp. Dựa vào tính chất \( p \equiv -1 \Mod{4} \) đối với một ước nguyên tố của \( 4k+3 \), ta chứng minh rằng mỗi \( n\sqrt{d} \) có phần thập phân đủ lớn để \( n\sqrt{d} \cdot \{n\sqrt{d}\} > \tfrac{5}{2} \). Kỹ thuật chính là sử dụng chia hết theo mô-đun 4 và 5 để loại trừ những khả năng nhỏ hơn.
+\end{story*}
+
+\bigbreak
+
+\begin{soln}\footnotemark
+    Trong 20 số nguyên liên tiếp luôn tồn tại một số có dạng \( 20k + 15 = 5(4k + 3) \). Ta sẽ chứng minh rằng \( d = 5(4k + 3) \) thỏa mãn yêu cầu bài toán.
+
+    Vì \( d \equiv -1 \Mod{4} \), nên \( d \) không phải là một số chính phương. Với mọi \( n \in \mathbb{N} \), tồn tại một số nguyên \( a \) sao cho:
+    \[
+        a < n\sqrt{d} < a + 1 \implies a^2 < n^2 d < (a + 1)^2.
+    \]
+
+    Ta sẽ chứng minh rằng \( n^2 d \geq a^2 + 5 \). Thật vậy: ta sử dụng \nameref{theorem:prime-divisor-4k3}.
+
+    Gọi \( p \mid (4k + 3) \) sao cho \( p \equiv -1 \Mod{4} \). Với dạng này, các số \( a^2 + 1 \) và \( a^2 + 4 \) không chia hết cho \( p \). Do \( p \mid n^2 d \), suy ra:
+    \[
+        n^2 d \ne a^2 + 1, \quad n^2 d \ne a^2 + 4.
+    \]
+
+    Mặt khác, vì \( 5 \mid n^2 d \) và \( 5 \nmid a^2 + 2, \quad 5 \nmid a^2 + 3 \), ta có:
+    \[
+        n^2 d \ne a^2 + 2, \quad n^2 d \ne a^2 + 3, \quad  n^2 d > a^2 \implies n^2 d \geq a^2 + 5.
+    \]
+
+    Do đó:
+    \[
+        n\sqrt{d} \cdot \left\{n\sqrt{d}\right\}
+        = n\sqrt{d}(n\sqrt{d} - a)
+        = n^2 d - a n\sqrt{d}.
+    \]
+
+    Ta đánh giá:
+    \[
+        n^2 d \geq a^2 + 5, \quad n\sqrt{d} < a + 1 \implies a n\sqrt{d} < a(a + 1).
+    \]
+
+    Vì \( a^2 + 5 > a(a + 1) \), ta có:
+    \[
+        n\sqrt{d} \cdot \left\{n\sqrt{d}\right\} > a^2 + 5 - a(a + 1) = 5 - a.
+    \]
+
+    Khi \( a \leq 2 \), ta có \( n\sqrt{d} > a + 1 \geq 3 \), và vì \( \left\{ n\sqrt{d} \right\} > 0 \), nên bất đẳng thức đúng.
+
+    Còn khi \( a \geq 3 \), ta có:
+    \[
+        n\sqrt{d} \cdot \left\{n\sqrt{d}\right\} > 5 - a \geq \frac{5}{2},
+    \]
+    vì biểu thức là số dương tăng theo \( a \).
+
+    Kết luận: Trong mọi dãy 20 số nguyên dương liên tiếp luôn tồn tại một số \( d \) sao cho với mọi \( n \in \mathbb{N} \), ta có:
+    \[
+        n\sqrt{d} \cdot \left\{n\sqrt{d}\right\} > \frac{5}{2}.
+    \]
+\end{soln}
+
+\footnotetext{\href{https://www.hms.gr/32bmo2015/sols.pdf}{Lời giải chính thức.}}
+
+\end{document}

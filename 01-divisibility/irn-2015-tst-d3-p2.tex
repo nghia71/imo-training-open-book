@@ -1,0 +1,74 @@
+\documentclass[../01-divisibility.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{IRN 2015 TST}/D3-P2]\label{example:IRN-2015-TST-D3-P2}\textbf{[\nameref{definition:30M}]}
+	Giả sử \( a_1, a_2, a_3 \) là ba số nguyên dương cho trước. Xét dãy số được xác định bởi công thức:
+	\[
+		a_{n+1} = \text{lcm}[a_n, a_{n-1}] - \text{lcm}[a_{n-1}, a_{n-2}] \quad \text{với } n \geq 3,
+	\]
+	trong đó \( [a, b] \) ký hiệu bội chung nhỏ nhất của \( a \) và \( b \), và chỉ được áp dụng với các số nguyên dương.
+
+	Chứng minh rằng tồn tại một số nguyên dương \( k \leq a_3 + 4 \) sao cho \( a_k \leq 0 \).
+\end{example*}
+
+\begin{story*}
+	Bài toán yêu cầu chứng minh rằng chuỗi được xây dựng theo công thức liên quan đến LCM sẽ đạt giá trị không dương trong thời gian hữu hạn.
+	Chiến lược:
+	\begin{itemize}[topsep=0pt, itemsep=0pt]
+		\item Xây dựng chuỗi phụ \( b_n = \dfrac{a_n}{\text{lcm}(a_{n-2}, a_{n-3})} \) để theo dõi sự suy giảm.
+		\item Chứng minh \( b_n \) nguyên và giảm dần.
+		\item Từ đó suy ra tồn tại một \( k \leq a_3 + 3 \) sao cho \( a_k \leq 0 \).
+	\end{itemize}
+\end{story*}
+
+\begin{soln}\footnotemark
+	Ta chứng minh điều mạnh hơn: tồn tại \( k \leq a_3 + 3 \) sao cho \( a_k \leq 0 \).
+
+	\textbf{Bước 1:} Đặt
+	\[
+		b_n = \frac{a_n}{\text{lcm}(a_{n-2}, a_{n-3})} \quad \text{với mọi } n \geq 5.
+	\]
+	Ta chứng minh rằng \( b_n \in \mathbb{N} \) và giảm dần.
+
+	Với \( n \geq 4 \), \( a_{n-2} \mid a_n \) và \( a_{n-3} \mid a_n \), nên \( \text{lcm}(a_{n-2}, a_{n-3}) \mid a_n \), suy ra \( b_n \in \mathbb{N} \).
+
+	\begin{claim*}
+		Với mọi \( n \geq 5 \), ta có \( b_{n+1} < b_n \).
+	\end{claim*}
+	\begin{subproof}
+		Ta có
+		\[
+		a_{n+1} = \text{lcm}(a_n, a_{n-1}) - \text{lcm}(a_{n-1}, a_{n-2}).
+		\]
+		Thay \( a_n = b_n \cdot \text{lcm}(a_{n-2}, a_{n-3}) \), ta suy ra:
+		\[
+		a_{n+1} = \text{lcm}(b_n, a_{n-2}, a_{n-3}, a_{n-1}) - \text{lcm}(a_{n-1}, a_{n-2}).
+		\]
+		Vì \( a_{n-3} \mid a_{n-1} \), nên
+		\[
+		a_{n+1} = \text{lcm}(b_n, a_{n-2}, a_{n-1}) - \text{lcm}(a_{n-1}, a_{n-2}) \implies b_{n+1} < b_n.
+		\]
+	\end{subproof}
+
+	\textbf{Bước 2:} Ước lượng \( b_5 \).
+
+	Ta có
+	\[
+	a_4 = \text{lcm}(a_3, a_2) - \text{lcm}(a_2, a_1) = c \cdot a_2,\quad \text{với } c \leq a_3 - 1,
+	\]
+	và
+	\[
+	a_5 = \text{lcm}(a_4, a_3) - \text{lcm}(a_3, a_2) = \text{lcm}(c a_2, a_3) - \text{lcm}(a_3, a_2).
+	\]
+	Suy ra:
+	\[
+	b_5 = \frac{a_5}{\text{lcm}(a_3, a_2)} \leq c - 1 \leq a_3 - 2.
+	\]
+
+	\textbf{Kết luận:} Dãy \( b_n \) nguyên, giảm dần, bắt đầu từ \( b_5 \leq a_3 - 2 \), nên sau tối đa \( a_3 - 2 \) bước sẽ đạt giá trị không dương. Do đó, tồn tại \( k \leq a_3 + 3 \) sao cho \( a_k = 0 \leq 0 \).
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1100830p25301244}{Lời giải của \textbf{guptaamitu1}.}}
+
+\end{document}

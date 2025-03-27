@@ -1,0 +1,30 @@
+\documentclass[../imo-training-open-book.tex]{subfiles}
+
+\begin{document}
+
+\newpage
+
+\section{Các ví dụ}
+
+\subfile{./03-arithmetic-functions/bmo-2015-p4.tex} \newpage
+\subfile{./03-arithmetic-functions/rou-2015-tst-d1-p4.tex} \newpage
+\subfile{./03-arithmetic-functions/rou-2015-tst-d2-p1.tex} \newpage
+\subfile{./03-arithmetic-functions/rou-2015-tst-d3-p3.tex} \newpage
+
+\section{Bài tập}
+
+\subfile{./03-arithmetic-functions/twn-2015-tst3-q3-p1.tex}
+
+\newpage
+
+\section{Định lý, bổ đề, và hằng đẳng thức}
+
+\begin{theorem*}[GCD Power Sum Identity]
+    \label{theorem:gcd-power-sum}
+    For any positive integer \( n \) and any real or complex number \( a \), we have
+    \[
+        \sum_{k=1}^n a^{\gcd(k,n)} = \sum_{d \mid n} \phi(d) \, a^{n/d}.
+    \]
+\end{theorem*}
+
+\end{document}

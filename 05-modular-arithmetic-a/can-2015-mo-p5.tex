@@ -1,0 +1,48 @@
+\documentclass[../05-modular-arithmetic-a.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{CAN 2015 MO}/P5]\label{example:CAN-2015-MO-P5}\textbf{[\nameref{definition:30M}]}
+	Cho \( p \) là một số nguyên tố sao cho \( \frac{p - 1}{2} \) cũng là số nguyên tố, và cho \( a, b, c \) là các số nguyên không chia hết cho \( p \).
+	Chứng minh rằng có nhiều nhất \( 1 + \sqrt{2p} \) số nguyên dương \( n \) sao cho \( n < p \) và \( p \mid (a^n + b^n + c^n) \).
+\end{example*}
+
+\begin{story*}
+    Ta cần đếm số nghiệm nguyên dương \( n < p \) sao cho \( a^n + b^n + c^n \equiv 0 \Mod{p} \). Phương pháp giải chủ yếu sử dụng định lý Fermat nhỏ, phân tích bậc lũy thừa của các số modulo \( p \) và số lượng cặp sai khác giữa các nghiệm \( n \). Cuối cùng, ta suy ra rằng số lượng nghiệm là \( \sqrt{2p} + 1 \) hoặc ít hơn.
+\end{story*}
+
+\bigbreak
+
+\begin{soln}(Cách 1)\footnotemark
+	Giả sử trước hết rằng \( ac + bd \) là một số nguyên tố.
+
+	Không mất tính tổng quát, giả sử \( a > d \). Từ \( a^4 + b^4 = c^4 + d^4\), suy ra \( b < c \).  
+	Xét biểu thức:
+	\[
+		(a^4 + b^4)c^2d^2 - (c^4 + d^4)a^2b^2
+		= (a^2c^2 - b^2d^2)(a^2d^2 - b^2c^2).
+	\]
+	Vì \( a^4 + b^4 = c^4 + d^4 = e^5\), nên:
+	\[
+		e^5(cd - ab)(cd + ab) 
+		= (ac - bd)(ac + bd)(ad - bc)(ad + bc).
+	\]
+	Nếu \( ac - bd = 0 \) hoặc \( ad - bc = 0\), thì ta có tỷ lệ \( \frac{a}{b} = \frac{c}{d} \) hoặc \( \frac{a}{b} = \frac{d}{c} \), mâu thuẫn với giả thiết các số đều phân biệt.  
+	Vậy mọi nhân tử đều khác 0.
+
+	Khi đó, \( ac + bd \mid e^5(cd - ab)(cd + ab) \).  
+	Nhưng vì \( ac + bd > cd + ab\), ta thấy \( ac + bd \nmid cd + ab\) và cũng không chia hết \( cd - ab \).  
+	Suy ra \( ac + bd \mid e^5\). Gọi \( ac + bd = p \), khi đó \( p \mid e^5 \Rightarrow p \le e\).  
+
+	Nhưng:
+	\[
+		e = \sqrt[5]{a^4 + b^4} \le \sqrt[5]{2a^4} = a^{4/5} \cdot 2^{1/5} < a.
+	\]
+	Vì \( ac + bd > ab \), thì \( p > ab\), mâu thuẫn với \( p \le e < a \le ab\).  
+
+	Vậy \( ac + bd \) không thể là số nguyên tố, tức là nó là hợp số.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/wiki/index.php/2015_USAMO_Problems/Problem_5}{Lời giải chính thức.}}
+
+\end{document}

@@ -1,0 +1,56 @@
+\documentclass[../02-modular-arithmetic-b.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{GER 2015 MO}/P2]\label{example:GER-2015-MO-P2}[\textbf{\nameref{definition:25M}}]
+    Một số nguyên dương \( n \) được gọi là \textbf{trơn} nếu tồn tại các số nguyên \( a_1, a_2, \dots, a_n \) sao cho:
+    \[
+        a_1 + a_2 + \dots + a_n = a_1 \cdot a_2 \cdot \dots \cdot a_n = n.
+    \]
+    
+    Hãy tìm tất cả các số trơn.
+\end{example*}
+
+\begin{story*}
+    Phân tích \(\Mod{4}\) để xác định \(n\) là \(0\) hoặc \(1 \Mod{4}\). Kiểm tra các trường hợp cụ thể và loại trừ \(n = 4\). Xây dựng các ví dụ để chứng minh các số \(n\) thỏa mãn là những số \(n \equiv 0\) hoặc \(1 \Mod{4}\), ngoại trừ \(n = 4\).
+\end{story*}
+
+\bigbreak
+\begin{soln}\footnotemark
+    Xét \(\Mod{4}\), ta thấy nếu \( n \) trơn thì \( n \equiv 0\) hoặc \(1 \Mod{4}\).
+
+    \textit{Trường hợp \( n = 4k + 1 \)}: Chọn \(a_1 = n,\; 2k\) số \(-1,\; 2k\) số \(1\).  
+
+    Tổng: \(\;n + 2k(-1) + 2k(1) = n.\)  
+
+    Tích: \(\;n \cdot (-1)^{2k} \cdot 1^{2k} = n.\)
+
+    \textit{Trường hợp \( n = 8k \)} (\(k \ge 1\)):  
+    Chọn \(a_1 = 2,\; a_2 = 4k,\; 6k-2\) số \(1,\; 2k\) số \(-1\).  
+
+    Tổng: \(2 + 4k + (6k-2)\cdot 1 + 2k\cdot(-1) = 8k = n.\)  
+
+    Tích: \(2 \cdot 4k \cdot 1^{6k-2} \cdot (-1)^{2k} = 8k = n.\)
+
+    \textit{Trường hợp \( n = 16k + 12 \)}:  
+    Chọn \(a_1 = a_2 = 2,\; a_3 = 4k + 3,\; 14k + 7\) số \(1,\; 2k + 2\) số \(-1\).  
+
+    Tổng: \(2 + 2 + (4k+3) + (14k+7) - (2k+2) = 16k+12 = n.\)  
+
+    Tích: \(2 \cdot 2 \cdot (4k+3) \cdot 1^{14k+7} \cdot (-1)^{2k+2} = 16k+12.\)
+
+    \textit{Trường hợp \( n = 16k + 4 \)} (\(k \ge 1\)):  
+    Chọn \(a_1 = -2,\; a_2 = 8k+2,\; 12k+3\) số \(1,\; 4k-1\) số \(-1\).  
+
+    Tổng: \(-2 + (8k+2) + (12k+3)\cdot 1 + (4k-1)\cdot(-1) = 16k+4 = n.\)  
+    
+    Tích: \((-2) \cdot (8k+2) \cdot 1^{12k+3} \cdot (-1)^{4k-1} = 16k+4.\)
+
+    Cuối cùng, kiểm tra các giá trị \(n<10\), chỉ \(n=4\) không thoả mãn.  
+
+    \textbf{Kết luận}: Các \(n\) “trơn” là mọi \(n \equiv 0\) hoặc \(1 \Mod{4}\), trừ \(n=4\).
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1442499p8218768}{Lời giải của \textbf{MathGan}.}}
+
+\end{document}

@@ -1,0 +1,46 @@
+\documentclass[../01-divisibility.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{IND 2015 MO}/P6]\label{example:IND-2015-N6}\textbf{[\nameref{definition:15M}]}
+	Chứng minh rằng từ một tập gồm \( 11 \) số chính phương, ta luôn có thể chọn ra sáu số \( a^2, b^2, c^2, d^2, e^2, f^2 \) sao cho:
+	\[
+		a^2 + b^2 + c^2 \equiv d^2 + e^2 + f^2 \Mod{12}
+	\]
+\end{example*}
+
+\begin{story*}
+	Bài toán yêu cầu tìm hai bộ ba số chính phương có tổng đồng dư modulo 12.  
+	Ta xét phần dư của số chính phương theo modulo 12 (chỉ có thể là \( 0, 1, 4, 9 \)), sau đó áp dụng nguyên lý Dirichlet để buộc tồn tại phần dư xuất hiện nhiều lần.  
+	Từ đó, xét các tổ hợp 3 phần tử và so sánh tổng modulo 12 giữa các nhóm khác nhau để tìm hai tổng bằng nhau.
+\end{story*}
+
+\begin{soln}
+	Các phần dư khả dĩ của một số chính phương modulo 12 là:
+	\[
+		x^2 \equiv 0, 1, 4, 9 \Mod{12}.
+	\]
+
+	Gọi \( S \) là tập gồm 11 số chính phương. Mỗi phần tử của \( S \) thuộc một trong 4 lớp dư trên.
+
+	Ta cần tìm hai tập rời nhau \( A, B \subset S \), mỗi tập gồm 3 phần tử, sao cho
+	\[
+		\sum_{x \in A} x \equiv \sum_{y \in B} y \Mod{12}.
+	\]
+
+	\textit{Trường hợp 1:} Có ít nhất 6 phần tử trong \( S \) có cùng phần dư.  
+	Chia chúng thành 2 bộ ba giống nhau → tổng bằng nhau → đẳng thức modulo 12 hiển nhiên đúng.
+
+	\textit{Trường hợp 2:} Có một phần dư xuất hiện 4 hoặc 5 lần.  
+	Theo Dirichlet, phần dư khác xuất hiện ít nhất 2 lần. Từ đó có thể chọn hai bộ ba từ hai phần dư khác nhau nhưng tạo ra tổng đồng dư nhau.
+
+	\textit{Trường hợp 3:} Mỗi phần dư xuất hiện tối đa 3 lần.  
+	Khi đó số lượng bộ ba là hữu hạn nhưng đáng kể: có tổng cộng \( \binom{11}{3} = 165 \) cách chọn bộ ba.  
+	Mà chỉ có hữu hạn tổng có thể xảy ra modulo 12 với các phần dư \( \{0,1,4,9\} \), nên tồn tại hai bộ ba khác nhau có tổng đồng dư nhau.
+
+	\textbf{Kết luận:} Trong mọi trường hợp, luôn tồn tại hai bộ ba số chính phương rời nhau sao cho tổng của chúng đồng dư modulo 12.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h623456p3730860}{Dựa theo lời giải của \textbf{Sahil}.}}
+
+\end{document}

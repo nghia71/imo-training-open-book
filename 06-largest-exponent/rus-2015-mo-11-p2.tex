@@ -1,0 +1,68 @@
+\documentclass[../06-largest-exponent.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{RUS 2015 MO}11/P2]\label{example:RUS-2015-MO-11-P2}[\textbf{\nameref{definition:25M}}]
+    Cho số tự nhiên \( n > 1 \). Ta viết ra các phân số
+    \[
+        \frac{1}{n}, \frac{2}{n}, \dots, \frac{n-1}{n},
+    \]
+    và chỉ giữ lại những phân số tối giản. Gọi tổng các tử số (của những phân số tối giản đó) là \( f(n) \).
+    Hỏi có những giá trị \( n > 1 \) nào sao cho một trong hai số \( f(n) \) và \( f(2015n) \) là số lẻ, còn số kia là số chẵn?
+\end{example*}
+
+\begin{story*}
+    Xét bài toán về tính chẵn lẻ của tổng các tử số trong các phân số tối giản dạng \( \frac{k}{n} \) với \( 1 \le k < n \) và \( \gcd(k,n) = 1 \). Tổng này được gọi là \( f(n) \). Bài toán yêu cầu kiểm tra tính chẵn lẻ của \( f(n) \) và \( f(2015n) \), và tìm xem có giá trị \( n > 1 \) nào sao cho chúng khác tính chẵn lẻ.
+
+    Ý tưởng chính gồm:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Phân tích cách tử số thay đổi khi nhân thêm một hằng số (như \( 2015 \)) vào mẫu số.
+        \item Sử dụng định lý về định giá \( 2 \)-adic (\( v_2 \)) để xác định khi nào một tử số là số lẻ.
+        \item Thấy rằng nếu \( n \) chẵn, thì tồn tại số lượng tử số lẻ khác nhau giữa \( f(n) \) và \( f(2015n) \), nên tính chẵn lẻ của chúng sẽ khác nhau.
+    \end{itemize}
+\end{story*}
+
+\begin{soln}(Cách 1)\footnotemark
+    Mỗi phân số \( \frac{k}{n} \) tối giản có tử số là \( \frac{k}{\gcd(k, n)} \). Tổng \( f(n) \) là tổng các tử số này với \( 1 \le k < n \) và \( \gcd(k, n) = 1 \). Tương tự định nghĩa \( f(2015n) \).
+
+    Xét khi nào \( \frac{k}{\gcd(k, 2015n)} \) là số lẻ. Gọi \( v_2(k) \) là số mũ của \( 2 \) trong phân tích thừa số nguyên tố của \( k \), thì:
+    \[
+        v_2\left( \frac{k}{\gcd(k, 2015n)} \right) = v_2(k) - \min\left( v_2(k), v_2(2015n) \right).
+    \]
+
+    Nên \( \frac{k}{\gcd(k, 2015n)} \) lẻ nếu và chỉ nếu \( v_2(k) \le v_2(2015n) \): \( k \) không chia hết cho bậc cao hơn của \( 2 \) so với \( n \).
+
+    Vì \( 2015 = 5 \cdot 13 \cdot 31 \), nên \( v_2(2015n) = v_2(n) \). Ta thấy số lượng \( k \) trong \( \{1, 2, \dots, 2015n - 1\} \) sao cho \( v_2(k) \le v_2(n) \) là một số lẻ. Do đó, tổng \( f(2015n) \) sẽ có số lẻ tử số lẻ — suy ra \( f(2015n) \) lẻ, còn \( f(n) \) chẵn (hoặc ngược lại). Kết luận, chúng luôn khác tính chẵn lẻ.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1172743p26747135}{Lời giải của \textbf{JAnatolGT\_00}.}}
+
+\begin{soln}(Cách 2)\footnotemark
+    Gọi \( v_2(n) = \alpha \), tức \( n = 2^\alpha \cdot \beta \) với \( \beta \) lẻ.
+
+    Ta dùng kết quả sau: \( \frac{k}{n} \) có tử số lẻ nếu và chỉ nếu \( v_2(k) \le \alpha \).  
+    Vậy số lượng tử số lẻ trong \( f(n) \) là:
+    \[
+        f(n) \equiv n - 1 - \left\lfloor \frac{n}{2^{\alpha + 1}} \right\rfloor \pmod{2},\quad
+        f(2015n) \equiv 2015n - 1 - \left\lfloor \frac{2015n}{2^{\alpha + 1}} \right\rfloor \pmod{2}.
+    \]
+
+    Vì \( 2015n = 2015 \cdot 2^\alpha \cdot \beta \), ta tính:
+    \[
+        \begin{aligned}
+            &\left\lfloor \frac{2015n}{2^{\alpha + 1}} \right\rfloor = \left\lfloor \frac{2015 \cdot \beta}{2} \right\rfloor = 1007 \cdot \beta + \left\lfloor \frac{\beta}{2} \right\rfloor.\\
+            &\left\lfloor \frac{n}{2^{\alpha + 1}} \right\rfloor = \left\lfloor \frac{\beta}{2} \right\rfloor \implies
+            \left\lfloor \frac{2015n}{2^{\alpha + 1}} \right\rfloor \equiv \left\lfloor \frac{n}{2^{\alpha + 1}} \right\rfloor + 1007 \cdot \beta \pmod{2}.
+        \end{aligned}
+    \]
+
+    Mà \( \beta \) là số lẻ, nên \( 1007 \cdot \beta \equiv 1 \pmod{2} \Rightarrow \left\lfloor \cdot \right\rfloor \) của hai vế khác nhau modulo 2.
+
+    Vậy \( f(n) \) và \( f(2015n) \) luôn khác tính chẵn lẻ.
+
+    \textbf{Kết luận:} Với mọi \( n > 1 \), tồn tại sự khác biệt về tính chẵn lẻ giữa \( f(n) \) và \( f(2015n) \).
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1172743p6231783}{Lời giải của \textbf{kreegyt}.}}
+
+\end{document}

@@ -1,0 +1,33 @@
+\documentclass[../03-arithmetic-functions.tex]{subfiles}
+
+\begin{document}
+
+\begin{exercise*}[\gls{GBR 2015 TST}/F2/P5]\label{example:GBR-2015-TST-F2-P5}[\textbf{definition:25M}]
+    Cho dãy số nguyên $(a_n)_{n \ge 0}$ thỏa mãn:
+    \[
+        a_0 = 1, \quad a_1 = 3, \quad \text{và} \quad a_{n+2} = 1 + \left\lfloor \frac{a_{n+1}^2}{a_n} \right\rfloor \text{ với mọi } n \ge 0.
+    \]
+    
+    Chứng minh rằng với mọi \(n \ge 0\), ta có:
+    \[
+        a_n a_{n+2} - a_{n+1}^2 = 2^n.
+    \]
+\end{exercise*}
+
+\begin{remark*}
+    Thử tính vài giá trị đầu của dãy để quan sát quy luật. Sau đó, đặt mục tiêu chứng minh \( a_n a_{n+2} - a_{n+1}^2 = 2^n \), có thể dùng phương pháp quy nạp. Để ý rằng công thức đệ quy dùng phần nguyên nên cần biến đổi phù hợp để tính toán chính xác.
+\end{remark*}
+
+% \begin{story*}
+%     Dãy được cho bởi:
+%     \[
+%         a_0 = 1,\quad a_1 = 3,\quad a_{n+2} = 1 + \left\lfloor \frac{a_{n+1}^2}{a_n} \right\rfloor.
+%     \]
+%     Ta đặt mục tiêu chứng minh:
+%     \[
+%         a_n a_{n+2} - a_{n+1}^2 = 2^n \quad \text{với mọi } n \ge 0.
+%     \]
+%     Phương pháp hợp lý là quy nạp theo \( n \). Ở bước quy nạp, cần khai triển biểu thức \( a_{n+2} \) bằng công thức truy hồi, rồi thay vào \( a_n a_{n+2} - a_{n+1}^2 \) để kiểm tra xem có bằng \( 2^n \) hay không. Để đơn giản, có thể đặt \( \left\lfloor \frac{a_{n+1}^2}{a_n} \right\rfloor = q \) để viết lại biểu thức một cách rõ ràng hơn.
+% \end{story*}
+
+\end{document}

@@ -1,0 +1,57 @@
+\documentclass[../09-contruction-methods.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{ROU 2015 TST}/D1/P3]\label{example:ROU-2015-TST-D1-P3}[\textbf{\nameref{definition:20M}}]
+    Một bộ ba Pythagoras là một nghiệm của phương trình \( x^2 + y^2 = z^2 \) trong các số nguyên dương sao cho \( x < y \).
+    Cho trước một số nguyên không âm \( n \), hãy chứng minh rằng tồn tại một số nguyên dương xuất hiện trong đúng \( n \) bộ ba Pythagoras phân biệt.
+\end{example*}
+
+\begin{story*}
+    Ta cần chứng minh rằng với mỗi \( n \ge 0 \), tồn tại số tự nhiên xuất hiện trong đúng \( n \) bộ ba Pythagoras phân biệt.
+
+    Ý tưởng là xét các số có dạng \( 2^n \), rồi phân tích số nghiệm của phương trình \( x^2 + 2^{2n} = y^2 \),
+    tức \( y^2 - x^2 = 2^{2n} \). Số nghiệm tương ứng với số ước dương của \( 2^{2n} \) nhỏ hơn \( 2^n \),
+    từ đó suy ra có đúng \( n - 1 \) bộ ba chứa \( 2^n \), và thêm một bộ ba đặc biệt \( (2^n, 2^n, 2^{n+1}) \),
+    tổng cộng là \( n \) bộ ba.
+\end{story*}
+
+\begin{soln}\footnotemark
+    \begin{claim*}
+        Phương trình \( x^2 + y^2 = 2^{2n} \) không có nghiệm nguyên dương.
+    \end{claim*}
+    \begin{subproof}
+        Rõ ràng đúng với \( n = 1 \) vì không có tổng bình phương hai số nguyên dương nào bằng 4. Giả sử mệnh đề đúng với mọi \( k = n - 1 \), xét:
+        \[
+            x^2 + y^2 = 2^{2n}.
+        \]
+        
+        Vì \( x, y \) không thể đồng thời là số lẻ (tổng bình phương hai số lẻ chia hết cho 2 nhưng không chia hết cho 4), nên \( x, y \) đều chia hết cho 2.
+        Khi đó tồn tại \( x', y' \) sao cho \( x = 2x', y = 2y' \Rightarrow x'^2 + y'^2 = 2^{2(n - 1)} \), mâu thuẫn với giả thuyết quy nạp.
+    \end{subproof}
+
+    \begin{claim*}
+        Phương trình \( x^2 + 2^{2n} = y^2 \) có đúng \( n - 1 \) nghiệm nguyên dương phân biệt.
+    \end{claim*}
+    \begin{subproof}
+        Phương trình tương đương:
+        \[
+            y^2 - x^2 = 2^{2n} \Rightarrow (y - x)(y + x) = 2^{2n}.
+        \]
+    
+        Gọi \( d = y - x \Rightarrow y + x = \dfrac{2^{2n}}{d} \), nên \( x = \dfrac{1}{2}\left( \dfrac{2^{2n}}{d} - d \right) \).
+        Để \( x \in \mathbb{N} \), cần \( d \) là ước dương của \( 2^{2n} \) nhỏ hơn \( 2^n \), tức \( d = 2^k \) với \( k = 1, 2, \dots, n - 1 \).
+        Vậy có đúng \( n - 1 \) nghiệm phân biệt.
+    \end{subproof}
+    
+    Bây giờ, xét bộ ba \( (x, y, z) = (2^n, 2^n, 2^{n+1}) \), ta có:
+    \[
+        (2^n)^2 + (2^n)^2 = 2 \cdot 2^{2n} = 2^{2n + 1} = (2^{n+1})^2.
+    \]
+    
+    Do đó, số \( 2^{n} \) xuất hiện trong đúng \( n \) bộ ba Pythagoras phân biệt.    
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1087616p5864559}{Dựa theo lời giải của \textbf{Ariscrim}.}}
+
+\end{document}

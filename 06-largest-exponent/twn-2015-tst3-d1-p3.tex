@@ -1,0 +1,76 @@
+\documentclass[../06-largest-exponent.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{TWN 2015 TST}3/D1/P3]\label{example:TWN-2015-TST3-D1-P3}[\textbf{\nameref{definition:25M}}]
+    Cho số nguyên \( c \geq 1 \). Xét dãy số nguyên dương được xác định bởi:
+    \[
+        a_1 = c,\quad a_{n+1} = a_n^3 - 4c \cdot a_n^2 + 5c^2 \cdot a_n + c \text{ với mọi } n \ge 1.
+    \]
+    Chứng minh rằng với mỗi số nguyên \( n \ge 2 \), tồn tại một số nguyên tố \( p \) chia hết \( a_n \)
+    nhưng không chia hết bất kỳ số nào trong các số \( a_1, a_2, \dotsc, a_{n-1} \).
+\end{example*}
+
+\begin{story*}
+    Đặt \( b_n = \frac{a_n}{c} \). Khi đó dãy thỏa đệ quy: 
+    \[
+        b_1 = 1,\quad b_{n+1} = c^2\,b_n(b_n^2 - 4b_n + 5) + 1.
+    \]
+    Ta sẽ chứng minh:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Mỗi \( b_n \) là số nguyên dương.
+        \item Với mọi \( m, n \), ta có \( b_{m+n} \equiv b_m \pmod{b_n} \), và nếu \( m \ge 2 \), thì \( b_{m+n} \equiv b_m \pmod{b_n^2} \).
+        \item Từ đó suy ra: nếu \( p \) là ước nguyên tố của \( b_n \), thì \( p \) không chia \( b_m \) với \( m > n \).
+        \item Cuối cùng, chứng minh \( b_n > \prod_{j < n} b_j \), cho nên tồn tại một ước nguyên tố mới của \( b_n \).
+    \end{itemize}
+\end{story*}
+
+\begin{soln}(Cách 1)\footnotemark
+    Đặt \( b_n = \frac{a_n}{c} \). Khi đó dãy trở thành:
+    \[
+        b_1 = 1,\quad b_{n+1} = c^2\,b_n(b_n^2 - 4b_n + 5) + 1.
+    \]
+
+    \begin{claim*}[1]
+        Với mọi \(m, n\), ta có \(b_{m+n} \equiv b_m \pmod{b_n}\).
+    \end{claim*}
+
+    \begin{subproof}
+        Chứng minh bằng quy nạp theo \( m \).  
+        \textbf{Cơ sở}: \( m = 1 \),
+        \[
+            b_{1+n} = c^2\,b_n(b_n^2 - 4b_n + 5) + 1 \equiv 1 = b_1 \pmod{b_n}.
+        \]
+
+        \textbf{Bước quy nạp}: Giả sử \( b_{m+n-1} \equiv b_{m-1} \pmod{b_n} \), ta có:
+        \[
+            b_{m+n} = c^2\,b_{m+n-1}(b_{m+n-1}^2 - 4b_{m+n-1} + 5) + 1 \equiv b_m \pmod{b_n}.
+        \]
+    \end{subproof}
+
+    \begin{claim*}[2]
+        Với \( m \ge 2 \), ta có \( b_{m+n} \equiv b_m \pmod{b_n^2} \).
+    \end{claim*}
+
+    \begin{subproof}
+        Tương tự khẳng định 1 nhưng xét modulo \( b_n^2 \). Do các công thức dạng:
+        \[
+            b_{m+1} = c^2\,b_m(b_m^2 - 4b_m + 5) + 1,
+        \]
+        các sai số modulo \( b_n^2 \) sẽ triệt tiêu khi ta lặp quy nạp nhiều bước.
+    \end{subproof}
+
+    Từ hai khẳng định trên, ta có: nếu \( p \) là ước nguyên tố của \( b_n \), thì \( p \nmid b_{m} \) với mọi \( m > n \), vì \( b_{m} \equiv b_n \pmod{p} \), nhưng modulo \( p^2 \), sai số không triệt tiêu.
+
+    Do đó, nếu \( b_n > \prod_{j=1}^{n-1} b_j \), thì \( b_n \) phải có một ước nguyên tố mới không xuất hiện trong các \( b_1, \dots, b_{n-1} \).  
+    Vì \( b_1 = 1 \), và quy luật đệ quy cho thấy \( b_{n+1} > b_n^3 \), nên \( b_n \) tăng rất nhanh, và bất đẳng thức trên luôn đúng với \( n \ge 2 \).
+
+    Suy ra:
+    \[
+        \boxed{\text{Với mọi } n \ge 2,\ \exists p \text{ nguyên tố chia } a_n \text{ mà không chia } a_1,\dots,a_{n-1}.}
+    \]
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1113202p16947067}{Lời giải của \textbf{mathaddiction}.}}
+
+\end{document}

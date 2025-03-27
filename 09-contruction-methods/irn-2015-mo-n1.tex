@@ -1,0 +1,52 @@
+\documentclass[../09-contruction-methods.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{IRN 2015 MO}/N1]\label{example:IRN-2015-MO-N1}[\textbf{\nameref{definition:25M}}]
+    Chứng minh rằng tồn tại vô hạn số tự nhiên \( n \) sao cho \( n \) không thể viết được dưới dạng tổng của hai số nguyên dương
+    mà tất cả các thừa số nguyên tố của chúng đều nhỏ hơn 1394.
+\end{example*}
+
+\begin{story*}
+    Bài toán yêu cầu chứng minh tồn tại vô hạn số tự nhiên không thể biểu diễn dưới dạng tổng của hai số \( P \)-mịn,
+    tức là có tất cả thừa số nguyên tố nhỏ hơn một hằng số cho trước.
+    Lập luận chính dựa trên ước lượng số lượng số \( P \)-mịn không vượt quá \( m \),
+    từ đó suy ra số cặp \( (a, b) \) thoả \( a + b \le m \) bị chặn trên bởi \( x_m^2 \).
+    Vì vậy tồn tại vô hạn giá trị \( n \) không đạt được dạng tổng mong muốn.
+\end{story*}
+
+\begin{soln}\footnotemark
+    Gọi \( p_1, p_2, \dots, p_k \) là tất cả các số nguyên tố nhỏ hơn 1394.
+
+    Một số nguyên dương được gọi là \textit{số \( P \)-mịn} nếu tất cả các ước số nguyên tố của nó đều thuộc \( \{p_1, \dots, p_k\} \).
+    
+    Với mỗi \( m \in \mathbb{N}_{>0} \), ta đặt:
+    \[
+        x_m = \text{số lượng các số \( P \)-mịn không vượt quá } m.
+    \]
+
+    Khi đó:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Mỗi số \( P \)-mịn không vượt quá \( m \) có thể biểu diễn dưới dạng \( p_1^{a_1} p_2^{a_2} \cdots p_k^{a_k} \le m \).
+        \item Với mỗi \( i \), số giá trị khả dĩ của \( a_i \) là \( \lfloor \log_{p_i} m \rfloor + 1 \).
+        \item Suy ra:
+        \[
+            x_m \le \prod_{i=1}^{k} \left(\lfloor \log_{p_i} m \rfloor + 1\right) = O((\log m)^k).
+        \]
+    \end{itemize}
+
+    Do đó, số lượng cặp \( (a, b) \) gồm hai số \( P \)-mịn sao cho \( a + b \le m \) không vượt quá \( x_m^2 = O((\log m)^{2k}) \).
+
+    Mà số lượng số tự nhiên \( \le m \) là \( m \), nên số lượng số \( n \le m \) không thể viết dưới dạng \( a + b \) với \( a, b \) là \( P \)-mịn ít nhất là:
+    \[
+        m - x_m^2.
+    \]
+
+    Khi \( m \to \infty \), ta có \( x_m^2 = o(m) \), vì \( x_m^2 = O((\log m)^{2k}) \) tăng chậm hơn nhiều so với \( m \).
+
+    \textbf{Kết luận:} Có vô hạn số \( n \) không thể viết được dưới dạng tổng của hai số \( P \)-mịn.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1138945p5340571}{Dựa theo lời giải của \textbf{SCLT}.}}
+
+\end{document}

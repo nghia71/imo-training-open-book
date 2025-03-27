@@ -1,0 +1,104 @@
+\documentclass[../09-contruction-methods.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{IRN 2015 TST}/D1/P3]\label{example:IRN-2015-TST-D1-P3}[\textbf{\nameref{definition:45M}}]
+    Gọi \( b_1 < b_2 < b_3 < \dots \) là dãy tất cả các số tự nhiên có thể viết được dưới dạng tổng hai bình phương của hai số tự nhiên.
+    Chứng minh rằng tồn tại vô hạn số tự nhiên \( m \) sao cho \( b_{m+1} - b_m = 2015 \).
+\end{example*}
+
+\begin{story*}
+    Bài toán yêu cầu tìm các khoảng trống đúng bằng \( 2015 \) giữa hai số liên tiếp có dạng tổng hai bình phương.
+    Hướng tiếp cận gồm ba bước:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Chọn điểm đầu là một số có dạng \( a^2 + 1007^2 \).
+        \item Dùng định lý tương hỗ bậc hai để loại trừ các số \( x + i \) (\(1 \le i \le 2014\)) không thể là tổng hai bình phương, bằng cách kiểm soát thừa số nguyên tố \( \equiv 3 \pmod{4} \) xuất hiện với số mũ lẻ.
+        \item Áp dụng định lý đồng dư Trung Hoa và phép nâng Hensel để xây dựng nghiệm đồng thời modulo \( p_i^2 \), với mỗi \( p_i \equiv 3 \pmod{8} \).
+    \end{itemize}
+    Ý tưởng là dựng khoảng rỗng trong dãy các tổng hai bình phương mà hai đầu vẫn là tổng hai bình phương.
+\end{story*}
+
+\begin{soln}\footnotemark
+    \begin{claim*}
+        \textit{Với mỗi số nguyên \( 1 \leq i \leq 2014 \), tồn tại vô hạn số nguyên tố \( p \equiv 3 \Mod{8} \) sao cho:}
+        \[
+            \left( \frac{1007^2 + i}{p} \right) = -1
+        \]    
+    \end{claim*}
+    \begin{subproof}
+        Viết:
+        \[
+            1007^2 + i = x^2 p_1 p_2 \dots p_k
+        \]
+        trong đó \( \mathcal{P} = \{ p_1, \dots, p_k \} \) là tập các thừa số nguyên tố của \( 1007^2 + i \) có số mũ lẻ.
+        Ta có \( \mathcal{P} \ne \emptyset \) vì \( 1007^2 + i \) không thể là một số chính phương khi \( i \in [1, 2014] \).
+        
+        \textit{Trường hợp 1: Nếu \( \mathcal{P} = \{2\} \)}, thì:
+        \[
+            \left( \frac{1007^2 + i}{p} \right) = \left( \frac{2x^2}{p} \right) = \left( \frac{2}{p} \right) = -1 \quad \text{với } p \equiv 3 \Mod{8}
+        \]
+        
+        \textit{Trường hợp 2: Nếu \( 2 \notin \mathcal{P} \)}, thì chọn \( p \) sao cho:
+        \[
+            \left( \frac{\prod_{q \in \mathcal{P}} q}{p} \right) = -1
+        \]
+        
+        \textit{Trường hợp 3: Nếu \( 2 \in \mathcal{P} \)}, thì chọn \( p \) sao cho:
+        \[
+        \left( \frac{\prod_{q \in \mathcal{P} \setminus \{2\}} q}{p} \right) = 1
+        \]
+        
+        Sử dụng định lý tương hỗ bậc hai, ta có thể dịch điều kiện trên thành điều kiện đồng dư của \( p \) modulo các số trong \( \mathcal{P} \).
+        Từ định lý Dirichlet và định lý đồng dư Trung Hoa (CRT), tồn tại vô hạn số nguyên tố \( p \equiv 3 \Mod{8} \) thỏa các điều kiện này.
+    \end{subproof}
+    
+    Chọn các số nguyên tố phân biệt \( p_1, p_2, \dots, p_{2014} \), sao cho:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Mỗi \( p_i > 1008^2 \),
+        \item \( p_i \equiv 3 \Mod{8} \),
+        \item \( \left( \frac{1007^2 + i}{p_i} \right) = -1. \)
+    \end{itemize}
+    
+    Xét hệ congruence:
+    \[
+        x + i \equiv p_i \Mod{p_i^2} \quad \text{với } 1 \le i \le 2014 \tag{*}
+    \]
+    
+    Theo định lý CRT, hệ này có nghiệm duy nhất modulo:
+    \[
+        M = p_1^2 p_2^2 \cdots p_{2014}^2
+    \]
+    
+    Gọi nghiệm là \( x \equiv k \Mod{M} \). Khi đó, với mọi \( i \in [1, 2014] \), ta có:
+    \[
+        x + i \equiv p_i \Mod{p_i^2} \implies x + i \not\equiv \text{tổng hai bình phương}
+    \]
+    vì \( p_i \equiv 3 \Mod{4} \), nên một số chia hết cho \( p_i \) với lũy thừa lẻ thì không thể là tổng hai bình phương.
+    
+    Bây giờ, ta chứng minh \( k \) là tổng hai bình phương:
+    \[
+        \left( \frac{k - 1007^2}{p_i} \right) = \left( \frac{-i - 1007^2}{p_i} \right) = - \left( \frac{1007^2 + i}{p_i} \right) = 1,
+    \]
+    do đó, tồn tại \( x_i \) sao cho \( x_i^2 \equiv k - 1007^2 \Mod{p_i} \), và \( p_i \nmid x_i \).
+
+    Sử dụng phương pháp nâng nghiệm Hensel, ta có thể tìm \( t_i \in \mathbb{Z} \) sao cho:
+    \[
+        p_i^2 \mid (x_i + p_i t_i)^2 - (k - 1007^2)
+    \]
+    
+    Gọi \( a \equiv x_i + p_i t_i \Mod{p_i^2} \) với mỗi \( i \), và sử dụng CRT, tồn tại vô hạn \( a \in \mathbb{N} \) thỏa:
+    \[
+        a^2 = k - 1007^2 + \beta_a M \implies k = a^2 + 1007^2 + \beta_a M \implies k + 2015 = a^2 + 1008^2 + \beta_a M
+    \]
+    
+    Vì vậy, với:
+    \[
+        n = k + \beta_a M = a^2 + 1007^2
+    \]
+    thì \( n \) và \( n + 2015 \) đều là tổng hai bình phương, nhưng các số \( n+1, n+2, \dots, n+2014 \) thì không.
+    Do đó, ta tìm được hiệu \( b_{m+1} - b_m = 2015 \). Vì \( a \) có thể chọn tùy ý lớn, nên tồn tại vô hạn nhiều khoảng như vậy.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1087616p5864559}{Dựa theo lời giải của \textbf{Ariscrim}.}}
+
+\end{document}

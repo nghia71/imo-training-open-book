@@ -1,0 +1,52 @@
+\documentclass[../04-diophantine-equations.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{USA 2015 MO}/P1]\label{example:USA-2015-MO-P1}[\textbf{\nameref{definition:15M}}]
+	Giải trong tập số nguyên phương trình  
+	\[
+		x^2 + xy + y^2 \;=\; \Bigl(\frac{x+y}{3} + 1\Bigr)^3.
+	\]
+\end{example*}
+
+\begin{story*}
+    Start by letting \(x + y = 3t\). Substitute into the equation, simplify, and arrive at a form where \(4t + 1\) must be a perfect square. Let \(4t + 1 = (2n + 1)^2\), which leads to \(t = n^2 + n\). Solve for \(x\) and \(y\) in terms of \(n\), yielding the general solution for integer pairs \( (x, y) \).
+\end{story*}
+
+\bigbreak
+
+\begin{soln}\footnotemark
+	Đặt \(x+y=3t\). Khi đó:
+	\[
+		x^2 + xy + y^2 = (t+1)^3
+		\quad\Longrightarrow\quad
+		x^2 + x(3t - x) + (3t - x)^2 = (t+1)^3.
+	\]
+	Rút gọn và chuyển vế:
+	\[
+		(2x - 3t)^2 = (t - 2)^2 (4t + 1).
+	\]
+	Đặt \( 4t + 1 = (2n + 1)^2 \Rightarrow t = n^2 + n \). Thay vào:
+	\[
+		2x - 3(n^2 + n) = \pm\left( (n^2 + n - 2)(2n + 1) \right).
+	\]
+	Vế phải có thể rút gọn thành:
+	\[
+		2n^3 + 3n^2 - 3n - 2,
+	\]
+	và giải ra:
+	\[
+		x = n^3 + 3n^2 - 1 \quad \text{hoặc} \quad x = -n^3 + 3n + 1.
+	\]
+	Vì \( y = 3t - x = 3(n^2 + n) - x \), ta thu được hai cặp nghiệm đối xứng:
+	\[
+		(x, y) = \left(n^3 + 3n^2 - 1,\; -n^3 + 3n + 1\right)
+		\quad \text{và} \quad
+		(-n^3 + 3n + 1,\; n^3 + 3n^2 - 1),
+	\]
+	với mọi \( n \in \mathbb{Z} \).
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/wiki/index.php/2015_USAMO_Problems/Problem_1}{Lời giải chính thức.}}
+
+\end{document}

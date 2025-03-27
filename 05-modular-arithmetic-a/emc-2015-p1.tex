@@ -1,0 +1,60 @@
+\documentclass[../05-modular-arithmetic-a.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{EMC 2015}/P1]\label{example:EGMO-2015-P1}\textbf{[\nameref{definition:20M}]}
+	Cho tập \( A = \{a, b, c\} \) gồm ba số nguyên dương.
+	Chứng minh rằng tồn tại tập con \( B = \{x, y\} \subset A \) sao cho với mọi số nguyên dương lẻ \( m, n \), ta có:
+	\[
+		10 \mid x^m y^n - x^n y^m.
+	\]
+\end{example*}
+
+\begin{story*}
+    Ta cần tìm hai phần tử \( x, y \) sao cho \( x^m y^n - x^n y^m \equiv 0 \pmod{10} \) với mọi số lẻ \( m, n \). Phương pháp giải bao gồm:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Chứng minh chia hết cho 2 bằng cách phân tích chẵn lẻ của \( x \) và \( y \).
+        \item Dùng nguyên lý Dirichlet để xử lý modulo 5, chọn cặp sao cho \( x + y \equiv 0 \pmod{5} \).
+    \end{itemize}
+    Kết hợp chia hết cho 2 và 5, ta có \( 10 \mid x^m y^n - x^n y^m \).
+\end{story*}
+
+\bigbreak
+
+\begin{soln}(Cách 1)\footnotemark
+	Xét \( f(x, y) = x^m y^n - x^n y^m \). Nếu \( m = n \), ta có \( f(x, y) = 0 \), chia hết cho 10 với mọi \( x, y \), nên ta giả sử \( n > m \).
+
+	Vì \( m, n \) lẻ \( \implies n - m \) chẵn. Khi đó:
+	\[
+		f(x, y) = x^m y^m (y^{n - m} - x^{n - m})
+	= x^m y^m (y^2 - x^2) Q(x, y)
+= x^m y^m (y - x)(y + x) Q(x, y),
+	\]
+	với \( Q(x, y) \in \mathbb{Z}[x, y] \).
+
+	\textbf{Xét chia hết cho 2:} Nếu \( x \) hoặc \( y \) chẵn \( \implies 2 \mid f(x, y) \).  
+	Nếu \( x, y \) đều lẻ, thì \( x \pm y \) chẵn \( \implies 2 \mid f(x, y) \) cho nên Luôn có \( 2 \mid f(x, y) \).
+
+	\textbf{Xét chia hết cho 5:}
+
+	\textit{Trường hợp 1:} Tồn tại phần tử trong \( A \) chia hết cho 5.  
+	Chọn phần tử đó và một phần tử bất kỳ khác, khi đó \( 5 \mid x \) hoặc \( y \) cho nên \( 5 \mid f(x, y) \).
+
+	\textit{Trường hợp 2:} Không phần tử nào chia hết cho 5 cho nên mỗi phần tử \( \not\equiv 0 \Mod{5} \).  
+	Do \( A \) có 3 phần tử, mỗi phần dư \( \Mod{5} \in \{1, 2, 3, 4\} \). Áp dụng nguyên lý Dirichlet:
+
+	\begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+		\item Nếu tồn tại hai phần tử cùng dư modulo 5: chọn cặp đó cho nên \( x \equiv y \Mod{5} \implies x - y \equiv 0 \Mod{5} \implies 5 \mid f(x, y) \).
+		\item Nếu cả ba phần tử khác nhau modulo 5 cho nên chắc chắn tồn tại một trong hai cặp \( (1, 4) \) hoặc \( (2, 3) \) thuộc \( A \).  
+		Vì \( 1 + 4 \equiv 0 \Mod{5} \), \( 2 + 3 \equiv 0 \Mod{5} \) cho nên chọn cặp đó: \( x + y \equiv 0 \Mod{5} \implies 5 \mid f(x, y) \).
+	\end{itemize}
+
+	\textbf{Kết luận:} Trong mọi trường hợp, tồn tại \( \{x, y\} \subset A \) sao cho:
+	\[
+		\boxed{10 \mid x^m y^n - x^n y^m \quad \text{với mọi số lẻ } m, n}
+	\]
+\end{soln}
+
+\footnotetext{\href{https://emc.mnm.hr/wp-content/uploads/2015/12/EMC_2015_Seniors_ENG_Solutions.pdf}{Lời giải chính thức.}}
+
+\end{document}

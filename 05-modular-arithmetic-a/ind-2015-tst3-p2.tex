@@ -1,0 +1,79 @@
+\documentclass[../05-modular-arithmetic-a.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{IND 2015 TST}3/P2]\label{example:IND-2015-TST3-P2}\textbf{[\nameref{definition:30M}]}
+	Tìm tất cả các bộ ba \( (p, x, y) \) bao gồm một số nguyên tố \( p \) và hai số nguyên dương \( x \) và \( y \)
+	sao cho \( x^{p-1} + y \) và \( x + y^{p-1} \) đều là lũy thừa của \( p \).
+\end{example*}
+
+\begin{story*}
+    Ta xét các trường hợp riêng biệt:  
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Với \( p = 2 \), dễ dàng nhận thấy rằng luôn tồn tại vô số nghiệm.
+        \item Với \( p > 2 \), ta phân tích các biểu thức \( x^{p-1} + y = p^a \) và \( x + y^{p-1} = p^b \), kết hợp với phân tích p-adic và định lý Fermat nhỏ để suy ra các giới hạn.
+        \item Qua các phép thử, ta nhận thấy nghiệm duy nhất là \( (3, 2, 5) \) với \( p = 3 \).
+    \end{itemize}
+\end{story*}
+
+\bigbreak
+
+\begin{soln}\footnotemark
+	\textbf{Trường hợp \( p = 2 \):} Với \( x, y \in \mathbb{Z}_{>0} \), ta có:
+	\[
+		x^{p-1} + y = x + y,\quad x + y^{p-1} = x + y
+	\implies \text{cùng bằng tổng } x + y
+	\]
+	Vì lũy thừa của 2 xuất hiện dày đặc, nên luôn tồn tại \( (x, y) \) sao cho tổng là lũy thừa của 2. Trường hợp này cho vô số nghiệm.
+
+	\textbf{Giả sử từ đây \( p > 2 \)}. Đặt:
+	\[
+		x^{p-1} + y = p^a,\quad x + y^{p-1} = p^b
+	\]
+
+	Giả sử \( x \le y \implies x^{p-1} + y \le x + y^{p-1} \implies a \le b \implies p^a \mid p^b \).
+
+	Xét:
+	\[
+		p^b = x + y^{p-1} = x + (p^a - x^{p-1})^{p-1}
+	\]
+
+	Xét modulo \( p^a \), do \( p - 1 \) chẵn:
+	\[
+		x^{(p-1)^2} + x \equiv 0 \Mod{p^a}
+	\implies x^{(p-1)^2 - 1} + 1 \equiv 0 \Mod{p^a}
+	\implies p^a \mid x^{p(p - 2)} + 1
+	\]
+
+	Áp dụng định lý Fermat nhỏ: \( x^{p-1} \equiv 1 \Mod{p} \implies x^{p(p - 2)} \equiv 1 \Mod{p} \implies p \mid x + 1 \).
+
+	Đặt \( x + 1 = p^r \implies r = \nu_p(x + 1) \), ta xét lũy thừa lớn nhất của \( p \) chia hết \( x^{p(p - 2)} + 1 \).  
+	Sử dụng khai triển nhị thức:
+	\[
+		x = -1 \implies x^{p(p - 2)} = (-1)^{p(p - 2)} = 1 \implies x^{p(p - 2)} + 1 = 2 \text{ không chia hết cho } p
+	\]
+
+	Nhưng vì \( p \mid x + 1 \implies p^r \le x + 1 \le p^a \implies a = r \) hoặc \( r + 1 \).
+
+	Nếu \( a = r \implies x + 1 = p^a \implies x = p^a - 1 \implies y = p^a - x^{p-1} \)
+
+	Một vài thử nghiệm:
+	- \( p = 3 \implies x = 2 \implies x^{p-1} = 4,\ y = 5 \implies x^{p-1} + y = 9 = 3^2,\ x + y^{p-1} = 2 + 25 = 27 = 3^3 \)
+
+	Nếu \( p \ge 5 \), thử với \( x = p - 1 \implies x^{p-1} \ge (p - 1)^4 \gg p^2 \implies x^{p-1} + y > p^a \implies \) mâu thuẫn.
+
+	\textbf{Kết luận:}
+	\[
+		\boxed{
+			\begin{array}{l}
+				\text{Các bộ ba thỏa mãn là:} \\
+				(p, x, y) = (2, x, y), \text{ với } x + y \text{ là lũy thừa của } 2, \text{ và} \\
+				(3, 2, 5)
+			\end{array}
+		}
+	\]
+\end{soln}
+
+\footnotetext{\href{https://www.imo-official.org/problems/IMO2014SL.pdf}{IMO SL 2014 N5.}}
+
+\end{document}

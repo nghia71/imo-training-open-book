@@ -9,16 +9,16 @@
 \usepackage{cancel}
 \usepackage{CJKutf8}
 \usepackage{figchild}
-\usepackage{hyperref}
 \usepackage[automake]{glossaries-extra}
 \usepackage{listings}
 \usepackage{matchsticks}
 \usepackage{mathdots}
 \usepackage{pdfpages}
 \usepackage{subfiles}
-\usepackage{wrapfig}
-
 \usepackage{tocloft}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+
 \renewcommand{\cftchappresnum}{}
 	\renewcommand{\cftchapaftersnumb}{}
 	\setlength{\cftchapindent}{0em}
@@ -40,7 +40,7 @@
 
 \makeglossaries
 
-\subfile{./tex/glossary.tex}
+\subfile{./common/glossary.tex}
 
 \title{Các bài toán Lý thuyết Số\\ từ các kỳ thi Olympic Quốc gia và Quốc tế 2015-2024}
 
@@ -58,47 +58,44 @@
 \ActivateBG
 
 \chapter*{Mở đầu}
-\subfile{./tex/intro.tex}
+\subfile{./common/intro.tex}
 
 \addcontentsline{toc}{chapter}{Introduction}
 
-\part{Lý thuyết chung}
-
-\subfile{./tex/common-tools.tex}
-
-\part{Lý thuyết số}
-
 \chapter{Tính chia hết}
-\subfile{./nbt/01-divisibility.tex}
+\subfile{./01-divisibility.tex}
 
 \chapter{Cơ bản về số học đồng dư}
-\subfile{./nbt/02-modular-arithmetic-b.tex}
+\subfile{./02-modular-arithmetic-b.tex}
 
 \chapter{Các hàm số học}
-\subfile{./nbt/03-arithmetic-functions.tex}
+\subfile{./03-arithmetic-functions.tex}
 
 \chapter{Phương trình Diophantine}
-\subfile{./nbt/04-diophantine-equations.tex}
+\subfile{./04-diophantine-equations.tex}
 
 \chapter{Số học đồng dư nâng cao}
-\subfile{./nbt/05-modular-arithmetic-a.tex}
+\subfile{./05-modular-arithmetic-a.tex}
 
 \chapter{Luỹ thừa lớn nhất}
-\subfile{./nbt/06-largest-exponent.tex}
+\subfile{./06-largest-exponent.tex}
 
 \chapter{Đa thức nguyên}
-\subfile{./nbt/07-integer-polynomials.tex}
+\subfile{./07-integer-polynomials.tex}
 
 \chapter{Phần dư bậc hai}
-\subfile{./nbt/08-quadratic-residues.tex}
+\subfile{./08-quadratic-residues.tex}
 
 \chapter{Chứng minh kiến tạo}
-\subfile{./nbt/09-contruction-methods.tex}
+\subfile{./09-contruction-methods.tex}
 
 \appendix
 
-\chapter*{Tiêu chuẩn Xếp hạng MOHS}
-\subfile{./tex/mohs.tex}
+\chapter{Công cụ sử dụng}
+\subfile{./common/tools.tex}
+
+\chapter{Tiêu chuẩn Xếp hạng MOHS}
+\subfile{./common/mohs.tex}
 
 \clearpage
 

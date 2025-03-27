@@ -1,0 +1,48 @@
+\documentclass[../01-divisibility.tex]{subfiles}
+
+\begin{document}
+
+\begin{example*}[\gls{CHN 2015 TST}1/D2/P2]\label{example:CHN-2015-TST1-D2-P2}\textbf{[\nameref{definition:10M}]}
+	Cho trước một số nguyên dương \( n \). Chứng minh rằng: Với mọi số nguyên dương \( a, b, c \) không vượt quá \( 3n^2 + 4n \),
+	tồn tại các số nguyên \( x, y, z \) có giá trị tuyệt đối không vượt quá \( 2n \) và không đồng thời bằng 0, sao cho
+	\[
+		ax + by + cz = 0.
+	\]
+\end{example*}
+
+\begin{story*}
+	Bài toán yêu cầu tìm một bộ số nguyên nhỏ \( (x, y, z) \) không đồng thời bằng 0 sao cho tổ hợp tuyến tính \( ax + by + cz = 0 \).  
+	Ta xét tập giá trị mà biểu thức \( ax + by + cz \) có thể đạt được khi \( x, y, z \in [-n, n] \), và so sánh với số lượng bộ ba như vậy.  
+	Vì số tổ hợp \( (x, y, z) \) nhiều hơn số giá trị có thể nhận, theo nguyên lý Dirichlet sẽ tồn tại hai bộ khác nhau cho cùng một giá trị.  
+	Từ đó, trừ hai biểu thức tương ứng ta được tổ hợp không tầm thường thoả mãn đẳng thức cần tìm.
+\end{story*}
+
+\begin{soln}\footnotemark
+	\textbf{Bước 1:} Xét tập giá trị
+	\[
+		A = \{ ax + by + cz \mid x, y, z \in \mathbb{Z} \cap [-n, n] \}.
+	\]
+
+	Ta có \( |A| \leq (2n \cdot a + 2n \cdot b + 2n \cdot c) + 1 \le 6n(3n^2 + 4n) + 1 = 6n^3 + 8n^2 + 1 \).
+
+	\textbf{Bước 2:} Có tổng cộng \( (2n + 1)^3 \) bộ \( (x, y, z) \in [-n, n]^3 \), mà
+	\[
+		(2n+1)^3 > 6n^3 + 8n^2 + 1,
+	\]
+	nên theo \nameref{theorem:pigeonhole-principle}, tồn tại hai bộ khác nhau
+	\[
+		(x, y, z), (x', y', z') \in ([-n, n] \cap \mathbb{Z})^3 \quad \text{với} \quad ax + by + cz = ax' + by' + cz'.
+	\]
+
+	\textbf{Bước 3:} Trừ hai vế:
+	\[
+		a(x - x') + b(y - y') + c(z - z') = 0 \implies ax + by + cz = 0,
+	\]
+	với \( x - x', y - y', z - z' \in [-2n, 2n] \), không đồng thời bằng 0.
+
+	\textbf{Kết luận:} Tồn tại bộ \( (x, y, z) \) thoả mãn yêu cầu đề bài.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1063058p4617378}{Lời giải của \textbf{nayel}.}}
+
+\end{document}
