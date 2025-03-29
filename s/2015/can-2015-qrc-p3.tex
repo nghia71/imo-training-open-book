@@ -1,0 +1,30 @@
+\documentclass[../2015-n-s.tex]{subfiles}
+
+\begin{document}
+
+\begin{soln}[\autoref{problem:CAN-2015-QRC-P3}][\gls{CAN 2015 QRC}/P3][\footnotemark]
+
+	Giả sử \( abc \) là một số \textit{tầm thường}. Sáu hoán vị gồm \( \{abc, acb, bac, bca, cab, cba\} \). Tổng của chúng là:
+	\[
+		222(a + b + c) \implies \frac{222(a + b + c)}{6} = 37(a + b + c).
+	\]
+	
+	Vì \( abc \) là \textit{tầm thường}, nên:
+	\[
+		100a + 10b + c = 37(a + b + c) \implies 63a = 27b + 36c \implies 7a = 3b + 4c.
+		\implies 3(a-b) = 4(c-a).
+	\]
+
+	Như vậy $3 \mid c-a$, do đó $c \ge a + 3.$ Tương tự $a \ge b + 4$. Nên $c \ge b+7.$
+	$c \ge 9$ nên $b \le 2,$ vì $b > 0$ nên $b$ chỉ có thể là $1$ hoặc $2.$ Do đó $abc$ là $518$ hoặc $629.$
+
+	\textbf{Kết luận:} Số \textit{tầm thường} lớn nhất là \( \boxed{629} \).
+
+	\vspace{1em}
+	\textbf{[\nameref{definition:0M}]}\index{0M}.
+	\textbf{Tham chiếu:} \nameref{lemma:repunit-form} \nameref{theorem:euclidean-division}.
+\end{soln}
+
+\footnotetext{\href{https://cms.math.ca/wp-content/uploads/2019/07/2015official_solutions.pdf}{Lời giải chính thức.}}
+
+\end{document}

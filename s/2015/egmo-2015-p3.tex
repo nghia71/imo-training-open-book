@@ -1,0 +1,54 @@
+\documentclass[../2015-n-s.tex]{subfiles}
+
+\begin{document}
+
+\begin{soln}[\autoref{problem:EGMO-2015-P3}][\gls{EGMO 2015}/P3][\footnotemark]
+	
+	Giả sử không mất tính tổng quát rằng \(a_1\) là số nhỏ nhất trong các số \(a_i\).
+	
+	Nếu \(a_1 \ge n^m\), thì tất cả các số \(a_i\) đều bằng nhau,
+	hoặc \(a_1 = n^m - 1\) và tồn tại chỉ số \(j\) sao cho \(a_j = n^m\).
+
+	Trong trường hợp đầu tiên, ta có thể chọn (ví dụ) \(b_1 = 1\), \(b_2 = 2\), và các số \(b_i\) còn lại tuỳ ý. Khi đó,
+	\[
+		\gcd(a_1 + b_1, a_2 + b_2, \ldots, a_m + b_m) \le \gcd(a_1 + b_1, a_2 + b_2) = 1.
+	\]
+	
+	Trong trường hợp thứ hai, ta chọn \(b_1 = 1\), \(b_j = 1\), và các \(b_i\) còn lại tuỳ ý, ta lại có
+	\[
+		\gcd(a_1 + b_1, a_2 + b_2, \ldots, a_m + b_m) \le \gcd(a_1 + b_1, a_j + b_j) = 1.
+	\]
+	
+	Vì vậy, từ đây trở đi, ta giả sử rằng \(a_1 \le nm - 2\).
+	
+	Giả sử rằng không tồn tại bộ số \(b_1, \ldots, b_m\) như mong muốn và ta sẽ tìm mâu thuẫn.
+
+	Khi này, với mọi bộ số \(b_1, \ldots, b_m \in \{1, \ldots, n\}\), ta luôn có
+	\[
+		\gcd(a_1 + b_1, a_2 + b_2, \ldots, a_m + b_m) \ge n.
+	\]
+	
+	Mặt khác, ta cũng có
+	\[
+		\gcd(a_1 + b_1, a_2 + b_2, \ldots, a_m + b_m) \le a_1 + b_1 \le n^m + n - 2.
+	\]
+	
+	Do đó, chỉ có tối đa \(n^m - 1\) giá trị khả dĩ cho ước chung lớn nhất. Tuy nhiên, có \(n^m\) cách chọn bộ \(m\) số \((b_1, \ldots, b_m)\).
+	Khi đó, theo \nameref{theorem:pigeonhole-principle}, tồn tại hai bộ khác nhau cho cùng một giá trị ước chung lớn nhất, gọi là \(d\).
+	
+	Nhưng vì \(d \ge n\), nên với mỗi \(i\), chỉ có nhiều nhất một giá trị \(b_i \in \{1, 2, \ldots, n\}\) sao cho \(a_i + b_i\) chia hết cho \(d\).
+	Do đó, chỉ có nhiều nhất một bộ \(m\)-tuple \((b_1, b_2, \ldots, b_m)\) sao cho ước chung lớn nhất là \(d\). Điều này dẫn đến mâu thuẫn như mong muốn.
+
+	\textbf{Kết luận:} Phản chứng sai, do đó tồn tại bộ \( (b_1, \dots, b_m) \in \{1, \dots, n\}^m \) sao cho
+	\[
+		\gcd(a_1 + b_1, \dots, a_m + b_m) < n.
+	\]
+
+	\vspace{1em}
+	\textbf{[\nameref{definition:10M}]}\index{10M}.
+	\textbf{Tham chiếu:} \nameref{theorem:proof-by-contradiction}. \nameref{theorem:pigeonhole-principle}. \nameref{theorem:gcd-lcm-properties}.
+\end{soln}
+
+\footnotetext{\href{https://www.egmo.org/egmos/egmo4/solutions.pdf}{Lời giải chính thức.}}
+
+\end{document}

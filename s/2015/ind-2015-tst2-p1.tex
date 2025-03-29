@@ -1,0 +1,66 @@
+\documentclass[../2015-n-s.tex]{subfiles}
+
+\begin{document}
+
+\begin{soln}[\autoref{problem:IND-2015-TST2-P1}][\gls{IND 2015 TST}2/P1][\footnotemark]
+
+	\begin{claim*}[1]
+		Mọi số lớn hơn \( (n - 2) \cdot 2^n + 1 \) đều biểu diễn được bằng tổng các phần tử trong \( A_n \). Ta chứng minh bằng quy nạp theo \( n \).
+	\end{claim*}
+	\begin{subproof}
+
+		\textit{Bước cơ sở:} \( n = 2 \Rightarrow A_2 = \{3, 2\} \). Mọi số dương \( \ne 1 \) đều biểu diễn được.
+
+		\textit{Giả sử đúng với \( n - 1 \)}. Xét \( n > 2 \), và \( m > (n - 2) \cdot 2^n + 1 \).
+	
+		\textit{Trường hợp 1:} \( m \) chẵn. Khi đó
+		\[
+			\frac{m}{2} > (n - 3) \cdot 2^{n-1} + 1.
+		\]
+
+		Theo giả thiết quy nạp, \( \frac{m}{2} \) biểu diễn được từ \( A_{n-1} \), tức là từ các \( 2^{n-1} - 2^{k_i} \). Nhân hai vế:
+		\[
+			m = \sum (2^n - 2^{k_i + 1}) \in A_n.
+		\]
+	
+		\textit{Trường hợp 2:} \( m \) lẻ. Khi đó
+		\[
+			\frac{m - (2^n - 1)}{2} > (n - 3) \cdot 2^{n-1} + 1,
+		\]
+		nên $m - (2^n - 1)$ biểu diễn được từ \( A_{n-1} \), cộng thêm \( 2^n - 1 \in A_n \) để được \( m \).
+	\end{subproof}
+
+	\begin{claim*}[2]
+		Số \( (n - 2) \cdot 2^n + 1 \) không biểu diễn được.
+	\end{claim*}
+	\begin{subproof}
+		Gọi \( N \) là số nhỏ nhất \( \equiv 1 \Mod{2^n} \) biểu diễn được bằng tổng các phần tử trong \( A_n \). Khi đó:
+		\[
+			N = \sum (2^n - 2^{k_i}) = n \cdot 2^n - \sum 2^{k_i}.
+		\]
+	
+		Nếu có \( k_i = k_j \), ta có thể thay \( 2 \cdot (2^n - 2^k) \to 2^n - 2^{k+1} \),
+		từ đó giảm \( N \) đi \( 2^n \), mâu thuẫn với tính nhỏ nhất của \( N \). Vậy các \( k_i \) là phân biệt:
+		\[
+			\sum 2^{k_i} \le 2^0 + \dots + 2^{n-1} = 2^n - 1.
+		\]
+	
+		Từ đó:
+		\[
+			N = n \cdot 2^n - (2^n - 1) = (n - 1) \cdot 2^n + 1.
+		\]
+	\end{subproof}
+
+	Do (1) và (2), suy ra số lớn nhất không biểu diễn được là:
+	\[
+		(n - 2) \cdot 2^n + 1.
+	\]
+
+	\vspace{1em}
+	\textbf{[\nameref{definition:25M}]}\index{25M}.
+	\textbf{Tham chiếu:} \nameref{theorem:induction-principle}.
+\end{soln}
+
+\footnotetext{\href{https://www.imo-official.org/problems/IMO2014SL.pdf}{IMO SL 2014 N1.}}
+
+\end{document}

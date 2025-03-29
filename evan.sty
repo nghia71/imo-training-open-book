@@ -533,6 +533,7 @@
 
     \mdfdefinestyle{mdalmondbox}{%
       skipabove=8pt,
+      skipabove=0pt,
       skipbelow=0pt,
       linewidth=2pt,
       rightline=false,
@@ -548,7 +549,8 @@
       spaceabove=2pt,
       spacebelow=1pt,
       mdframed={style=mdalmondbox},
-      headpunct={ --- },
+      headpunct={\quad},
+      postheadspace={0pt}
     ]{thmdalmondbox}
 
     \mdfdefinestyle{mdlavenderbox}{%
@@ -677,11 +679,13 @@
     \fi
 
     \ifevanmdthm
-        \declaretheorem[style=thmdalmondbox,name=Phân tích,sibling=theorem]{story}
-        \declaretheorem[style=thmdalmondbox,name=Phân tích,numbered=no]{story*}
+        \declaretheorem[style=thmdalmondbox,name=Gợi ý,sibling=theorem]{hint}
+        \declaretheorem[style=thmdalmondbox,name=,numbered=no]{hint*}
+        % \declaretheorem[style=thmdalmondbox,name=Gợi ý,numbered=no]{hint*}
     \else
-        \declaretheorem[name=Phân tích,sibling=theorem]{story}
-        \declaretheorem[name=Phân tích,numbered=no]{story*}
+        \declaretheorem[name=Gợi ý,sibling=theorem]{hint}
+        \declaretheorem[name=,numbered=no]{hint*}
+        % \declaretheorem[name=Gợi ý,numbered=no]{hint*}
     \fi
 
     \ifevanmdthm
@@ -722,8 +726,10 @@
     \declaretheorem[style=basehead,name=Bài tập,numbered=no]{exercise*}
     \declaretheorem[style=basehead,name=Fact,sibling=theorem]{fact}
     \declaretheorem[style=basehead,name=Fact,numbered=no]{fact*}
-    \declaretheorem[style=basehead,name=Problem,sibling=theorem]{problem}
-    \declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
+    \declaretheorem[style=basehead,name=,sibling=theorem]{problem}
+    \declaretheorem[style=basehead,name=,numbered=no]{problem*}
+    % \declaretheorem[style=basehead,name=Problem,sibling=theorem]{problem}
+    % \declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
     \declaretheorem[style=basehead,name=Question,sibling=theorem]{ques}
     \declaretheorem[style=basehead,name=Question,numbered=no]{ques*}
 
@@ -874,7 +880,8 @@
         \renewcommand{\headrulewidth}{0.5pt}
         \renewcommand{\footrulewidth}{0.0pt}
         \pagestyle{fancy}
-        \lhead{Nghia Doan}
+        % \lhead{Nghia Doan}
+        \lhead{Các bài toán từ các kỳ thi Olympic}
         \chead{}
         \rhead{\nouppercase{\leftmark}}
         \lfoot{}

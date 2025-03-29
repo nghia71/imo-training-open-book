@@ -1,0 +1,950 @@
+\documentclass[../imo-training-open-book.tex]{subfiles}
+
+\begin{document}
+
+\section{Các nguyên lý và chiến lược giải toán}
+
+\begin{theorem}[Nguyên lý quy nạp toán học]
+    \label{theorem:induction-principle}
+    Giả sử \(P(n)\) là một mệnh đề toán học xác định với mọi số nguyên \(n \ge n_0\), trong đó \(n_0\) là một số nguyên cố định. Nếu thỏa mãn:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item (Cơ sở quy nạp) \(P(n_0)\) đúng;
+        \item (Bước quy nạp) Với mọi \(k \ge n_0\), nếu \(P(k)\) đúng thì \(P(k+1)\) cũng đúng,
+    \end{itemize}
+    thì \(P(n)\) đúng với mọi \(n \ge n_0\).
+\end{theorem}
+
+\begin{theorem}[Nguyên lý Dirichlet]\label{theorem:pigeonhole-principle}
+	Nếu có nhiều hơn \( n \) đối tượng được phân vào \( n \) ngăn, thì tồn tại ít nhất một ngăn chứa từ hai đối tượng trở lên.
+\end{theorem}
+
+\begin{theorem}[Nguyên lý cực hạn]
+    \label{theorem:extremal-principle}
+    Trong một tập hợp hữu hạn các đối tượng, nếu mỗi đối tượng được gán một giá trị theo tiêu chí nhất định, thì tồn tại phần tử đạt giá trị lớn nhất hoặc nhỏ nhất (gọi là phần tử cực đại hoặc cực tiểu).
+    
+    Việc chọn phần tử như vậy (cực đại hoặc cực tiểu) thường giúp đơn giản hóa bài toán hoặc dẫn đến mâu thuẫn khi giả sử ngược.
+\end{theorem}
+
+\begin{theorem}[Nguyên lý bất biến]
+    \label{theorem:invariant-principle}
+    Trong một quá trình gồm nhiều bước biến đổi, nếu tồn tại một đại lượng không thay đổi qua mỗi bước (gọi là bất biến), thì có thể dùng bất biến đó để suy ra tính chất hoặc kết thúc của quá trình.
+    
+    Nguyên lý này đặc biệt hữu ích để chứng minh rằng một trạng thái nào đó là không thể đạt được, hoặc rằng quá trình phải dừng sau hữu hạn bước.
+\end{theorem}
+
+\begin{theorem}[Nguyên lý đổi biến đơn điệu]
+    \label{theorem:monovariant-principle}
+    Giả sử trong một quá trình, có một đại lượng luôn tăng hoặc luôn giảm qua mỗi bước (gọi là biến đơn điệu, hay monovariant), và đại lượng đó bị chặn, thì quá trình phải kết thúc sau hữu hạn bước.
+    
+    Nguyên lý này thường dùng để chứng minh một quá trình không thể tiếp diễn vô hạn.
+\end{theorem}
+
+\begin{theorem}[Nguyên lý phản chứng]
+    \label{theorem:proof-by-contradiction}
+    Để chứng minh một mệnh đề \(P\) là đúng, ta có thể giả sử rằng \(P\) sai và từ đó suy ra một mâu thuẫn logic. Khi đó, kết luận rằng \(P\) là đúng.
+    
+    Đây là một trong những phương pháp chứng minh phổ biến và hiệu quả nhất trong toán học.
+\end{theorem}
+
+\begin{theorem}[Chiến lược xét chẵn/lẻ]
+    \label{theorem:parity-strategy}
+    Trong các bài toán liên quan đến số nguyên, việc phân tích tính chẵn/lẻ (parity) của các đại lượng có thể giúp phát hiện các mâu thuẫn hoặc bất biến, từ đó giải được bài toán.
+    
+    Tính chẵn/lẻ là một dạng đặc biệt của bất biến hoặc monovariant.
+\end{theorem}
+
+\newpage
+
+\section{Các định lý giải tích}
+
+\begin{lemma}[Tính phân kỳ của chuỗi điều hoà]
+    \label{lemma:harmonic-growth}
+    Chuỗi điều hoà \( H_n = \sum_{k=1}^n \frac{1}{k} \) tăng mà không bị chặn, tức là:
+    \[
+        \lim_{n \to \infty} H_n = \infty.
+    \]
+
+    Ngoài ra, với mọi \(n \ge 1\), ta có đánh giá gần đúng:
+    \[
+        \log n < H_n < 1 + \log n.
+    \]
+\end{lemma}
+
+\newpage
+
+\section{Số nguyên tố và phép chia hết}
+
+\begin{definition}[Số nguyên tố]\label{def:prime}
+    Một số nguyên \( p > 1 \) được gọi là \textbf{số nguyên tố} nếu \( p \) chỉ có đúng hai ước dương là \( 1 \) và \( p \) (tức là không chia hết cho số nguyên dương nào khác ngoài 1 và chính nó).
+\end{definition}
+    
+\begin{definition}[Hợp số]\label{def:composite}
+    Một số nguyên \( n > 1 \) được gọi là \textbf{hợp số} nếu tồn tại một số nguyên dương \( d \) sao cho \( 1 < d < n \) và \( d \mid n \) (tức là \( n \) có ước khác ngoài 1 và chính nó).
+\end{definition}
+
+\begin{theorem}[\href{https://w.wiki/_pZXo}{Định lý cơ bản của số học}]
+    \label{theorem:fundamental-theorem-of-arithmetic}
+    Mọi số tự nhiên lớn hơn 1 có thể viết một cách duy nhất (không kể sự sai khác về thứ tự các thừa số) thành tích các thừa số nguyên tố:
+    \[
+        n = p_1^{\alpha_1} p_2^{\alpha_2} \dots p_k^{\alpha_k}
+    \]
+    với \( p_i \) là các số nguyên tố khác nhau và \( \alpha_i \in \ZZ^+ \).
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WRE}{Định lý Euclid}]
+    \label{theorem:infinitely-many-primes}
+    Có vô số số nguyên tố. Cụ thể, với bất kỳ tập hữu hạn các số nguyên tố \( p_1, p_2, \dots, p_k \), tồn tại số nguyên tố \( p \) không thuộc tập đó.
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WPp}{Định lý Bertrand}]
+    \label{theorem:bertrand-postulate}
+    Với mọi số nguyên \( n > 1 \), tồn tại số nguyên tố \( p \) sao cho:
+    \[
+        n < p < 2n.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WRF}{Định lý số nguyên tố — dạng yếu}]
+    \label{theorem:prime-number-theorem}
+    Hàm đếm số nguyên tố \( \pi(n) \) thỏa mãn:
+    \[
+        \pi(n) \sim \frac{n}{\log n},\quad \text{và } \pi(n) < \frac{1.25506n}{\log n}.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WRE}{Tính chất cơ bản của phép chia}]
+    \label{theorem:basic-divisibility-properties}
+    Với các số nguyên \( x, y, z \), ta có:
+    \begin{itemize}[topsep=0pt, itemsep=0pt]
+        \item \( x \mid x \), \( 1 \mid x \), \( x \mid 0 \)
+        \item Nếu \( x \mid y \) và \( y \mid z \) thì \( x \mid z \)
+        \item Nếu \( x \mid y \) thì tồn tại \( k \in \ZZ \) sao cho \( y = kx \)
+        \item Nếu \( x \mid y \) thì \( x \mid yz \) với mọi \( z \)
+        \item Nếu \( x \mid y \) và \( x \mid z \) thì \( x \mid (ay + bz) \) với mọi \( a, b \in \ZZ \)
+        \item Nếu \( x \mid y \) và \( y \mid x \) thì \( x = \pm y \)
+    \end{itemize}
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WRG}{Tính chất \( \gcd \) và \( \mathrm{lcm} \)}]
+    \label{theorem:gcd-lcm-properties}
+    Với \( a, b \in \ZZ^+ \), ta có:
+    \[
+        \gcd(a, b) \cdot \mathrm{lcm}(a, b) = ab.
+    \]
+    Ngoài ra:
+    \begin{itemize}[topsep=0pt, itemsep=0pt]
+        \item \( \gcd(a, b) \mid a \) và \( \gcd(a, b) \mid b \)
+        \item \( \mathrm{lcm}(a, b) \) là bội chung nhỏ nhất
+    \end{itemize}
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WRJ}{Định lý chia có dư}]
+    \label{theorem:euclidean-division}
+    Với \( a \in \ZZ \) và \( b \in \ZZ^+ \), tồn tại duy nhất \( q, r \in \ZZ \) sao cho:
+    \[
+        a = bq + r,\quad 0 \le r < b.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WRE}{Thuật toán Euclid}]
+    \label{theorem:euclidean-algorithm}
+    Thuật toán tìm \( \gcd(a, b) \) dựa vào lặp lại định lý chia:
+    \[
+        \gcd(a, b) = \gcd(b, a \bmod b).
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WRE}{Định lý Bézout}]
+    \label{theorem:bezout}
+    Với \( a, b \in \ZZ \), tồn tại \( x, y \in \ZZ \) sao cho:
+    \[
+        ax + by = \gcd(a, b).
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WRE}{Tính chất số nguyên tố}]
+    \label{theorem:prime-divides-product}
+    Nếu \( p \) là số nguyên tố và \( p \mid ab \), thì \( p \mid a \) hoặc \( p \mid b \).
+\end{theorem}
+
+\begin{theorem*}[Chia hết trong tích khi nguyên tố cùng nhau]
+    \label{theorem:coprime-divides-product}
+	Nếu \( a \mid bc \) và \( \gcd(a, b) = 1 \), thì \( a \mid c \).
+\end{theorem*}
+
+\begin{lemma}[Biểu diễn số có các chữ số \(1\)]
+    \label{lemma:repunit-form}
+    Với mọi số nguyên dương \(n\), ta có:
+    \[
+        \underbrace{11\dots1}_{n\text{ chữ số }1} = \frac{10^n - 1}{9}.
+    \]
+\end{lemma}
+
+\newpage
+
+\section{Số học đồng dư cơ bản}
+
+\begin{definition}[\href{https://w.wiki/9WE8}{Đồng dư modulo \(n\)}]
+    \label{definition:modular-congruence}
+    Với \( a, b, n \in \ZZ \), ta nói \( a \equiv b \pmod{n} \) khi \( n \mid (a - b) \).
+\end{definition}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WEb}{Tính chất đại số của phép đồng dư}]
+    \label{theorem:modular-properties}
+    Với \( a \equiv r \pmod{n} \) và \( b \equiv s \pmod{n} \), ta có:
+    \begin{itemize}[topsep=0pt, itemsep=0pt]
+        \item \( a + b \equiv r + s \pmod{n} \)
+        \item \( ab \equiv rs \pmod{n} \)
+        \item \( ka \equiv kr \pmod{n} \) với mọi \( k \in \ZZ \)
+    \end{itemize}
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[Ước nguyên tố dạng \(4k+3\)]
+    \label{theorem:prime-divisor-4k3}
+    Mỗi số nguyên dương có dạng \(4s + 3\) đều có ít nhất một ước nguyên tố cũng có dạng đó, tức là \(\equiv -1 \Mod{4}\)
+    (see \nameref{theorem:dirichlet-ap}).
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WEb}{Định lý nhỏ Fermat}]
+    \label{theorem:fermat-little}
+    Nếu \( p \) là số nguyên tố và \( \gcd(a, p) = 1 \), thì:
+    \[
+        a^{p-1} \equiv 1 \pmod{p}.
+    \]
+    Hệ quả: \( a^p \equiv a \pmod{p} \) với mọi \( a \in \ZZ \).
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WPK}{Định lý số dư Trung Hoa}]
+    \label{theorem:chinese-remainder-theorem}
+    Cho các số nguyên \( n_1, \dots, n_k \) đôi một nguyên tố cùng nhau và các số nguyên \( a_1, \dots, a_k \), tồn tại duy nhất \( x \mod N = n_1n_2\cdots n_k \) sao cho:
+    \[
+        x \equiv a_i \pmod{n_i},\quad \forall i.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WDM}{Định lý Euler}]
+    \label{theorem:euler}
+    Với \( \gcd(a, n) = 1 \), ta có:
+    \[
+        a^{\varphi(n)} \equiv 1 \pmod{n}.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WEG}{Định lý Wilson}]
+    \label{theorem:wilson}
+    Với số nguyên tố \( p \), ta có:
+    \[
+        (p - 1)! \equiv -1 \pmod{p}.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WEF}{Hủy nhân trong đồng dư}]
+    \label{theorem:cancel-modulo}
+    Nếu \( ad \equiv bd \pmod{n} \), thì:
+    \[
+        a \equiv b \pmod{\frac{n}{\gcd(d,n)}}.
+    \]
+\end{theorem}
+
+\begin{theorem}[\href{https://w.wiki/9hMW}{Định lý Dirichlet về cấp số cộng nguyên tố}]
+    \label{theorem:dirichlet-ap}
+    Cho hai số nguyên dương \( a \) và \( d \) sao cho \(\gcd(a,d) = 1\). Khi đó, cấp số cộng \( a, a+d, a+2d, a+3d, \ldots \) chứa vô hạn số nguyên tố.
+\end{theorem}
+
+\newpage
+
+\section{Các hàm số học}
+
+\begin{definition}[\href{https://w.wiki/9WbK}{Hàm số ước số dương}]
+    \label{definition:tau-function}
+    Với \( n = p_1^{a_1} \cdots p_k^{a_k} \), ta có:
+    \[
+        \tau(n) = (1 + a_1)(1 + a_2) \cdots (1 + a_k).
+    \]
+    Hàm này đếm số ước dương của \( n \). Cũng được ký hiệu là \( d(n) \).
+\end{definition}
+
+\vspace{1em}
+
+\begin{definition}[\href{https://w.wiki/9WbM}{Hàm tổng ước số}]
+    \label{definition:sigma-function}
+    Với \( n = p_1^{a_1} \cdots p_k^{a_k} \), ta có:
+    \[
+        \sigma(n) = \left(1 + p_1 + \dots + p_1^{a_1}\right) \cdots \left(1 + p_k + \dots + p_k^{a_k}\right).
+    \]
+    Đây là tổng các ước dương của \( n \).
+\end{definition}
+
+\vspace{1em}
+
+\begin{definition}[\href{https://w.wiki/_pT26}{Hàm phi Euler}]
+    \label{definition:euler-totient}
+    Với \( n = p_1^{a_1} \cdots p_k^{a_k} \), ta có:
+    \[
+        \varphi(n) = n\left(1 - \frac{1}{p_1}\right) \cdots \left(1 - \frac{1}{p_k}\right).
+    \]
+    Hàm này đếm số nguyên dương nhỏ hơn \( n \) và nguyên tố cùng nhau với \( n \).
+\end{definition}
+
+\vspace{1em}
+
+\begin{definition}[\href{https://w.wiki/9Wbt}{Hàm Möbius}]
+    \label{definition:mobius-function}
+    Với \( n \in \ZZ^+ \), định nghĩa:
+    \[
+        \mu(n) =
+        \begin{cases}
+            1 & \text{nếu } n = 1, \\
+            (-1)^k & \text{nếu } n \text{ là tích của } k \text{ số nguyên tố phân biệt}, \\
+            0 & \text{nếu } n \text{ chia hết bình phương của số nguyên tố}.
+        \end{cases}
+    \]
+\end{definition}
+
+\vspace{1em}
+
+\begin{theorem}[GCD Power Sum Identity]
+    \label{theorem:gcd-power-sum}
+    For any positive integer \( n \) and any real or complex number \( a \), we have
+    \[
+        \sum_{k=1}^n a^{\gcd(k,n)} = \sum_{d \mid n} \phi(d) \, a^{n/d}.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{definition}[\href{https://w.wiki/9Wbq}{Phép nhân Dirichlet}]
+    \label{definition:dirichlet-convolution}
+    Với hai hàm số số học \( f, g \colon \ZZ^+ \to \RR \), định nghĩa:
+    \[
+        (f * g)(n) = \sum_{d \mid n} f(d) g(n/d).
+    \]
+\end{definition}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WO3}{Đẳng thức \( \tau = 1 * 1 \)}]
+    \label{theorem:tau-convolution}
+    Hàm \( \tau(n) \) là tích Dirichlet của hai hàm hằng:
+    \[
+        \tau(n) = \sum_{d \mid n} 1 = (1 * 1)(n).
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WO4}{Đẳng thức \( \sigma = \id * 1 \)}]
+    \label{theorem:sigma-convolution}
+    Hàm tổng ước \( \sigma(n) \) là tích Dirichlet của hàm đồng nhất và hàm hằng:
+    \[
+        \sigma(n) = \sum_{d \mid n} d = (\id * 1)(n).
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WNz}{Tổng \( \mu(d) \) trên các ước}]
+    \label{theorem:sum-mu-divisors}
+    Với mọi \( n \in \ZZ^+ \), ta có:
+    \[
+        \sum_{d \mid n} \mu(d) =
+        \begin{cases}
+            1 & \text{nếu } n = 1, \\
+            0 & \text{nếu } n > 1.
+        \end{cases}
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WO5}{Nghịch đảo Möbius tổng quát}]
+    \label{theorem:mobius-inversion-arithmetic}
+    Nếu \( f(n) = \sum_{d \mid n} g(d) \), thì:
+    \[
+        g(n) = \sum_{d \mid n} \mu(d) f(n/d).
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WRG}{Bất đẳng thức cho \( \varphi(n) \)}]
+    \label{theorem:totient-bound}
+    Với \( n \ge 3 \), ta có:
+    \[
+        \frac{n}{\log \log n} < \varphi(n) < n.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WRH}{Tổng các giá trị \( \varphi(n) \)}]
+    \label{theorem:totient-sum-asymptotic}
+    Khi \( x \to \infty \), ta có:
+    \[
+        \sum_{n \le x} \varphi(n) \sim \frac{3}{\pi^2} x^2.
+    \]
+\end{theorem}
+
+\begin{theorem*}[Tổng các số nguyên tố cùng nhau với \( m \)]
+    \label{theorem:sum-coprime-m}
+    Gọi \( T \) là tổng các số nguyên dương nhỏ hơn \( m \) và nguyên tố cùng nhau với \( m \), thì ta có:
+    \[
+        T = \frac{m\varphi(m)}{2}.
+    \]
+\end{theorem*}
+
+\newpage
+
+\section{Phương trình nghiệm nguyên}
+
+\begin{theorem}[\href{https://w.wiki/9Wc2}{Đẳng thức Simon yêu thích}]
+    \label{theorem:simon-trick}
+    Với các biểu thức như \( xy + ax + by + c \), ta có:
+    \[
+        xy + ax + by + c = (x + a)(y + b) + (c - ab).
+    \]
+    Được dùng để đưa phương trình hai biến về dạng tích.
+\end{theorem}
+
+\vspace{1em}
+
+\begin{lemma}[\href{https://w.wiki/9Wcu}{Nguyên lý hạ vô hạn (Infinite Descent)}]
+    \label{lemma:infinite-descent}
+    Nếu tồn tại dãy vô hạn các số nguyên dương \( x_0 > x_1 > x_2 > \cdots \) mà mỗi \( x_i \) thỏa mãn tính chất \( P \), thì có mâu thuẫn. Do đó, giả thiết ban đầu là sai.
+\end{lemma}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9Wcv}{Monovariant \( S = |x| + |y| + |z| \)}]
+    \label{theorem:monovariant-absolute-sum}
+    Nếu một quá trình biến đổi bộ số nguyên luôn làm giảm hoặc giữ nguyên \( S = |x| + |y| + |z| \) và \( S \in \ZZ_{\ge 0} \), thì quá trình phải kết thúc sau hữu hạn bước.
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9Wcx}{Kỹ thuật Vieta Jumping}]
+    \label{theorem:vieta-jumping}
+    Với phương trình đối xứng \( P(x, y) = 0 \), nếu \( (a, b) \) là nghiệm nguyên và \( x^2 - (a + b)x + ab = 0 \), thì nghiệm còn lại \( x' \) cũng là nghiệm. Nếu \( x' < a \), ta có thể sử dụng Vieta Jumping để tìm nghiệm nhỏ hơn — dẫn đến mâu thuẫn.
+\end{theorem}
+
+\vspace{1em}
+
+\begin{lemma}[\href{https://w.wiki/9Wcy}{Mâu thuẫn đồng dư}]
+    \label{lemma:modular-contradiction}
+    Nếu giả sử \( a \equiv b \pmod{p} \) nhưng rút ra \( a \equiv c \not\equiv b \pmod{p} \), thì mâu thuẫn xảy ra. Kỹ thuật dùng để loại nghiệm.
+\end{lemma}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WRJ}{Định lý Fermat Giáng Sinh}]
+    \label{theorem:fermat-christmas}
+    Phương trình:
+    \[
+        x^4 + y^4 = z^2
+    \]
+    không có nghiệm nguyên dương khác 0.
+\end{theorem}
+
+\newpage
+
+\section{Phân bố đều và số vô tỉ}
+
+\begin{lemma}[\href{https://w.wiki/9XfN}{Phân bố đều của phần thập phân số vô tỉ}]
+    \label{lemma:irrational-uniform-distribution}
+    Cho \( \alpha \in \mathbb{R} \setminus \mathbb{Q} \). Khi đó dãy \( \{ n\alpha \} \) phân bố đều trên khoảng \( (0,1) \), tức là với mọi \( 0 \le a < b \le 1 \), ta có:
+    \[
+        \lim_{N \to \infty} \frac{1}{N} \left| \left\{ 1 \le n \le N : \{ n\alpha \} \in [a, b) \right\} \right| = b - a.
+    \]
+    Ở đây \( \{x\} = x - \lfloor x \rfloor \) là phần thập phân của \( x \).
+\end{lemma}
+
+\newpage
+
+\section{Căn nguyên thủy và đẳng thức cổ điển}
+
+\begin{definition}[\href{https://w.wiki/9WDG}{Bậc modulo \( n \)}]
+    \label{definition:order-modulo-n}
+    Với \( a \in \ZZ \), \( \gcd(a, n) = 1 \), bậc của \( a \) modulo \( n \), ký hiệu \( \ord_n(a) \), là số nguyên dương nhỏ nhất \( d \) sao cho:
+    \[
+        a^d \equiv 1 \pmod{n}.
+    \]
+\end{definition}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WDH}{Tính chia hết của bậc}]
+    \label{theorem:order-divides-exponent}
+    Nếu \( a^k \equiv 1 \pmod{n} \), thì \( \ord_n(a) \mid k \).
+\end{theorem}
+
+\vspace{1em}
+
+\begin{lemma}[\href{https://w.wiki/9WDJ}{Tính chất đồng dư theo bậc}]
+    \label{lemma:order-preserved}
+    Nếu \( \ord_n(a) = d \), thì:
+    \[
+        a^i \equiv a^j \pmod{n} \iff i \equiv j \pmod{d}.
+    \]
+\end{lemma}
+
+\vspace{1em}
+
+\begin{lemma}[\href{https://w.wiki/9V6Y}{Tổng Euler lũy thừa theo modulo}]
+    \label{lemma:euler-power-sum-mod}
+    Với mọi số nguyên tố \( p \) và số nguyên \( j \ge 1 \), và với mọi \( x \in \mathbb{Z} \), ta có:
+    \[
+        \sum_{k = 0}^{j} \phi\left(p^k\right)\, x^{p^{j - k}} \equiv 0 \pmod{p^j}.
+    \]
+\end{lemma}
+
+\vspace{1em}
+
+\begin{definition}[\href{https://w.wiki/9WDN}{Căn nguyên thủy}]
+    \label{definition:primitive-root}
+    Một số \( g \in \ZZ \) được gọi là căn nguyên thủy modulo \( n \) nếu:
+    \[
+        \ord_n(g) = \varphi(n).
+    \]
+    Khi đó \( g \) sinh ra nhóm \( (\ZZ/n\ZZ)^\times \).
+\end{definition}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WDM}{Tồn tại căn nguyên thủy}]
+    \label{theorem:existence-primitive-root}
+    Căn nguyên thủy tồn tại nếu và chỉ nếu:
+    \[
+        n = 1,\ 2,\ 4,\ p^k,\ 2p^k \text{ với } p \text{ là số nguyên tố lẻ}.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{lemma}[\href{https://w.wiki/9WDV}{Bậc của lũy thừa}]
+    \label{lemma:order-of-power}
+    Nếu \( \ord_n(a) = d \), thì:
+    \[
+        \ord_n(a^k) = \frac{d}{\gcd(k, d)}.
+    \]
+\end{lemma}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WRK}{Đẳng thức Sophie Germain}]
+    \label{theorem:sophie-germain-identity}
+    Với mọi \( a, b \in \ZZ \), ta có:
+    \[
+        a^4 + 4b^4 = (a^2 + 2b^2 + 2ab)(a^2 + 2b^2 - 2ab).
+    \]
+\end{theorem}
+
+\newpage
+
+\section{Chuẩn \( p \)-adic và định lý LTE}
+
+\begin{definition}[\href{https://w.wiki/9WE8}{Chuẩn \( p \)-adic}]
+    \label{definition:p-adic-valuation}
+    Với \( p \) là số nguyên tố và \( n \in \ZZ \), định nghĩa:
+    \[
+        \nu_p(n) =
+        \begin{cases}
+            \max\{k \in \NN_0 : p^k \mid n\} & \text{nếu } n \ne 0, \\
+            \infty & \text{nếu } n = 0.
+        \end{cases}
+    \]
+\end{definition}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WEb}{Tính chất cơ bản của \( \nu_p \)}]
+    \label{theorem:nu-p-properties}
+    Với \( a, b \in \ZZ \), ta có:
+    \begin{itemize}[topsep=0pt, itemsep=0pt]
+        \item \( \nu_p(ab) = \nu_p(a) + \nu_p(b) \)
+        \item \( \nu_p(a^k) = k \nu_p(a) \)
+        \item \( \nu_p\left(\frac{a}{b}\right) = \nu_p(a) - \nu_p(b) \)
+        \item \( \nu_p(a + b) \ge \min\{\nu_p(a), \nu_p(b)\} \)
+    \end{itemize}
+    Dấu bằng xảy ra nếu \( \nu_p(a) \ne \nu_p(b) \).
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WEB}{Định lý LTE cho hiệu — \( p \mid x - y \)}]
+    \label{theorem:lte-difference}
+    Cho \( x, y \in \ZZ \), \( p \) là số nguyên tố lẻ, \( n \in \ZZ^+ \), nếu \( p \mid x - y \) và \( p \nmid xy \), thì:
+    \[
+        \nu_p(x^n - y^n) = \nu_p(x - y) + \nu_p(n).
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WEC}{Định lý LTE cho tổng — \( p \mid x + y \)}]
+    \label{theorem:lte-sum}
+    Cho \( p > 2 \) là số nguyên tố, \( x, y \in \ZZ \), \( p \mid x + y \), và \( p \nmid xy \). Khi đó với \( n \) lẻ:
+    \[
+        \nu_p(x^n + y^n) = \nu_p(x + y) + \nu_p(n).
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WED}{Định lý LTE cho \( \nu_2(x^n - 1) \)}]
+    \label{theorem:lte-even-difference}
+    Với \( x \in \ZZ \) lẻ và \( n \in \ZZ^+ \), ta có:
+    \[
+        \nu_2(x^n - 1) = \nu_2(x - 1) + \nu_2(x + 1) + \nu_2(n) - 1.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WRQ}{Định lý Zsigmondy}]
+    \label{theorem:zsigmondy}
+    Nếu \( a > b > 0 \), \( \gcd(a, b) = 1 \), và \( n > 1 \), thì tồn tại ước nguyên tố của \( a^n - b^n \) không chia \( a^k - b^k \) với \( k < n \), trừ các ngoại lệ:
+    \[
+        (a, b, n) = (2, 1, 6), \text{ hoặc } a + b \text{ là lũy thừa của 2 và } n = 2.
+    \]
+\end{theorem}
+
+\newpage
+
+\section{Đa thức}
+
+\begin{theorem}[\href{https://w.wiki/9WFu}{Định lý nghiệm hữu tỉ}]
+    \label{theorem:rational-root-theorem}
+    Nếu \( P(x) = a_nx^n + \dots + a_0 \in \ZZ[x] \) có nghiệm hữu tỉ \( \frac{r}{s} \) với \( \gcd(r,s) = 1 \), thì:
+    \[
+        r \mid a_0,\quad s \mid a_n.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WFw}{Định lý chia đa thức}]
+    \label{theorem:polynomial-division}
+    Với \( F(x), G(x) \in \ZZ[x] \), tồn tại duy nhất \( Q(x), R(x) \in \ZZ[x] \) sao cho:
+    \[
+        F(x) = G(x) Q(x) + R(x),\quad \deg R < \deg G.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WGE}{Nội suy Lagrange}]
+    \label{theorem:lagrange-interpolation}
+    Cho \( n+1 \) điểm phân biệt \( (x_0, y_0), \ldots, (x_n, y_n) \in \RR^2 \), tồn tại một đa thức \( P(x) \in \RR[x] \), bậc không vượt quá \( n \), sao cho \( P(x_i) = y_i \) với mọi \( i \). Cụ thể:
+    \[
+        P(x) = \sum_{i=0}^n y_i \prod_{\substack{0 \le j \le n \\ j \ne i}} \frac{x - x_j}{x_i - x_j}.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{lemma}[\href{https://w.wiki/9WGG}{Đồng dư đa thức theo hiệu}]
+    \label{lemma:polynomial-difference-congruence}
+    Nếu \( a \equiv b \pmod{a - b} \), thì với mọi đa thức \( P(x) \in \ZZ[x] \), ta có:
+    \[
+        P(a) \equiv P(b) \pmod{a - b}.
+    \]
+\end{lemma}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WJ6}{Định lý cơ bản của đại số — dạng thực}]
+    \label{theorem:fundamental-theorem-of-algebra}
+    Mọi đa thức hệ số thực bậc ít nhất 1 có thể phân tích thành tích của các đa thức bậc nhất hoặc bậc hai không khả quy trong \( \RR[x] \).
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WRT}{Định lý Lucas}]
+    \label{theorem:lucas-theorem}
+    Cho số nguyên tố \( p \) và \( m, n \in \ZZ_{\ge 0} \), viết:
+    \[
+        m = m_0 + m_1p + \dots + m_kp^k,\quad n = n_0 + n_1p + \dots + n_kp^k,
+    \]
+    thì:
+    \[
+        \binom{m}{n} \equiv \prod_{i=0}^k \binom{m_i}{n_i} \pmod{p}.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WRU}{Đẳng thức Vandermonde}]
+    \label{theorem:vandermonde}
+    Với \( m, n, r \in \ZZ^+ \), ta có:
+    \[
+        \sum_{k=0}^r \binom{m}{k} \binom{n}{r-k} = \binom{m+n}{r}.
+    \]
+\end{theorem}
+
+\newpage
+
+\section{Số dư bậc hai và ký hiệu Legendre}
+
+\begin{definition}[\href{https://w.wiki/9WK9}{Ký hiệu Legendre}]
+    \label{definition:legendre-symbol}
+    Với số nguyên tố lẻ \( p \) và \( a \in \ZZ \), định nghĩa:
+    \[
+        \left( \frac{a}{p} \right) =
+        \begin{cases}
+            0 & \text{nếu } p \mid a, \\
+            1 & \text{nếu } a \not\equiv 0 \pmod{p} \text{ và } \exists x \in \ZZ: x^2 \equiv a \pmod{p}, \\
+            -1 & \text{nếu } a \text{ không là bình phương chính phương modulo } p.
+        \end{cases}
+    \]
+\end{definition}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WKb}{Tính chất của ký hiệu Legendre}]
+    \label{theorem:legendre-basic-properties}
+    Với \( a, b \in \ZZ \) và số nguyên tố lẻ \( p \), ta có:
+    \begin{itemize}[topsep=0pt, itemsep=0pt]
+        \item \( \left( \frac{ab}{p} \right) = \left( \frac{a}{p} \right)\left( \frac{b}{p} \right) \)
+        \item \( \left( \frac{a^2}{p} \right) = 1 \) nếu \( p \nmid a \)
+        \item \( \left( \frac{-1}{p} \right) = (-1)^{\frac{p-1}{2}} \)
+        \item \( \left( \frac{2}{p} \right) = (-1)^{\frac{p^2 - 1}{8}} \)
+    \end{itemize}
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9Xfm}{Tổng cấp số nhân modulo \( p \)}]
+    \label{theorem:geometric-sum-mod-p}
+    Cho số nguyên tố \( p \), và \( a \in \ZZ \setminus \{1\} \) sao cho \( a^k \equiv 1 \pmod{p} \), ta có:
+    \[
+        \sum_{i = 0}^{k - 1} a^i \equiv 0 \pmod{p}.
+    \]
+    Đây là tổng của một cấp số nhân bậc \( k \) với công bội \( a \not\equiv 1 \pmod{p} \) trong \( \FF_p \).
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9Xfr}{Tồn tại căn bậc hai của \( -1 \)}]
+    \label{theorem:square-root-of-minus-one}
+    Với số nguyên tố lẻ \( p \), ta có:
+    \[
+        \left( \frac{-1}{p} \right) = 
+        \begin{cases}
+            1 & \text{nếu } p \equiv 1 \pmod{4}, \\
+            -1 & \text{nếu } p \equiv 3 \pmod{4}.
+        \end{cases}
+    \]
+    Do đó, \( -1 \) là số chính phương modulo \( p \) khi và chỉ khi \( p \equiv 1 \pmod{4} \).
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WKm}{Định luật tương hỗ bậc hai}]
+    \label{theorem:quadratic-reciprocity}
+    Với hai số nguyên tố lẻ phân biệt \( p, q \), ta có:
+    \[
+        \left( \frac{p}{q} \right) \left( \frac{q}{p} \right) = (-1)^{\frac{(p-1)(q-1)}{4}}.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{corollary*}[\href{https://w.wiki/9WKp}{Tổng Legendre bằng 0}]
+    \label{corollary:legendre-sum-zero}
+    Với số nguyên tố lẻ \( p \), ta có:
+    \[
+        \sum_{a = 1}^{p - 1} \left( \frac{a}{p} \right) = 0.
+    \]
+\end{corollary*}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WL4}{Ước lượng số dư bậc hai nhỏ nhất}]
+    \label{theorem:least-quadratic-nonresidue}
+    Với số nguyên tố \( p > 3 \), tồn tại số nguyên \( r \in \{2, 3, \ldots, \lfloor \sqrt{p} \rfloor + 1\} \) sao cho \( r \) không là số dư bậc hai modulo \( p \). Do đó:
+    \[
+        r < \sqrt{p} + 1.
+    \]
+\end{theorem}
+
+\newpage
+
+\section{Căn nguyên thủy và bậc lũy thừa (phần nâng cao)}
+
+\begin{lemma}[\href{https://w.wiki/9WLf}{Tồn tại phần tử bậc \( d \)}]
+    \label{lemma:exists-order-d}
+    Nếu \( d \mid p - 1 \), thì tồn tại \( a \in \ZZ \) sao cho:
+    \[
+        \ord_p(a) = d.
+    \]
+    Có chính xác \( \varphi(d) \) phần tử như vậy trong \( (\ZZ/p\ZZ)^\times \).
+\end{lemma}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WLh}{Tập các phần tử bậc \( d \)}]
+    \label{theorem:residue-class-order-d}
+    Nếu \( d \mid p - 1 \), thì tập các phần tử bậc \( d \) trong \( (\ZZ/p\ZZ)^\times \) có đúng \( \varphi(d) \) phần tử. Hợp của các tập này (khi \( d \mid p - 1 \)) chính là toàn bộ nhóm \( (\ZZ/p\ZZ)^\times \).
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WMK}{Các nghiệm của \( x^d \equiv 1 \pmod{p} \)}]
+    \label{theorem:roots-of-unity-mod-p}
+    Với \( d \mid p - 1 \), phương trình \( x^d \equiv 1 \pmod{p} \) có đúng \( d \) nghiệm phân biệt modulo \( p \), tạo thành một nhóm con cyclic của \( (\ZZ/p\ZZ)^\times \).
+\end{theorem}
+
+\vspace{1em}
+
+\begin{lemma}[\href{https://w.wiki/9WMM}{Tính chia hết qua bậc}]
+    \label{lemma:order-divides-implies-root}
+    Nếu \( a^k \equiv 1 \pmod{p} \), thì \( \ord_p(a) \mid k \).
+\end{lemma}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WMZ}{Cấu trúc nhóm nhân modulo \( p \)}]
+    \label{theorem:multiplicative-group-structure}
+    Với số nguyên tố \( p \), nhóm \( (\ZZ/p\ZZ)^\times \) là cyclic cấp \( p - 1 \), tức là tồn tại \( g \in \ZZ \) sao cho:
+    \[
+        (\ZZ/p\ZZ)^\times = \{ g^1, g^2, \ldots, g^{p-1} \}.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{lemma}[\href{https://w.wiki/9WN2}{Rút gọn đồng dư theo mũ}]
+    \label{lemma:modular-power-reduction}
+    Nếu \( a^k \equiv b^k \pmod{p} \) và \( \gcd(k, p - 1) = 1 \), thì:
+    \[
+        a \equiv b \pmod{p}.
+    \]
+\end{lemma}
+
+\newpage
+
+\section{Bậc lũy thừa theo hợp số}
+
+\begin{definition}[\href{https://w.wiki/9WNk}{Hàm Carmichael}]
+    \label{definition:carmichael-function}
+    Hàm Carmichael \( \lambda(n) \) là số nguyên dương nhỏ nhất sao cho:
+    \[
+        a^{\lambda(n)} \equiv 1 \pmod{n} \quad \text{với mọi } a \in \ZZ \text{ sao cho } \gcd(a,n) = 1.
+    \]
+    Nếu \( n = \mathrm{lcm}(m_1, \dots, m_k) \), thì:
+    \[
+        \lambda(n) = \mathrm{lcm}(\lambda(m_1), \dots, \lambda(m_k)).
+    \]
+    Với số nguyên tố \( p \), ta có:
+    \[
+        \lambda(p^e) =
+        \begin{cases}
+            \varphi(p^e) & \text{nếu } p \text{ lẻ, hoặc } p = 2, e \le 2, \\
+            \frac{1}{2}\varphi(p^e) & \text{nếu } p = 2, e \ge 3.
+        \end{cases}
+    \]
+\end{definition}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WNM}{Bậc modulo hợp số}]
+    \label{theorem:order-modulo-composite}
+    Với \( a \in \ZZ \), \( \gcd(a, n) = 1 \), ta có:
+    \[
+        \ord_n(a) \mid \lambda(n), \quad \text{và } a^{\ord_n(a)} \equiv 1 \pmod{n}.
+    \]
+\end{theorem}
+
+\vspace{1em}
+
+\begin{lemma}[\href{https://w.wiki/9WNP}{Bậc modulo tích các lũy thừa số nguyên tố}]
+    \label{lemma:order-lcm-crt}
+    Nếu \( n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k} \), và \( \gcd(a, n) = 1 \), thì:
+    \[
+        \ord_n(a) = \mathrm{lcm}\big(\ord_{p_1^{e_1}}(a),\ \ord_{p_2^{e_2}}(a),\ \dots,\ \ord_{p_k^{e_k}}(a)\big).
+    \]
+\end{lemma}
+
+\newpage
+
+\section{Thủ thuật, kỹ thuật và công cụ hiếm gặp}
+
+\begin{theorem}[\href{https://w.wiki/9WOR}{Trung bình số ước}]
+    \label{theorem:average-tau}
+    Gọi \( d(k) \) là số ước dương của \( k \). Khi đó:
+    \[
+        \log n - 1 \le \frac{1}{n} \sum_{k=1}^n d(k) \le \log n + 1.
+    \]
+    Tức là trung bình số ước thỏa \( \Theta(\log n) \).
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WOS}{Tổng tất cả các ước từ \( 1 \) đến \( n \)}]
+    \label{theorem:sum-of-divisors-table}
+    Ta có:
+    \[
+        \sum_{i=1}^{n} \sigma(i) = \sum_{i=1}^{n} i \left\lfloor \frac{n}{i} \right\rfloor.
+    \]
+    Đây là tổng các ước dương của tất cả các số từ \( 1 \) đến \( n \).
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WOX}{Ma trận ước số \( D_{i,j} \)}]
+    \label{theorem:divisor-matrix}
+    Xét bảng \( D \) cấp \( n \times n \) với phần tử:
+    \[
+        D_{i,j} = 
+        \begin{cases}
+            1 & \text{nếu } j \mid i, \\
+            0 & \text{ngược lại}.
+        \end{cases}
+    \]
+    Tổng theo hàng thứ \( i \) là \( \tau(i) \), tổng theo cột thứ \( j \) là \( \left\lfloor \frac{n}{j} \right\rfloor \).
+\end{theorem}
+
+\vspace{1em}
+
+\begin{theorem}[\href{https://w.wiki/9WOY}{Tổng nghịch đảo ước số}]
+    \label{theorem:sum-of-divisors-harmonic}
+    Với mọi \( n \ge 1 \), ta có:
+    \[
+        \sum_{d \mid n} \frac{1}{d} \le \log n + 1.
+    \]
+\end{theorem}
+
+\end{document}
+

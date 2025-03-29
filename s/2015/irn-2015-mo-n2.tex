@@ -1,0 +1,53 @@
+\documentclass[../2015-n-s.tex]{subfiles}
+
+\begin{document}
+
+\begin{soln}[\autoref{problem:IRN-2015-N2}][\gls{IRN 2015 MO}/N2][\footnotemark]
+
+	Giả sử tại bước \( n \), tồn tại hai phần tử \( k, t \in M_{n-1} \) sao cho
+	\[
+		b_n k + 1 \mid b_n t + 1.
+	\]
+	Suy ra \( b_n k + 1 \mid b_n(t - k) \Rightarrow b_n k + 1 \mid k - t \).
+
+	Vậy nếu có quan hệ chia hết, thì
+	\[
+		\max(M_{n-1}) - \min(M_{n-1}) \geq \min(M_n). \tag{1}
+	\]
+
+	Gọi \( M = \max(M_1),\ m = \min(M_1) \). Ta có:
+	\[
+		\max(M_n) - \min(M_n) = b_n b_{n-1} \cdots b_2 (M - m),
+	\]
+	và
+	\[
+		\min(M_n) \geq b_n b_{n-1} \cdots b_2 m + b_{n-1} \cdots b_2.
+	\]
+
+	Thế vào (1):
+	\[
+		b_2 \cdots b_{n-1} (M - m - 1) \geq b_2 \cdots b_n m \Rightarrow \frac{M - m - 1}{m} \geq b_n.
+	\]
+
+	Mặt khác, vì \( b_n \in M_{n-1} \), và các phần tử trong dãy \( M_n \) tăng rất nhanh qua mỗi bước (do mỗi phần tử mới có dạng \( b_n m + 1 \)),
+	nên tồn tại một số \( N \) sao cho với mọi \( n \geq N \), ta có:
+	\[
+		b_n \geq n - 2.
+	\]
+
+	Do đó, nếu
+	\[
+		\frac{M - m - 1}{m} < n - 2,
+	\]
+	thì không thể tồn tại quan hệ chia hết trong \( M_n \).
+
+	\textbf{Kết luận:} Khi \( n \) đủ lớn, bất đẳng thức trên luôn sai, nên tồn tại một bước mà trong \( M_n \), không có phần tử nào chia hết cho phần tử khác.
+
+	\vspace{1em}
+	\textbf{[\nameref{definition:25M}]}\index{25M}.
+	\textbf{Tham chiếu:} \nameref{theorem:proof-by-contradiction}.
+\end{soln}
+
+\footnotetext{\href{https://artofproblemsolving.com/community/c6h1139106p16859237}{Dựa theo lời giải của \textbf{Arefe}.}}
+
+\end{document}
