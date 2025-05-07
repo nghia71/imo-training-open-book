@@ -549,7 +549,7 @@
       spaceabove=2pt,
       spacebelow=1pt,
       mdframed={style=mdalmondbox},
-      headpunct={\quad},
+      headpunct={\ },
       postheadspace={0pt}
     ]{thmdalmondbox}
 
@@ -680,12 +680,12 @@
 
     \ifevanmdthm
         \declaretheorem[style=thmdalmondbox,name=Gợi ý,sibling=theorem]{hint}
-        \declaretheorem[style=thmdalmondbox,name=,numbered=no]{hint*}
-        % \declaretheorem[style=thmdalmondbox,name=Gợi ý,numbered=no]{hint*}
+        % \declaretheorem[style=thmdalmondbox,name=,numbered=no]{hint*}
+        \declaretheorem[style=thmdalmondbox,name=Gợi ý,numbered=no]{hint*}
     \else
         \declaretheorem[name=Gợi ý,sibling=theorem]{hint}
-        \declaretheorem[name=,numbered=no]{hint*}
-        % \declaretheorem[name=Gợi ý,numbered=no]{hint*}
+        % \declaretheorem[name=,numbered=no]{hint*}
+        \declaretheorem[name=Gợi ý,numbered=no]{hint*}
     \fi
 
     \ifevanmdthm

@@ -1,0 +1,20 @@
+\ifshowproblem
+\begin{problem}[\gls{IMO 2015 SL}/P8]\label{example:IMO-2015-SL-P8}
+    Với mỗi số nguyên dương \( n \) có phân tích thành thừa số nguyên tố \( n = \prod_{i = 1}^{k} p_i^{\alpha_i} \), định nghĩa:
+    \[
+        \mho(n) = \sum_{\substack{i:\\ p_i > 10^{100}}} \alpha_i.
+    \]
+    Nói cách khác, \( \mho(n) \) là tổng số mũ của các thừa số nguyên tố lớn hơn \( 10^{100} \)
+    trong phân tích thừa số nguyên tố của \( n \), tính cả bội số.
+    
+    Tìm tất cả các hàm \( f: \mathbb{Z} \to \mathbb{Z} \) \textit{tăng chặt} (tức là \( a > b \Rightarrow f(a) > f(b) \)) sao cho:
+    \[
+        \mho(f(a) - f(b)) \le \mho(a - b) \quad \text{với mọi } a > b \text{ trong } \mathbb{Z}.
+    \]    
+\end{problem}
+\fi
+
+\ifshowinfo
+[\textbf{\nameref{definition:35M}}]\footnotemark
+\footnotetext{\href{http://www.imo-official.org/problems/IMO2015SL.pdf}{Lời giải chính thức.}}
+\fi

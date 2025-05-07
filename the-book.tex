@@ -1,0 +1,114 @@
+\documentclass[openany,twoside,a4paper]{book}
+
+\usepackage[main=vietnamese,english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[sexy]{evan}
+\usepackage{array}
+\usepackage{background}
+\usepackage{booktabs}
+\usepackage{cancel}
+\usepackage{CJKutf8}
+\usepackage{etoolbox}
+\usepackage{figchild}
+\usepackage[automake]{glossaries-extra}
+\usepackage{imakeidx}
+\usepackage{listings}
+\usepackage{matchsticks}
+\usepackage{mathdots}
+\usepackage{pdfpages}
+\usepackage{subfiles}
+\usepackage{tocloft}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+
+\renewcommand{\cftchappresnum}{}
+	\renewcommand{\cftchapaftersnumb}{}
+	\setlength{\cftchapindent}{0em}
+	\setlength{\cftchapnumwidth}{3em} %
+    \addtolength{\cftsecnumwidth}{10pt}
+
+\newcommand\DeactivateBG{\backgroundsetup{contents={}}}
+\newcommand\ActivateBG{
+    \backgroundsetup{
+        position=current page.west,
+        angle=90,
+        nodeanchor=west,
+        vshift=-5mm,
+        opacity=1,
+        scale=1,
+        contents=Phiên bản \date{\today}.
+    }
+}
+
+\newif\ifshowproblem
+\newif\ifshowhint
+\newif\ifshowsoln
+\newif\ifshowinfo
+
+\showproblemfalse
+\showhintfalse
+\showsolnfalse
+\showinfofalse
+
+\makeindex[columns=3, title=Chỉ mục MOHS, intoc]
+\makeglossaries
+
+\subfile{./glossary.tex}
+
+\title{Các bài toán Lý thuyết Số\\ từ các kỳ thi Olympic Quốc gia và Quốc tế 2015-2024}
+
+\date{\today}
+\author{Ban biên soạn\\ \\Tạp chí Pi\\ Hội toán học Việt Nam}
+
+\begin{document}
+
+\DeactivateBG
+
+\maketitle
+
+\tableofcontents
+
+\ActivateBG
+
+\chapter*{Mở đầu}
+\subfile{./intro.tex}
+
+\addcontentsline{toc}{chapter}{Introduction}
+
+\part{Các bài toán}
+\showproblemtrue
+\showhintfalse
+\showsolnfalse
+\subfile{./2015.tex}
+
+\part{Gợi ý}
+\showproblemfalse
+\showhinttrue
+\showsolnfalse
+% \subfile{./2015.tex}
+
+\part{Lời giải}
+\showproblemfalse
+\showhintfalse
+\showsolntrue
+% \subfile{./2015.tex}
+
+\part{Công cụ}
+
+\chapter{Định lý, bổ đề, và hằng đẳng thức}
+\subfile{./tools.tex}
+
+\chapter{Tiêu chuẩn Xếp hạng MOHS}
+\subfile{./mohs.tex}
+
+\appendix
+
+\clearpage
+
+\printglossaries
+
+\clearpage
+
+\printindex
+
+\end{document}
