@@ -1,5 +1,6 @@
-\ifshowproblem
-\begin{problem}[\gls{IMO 2015 SL}/P7]\label{example:IMO-2015-SL-P7}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{IMO 2015 SL}/P7]\label{problem:IMO-2015-SL-P7}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:IMO-2015-SL-P7}]\fi
     Ký hiệu \( \mathbb{Z}_{>0} \) là tập các số nguyên dương.
     Với một số nguyên dương \( k \), ta gọi một hàm \( f: \mathbb{Z}_{>0} \to \mathbb{Z}_{>0} \) là \textit{hàm \( k \)-tốt} nếu:
     \[
@@ -10,7 +11,170 @@
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:30M}}]\footnotemark
+\ifshowsoln
+\begin{soln}[Lời giải 1.]\footnotemark
+    Với mỗi hàm \( f : \mathbb{Z}_{>0} \to \mathbb{Z}_{>0} \), ký hiệu \( G_f(m,n) := \gcd(f(m) + n,\ f(n) + m) \).
+    Lưu ý rằng nếu \( f \) là \( k \)-tốt thì nó cũng là \( (k+1) \)-tốt. Do đó, ta chỉ cần chứng minh rằng:
+    
+    - Không tồn tại hàm \( 1 \)-tốt;
+    
+    - Tồn tại một hàm \( 2 \)-tốt.
+
+    \textit{Không tồn tại hàm 1-tốt.} Giả sử tồn tại hàm \( f \) sao cho \( G_f(m,n) = 1 \) với mọi \( m \ne n \).
+    Nếu tồn tại hai số chẵn phân biệt \( m, n \) sao cho \( f(m) \) và \( f(n) \) đều chẵn thì:
+    \[
+        2 \mid f(m) + n,\quad 2 \mid f(n) + m \Rightarrow 2 \mid \gcd(f(m) + n,\ f(n) + m),
+    \]
+    mâu thuẫn với điều kiện.
+    
+    Lập luận tương tự với hai số lẻ cho thấy điều này cũng dẫn đến mâu thuẫn.
+    Do đó, tồn tại \( m \) chẵn và \( n \) lẻ sao cho \( f(m) \) lẻ và \( f(n) \) chẵn,
+    suy ra \( f(m) + n \) và \( f(n) + m \) đều chẵn, suy ra mâu thuẫn suy ra không tồn tại hàm 1-tốt.
+
+    \textit{Xây dựng hàm 2-tốt.} Định nghĩa hàm \( f(n) = 2g(n+1) - n - 1 \), với hàm \( g \) được xác định đệ quy bởi:
+    \[
+        g(1) = 1,\quad g(n+1) = \left(2^{g(n) + 1}\right)!.
+    \]
+
+    Với mọi \( m > n \), đặt:
+    \[
+        A = f(m) + n = 2^{g(m)+1} - m + n - 1,\quad B = f(n) + m = 2^{g(n)+1} - n + m - 1.
+    \]
+
+    Ta cần chứng minh rằng \( \gcd(A,B) \le 2 \). Trước hết, lưu ý rằng \( A + B = 2^{g(m)+1} + 2^{g(n)+1} - 2 \) không chia hết cho 4
+    suy ra \( \gcd(A,B) \not\equiv 0 \mod 4 \).
+
+    Giả sử tồn tại số nguyên tố lẻ \( p \mid \gcd(A,B) \). Ta sẽ dẫn đến mâu thuẫn.
+
+    Ta chứng minh rằng \( 2^{g(m-1)+1} \ge B \). Điều này được suy ra từ:
+    \[
+        g(k+1) > g(k) \Rightarrow 2^{g(k+1)+1} \ge 2^{g(k)+1+1}.
+    \]
+
+    Áp dụng nhiều lần, ta có:
+    \[
+        2^{g(m-1)+1} \ge 2^{g(n)+1} + (m - 1) - n = B.
+    \]
+
+    Vì \( p \mid B \), ta có \( p - 1 < B \le 2^{g(m-1)+1} \), do đó:
+    \[
+        p - 1 \mid (2^{g(m-1)+1})! = g(m) \Rightarrow 2^{g(m)} \equiv 1 \mod p.
+    \]
+
+    Khi đó \( A + B \equiv 2^{g(n)+1} \mod p \), nhưng \( A + B \equiv 0 \mod p \) suy ra \( p = 2 \), mâu thuẫn vì \( p \) lẻ.
+
+    Vậy \( \gcd(f(m) + n,\ f(n) + m) \le 2 \). Hàm \( f \) là 2-tốt.
+\end{soln}
 \footnotetext{\href{http://www.imo-official.org/problems/IMO2015SL.pdf}{Lời giải chính thức.}}
+
+\begin{soln}[Lời giải 2.]
+    Một cách xây dựng khác của hàm 2-tốt.
+
+    Gọi \( \mathcal{P} \) là tập gồm 4 và tất cả các số nguyên tố lẻ.
+    Với mỗi \( p \in \mathcal{P} \), ta nói rằng số \( a \in \{0, 1, \ldots, p - 1\} \) là \textit{hữu dụng theo \( p \)}
+    (gọi tắt là \( p \)-hữu dụng) nếu \( a \not\equiv -a \mod p \). Với \( p = 4 \), cần thêm điều kiện \( a \not\equiv 2 \mod 4 \).
+
+    Ta sẽ xây dựng hàm \( f \) theo từng bước. Tại bước thứ \( m \), ta sẽ xác định giá trị \( f(m) \),
+    và nếu \( m + 2 \in \mathcal{P} \), ta cũng chọn một số \( p \)-hữu dụng \( a_p \mod p \).
+
+    Sau bước thứ \( m \), các điều kiện sau phải được thỏa mãn:
+
+    \begin{enumerate}[topsep=0pt, partopsep=0pt, itemsep=0pt, label=(\roman*)]
+        \item Các giá trị \( f(n) \) đã được xác định với mọi \( n \le m \); và các số \( a_p \) đã được chọn với mọi \( p \le m + 2 \).
+        \item Với mọi \( n \le m \) và \( p \le m + 2 \), ta có \( f(n) + n \not\equiv a_p \mod p \).
+        \item Với mọi \( n_1 < n_2 \le m \), ta có \( \gcd(f(n_1) + n_2,\ f(n_2) + n_1) \le 2 \).
+    \end{enumerate}
+
+    Nếu các điều kiện này được thỏa mãn tại mỗi bước, thì hàm \( f \) cuối cùng là 2-tốt.
+
+    \textit{Bước 1.} Đặt \( f(1) = 1 \), \( a_3 = 1 \). Rõ ràng các điều kiện (i)-(iii) đều thỏa mãn.
+
+    \textit{Bước \( m \ge 2 \).} Cần xác định \( f(m) \), và nếu \( m + 2 \in \mathcal{P} \), ta chọn \( a_{m+2} \).
+
+    Đặt:
+    \[
+        X_m = \{ p \in \mathcal{P} : p \mid f(n) + m \text{ với một số } n < m \}.
+    \]
+
+    Với mỗi \( p \in X_m \):
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Nếu \( p \le m + 1 \): đặt \( f(m) \equiv -a_p - m \mod p \).
+        \item Nếu \( p \ge m + 2 \): đặt \( f(m) \equiv 0 \mod p \).
+    \end{itemize}
+    Sau đó chọn \( f(m) \) thỏa mãn tất cả các điều kiện trên bằng định lý số dư Trung Hoa.
+
+    Nếu \( m + 2 \in \mathcal{P} \), ta chọn \( a_{m+2} \) sao cho:
+    \[
+        a_{m+2} \not\equiv 0, 2, f(n) + n \mod (m + 2) \text{ với mọi } n \le m.
+    \]
+    Vì số dư cần tránh chỉ có \( m + 1 < m + 2 \) giá trị suy ra luôn chọn được.
+
+    \textit{Kiểm tra điều kiện (ii).} Chỉ cần xét \( p = m + 2 \) hoặc \( n = m \).
+
+    - Nếu \( p = m + 2 \): do ta chọn \( a_{m+2} \) tránh tất cả \( f(n) + n \), điều kiện (ii) thỏa mãn.
+
+    - Nếu \( n = m \) và \( p \le m + 1 \): ta có \( f(m) + m \equiv -a_p \equiv a_p \mod p \), sử dụng tính \( p \)-hữu dụng của \( a_p \).
+
+    \textit{Kiểm tra điều kiện (iii).} Giả sử tồn tại \( n < m \) sao cho \( p \mid \gcd(f(n) + m,\ f(m) + n) \). Khi đó \( p \in X_m \) và \( p \mid f(m) + n \).
+
+    - Nếu \( p \ge m + 2 \): khi đó \( f(m) \equiv 0 \mod p \Rightarrow f(m) + n \equiv n \mod p \), mà \( n < m < p \)
+    suy ra \( n \not\equiv 0 \mod p \) suy ra mâu thuẫn.
+
+    - Nếu \( p \le m + 1 \): từ định nghĩa \( f(m) + m \equiv -a_p \mod p \) và \( f(n) + n \not\equiv a_p \mod p \)
+    theo điều kiện (ii) suy ra tổng không chia hết cho \( p \) suy ra mâu thuẫn.
+\end{soln}
+
+\begin{remark*}
+    Tại mỗi bước, với mỗi \( p \in \mathcal{P} \), ta có thể chọn trước \( a_p \) với \( p \ge m + 2 \).
+    Miễn là số lượng các \( a_p \) được chọn tại mỗi bước là hữu hạn, thì quá trình xây dựng vẫn hoạt động tốt.
+\end{remark*}
+
+\begin{remark*}
+    Một hướng xây dựng khác là: đặt \( f(1) = 1 \), sau đó với mỗi \( m > 1 \), định nghĩa:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item \( f(m) \equiv f(m - p) \mod p \) với mọi \( p \in X_m \), \( p < m \);
+        \item \( f(m) \equiv 0 \mod p \) với mọi \( p \in X_m \), \( p \ge m \).
+    \end{itemize}
+
+    Tuy nhiên, cách này có một lỗ hổng: trong trường hợp \( n = m - p \), tính tối tiểu của \( \max(m,n) \) không đảm bảo được mâu thuẫn suy ra cần sửa đổi.
+\end{remark*}
+
+\begin{remark*}
+    Có nhiều cách khác để xây dựng hàm 2-tốt. Một cách tiếp cận tổng quát là định nghĩa các tập con \( B_p^{(i)} \subset \mathbb{Z}_p \)
+    và phần tử an toàn \( b_p^{(i)} \in B_p^{(i)} \) sao cho:
+    \[
+        f(m) + m \equiv b_p^{(i)} \in B_p^{(i)} \text{ khi } m \equiv i \mod p.
+    \]
+
+    Với điều kiện rằng:
+    \[
+        \forall j \in \mathbb{Z}_p,\ \forall c^{(j)} \in B_p^{(j)},\quad p \nmid \gcd(b_p^{(i)} + (j - i),\ c^{(j)} - (j - i)).
+    \]
+    Một điều kiện tương đương:
+    \[
+        -b_p^{(i)} \not\in B_p^{(j)},\ \text{với } j \equiv i - b_p^{(i)} \mod p.
+    \]
+
+    Cách xây dựng trong Lời giải 2 tương đương với việc chọn \( b_p^{(i)} = -a_p \), \( B_p^{(i)} = \mathbb{Z}_p \setminus \{a_p\} \) với mọi \( i \).
+
+    Một biến thể khác: đặt \( B_p^{(0)} = \{0\} \), \( b_p^{(0)} = 0 \), và với mọi \( i \ne 0 \), đặt \( B_p^{(i)} = \{f(i) + i \mod p\} \), \( b_p^{(i)} = i \).
+    Tuy nhiên, cách này có thể vi phạm điều kiện an toàn nếu \( f(i) + i \) chia hết cho \( p \) nào đó.
+
+    Một cách khắc phục: đặt trước \( B_p^{(1)} = \{2\} \), \( B_p^{(0)} = \{-1\} \), rồi định nghĩa dần các \( B_p^{(i)} \) với \( i \ge 2 \)
+    bằng cách chọn các phần tử phù hợp từ \( \{i,\ f(i) + i\} \), sao cho điều kiện tương thích luôn được đảm bảo.
+\end{remark*}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:IMO-2015-SL-P7}]
+    Giả sử tồn tại hàm 1-tốt và dẫn đến mâu thuẫn. Sau đó, thử xây dựng một hàm 2-tốt bằng định nghĩa đệ quy,
+    kiểm tra đồng thời tất cả các ước số nguyên tố có thể phát sinh.
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:30M}}]
+\end{remark*}
+\newpage
 \fi

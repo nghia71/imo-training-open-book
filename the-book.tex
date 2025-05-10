@@ -40,15 +40,19 @@
     }
 }
 
+\newif\ifshowproblemandsoln
 \newif\ifshowproblem
 \newif\ifshowhint
 \newif\ifshowsoln
 \newif\ifshowinfo
+\newif\ifshowremark
 
+\showproblemandsolnfalse
 \showproblemfalse
 \showhintfalse
 \showsolnfalse
 \showinfofalse
+\showremarkfalse
 
 \makeindex[columns=3, title=Chỉ mục MOHS, intoc]
 \makeglossaries
@@ -76,22 +80,28 @@
 \addcontentsline{toc}{chapter}{Introduction}
 
 \part{Các bài toán}
+\showproblemandsolntrue
 \showproblemtrue
 \showhintfalse
 \showsolnfalse
+\showremarkfalse
 \subfile{./2015.tex}
 
 \part{Gợi ý}
+\showproblemandsolnfalse
 \showproblemfalse
 \showhinttrue
 \showsolnfalse
-% \subfile{./2015.tex}
+\showremarkfalse
+\subfile{./2015.tex}
 
 \part{Lời giải}
+\showproblemandsolntrue
 \showproblemfalse
 \showhintfalse
 \showsolntrue
-% \subfile{./2015.tex}
+\showremarktrue
+\subfile{./2015.tex}
 
 \part{Công cụ}
 

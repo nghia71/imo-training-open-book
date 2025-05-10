@@ -1,5 +1,6 @@
-\ifshowproblem
-\begin{problem}[\gls{BMO 2015}/P4]\label{example:BMO-2015-P4}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{BMO 2015}/P4]\label{problem:BMO-2015-P4}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:BMO-2015-P4}]\fi
     Chứng minh rằng trong bất kỳ \( 20 \) số nguyên dương liên tiếp nào cũng tồn tại một số nguyên \( d \)
     sao cho với mọi số nguyên dương \( n \), bất đẳng thức sau luôn đúng:
     \[
@@ -10,7 +11,94 @@
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:35M}}]\footnotemark
+\ifshowsoln
+\begin{soln}\footnotemark
+    Trong 20 số nguyên liên tiếp luôn tồn tại một số có dạng \( 20k + 15 = 5(4k + 3) \). Ta sẽ chứng minh rằng với \( d = 5(4k + 3) \), bất đẳng thức
+    \[
+        n \sqrt{d} \cdot \{n \sqrt{d}\} > \frac{5}{2}
+    \]
+    luôn đúng với mọi \( n \in \mathbb{Z}_{>0} \). Lưu ý rằng số có dạng \( 5(4k + 3) \) vừa chia hết cho 5,
+    vừa có ít nhất một ước nguyên tố dạng \( 4s + 3 \), là điều kiện cần cho lập luận chia hết phía dưới.
+
+    Vì \( d \equiv -1 \pmod{4} \), nên \( d \) không phải là một số chính phương. Do đó với mỗi \( n \in \mathbb{N} \), tồn tại \( a \in \mathbb{N} \):
+    \[
+        a < \sqrt{n^2 d} < a + 1 \Rightarrow a^2 < n^2 d < (a + 1)^2.
+    \]
+
+    Ta sẽ chứng minh rằng \( n^2 d \ge a^2 + 5 \).
+
+    Mỗi số nguyên dương dạng \( 4s + 3 \) đều có một ước nguyên tố cũng thuộc dạng \( 4s + 3 \).
+    Gọi \( p \mid (4k + 3) \) là một ước nguyên tố như vậy. Vì \( p \equiv 3 \pmod{4} \),
+
+    \begin{lemma*}
+        Một số nguyên tố \( p \equiv 3 \pmod{4} \) không thể là ước của bất kỳ số nào có dạng \( a^2 + 1 \), với \( a \in \mathbb{Z} \).
+    \end{lemma*}
+    
+    \begin{subproof}
+        Giả sử ngược lại rằng tồn tại \( a \in \mathbb{Z} \) sao cho \( p \mid a^2 + 1 \). Khi đó:
+        \[
+            a^2 \equiv -1 \pmod{p}.
+        \]
+
+        Nâng hai vế lên lũy thừa \( \frac{p - 1}{2} \), ta được:
+        \[
+            (a^2)^{\frac{p-1}{2}} \equiv (-1)^{\frac{p-1}{2}} \pmod{p} \Rightarrow a^{p-1} \equiv (-1)^{\frac{p-1}{2}} \pmod{p}.
+        \]
+
+        Mặt khác, theo định lý Fermat nhỏ (vì \( p \) là số nguyên tố và \( p \nmid a \)):
+        \[
+            a^{p-1} \equiv 1 \pmod{p}.
+        \]
+
+        Suy ra:
+        \[
+            1 \equiv (-1)^{\frac{p-1}{2}} \pmod{p}.
+        \]
+
+        Do \( p = 4k + 3 \Rightarrow \frac{p - 1}{2} = 2k + 1 \) là số lẻ, nên:
+        \[
+            (-1)^{2k + 1} = -1 \Rightarrow 1 \equiv -1 \pmod{p} \Rightarrow 2 \equiv 0 \pmod{p}.
+        \]
+
+        Điều này vô lý vì \( p \ge 7 \). Vậy giả thiết ban đầu là sai, tức là \( p \nmid a^2 + 1 \).
+    
+        Do đó, không tồn tại số nguyên \( a \) sao cho \( a^2 + 1 \equiv 0 \pmod{p} \) nếu \( p \equiv 3 \pmod{4} \), như cần chứng minh.
+    \end{subproof}
+
+    Từ bổ đề suy ra các số \( a^2 + 1^2 = a^2 + 1 \) và \( a^2 + 2^2 = a^2 + 4 \) không chia hết cho \( p \), nên \( n^2 d \ne a^2 + 1, a^2 + 4 \).
+
+    Mặt khác, vì \( 5 \mid d \Rightarrow 5 \mid n^2 d \), mà \( 5 \nmid a^2 + 2, a^2 + 3 \), nên \( n^2 d \ne a^2 + 2, a^2 + 3 \).
+
+    Do \( n^2 d > a^2 \) và đã loại trừ các giá trị \( a^2 + 1, \ldots, a^2 + 4 \), ta suy ra:
+    \[
+        n^2 d \ge a^2 + 5.
+    \]
+
+    Khi đó:
+    \[
+        n \sqrt{d} \cdot \{n \sqrt{d}\} = n \sqrt{d} \cdot (\sqrt{n^2 d} - a) \ge \sqrt{a^2 + 5} \cdot (\sqrt{a^2 + 5} - a).
+    \]
+
+    Xét biểu thức phía phải:
+    \[
+        \sqrt{a^2 + 5} \cdot (\sqrt{a^2 + 5} - a) = (a^2 + 5 - a^2) + \frac{(a^2 + 5 - a^2)^2}{4(a^2 + 5)} = \frac{5}{2} + \frac{25}{4(a^2 + 5)} > \frac{5}{2}.
+    \]
+
+    Vậy bất đẳng thức đã cho luôn đúng với \( d = 5(4k + 3) \), và lời giải hoàn tất.
+\end{soln}
 \footnotetext{\href{https://www.massee-org.eu/mathematical/bmo/item/download/54_36222e39c3de7fbc544bf7b1eed42001}{Lời giải chính thức.}}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:BMO-2015-P4}]
+    Trong 20 số nguyên liên tiếp luôn tồn tại một số chia hết cho $5$ và có dạng $5(4k+3)$.
+    Xét số đó và chứng minh rằng \( n^2 d \) không thể là một bình phương gần với \( a^2, a^2+1, \ldots, a^2+4 \).
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:30M}}]
+\end{remark*}
+\newpage
 \fi

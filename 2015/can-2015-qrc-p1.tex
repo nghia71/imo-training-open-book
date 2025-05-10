@@ -1,10 +1,40 @@
-\ifshowproblem
-\begin{problem}[\gls{CAN 2015 QRC}/P1]\label{example:CAN-2015-QRC-P1}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{CAN 2015 QRC}/P1]\label{problem:CAN-2015-QRC-P1}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:CAN-2015-QRC-P1}]\fi
     Tìm tất cả các nghiệm nguyên của phương trình $7x^2y^2 + 4x^2 = 77y^2 + 1260$.
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:5M}}]\footnotemark
-\footnotetext{\href{https://artofproblemsolving.com/community/c6h1259088p6527035}{Thảo luận AoPS.}}
+\ifshowsoln
+\begin{soln}\footnotemark
+    Nhận thấy rằng tất cả các hệ số đều chia hết cho 7, ngoại trừ số 4, do đó \(x\) phải chia hết cho 7.
+
+    Ta có thể biến đổi và phân tích phương trình thành:
+    \[
+        (x^2 - 11)(7y^2 + 4) = 1216.
+    \]
+
+    Nhận thấy rằng nếu \(y = 0\) thì \(x^2 = 315\), không phải là số chính phương, nên không có nghiệm. Do đó \(y^2 \geq 1\). Ta viết lại phương trình:
+    \[
+        x^2 = \frac{1216}{7y^2 + 4} + 11 \leq \frac{1216}{11} + 11 < 122.
+    \]
+
+    Vì \(x\) chia hết cho 7 nên các giá trị khả dĩ là \(x = 0, \pm7\). Khi \(x = \pm7\) thì \(y = \pm2\), còn khi \(x = 0\) thì không có nghiệm.
+
+    \textbf{Vậy phương trình có đúng 4 nghiệm nguyên là \( (\pm7, \pm2) \).}
+\end{soln}
+\footnotetext{\href{https://cms.math.ca/wp-content/uploads/2019/07/2015official_solutions.pdf}{Lời giải chính thức.}}
+\fi
+
+\ifshowhint
+\begin{hint}[\nameref{problem:CAN-2015-QRC-P1}]
+    Thử phân tích phương trình ban đầu bằng cách nhóm và đặt nhân tử, rồi kiểm tra các điều kiện chia hết để giới hạn giá trị của \(x\) và \(y\).
+\end{hint}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:0M}}]
+\end{remark*}
+\newpage
 \fi

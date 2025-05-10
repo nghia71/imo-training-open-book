@@ -1,5 +1,6 @@
-\ifshowproblem
-\begin{problem}[\gls{BW 2015}/P20]\label{example:BW-2015-P20}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{BW 2015}/P20]\label{problem:BW-2015-P20}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:BW-2015-P20}]\fi
     Với mỗi số nguyên \( n \ge 2 \), ta định nghĩa \( A_n \) là số lượng các số nguyên dương \( m \) thỏa mãn tính chất sau:
 
     Khoảng cách từ \( n \) đến bội gần nhất của \( m \) bằng khoảng cách từ \( n^3 \) đến bội gần nhất của \( m \).  
@@ -9,7 +10,83 @@
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:35M}}]\footnotemark
+\ifshowsoln
+\begin{soln}\footnotemark
+    Với mỗi số nguyên \( n \ge 2 \), ta định nghĩa \( A_n \) là số lượng các số nguyên dương \( m \)
+    sao cho khoảng cách từ \( n \) đến bội không âm gần nhất của \( m \) bằng với khoảng cách từ \( n^3 \) đến bội không âm gần nhất của \( m \).
+
+    Với một số nguyên \( m \), khoảng cách từ \( n \) đến bội gần nhất của \( m \) là \( d \), khi đó:
+    \[
+        m \mid n \pm d \Rightarrow n \equiv \pm d \pmod{m}.
+    \]
+
+    Nếu khoảng cách từ \( n \) đến bội gần nhất của \( m \) bằng khoảng cách từ \( n^3 \) đến bội gần nhất của \( m \), thì:
+    \[
+        n \equiv \pm d \pmod{m},\quad n^3 \equiv \pm d \pmod{m} \Rightarrow n \equiv \pm n^3 \pmod{m}.
+    \]
+
+    Ngược lại, nếu \( n \equiv \pm n^3 \pmod{m} \), thì tồn tại \( 0 \le d \le \frac{m}{2} \) sao cho \( n \equiv \pm d \pmod{m} \),
+    và đồng thời \( n^3 \equiv \pm d \pmod{m} \), nên khoảng cách từ \( n \) đến bội gần nhất của \( m \)
+    bằng khoảng cách từ \( n^3 \) đến bội gần nhất của \( m \).
+
+    Do đó, ta cần đếm số lượng \( m \in \mathbb{Z}_{>0} \) sao cho:
+    \[
+        n \equiv \pm n^3 \pmod{m} \iff m \mid n^3 \pm n.
+    \]
+
+    Vậy:
+    \[
+        A_n = \tau(n^3 - n) + \tau(n^3 + n) - \tau(\gcd(n^3 - n, n^3 + n)),
+    \]
+    với \( \tau(k) \) là số lượng ước dương của \( k \).
+
+    Nhắc lại rằng \( \tau(k) \) lẻ khi và chỉ khi \( k \) là một số chính phương. Hơn nữa, ta có:
+    \[
+        \gcd(n, n^2 \pm 1) = 1.
+    \]
+
+    Nếu \( n^3 \pm n \) là chính phương thì \( n \) và \( n^2 \pm 1 \) đều là chính phương,
+    điều này là không thể vì \( n^2 \pm 1 \) không là chính phương (vì chỉ có \( 0, 1 \) là các chính phương liên tiếp).
+
+    Do đó, \( n^3 - n \) và \( n^3 + n \) không là chính phương suy ra \( \tau(n^3 - n) \), \( \tau(n^3 + n) \) đều chẵn.
+
+    Vậy \( A_n \) lẻ khi và chỉ khi \( \gcd(n^3 - n, n^3 + n) \) là chính phương.
+
+    Ta có:
+    \[
+        \gcd(n^2 - 1, n^2 + 1) = \gcd(n^2 - 1, 2) = 
+        \begin{cases}
+            1 & \text{n chẵn}, \\
+            2 & \text{n lẻ}.
+        \end{cases}
+    \]
+    Suy ra:
+    \[
+        \gcd(n^3 - n, n^3 + n) = 
+        \begin{cases}
+            n & \text{n chẵn}, \\
+            2n & \text{n lẻ}.
+        \end{cases}
+    \]
+
+    Với \( n \) lẻ, \( 2n \) không bao giờ là chính phương vì chứa đúng một thừa số 2.
+
+    Với \( n \) chẵn, \( A_n \) là lẻ khi và chỉ khi \( n \) là số chính phương.
+
+    \textbf{Kết luận:} \( A_n \) là số lẻ khi và chỉ khi \( n \) là một số chính phương chẵn.
+\end{soln}
 \footnotetext{\href{https://www.math.olympiaadid.ut.ee/eng/archive/bw/bw15sol.pdf}{Lời giải chính thức.}}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:BW-2015-P20}]
+    Với mỗi \( m \), điều kiện khoảng cách bằng nhau tương đương với \( m \mid n^3 \pm n \). Sau đó sử dụng số lượng ước nguyên dương và tính chẵn/lẻ của chúng.
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:30M}}]
+\end{remark*}
+\newpage
 \fi

@@ -1,15 +1,66 @@
-\ifshowproblem
-\begin{problem}[\gls{IMO 2015 SL}/P3]\label{example:IMO-2015-SL-P3}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{IMO 2015 SL}/P3]\label{problem:IMO-2015-SL-P3}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:IMO-2015-SL-P3}]\fi
     Cho \( m \) và \( n \) là các số nguyên dương sao cho \( m > n \). Định nghĩa:
     \[
         x_k = \frac{m + k}{n + k} \quad \text{với } k = 1, 2, \ldots, n + 1.
     \]
+
     Chứng minh rằng nếu tất cả các số \( x_1, x_2, \ldots, x_{n+1} \) đều là số nguyên,
     thì \( x_1 x_2 \cdots x_{n+1} - 1 \) chia hết cho một số nguyên tố lẻ.    
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:25M}}]\footnotemark
+\ifshowsoln
+\begin{soln}\footnotemark
+    Ta viết \(x_k = \frac{m+k}{n+k} = 1 + \frac{m-n}{n+k} = 1 + a_k\), trong đó \(a_k > 0\) là một số nguyên với mỗi \(k = 1, \ldots, n+1\).
+
+    Ta cần chứng minh rằng \(x_1 x_2 \cdots x_{n+1} - 1 = \prod_{k=1}^{n+1}(1 + a_k) - 1\) chia hết cho một số nguyên tố lẻ.
+
+    Gọi \(2^d\) là lũy thừa lớn nhất của 2 chia hết \(m - n\), và \(2^c \le 2n + 1\) là lũy thừa lớn nhất của 2 không vượt quá \(2n + 1\).
+    Khi đó, trong tập \(n+1, \ldots, 2n+1\), chỉ có một số chia hết cho \(2^c\).
+    Gọi \(n + \omega = 2^c\), khi đó \(a_\omega = \frac{m - n}{2^c}\) là số lẻ, và với \(k \ne \omega\) thì \(a_k\) chia hết cho \(2^{d - c + 1}\).
+
+    Gọi \(P = \prod_{k=1}^{n+1}(1 + a_k) - 1\). Khi đó:
+    \[
+        P = (1 + a_\omega)\prod_{k \ne \omega}(1 + a_k) - 1 \equiv (1 + a_\omega) - 1 = a_\omega \not\equiv 0 \pmod{2^{d - c + 1}}.
+    \]
+
+    Mặt khác, với \(k \ne \omega\), ta có \(a_k \equiv 0 \pmod{2^{d - c + 1}}\), nên \(a_k + 1 \equiv 1\) theo modulo này,
+    suy ra \(\prod_{k=1}^{n+1}(1 + a_k) \equiv 1 + a_\omega\), do đó \(P \equiv a_\omega\) không đồng dư 0 modulo \(2^{d - c + 1}\),
+    tức \(P\) không phải là lũy thừa của 2 và có ước nguyên tố lẻ.
+\end{soln}
 \footnotetext{\href{http://www.imo-official.org/problems/IMO2015SL.pdf}{Lời giải chính thức.}}
+
+\begin{remark*}
+    Một cách tiếp cận khác là chứng minh rằng biểu thức \(P = x_1 x_2 \cdots x_{n+1} - 1\) chia hết cho một số nguyên tố lẻ.
+
+    Gọi \(L = \text{bội chung nhỏ nhất của } n+1, \ldots, 2n+1\), và \(m = n + qL\), khi đó:
+    \[
+        x_k = \frac{m + k}{n + k} = \frac{qL + n + k}{n + k} = q\cdot\frac{L}{n + k} + 1.
+    \]
+
+    Tích sẽ là \(\prod_{k=1}^{n+1}\left(q\cdot\frac{L}{n + k} + 1\right)\). Các giá trị \(\frac{L}{n + k}\) là số chẵn, ngoại trừ khi \(n + k = 2^c\),
+    chỉ xảy ra với một chỉ số \(k = \omega\), và khi đó \(\frac{L}{2^c}\) là số lẻ.
+
+    Khi xét modulo \(2q\), tích trên đồng dư với \(q + 1\), nên:
+    \[
+        P = x_1 \cdots x_{n+1} - 1 = q(2r + 1),
+    \]
+    với \(r\) là số nguyên không âm và \(r \ge 1\). Suy ra \(P\) chia hết cho một số nguyên tố lẻ.  
+\end{remark*}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:IMO-2015-SL-P3}]
+    Xét các hiệu \( x_k - 1 \) và phân tích chúng dưới dạng \( \frac{m - n}{n + k} \).
+    Sau đó kiểm tra bội số lớn nhất của 2 xuất hiện trong từng số hạng để loại trừ khả năng \( P \) là lũy thừa của 2.
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:25M}}]
+\end{remark*}
+\newpage
 \fi

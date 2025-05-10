@@ -1,5 +1,6 @@
-\ifshowproblem
-\begin{problem}[\gls{CAN 2015 QRC}/P3]\label{example:CAN-2015-QRC-P3}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{CAN 2015 QRC}/P3]\label{problem:CAN-2015-QRC-P3}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:CAN-2015-QRC-P3}]\fi
 	Cho \( N \) là một số có ba chữ số phân biệt và khác 0. Ta gọi \( N \) là một số \textit{tầm thường} nếu nó có tính chất sau:
 	khi viết ra tất cả 6 hoán vị có ba chữ số từ các chữ số của \( N \), trung bình cộng của chúng bằng chính \( N \).
 	Ví dụ: \( N = 481 \) là số \textit{tầm thường} vì trung bình cộng của các số \( \{418, 481, 148, 184, 814, 841\} \) bằng \( 481 \).
@@ -7,7 +8,41 @@
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:5M}}]\footnotemark
-\footnotetext{\href{https://artofproblemsolving.com/community/c6h1259093p6527057}{Thảo luận AoPS.}}
+\ifshowsoln
+\begin{soln}\footnotemark
+    Giả sử \( abc \) là một số mediocre. 6 hoán vị của nó là \{abc, acb, bac, bca, cab, cba\}. Tổng
+    của các số này là \( 222(a + b + c) \), và trung bình cộng là \( 37(a + b + c) \). Vì \( abc \) là số mediocre,
+    ta có \( 100a + 10b + c = 37(a + b + c) \).
+
+    Ta biến đổi phương trình này thành \( 63a = 27b + 36c \). Nhận thấy rằng \( 63 = 27 + 36 \) nên
+    \( a \) phải nằm giữa \( b \) và \( c \). Do đó, \( a \ne 9 \).
+
+    Nếu \( b = a + 1 \), ta có \( 36a = 27 + 36c \), phương trình này không có nghiệm nguyên.
+	Nếu \( c = a + 1 \), ta có \( 27a = 27b + 36 \), cũng không có nghiệm nguyên.
+	Vì \( a \) nằm giữa \( b \) và \( c \), nếu \( a = 8 \) thì \( b \) hoặc \( c \) phải bằng 9, điều này không thể xảy ra. Do đó, \( a \ne 8 \).
+
+    Nếu \( a = 7 \) thì hoặc \( b = 9 \) hoặc \( c = 9 \). Điều này dẫn đến \( 441 = 243 + 36c \) hoặc \( 441 = 27b + 324 \).
+    Cả hai phương trình đều không có nghiệm nguyên, nên \( a \ne 7 \).
+
+    Nếu \( a = 6 \) thì ta có \( 378 = 27b + 36c \), suy ra \( 42 = 3b + 4c \). Từ đây ta có \( b = \frac{42 - 4c}{3} \).
+
+    Để \( b \) nguyên và là chữ số, ta thử \( c = 3, 6, 9 \), tương ứng thu được \( b = 10, 6, 2 \).
+	Loại trường hợp đầu vì 10 không phải chữ số, loại trường hợp thứ hai vì sẽ có chữ số lặp. Trường hợp còn lại là \( b = 2, c = 9 \).
+
+    Vậy số mediocre lớn nhất là \( \boxed{629} \).
+\end{soln}
+\footnotetext{\href{https://cms.math.ca/wp-content/uploads/2019/07/2015official_solutions.pdf}{Lời giải chính thức.}}
+\fi
+
+\ifshowhint
+\begin{hint}[\nameref{problem:CAN-2015-QRC-P3}]
+	Biểu diễn điều kiện \textit{số bằng trung bình cộng của các hoán vị chữ số} dưới dạng đại số, rồi xét vai trò của từng chữ số trong tổng các hoán vị.
+\end{hint}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:0M}}]
+\end{remark*}
+\newpage
 \fi

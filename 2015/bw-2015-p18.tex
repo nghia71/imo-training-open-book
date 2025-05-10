@@ -1,5 +1,6 @@
-\ifshowproblem
-\begin{problem}[\gls{BW 2015}/P18]\label{example:BW-2015-P18}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{BW 2015}/P18]\label{problem:BW-2015-P18}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:BW-2015-P18}]\fi
     Cho \( f(x) = x^n + a_{n-1}x^{n-1} + \ldots + a_0 \) là một đa thức bậc \( n \ge 1 \) có \( n \) nghiệm nguyên (không nhất thiết phân biệt).  
     Giả sử tồn tại các số nguyên tố phân biệt \( p_0, p_1, \ldots, p_{n-1} \) sao cho với mọi \( i = 0, 1, \ldots, n-1 \),
     ta có \( a_i > 1 \) và là một lũy thừa của \( p_i \).
@@ -7,7 +8,47 @@
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:30M}}]\footnotemark
+\ifshowsoln
+\begin{soln}\footnotemark
+    Rõ ràng tất cả các nghiệm của đa thức phải âm vì các hệ số đều dương.
+    
+    Nếu có ít nhất hai nghiệm khác \( -1 \), thì cả hai đều phải là lũy thừa của \( p_0 \).
+    Khi đó, áp dụng công thức Viète, ta có \( p_0 \mid a_1 \), điều này mâu thuẫn với $p_0 \ne p_1$.
+    Vì thế nên đa thức có không quá một nghiệm khác \( -1 \).
+
+    Do đó, ta có thể phân tích \( f \) dưới dạng:
+    \[
+        f(x) = (x + a_0)(x + 1)^{n - 1}.
+    \]
+
+    Khai triển biểu thức trên ta có:
+    \[
+        a_2 = \binom{n - 1}{1} + a_0 \binom{n - 1}{2}, \quad \text{và} \quad a_{n - 2} = a_0 \binom{n - 1}{n - 2} + \binom{n - 1}{n - 3}.
+    \]
+
+    Nếu \( n \ge 5 \), thì \( 2 \ne n - 2 \), nên hai hệ số trên nguyên tố cùng nhau, do chúng là lũy thừa của hai số nguyên tố khác nhau.
+    Tuy nhiên, phụ thuộc vào tính chẵn lẻ của \( n \), ta có \( a_2 \) và \( a_{n - 2} \) đều chia hết cho \( n - 1 \) hoặc \( \frac{n - 1}{2} \), dẫn đến mâu thuẫn.
+
+    Do đó, chỉ các giá trị \( n = 1, 2, 3, 4 \) là khả thi. Với mỗi \( n \) đó, các đa thức sau thỏa mãn điều kiện:
+    \begin{itemize}[topsep=0pt, itemsep=0pt]
+        \item \( f_1(x) = x + 2 \)
+        \item \( f_2(x) = (x + 2)(x + 1) = x^2 + 3x + 2 \)
+        \item \( f_3(x) = (x + 3)(x + 1)^2 = x^3 + 5x^2 + 7x + 3 \)
+        \item \( f_4(x) = (x + 2)(x + 1)^3 = x^4 + 5x^3 + 9x^2 + 7x + 2 \)
+    \end{itemize}
+\end{soln}
 \footnotetext{\href{https://www.math.olympiaadid.ut.ee/eng/archive/bw/bw15sol.pdf}{Lời giải chính thức.}}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:BW-2015-P18}]
+    Các hệ số là các lũy thừa của các số nguyên tố khác nhau cho nên các nghiệm đều âm. Phân tích bằng định lý Viète và tính chia hết giữa các hệ số.
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:25M}}]
+\end{remark*}
+\newpage
 \fi

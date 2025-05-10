@@ -1,18 +1,122 @@
-\ifshowproblem
-\begin{problem}[\gls{APMO 2015}/P5]\label{example:APMO-2015-P5}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{APMO 2015}/P5]\label{problem:APMO-2015-P5}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:APMO-2015-P5}]\fi
     Xác định tất cả các dãy số \( a_0, a_1, a_2, \ldots \) gồm các số nguyên dương với \( a_0 \ge 2015 \)
     sao cho với mọi số nguyên \( n \ge 1 \) ta có:
-    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+    \begin{enumerate}[topsep=0pt, partopsep=0pt, itemsep=0pt, label=(\roman*)]
         \item \( a_{n+2} \) chia hết cho \( a_n \);
         \item \( \left| s_{n+1} - (n + 1)a_n \right| = 1 \), trong đó
         \[
             s_{n+1} = a_{n+1} - a_n + a_{n-1} - \cdots + (-1)^{n+1} a_0.
         \]
-    \end{itemize}
+    \end{enumerate}
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:30M}}]\footnotemark
+\ifshowsoln
+\begin{soln}\footnotemark
+    Giả sử dãy \( \{a_n\}_{n=0}^{\infty} \) gồm các số nguyên dương thoả mãn các điều kiện đề bài. Ta viết lại điều kiện (ii) thành:
+    \[
+        s_{n+1} = (n + 1)a_n + h_n \text{ với } h_n \in \{-1, 1\}.
+    \]
+    Khi đó:
+    \[
+        s_n = na_{n-1} + h_{n-1}, \quad \text{nên } a_{n+1} = s_{n+1} + s_n = (n+1)a_n + na_{n-1} + \delta_n,
+    \]
+    với \( \delta_n \in \{-2, 0, 2\} \). Gọi đây là phương trình (1).
+
+    Từ \( |s_2 - 2a_1| = 1 \Rightarrow a_0 = 3a_1 - a_2 \pm 1 \le 3a_1 \Rightarrow a_1 \ge \frac{a_0}{3} \ge 671 \).  
+    Thế \( n = 2 \) vào (1), ta được:
+    \[
+        a_3 = 3a_2 + 2a_1 + \delta_2.
+    \]
+    Vì \( a_1 \mid a_3 \), nên \( a_1 \mid 3a_2 + \delta_2 \Rightarrow a_2 \ge 223 \), và do đó \( a_n \ge 223 \) với mọi \( n \ge 0 \).
+
+    \begin{lemma*}
+        Với mọi \( n \ge 4 \), ta có \( a_{n+2} = (n+1)(n+4)a_n \).
+    \end{lemma*}
+    \begin{subproof}
+        Từ (1), và dùng bất đẳng thức \( a_n > na_{n-1} + 3 \) cùng \( a_n < (n+1)a_{n-1} \), ta được:
+        \[
+            a_{n+2} = (n+3)(n+1)a_n + (n+2)na_{n-1} + (n+2)\delta_n + \delta_{n+1}.
+        \]
+        Suy ra:
+        \[
+            (n^2 + 5n + 3)a_n < a_{n+2} < (n^2 + 5n + 5)a_n.
+        \]
+        Vì \( a_n \mid a_{n+2} \), nên ta kết luận:
+        \[
+            a_{n+2} = (n+1)(n+4)a_n.
+        \]
+    \end{subproof}
+
+    \begin{lemma*}
+        Với mọi \( n \ge 4 \), ta có \( a_{n+1} = \frac{(n+1)(n+3)}{n+2} a_n \).
+    \end{lemma*}
+    \begin{subproof}
+        Dùng công thức truy hồi trong Bổ đề 1 để biểu diễn \( a_{n+3} \) theo \( a_{n+1} \) và \( a_n \), rồi so sánh hai biểu thức:
+        \[
+            a_{n+3} = (n+2)(n+4)a_{n+1} = (n+3)(n+1)(n+4)a_n + \delta_{n+2}.
+        \]
+        Từ đây suy ra \( (n+2)(n+4)a_{n+1} - (n+3)(n+1)(n+4)a_n = \delta_{n+2} \), nên \( n+4 \mid \delta_{n+2} \Rightarrow \delta_{n+2} = 0 \), dẫn đến:
+        \[
+            a_{n+1} = \frac{(n+1)(n+3)}{n+2} a_n.
+        \]
+    \end{subproof}
+
+    Giả sử tồn tại \( n \ge 1 \) sao cho
+    \[
+        a_{n+1} \ne \frac{(n+1)(n+3)}{n+2} a_n.
+    \]
+    Khi đó, theo Bổ đề 2, tồn tại số nguyên lớn nhất \( 1 \le m \le 3 \) mà tại đó công thức trên không đúng. Ta có:
+    \[
+        a_{m+2} = \frac{(m+2)(m+4)}{m+3} a_{m+1}.
+    \]
+    Nếu \( \delta_{m+1} = 0 \) thì:
+    \[
+        a_{m+1} = \frac{(m+1)(m+3)}{m+2} a_m,
+    \]
+    mâu thuẫn với cách chọn \( m \). Do đó \( \delta_{m+1} \ne 0 \).
+
+    Vì \( m + 3 \mid a_{m+1} \), đặt \( a_{m+1} = (m+3)k \Rightarrow a_{m+2} = (m+2)(m+4)k \). Khi đó:
+    \[
+        (m+1)a_m + \delta_{m+1} = a_{m+2} - (m+2)a_{m+1} = (m+2)k.
+    \]
+    Suy ra:
+    \[
+        a_m \mid (m+2)k - \delta_{m+1} \text{ và } a_m \mid a_{m+2} = (m+2)(m+4)k.
+    \]
+    Kết hợp hai điều này:
+    \[
+        a_m \mid (m+4)\delta_{m+1}.
+    \]
+    Vì \( \delta_{m+1} \ne 0 \), suy ra \( a_m \le 2m + 8 \le 14 \), mâu thuẫn với kết quả trước đó rằng \( a_n \ge 223 \).  
+    Mâu thuẫn này cho thấy:
+    \[
+        a_{n+1} = \frac{(n+1)(n+3)}{n+2} a_n \text{ với mọi } n \ge 1.
+    \]
+
+    Thế \( n = 1 \) ta có \( 3 \mid a_1 \). Đặt \( a_1 = 3c \Rightarrow a_n = c(n+2)n! \) với mọi \( n \ge 1 \).
+
+    Sử dụng \( |s_2 - 2a_1| = 1 \) suy ra \( a_0 = c \pm 1 \). Vậy tồn tại hai họ nghiệm:
+    \begin{itemize}[topsep=0pt, itemsep=0pt]
+        \item \( a_n = c(n+2)n! \), \( a_0 = c + 1 \), với \( c \ge 2014 \),
+        \item \( a_n = c(n+2)n! \), \( a_0 = c - 1 \), với \( c \ge 2016 \).
+    \end{itemize}
+\end{soln}
 \footnotetext{\href{https://www.apmo-official.org/static/solutions/apmo2015_sol.pdf}{Lời giải chính thức.}}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:APMO-2015-P5}]
+    Hãy viết lại điều kiện (ii) dưới dạng biểu thức truy hồi liên quan đến \( a_n \),
+    rồi dùng kết hợp với điều kiện chia hết trong (i) để rút ra công thức chính xác của dãy \( (a_n) \).
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:25M}}]
+\end{remark*}
+\newpage
 \fi

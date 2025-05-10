@@ -1,5 +1,6 @@
-\ifshowproblem
-\begin{problem}[\gls{IMO 2015 SL}/P4]\label{example:IMO-2015-SL-P4}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{IMO 2015 SL}/P4]\label{problem:IMO-2015-SL-P4}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:IMO-2015-SL-P4}]\fi
     Giả sử \( a_0, a_1, \ldots \) và \( b_0, b_1, \ldots \) là hai dãy số nguyên dương sao cho \( a_0, b_0 \ge 2 \), và:
     \[
         a_{n+1} = \gcd(a_n, b_n) + 1, \qquad b_{n+1} = \operatorname{lcm}(a_n, b_n) - 1.
@@ -12,7 +13,114 @@
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:25M}}]\footnotemark
+\ifshowsoln
+\begin{soln}[Lời giải 1.]\footnotemark
+    Đặt \( s_n = a_n + b_n \). Nếu \( a_n \mid b_n \), thì \( a_{n+1} = a_n + 1 \), \( b_{n+1} = b_n - 1 \),
+    nên \( s_{n+1} = s_n \) và \( a_n \) tăng lên 1 cho đến khi \( a_n \nmid b_n \).
+
+    Định nghĩa:
+    \[
+        W_n = \{ m \in \mathbb{Z}_{>0} : m \ge a_n \text{ và } m \nmid s_n \}, \quad w_n = \min W_n.
+    \]
+
+    \begin{claim*}[Khẳng định 1]
+        Dãy \( (w_n) \) không tăng.
+    \end{claim*}
+
+    \begin{subproof}
+        Nếu \( a_n \mid b_n \), thì \( a_{n+1} = a_n + 1 \). Do \( a_n \mid s_n \), nên \( a_n \notin W_n \), và \( s_{n+1} = s_n \Rightarrow W_{n+1} = W_n \Rightarrow w_{n+1} = w_n \).
+
+        Nếu \( a_n \nmid b_n \), thì \( a_n \nmid s_n \Rightarrow a_n \in W_n \Rightarrow w_n = a_n \). Ta chứng minh \( a_n \in W_{n+1} \), suy ra \( w_{n+1} \le a_n = w_n \).
+
+        Cần chứng minh \( a_n \ge a_{n+1} \) và \( a_n \nmid s_{n+1} \). Điều này đúng vì \( \gcd(a_n, b_n) < a_n \) nên \( a_{n+1} = \gcd(a_n, b_n) + 1 \le a_n \). Hơn nữa, \( s_{n+1} = \gcd(a_n, b_n) + \text{lcm}(a_n, b_n) \), trong đó hạng thứ hai chia hết cho \( a_n \), nhưng hạng thứ nhất thì không, nên \( a_n \nmid s_{n+1} \).
+    \end{subproof}
+
+    Gọi \( w = \min w_n \), và chọn \( N \) sao cho \( w_N = w \). Từ Bổ đề, \( w_n = w \) với mọi \( n \ge N \).
+
+    Gọi \( g_n = \gcd(w, s_n) \). Ta thấy, với mọi \( n \ge N \), dãy \( a_n \) tăng dần từng bước từ \( a_n = g_n + 1 \) đến \( w \), rồi quay lại \( a_{n+t} = g_n + 1 \). Ta sẽ chứng minh:
+
+    \begin{claim*}[Khẳng định 2]
+        Dãy \( (g_n) \) là hằng số với \( n \ge N \).
+    \end{claim*}
+
+    \begin{subproof}
+        Nếu \( a_n \mid b_n \), thì \( s_{n+1} = s_n \Rightarrow g_{n+1} = g_n \). Nếu \( a_n = w \) và \( a_n \nmid b_n \), thì:
+        \[
+            a_{n+1} = \gcd(a_n, b_n) + 1 = g_n + 1, \quad s_{n+1} = \gcd(a_n, b_n) + \text{lcm}(a_n, b_n)
+        \]
+        \[
+            = g_n + \frac{a_n b_n}{g_n} = g_n + \frac{w(s_n - w)}{g_n}
+        \]
+        Suy ra:
+        \[
+            g_{n+1} = \gcd(w, s_{n+1}) = \gcd\left(w, g_n + \frac{w(s_n - w)}{g_n}\right) = \gcd(w, g_n) = g_n.
+        \]
+    \end{subproof}
+
+    Gọi \( g = g_N \). Khi đó, với \( n \ge N \), dãy \( a_n \) lặp lại chu kỳ:
+    \[
+        g + 1 \to g + 2 \to \cdots \to w \to g + 1.
+    \]
+\end{soln}
 \footnotetext{\href{http://www.imo-official.org/problems/IMO2015SL.pdf}{Lời giải chính thức.}}
+
+\begin{soln}[Lời giải 2.]
+    Theo Khẳng định 1, \( a_n \le w_n \le w_0 \), tức \( (a_n) \) bị chặn, nên chỉ nhận giá trị hữu hạn.
+
+    Gọi \( M = \text{lcm}(a_1, a_2, \ldots) \), và xét dãy \( (b_n \mod M) \). Gọi \( r_n = b_n \mod M \). Vì \( a_n \mid M \), ta có:
+    \[
+        \gcd(a_n, b_n) = \gcd(a_n, r_n) \Rightarrow a_{n+1} = \gcd(a_n, r_n) + 1.
+    \]
+    Hơn nữa:
+    \[
+        b_{n+1} = \text{lcm}(a_n, b_n) - 1 = \frac{a_n}{\gcd(a_n, b_n)} b_n - 1 = \frac{a_n}{\gcd(a_n, r_n)} r_n - 1 \mod M.
+    \]
+
+    Vậy cặp \( (a_n, r_n) \) xác định duy nhất \( (a_{n+1}, r_{n+1}) \). Có hữu hạn giá trị nên dãy \( (a_n) \) là tuần hoàn sau hữu hạn bước.
+\end{soln}
+
+\begin{remark*}
+    Ta chứng minh rằng chỉ có 4 cặp \( (w, g) \) khả dĩ:
+    \[
+        (2, 1), (3, 1), (4, 2), (5, 1)
+    \]
+    dẫn đến các chu kỳ \( (2), (2, 3), (3, 4), (2, 3, 4, 5) \).
+
+    Sử dụng ký hiệu như Lời giải 1, \( L = \text{lcm}(g + 1, \ldots, w - 1) \mid s_n \), và \( g \mid w \).
+
+    Chọn \( n \) sao cho \( a_n = w \). Khi đó:
+    \[
+        s_{n+1} = \gcd(a_n, b_n) + \text{lcm}(a_n, b_n) = g + \frac{w(s_n - w)}{g} = s_n \cdot \frac{w}{g} - \frac{w^2 - g^2}{g}
+    \]
+    
+    Vì \( L \mid s_n \) và \( s_{n+1} \), nên \( L \mid \frac{w^2 - g^2}{g} \). Nếu \( w \ge 6 \), thì \( g + 1 \le \frac{w}{2} + 1 \le w - 2 \), suy ra:
+    \[
+        (w - 2)(w - 1) \mid L \Rightarrow (w - 2)(w - 1) \mid \frac{w^2 - g^2}{g},
+    \]
+    điều này dẫn đến mâu thuẫn trừ phi \( w \le 5 \). Với \( w \le 5 \) và \( g \mid w \), chỉ còn 4 cặp thỏa mãn.
+
+    Bảng dưới đây minh họa các chu kỳ ứng với từng cặp:
+
+    \begin{center}
+        \begin{tabular}{llll}
+            \( w = 2, g = 1 \) & \( a_n = 2 \) & \( b_n = 2 \cdot 2^n + 1 \) \\
+            \( w = 3, g = 1 \) & \( (a_{2k}, a_{2k+1}) = (2, 3) \) & \( (b_{2k}, b_{2k+1}) = (6 \cdot 3^k + 2, 6 \cdot 3^k + 1) \) \\
+            \( w = 4, g = 2 \) & \( (a_{2k}, a_{2k+1}) = (3, 4) \) & \( (b_{2k}, b_{2k+1}) = (12 \cdot 2^k + 3, 12 \cdot 2^k + 2) \) \\
+            \( w = 5, g = 1 \) & \( (a_{4k}, \ldots, a_{4k+3}) = (2, 3, 4, 5) \) & \( (b_{4k}, \ldots, b_{4k+3}) = (6 \cdot 5^k + 4, \ldots, 6 \cdot 5^k + 1) \)
+        \end{tabular}
+    \end{center}
+\end{remark*}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:IMO-2015-SL-P4}]
+    Theo dõi tổng \( a_n + b_n \) và phân tích các bước khi \( a_n \mid b_n \) và khi không chia hết. Sau đó xét giá trị nhỏ nhất \( w_n \) sao cho \( w_n \nmid s_n \).
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:25M}}]
+\end{remark*}
+\newpage
 \fi

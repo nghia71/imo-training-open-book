@@ -1,5 +1,6 @@
-\ifshowproblem
-\begin{problem}[\gls{EMC 2015}/J/P3]\label{example:EMC-2015-J-P3}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{EMC 2015}/J/P3]\label{problem:EMC-2015-J-P3}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:EMC-2015-J-P3}]\fi
     Ký hiệu \( d(n) \) là số lượng ước dương của \( n \).  
     Với số nguyên dương \( n \), ta định nghĩa:
     \[
@@ -13,7 +14,136 @@
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:20M}}]
+\ifshowsoln
+\begin{soln}[Lời giải 1.]\footnotemark
+    Cách định nghĩa khác của hàm \( f(n) \) là:
+    \[
+        f(n) = \sum_{k \mid n,\, k \ge 1} d(k).
+    \]
+    
+    Giả sử \( n = p_1^{a_1} p_2^{a_2} \cdots p_r^{a_r} \) là phân tích thành thừa số nguyên tố. Ta biết:
+    \[
+        d(n) = \prod_{i=1}^r (a_i + 1).
+    \]
+
+    Ta chứng minh rằng hàm \( f \) là hàm nhân, nghĩa là nếu \( \gcd(n, m) = 1 \), thì:
+    \[
+        f(nm) = f(n)f(m).
+    \]
+
+    Áp dụng tính nhân của hàm \( d \), ta có:
+    \[
+        f(nm) = \sum_{k \mid nm} d(k) = \sum_{k_1 \mid n,\, k_2 \mid m} d(k_1 k_2) = \sum_{k_1 \mid n,\, k_2 \mid m} d(k_1)d(k_2) = f(n)f(m).
+    \]
+
+    Nếu \( r = 1 \) thì \( n = p^{a_1} \). Khi đó các ước của \( n \) là \( 1, p, p^2, \ldots, p^{a_1} \), nên:
+    \[
+        f(n) = \sum_{i = 0}^{a_1} (i + 1) = \frac{(a_1 + 1)(a_1 + 2)}{2}.
+    \]
+
+    Kết hợp với tính nhân, ta được:
+    \[
+        f(n) = \prod_{i = 1}^r \frac{(a_i + 1)(a_i + 2)}{2}.
+    \]
+
+    Ta sẽ chứng minh rằng với \( p \ge 5 \), và với \( p = 3 \) khi \( a \ge 3 \), thì:
+    \[
+        f(p^a) = \frac{(a+1)(a+2)}{2} < \frac{2}{3}p^a.
+    \]
+
+    \textit{Cơ sở:} Dễ thấy \( 3 < \frac{2}{3}p \) với \( p \ge 5 \), và \( 6 < \frac{2}{3} \cdot 27 \).
+
+    \textit{Bước quy nạp:} Chứng minh:
+    \[
+        \frac{a+3}{a+1} \le 2 < p.
+    \]
+
+    Tương tự, ta cũng chứng minh được rằng với \( p = 2 \), thì \( f(2^a) < 2^a \) khi \( a \ge 4 \).
+    Kiểm tra trực tiếp với \( p = 2 \), \( a = 1, 2, 3 \), và \( p = 3 \), \( a = 1, 2 \), ta có:
+    \[
+        f(p^a) \le \frac{3}{2}p^a, \quad f(p^a) \le p^a \text{ với } p \ge 3 \text{ hoặc } (p = 2, a \ge 4).
+    \]
+
+    Nếu \( f(n) = n \), thì:
+    \[
+        \prod_{i = 1}^r \frac{f(p_i^{a_i})}{p_i^{a_i}} = 1.
+    \]
+    Từ đó suy ra rằng các ước nguyên tố khả dĩ của \( n \) chỉ là 2 và 3.
+
+    Nếu \( r = 1 \), thì nghiệm duy nhất là \( n = 3 \).
+
+    Nếu \( r = 2 \), với \( p_1 = 2, p_2 = 3 \), và \( 1 \le a_1 \le 2, 1 \le a_2 \le 2 \), có 4 trường hợp để kiểm tra, trong đó \( n = 18, 36 \) thỏa mãn.
+\end{soln}
 \footnotetext{\href{https://emc.mnm.hr/wp-content/uploads/2015/12/EMC_2015_Juniors_ENG_Solutions.pdf}{Lời giải chính thức.}}
+
+\begin{soln}[Lời giải 2.]
+    Ta đưa ra lời giải khác không sử dụng quá nhiều tính chất của hàm \( f \).
+
+    \begin{lemma*}
+        Với mọi số nguyên \( n > 1 \) và số nguyên tố \( p \), ta có:
+        \[
+            f(pn) \le 3f(n),
+        \]
+        và dấu "=" xảy ra khi và chỉ khi \( \gcd(p, n) = 1 \).
+    \end{lemma*}
+    \begin{subproof}
+        Tập các ước của \( pn \) là hợp của hai tập:
+        \begin{itemize}
+            \item các ước của \( n \);
+            \item các ước của \( n \) nhân với \( p \).
+        \end{itemize}
+
+        Hai tập trên rời nhau khi và chỉ khi \( \gcd(p, n) = 1 \), và do đó:
+        \[
+            f(pn) = \sum_{k \mid pn} d(k) \le \sum_{k \mid n} d(k) + \sum_{k \mid n} d(pk) \le f(n) + 2f(n) = 3f(n).
+        \]
+
+        Đẳng thức xảy ra khi và chỉ khi hai tập là rời nhau.
+    \end{subproof}
+
+    Ngoài ra, ta có:
+    \[
+        f(2^k) = d(1) + d(2) + \cdots + d(2^k) = 1 + 2 + \cdots + (k+1) = \frac{(k+1)(k+2)}{2}.
+    \]
+
+    Nếu \( f(n) < n \), thì với mọi \( p > 3 \), ta có:
+    \[
+        f(pn) \le 3f(n) < pf(n) < pn.
+    \]
+
+    Do đó, nếu \( f(n) < n \), thì mọi bội \textit{đẹp} (nice multiple) của \( n \) không thể là số gần hoàn hảo.
+
+    Ta định nghĩa: \( n \) là bội đẹp của \( m \) nếu \( m \mid n \) và \( \frac{n}{m} \) là số lẻ.
+
+    Chiến lược: kiểm tra thủ công các số nhỏ \( n \) và tính tỉ lệ \( \frac{f(n)}{n} \), nếu nhỏ hơn 1 thì loại bỏ các bội đẹp của \( n \).
+    Với công thức \( f(2^k) \), ta chứng minh \( f(2^k) < 2^k \) với \( k > 4 \) bằng quy nạp.
+    Vậy các số dạng \( 2^k \cdot m \) với \( k > 4 \), \( m \) lẻ, đều bị loại.
+
+    \textbf{Trường hợp 1: \( k = 0 \)}  
+    Với mọi số nguyên tố lẻ \( p \), ta có \( f(p) = 3 \le p \), nên \( n = 3 \) là nghiệm duy nhất. Các lũy thừa cao hơn của 3 đều không thỏa.
+
+    \textbf{Trường hợp 2: \( k = 1 \)}  
+    Với mọi số nguyên tố \( p \), \( f(2p) = 3f(2) = 9 \). Với \( p > 5 \), \( 2p > 9 \Rightarrow f(2p) < 2p \), loại. Chỉ còn các \( p \in \{3,5\} \), thử được \( n = 18 \) là nghiệm duy nhất.
+
+    \textbf{Trường hợp 3: \( k = 2 \)}  
+    Tương tự, \( f(4p) = 3f(4) = 18 \), loại các số lớn, chỉ còn \( n = 36 \) là nghiệm duy nhất.
+
+    \textbf{Trường hợp 4: \( k = 3 \)}  
+    \( f(8p) = 3f(8) = 30 \), chỉ còn thử các số \( 8 \cdot 3^l \). Nhưng \( f(72) = 60 < 72 \Rightarrow \) loại.
+
+    \textbf{Kết luận:} Các số gần hoàn hảo là \( \boxed{3,\, 18,\, 36} \).
+\end{soln}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:EMC-2015-J-P3}]
+    Xét tính nhân của hàm \( f \), tìm giới hạn chặt với hàm \( f(p^a) \), và sử dụng loại trừ với các ước nguyên tố.
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:20M}}]
+\end{remark*}
+\newpage
 \fi

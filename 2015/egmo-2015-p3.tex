@@ -1,5 +1,6 @@
-\ifshowproblem
-\begin{problem}[\gls{EGMO 2015}/P3]\label{example:EGMO-2015-P3}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{EGMO 2015}/P3]\label{problem:EGMO-2015-P3}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:EGMO-2015-P3}]\fi
     Cho \( n, m \) là các số nguyên lớn hơn \( 1 \), và \( a_1, a_2, \dots, a_m \) là các số nguyên dương không vượt quá \( n^m \).  
     Chứng minh rằng tồn tại các số nguyên dương \( b_1, b_2, \dots, b_m \) không vượt quá \( n \), sao cho:
     \[
@@ -9,7 +10,103 @@
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:30M}}]
-\footnotetext{\href{https://web.evanchen.cc/exams/EGMO-2015-notes.pdf}{Lời giải Evan Chen soạn.}}
+\ifshowsoln
+\begin{soln}[Lời giải 1.]\footnotemark
+    Giả sử không mất tính tổng quát rằng \( a_1 \) là nhỏ nhất trong các \( a_i \).
+    Nếu \( a_1 \ge n^m - 1 \), thì bài toán trở nên đơn giản: hoặc tất cả \( a_i \) bằng nhau, hoặc \( a_1 = n^m - 1 \) và tồn tại \( a_j = n^m \).
+
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Trong trường hợp đầu, ta chọn (ví dụ) \( b_1 = 1, b_2 = 2 \), các \( b_i \) còn lại tùy ý. Khi đó:
+        \[
+            \gcd(a_1 + b_1, a_2 + b_2, \ldots, a_m + b_m) \le \gcd(a_1 + b_1, a_2 + b_2) = 1.
+        \]
+        \item Trong trường hợp thứ hai, chọn \( b_1 = 1, b_j = 1 \), các \( b_i \) còn lại tùy ý, ta cũng có:
+        \[
+            \gcd(a_1 + b_1, a_2 + b_2, \ldots, a_m + b_m) \le \gcd(a_1 + b_1, a_j + b_j) = 1.
+        \]
+    \end{itemize}
+
+    Do đó, ta chỉ cần xét trường hợp \( a_1 \le n^m - 2 \).
+
+    Giả sử ngược lại rằng không tồn tại bộ \( b_1, \ldots, b_m \in \{1, \ldots, n\} \) sao cho:
+    \[
+        \gcd(a_1 + b_1, a_2 + b_2, \ldots, a_m + b_m) < n.
+    \]
+
+    Khi đó, với mọi lựa chọn \( b_1, \ldots, b_m \), ta có:
+    \[
+        \gcd(a_1 + b_1, \ldots, a_m + b_m) \ge n.
+    \]
+
+    Đồng thời:
+    \[
+        \gcd(a_1 + b_1, \ldots, a_m + b_m) \le a_1 + b_1 \le n^m + n - 2.
+    \]
+
+    Có tối đa \( n^m - 1 \) giá trị có thể cho ước số chung lớn nhất. Nhưng có \( n^m \) bộ giá trị \( (b_1, \ldots, b_m) \).
+    Theo nguyên lý Dirichlet, tồn tại hai bộ \( (b_1, \ldots, b_m) \) cho cùng một giá trị gcd là \( d \ge n \).
+    Tuy nhiên, với mỗi \( i \), chỉ tồn tại duy nhất một \( b_i \in \{1, \ldots, n\} \) sao cho \( a_i + b_i \equiv 0 \pmod{d} \).
+    Suy ra chỉ có nhiều nhất một bộ \( (b_1, \ldots, b_m) \) cho giá trị gcd bằng \( d \), mâu thuẫn.
+\end{soln}
+\footnotetext{\href{https://www.egmo.org/egmos/egmo4/solutions.pdf}{Lời giải chính thức.}}
+
+\begin{soln}[Lời giải 2.]
+    Tương tự lời giải 1, giả sử \( a_1 \le n^m - 2 \). Ta xét:
+    \[
+        \gcd(a_1 + 1, a_2 + 1, a_3 + 1, \ldots, a_m + 1)
+    \]
+    và
+    \[
+        \gcd(a_1 + 1, a_2 + 2, a_3 + 1, \ldots, a_m + 1).
+    \]
+
+    Hai giá trị này nguyên tố cùng nhau, nên:
+    \[
+        a_1 + 1 \ge n^2.
+    \]
+
+    Nếu tiếp tục thay các số 1 thành 2 trong các vị trí khác, sau \( m - 1 \) bước, ta có:
+    \[
+        a_1 + 1 \ge n^m \Rightarrow a_1 \ge n^m - 1,
+    \]
+    mâu thuẫn với giả thiết ban đầu.
+\end{soln}
+
+\newpage
+
+\begin{soln}[Lời giải 3.]
+    Ta sẽ chứng minh một phiên bản mạnh hơn:
+    \begin{claim*}
+        Với \( m, n > 1 \), nếu tồn tại \( a_i \le n^{2^{m-1}} \), thì tồn tại \( b_1, \ldots, b_m \in \{1, 2\} \) sao cho:
+        \[
+            \gcd(a_1 + b_1, \ldots, a_m + b_m) < n.
+        \]
+    \end{claim*}
+    \begin{subproof}
+        Giả sử ngược lại. Khi đó, với mọi bộ \( (b_1, \ldots, b_m) \) có \( b_1 = 1 \), \( b_i \in \{1, 2\} \),
+        ta được \( 2^{m-1} \) số khác nhau, và mọi cặp trong số đó nguyên tố cùng nhau vì tồn tại \( i > 1 \)
+        sao cho \( a_i + 1 \) và \( a_i + 2 \) lần lượt xuất hiện.
+        
+        Vậy mọi số này đều chia hết \( a_1 + 1 \), và mỗi số \( \ge n \), với nhiều nhất một số bằng \( n \), suy ra:
+        \[
+            a_1 + 1 \ge n(n + 1)^{2^{m-1} - 1} \Rightarrow a_1 \ge n^{2^{m-1}},
+        \]
+        mâu thuẫn với giả thiết. Vậy tồn tại bộ \( b_i \in \{1, 2\} \) như yêu cầu.
+    \end{subproof}
+
+    \textit{Chú thích:} Giới hạn \( n^{2^{m-1}} \) có thể cải thiện.
+\end{soln}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:EGMO-2015-P3}]
+    Dùng nguyên lý Dirichlet để dẫn đến mâu thuẫn nếu giả sử không tồn tại bộ \( b_i \) phù hợp. Thử xét các lựa chọn \( b_i \in \{1, 2\} \).
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:25M}}]
+\end{remark*}
+\newpage
 \fi

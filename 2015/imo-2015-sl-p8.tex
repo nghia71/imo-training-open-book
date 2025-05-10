@@ -1,5 +1,6 @@
-\ifshowproblem
-\begin{problem}[\gls{IMO 2015 SL}/P8]\label{example:IMO-2015-SL-P8}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{IMO 2015 SL}/P8]\label{problem:IMO-2015-SL-P8}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:IMO-2015-SL-P8}]\fi
     Với mỗi số nguyên dương \( n \) có phân tích thành thừa số nguyên tố \( n = \prod_{i = 1}^{k} p_i^{\alpha_i} \), định nghĩa:
     \[
         \mho(n) = \sum_{\substack{i:\\ p_i > 10^{100}}} \alpha_i.
@@ -14,7 +15,133 @@
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:35M}}]\footnotemark
+\ifshowsoln
+\begin{soln}\footnotemark
+    \textbf{Đáp án:} Tất cả các hàm dạng \( f(x) = ax + b \), trong đó \( b \in \mathbb{Z} \), \( a \in \mathbb{Z}_{>0} \), và \( \mho(a) = 0 \).
+
+    Rõ ràng mọi hàm dạng như trên đều thỏa mãn điều kiện. Ta cần chứng minh chiều ngược lại:
+    nếu \( f \) thỏa mãn điều kiện (1), thì \( f(x) = ax + b \) với \( \mho(a) = 0 \).
+
+    Gọi \( g(x) := f(x) - f(0) \). Khi đó \( g \) cũng thỏa mãn điều kiện (1), và \( g(0) = 0 \), nên \( f(n) = g(n) + f(0) \).
+    Ta sẽ chứng minh rằng tồn tại số nguyên dương \( a \) với \( \mho(a) = 0 \) sao cho \( g(n) = an \) với mọi \( n \in \mathbb{Z} \).
+
+    \textbf{Bước 1.} Với mọi số lớn \( k \) (tức \( k \) chỉ có thừa số nguyên tố lớn hơn \( 10^{100} \)), ta có:
+    \[
+        k \mid f(a) - f(b) \quad \Leftrightarrow \quad k \mid a - b.
+    \]
+
+    Ký hiệu \( L(n) \) là thừa số lớn nhất của \( n \) (chỉ gồm các thừa số nguyên tố lớn). Khi đó, cần chứng minh:
+    \[
+        L(f(a) - f(b)) = L(a - b) \quad \text{với mọi } a > b.
+    \]
+
+    Chứng minh bằng quy nạp theo \( k \). Cơ sở \( k = 1 \) là hiển nhiên. Giả sử mệnh đề đúng với mọi \( k < k_0 \), xét \( k_0 \):
+
+    \begin{claim*}
+        Với mọi \( x, y \) sao cho \( 0 < x - y < k_0 \), thì \( k_0 \nmid f(x) - f(y) \).
+    \end{claim*}
+
+    \begin{subproof}
+        Giả sử ngược lại: \( k_0 \mid f(x) - f(y) \). Gọi \( \lambda = L(x - y) \), thì \( \lambda < k_0 \). 
+        Theo giả thiết quy nạp, \( \lambda \mid f(x) - f(y) \), do đó:
+        \[
+            \text{lcm}(k_0, \lambda) \mid f(x) - f(y).
+        \]
+
+        Vì \( \text{lcm}(k_0, \lambda) \ge k_0 + 1 \), nên:
+        $\mho(f(x) - f(y)) \ge \mho(\text{lcm}(k_0, \lambda)) > \mho(\lambda) = \mho(x - y)$, mâu thuẫn với (1).
+    \end{subproof}
+
+    Từ đó suy ra rằng dãy \( f(a), f(a+1), \ldots, f(a+k_0-1) \) là một hệ đại diện đầy đủ modulo \( k_0 \), nên \( f(a) \equiv f(a + k_0) \mod k_0 \). 
+    Vì vậy \( f(a) \equiv f(b) \mod k_0 \) khi \( a \equiv b \mod k_0 \).
+
+    Nếu \( a \not\equiv b \mod k_0 \), tồn tại \( b_1 \equiv b \mod k_0 \) sao cho \( |a - b_1| < k_0 \). 
+    Khi đó \( f(b) \equiv f(b_1) \not\equiv f(a) \mod k_0 \) suy ra \( f(a) \not\equiv f(b) \mod k_0 \). Vậy:
+    \[
+        k_0 \mid f(a) - f(b) \Leftrightarrow k_0 \mid a - b \implies L(f(a) - f(b)) = L(a - b).
+    \]
+
+    \textbf{Bước 2.} Ta chứng minh rằng tồn tại số nguyên nhỏ \( a \) sao cho \( f(n) = an \) với vô hạn số nguyên \( n \). 
+    Tức là \( f \) tuyến tính trên một tập vô hạn.
+
+    \begin{claim*}
+        Tồn tại hằng số \( c \) sao cho \( f(t) < ct \) với mọi \( t > 10^{100} \).
+    \end{claim*}
+
+    \begin{subproof}
+        Gọi \( d \) là tích của tất cả các số nguyên tố nhỏ hơn hoặc bằng \( 10^{100} \), chọn \( \alpha \) sao cho \( 2^\alpha > f(N) \). 
+        Với mọi \( p \) nhỏ, \( f(0), \ldots, f(N) \) đều khác nhau modulo \( p^\alpha \). Đặt \( P = d^\alpha \), \( c = P + f(N) \).
+
+        Với mọi \( t > N \), có nhiều nhất một \( i \le N \) sao cho \( p^\alpha \mid f(t) - f(i) \) với mỗi \( p \in S \).
+        Do \( |S| < N \), tồn tại \( j \le N \) sao cho với mọi \( p \in S \), \( p^\alpha \nmid f(t) - f(j) \). Khi đó \( S(f(t) - f(j)) < P \).
+
+        Từ Bước 1, \( L(f(t) - f(j)) = L(t - j) \le t - j \). Nên:
+        \[
+            f(t) = f(j) + L(f(t) - f(j)) \cdot S(f(t) - f(j)) < f(N) + P \cdot (t - j) \le ct.
+        \]
+    \end{subproof}
+
+    Xét tập \( T \) các số nguyên tố lớn. Với mọi \( t \in T \), theo Bước 1: \( L(f(t)) = L(t) = t \) suy ra \( f(t)/t \in \mathbb{Z} \).
+    Do \( f(t) < ct \), tỉ số \( f(t)/t \) chỉ nhận hữu hạn giá trị suy ra tồn tại tập con vô hạn \( T' \subseteq T \) và \( a \in \mathbb{Z}_{>0} \) 
+    sao cho \( f(t) = at \) với mọi \( t \in T' \).
+    Khi đó \( L(at) = aL(t) \Rightarrow L(a) = 1 \) suy ra \( a \) là số nhỏ.
+
+    \textbf{Bước 3.} Ta chứng minh rằng \( f(x) = ax \) với mọi \( x \in \mathbb{Z} \).
+    Gọi \( R_i = \{ x \in \mathbb{Z} : x \equiv i \mod N! \} \).
+    \begin{claim*}
+        Nếu tồn tại \( r \) sao cho \( f(n) = an \) với vô hạn \( n \in R_r \), thì \( f(x) = ax \) với mọi \( x \in R_{r+1} \).
+    \end{claim*}
+    \begin{subproof}
+        Chọn \( x \in R_{r+1} \). Chọn \( n \in R_r \) sao cho \( f(n) = an \) và \( |n - x| > |f(x) - ax| \). 
+        Khi đó \( |n - x| \) là số lớn suy ra \( f(x) \equiv f(n) = an \equiv ax \mod n - x \) suy ra \( n - x \mid f(x) - ax \) suy ra hiệu bằng 0.
+    \end{subproof}
+
+    Tập \( T' \) chứa vô hạn phần tử thuộc một lớp \( R_i \). Lặp lại áp dụng bổ đề suy ra \( f(x) = ax \) với mọi \( x \in \mathbb{Z} \).
+\end{soln}
 \footnotetext{\href{http://www.imo-official.org/problems/IMO2015SL.pdf}{Lời giải chính thức.}}
+
+\begin{remark*}
+    Nếu thay điều kiện (1) bằng \( L(f(a) - f(b)) = L(a - b) \), ta có thể bỏ qua Bước 1.
+\end{remark*}
+
+\begin{remark*}
+    Bước 2 là bước chính. Có thể chứng minh bằng nhiều cách khác nhau.
+
+    \textit{Cách 1.} Xét \( f(di) \) với \( d \) là tích các số nguyên tố nhỏ. Khi đó \( L(f(di) - f(dj)) = di - dj \), tương tự Bước 1.
+    Với \( \alpha \) đủ lớn và \( P = d^\alpha \), có thể chọn tập \( I \) vô hạn sao cho \( f(di) = a \cdot di \) với \( a \) nhỏ cố định.
+
+    \textit{Cách 2.} Áp dụng bổ đề sau:
+    \begin{lemma*}
+        Tồn tại hằng số \( c > 0 \) sao cho:
+        \[
+            \prod_{i=1}^{3N} L(f(k) - f(i)) \ge c f(k)^{2N} \quad \text{với mọi } k > 3N.
+        \]
+    \end{lemma*}
+
+    Từ đó suy ra:
+    \[
+        k^{3N} \ge \prod_{i=1}^{3N} L(k - i) = \prod_{i=1}^{3N} L(f(k) - f(i)) \ge c f(k)^{2N},
+    \]
+    nên \( f(k) \le Ck^{3/2} \). Sau đó, chọn \( a = f(1) \), và sử dụng đánh giá \( |f(n) - an| < \frac{n(n-1)}{2} \).
+    Kết hợp với điều kiện đồng dư để suy ra \( f(n) = an \).
+\end{remark*}
+
+\begin{remark*}
+    Trong Bước 3, chỉ cần \( f(n) = an \) trên một tập vô hạn. Nếu tập này có cấu trúc tốt (như cùng lớp modulo \( N! \)), 
+    có thể suy ra dễ hơn bằng cách dùng định lý phần dư Trung Hoa.
+\end{remark*}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:IMO-2015-SL-P8}]
+    Sử dụng định nghĩa \( \mho(n) \) và phân biệt thừa số lớn/nhỏ. Áp dụng lập luận chia hết, định lý phần dư Trung Hoa,
+    và lập luận đồng dư để kiểm tra tuyến tính trên tập vô hạn.
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:35M}}]
+\end{remark*}
+\newpage
 \fi

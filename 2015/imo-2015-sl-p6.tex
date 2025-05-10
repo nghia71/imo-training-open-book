@@ -1,5 +1,6 @@
-\ifshowproblem
-\begin{problem}[\gls{IMO 2015 SL}/P6]\label{example:IMO-2015-SL-P6}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{IMO 2015 SL}/P6]\label{problem:IMO-2015-SL-P6}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:IMO-2015-SL-P6}]\fi
     Ký hiệu \( \mathbb{Z}_{>0} \) là tập các số nguyên dương.  
     Xét một hàm \( f: \mathbb{Z}_{>0} \to \mathbb{Z}_{>0} \). Với mọi \( m, n \in \mathbb{Z}_{>0} \), ta định nghĩa:
     \[
@@ -7,16 +8,152 @@
     \]
 
     Giả sử hàm \( f \) thỏa mãn hai tính chất sau:
-    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+    \begin{enumerate}[topsep=0pt, partopsep=0pt, itemsep=0pt, label=(\roman*)]
         \item Với mọi \( m, n \in \mathbb{Z}_{>0} \), ta có \( \frac{f^n(m) - m}{n} \in \mathbb{Z}_{>0} \);  
         \item Tập \( \mathbb{Z}_{>0} \setminus \{ f(n) \mid n \in \mathbb{Z}_{>0} \} \) là hữu hạn.
-    \end{itemize}
+    \end{enumerate}
 
     Chứng minh rằng dãy số \( f(1) - 1, f(2) - 2, f(3) - 3, \ldots \) là tuần hoàn.
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:35M}}]\footnotemark
+\ifshowsoln
+\begin{soln}\footnotemark
+    \textbf{Bước 1.} Ta bắt đầu bằng việc chứng minh rằng \( f \) là đơn ánh. Giả sử tồn tại \( m, k \in \mathbb{Z}_{>0} \) sao cho \( f(m) = f(k) \).
+    Theo giả thiết (i), với mọi \( n \in \mathbb{Z}_{>0} \), ta có:
+    \[
+        \frac{f^n(m) - m}{n} \in \mathbb{Z}, \quad \frac{f^n(k) - k}{n} \in \mathbb{Z}
+        \implies
+        \frac{k - m}{n} = \frac{f^n(m) - m}{n} - \frac{f^n(k) - k}{n} \in \mathbb{Z}.
+    \]
+    
+    Lấy \( n = |k - m| + 1 \), mẫu số lớn hơn tử số suy ra \( \frac{k - m}{n} \notin \mathbb{Z} \), trừ khi \( k = m \). Vậy \( f \) là đơn ánh.
+
+    Theo giả thiết (ii), tồn tại hữu hạn số nguyên dương \( a_1, \ldots, a_k \) sao cho:
+    \[
+        \mathbb{Z}_{>0} = \{ a_1, \ldots, a_k \} \cup \{ f(n) : n \in \mathbb{Z}_{>0} \}.
+    \]
+    
+    Ngoài ra, thay \( n = 1 \) vào giả thiết (i), ta có \( f(m) > m \) với mọi \( m \in \mathbb{Z}_{>0} \).
+
+    Ta chứng minh rằng mọi số nguyên dương \( n \) đều có dạng \( f^j(a_i) \) với một số \( j \ge 0 \) và \( i \in \{1, \ldots, k\} \).
+    Do \( f \) đơn ánh, biểu diễn này là duy nhất.
+
+    Ta xây dựng bảng sau (gọi là “Bảng”):
+    \[
+        \begin{array}{cccc}
+            a_1 & f(a_1) & f^2(a_1) & \cdots \\
+            a_2 & f(a_2) & f^2(a_2) & \cdots \\
+            \vdots & \vdots & \vdots & \\
+            a_k & f(a_k) & f^2(a_k) & \cdots \\
+        \end{array}
+    \]
+
+    \textbf{Bước 2.} Ta sẽ chứng minh rằng mỗi hàng trong Bảng là một cấp số cộng.
+
+    Giả sử ngược lại, chỉ có \( t < k \) hàng là cấp số cộng với công sai \( T_1, \ldots, T_t \).
+    Đặt \( T = \text{lcm}(T_1, \ldots, T_t) \), \( A = \max(a_1, \ldots, a_t) \).
+    Xét đoạn \( \Delta_n = [n+1, n+T] \), số phần tử từ các hàng đầu tiên thuộc đoạn này không đổi theo \( n \ge A \),
+    nên số phần tử từ các hàng còn lại (từ hàng \( t+1 \) trở đi) trong \( \Delta_n \) là không đổi.
+
+    Nhưng các hàng còn lại có vô hạn phần tử suy ra tồn tại hàng \( x > t \)
+    sao cho đoạn \( [A+1, A + (d+1)(k - t)T] \) chứa ít nhất \( d+1 \) phần tử từ hàng thứ \( x \). Điều này dẫn đến:
+    \[
+        f^d(a_x) \le A + (d+1)(k - t)T.
+    \]
+
+    Do có hữu hạn giá trị \( x \), tồn tại một hàng \( x > t \) sao cho:
+    \[
+        X := \{ d \in \mathbb{Z}_{\ge 0} : f^d(a_x) \le A + (d+1)(k - t)T \}
+    \]
+    là vô hạn. Đặt:
+    \[
+        \omega_d = \frac{f^d(a_x) - a_x}{d}, \quad \text{với } d \in X.
+    \]
+
+    Ta có:
+    \[
+        \omega_d \le \frac{A + (d+1)(k - t)T - a_x}{d} \le A + 2(k - t)T.
+    \]
+    
+    Do đó, \( \omega_d \) chỉ có thể nhận hữu hạn giá trị suy ra tồn tại \( T_x \) sao cho:
+    \[
+        f^d(a_x) = a_x + d \cdot T_x
+    \]
+    xảy ra với vô hạn \( d \in X \).
+
+    Đặt \( j \) tùy ý. Chọn \( y \in X \) sao cho \( y - j > |f^j(a_x) - (a_x + jT_x)| \). Khi đó:
+    \[
+        f^y(a_x) - f^j(a_x) = f^{y-j}(f^j(a_x)) - f^j(a_x),\quad \text{và} \quad f^y(a_x) - (a_x + jT_x) = (y - j)T_x.
+    \]
+    
+    Hiệu của hai số trên chia hết cho \( y - j \), nhưng trị tuyệt đối nhỏ hơn \( y - j \) suy ra hiệu bằng 0.
+
+    Suy ra:
+    \[
+        f^j(a_x) = a_x + jT_x,
+    \]
+    tức hàng thứ \( x \) là cấp số cộng, mâu thuẫn giả thiết. Vậy tất cả các hàng đều là cấp số cộng.
+
+    \textbf{Bước 3.} Gọi \( T_i \) là công sai của hàng thứ \( i \), và \( T = \text{lcm}(T_1, \ldots, T_k) \).
+    Với mọi \( n \in \mathbb{Z}_{>0} \), nếu \( n \) nằm trong hàng \( i \), thì:
+    \[
+        f^j(n) = n + jT_i \Rightarrow f(n + T) = f(n) + T.
+    \]
+    
+    Suy ra:
+    \[
+        f(n + T) - (n + T) = f(n) - n.
+    \]
+    
+    Vậy dãy \( f(n) - n \) là tuần hoàn suy ra dãy \( f(n) - n \) với \( n = 1, 2, 3, \ldots \) là tuần hoàn.
+\end{soln}
 \footnotetext{\href{http://www.imo-official.org/problems/IMO2015SL.pdf}{Lời giải chính thức.}}
+
+\begin{remark*}
+    Có một số cách khác để hoàn tất phần thứ hai của lời giải sau khi chỉ số \( x \) ứng với một hàng \textit{dày đặc} đã được xác định.
+    Ví dụ, người ta có thể chứng minh rằng tồn tại một số nguyên \( T_x^* \) sao cho tập
+    \[
+        Y^* := \left\{ j \in \mathbb{Z}_{\ge 0} \;\middle|\; f^{j+1}(a_x) - f^j(a_x) = T_x^* \right\}
+    \]
+    là vô hạn, và sau đó có thể kết luận bằng một lập luận chia hết tương tự như trước.
+\end{remark*}
+
+\begin{remark*}
+    Ta có thể kiểm tra rằng, ngược lại, nếu điền các số nguyên dương vào Bảng bằng cách sử dụng hữu hạn nhiều dãy cấp số cộng
+    sao cho mỗi số nguyên dương xuất hiện đúng một lần, thì sẽ thu được một hàm \( f \) thỏa mãn cả hai điều kiện được nêu trong bài toán.
+
+    Ví dụ, ta có thể sắp xếp các số nguyên dương như sau:
+    \[
+    \begin{array}{cccccc}
+    2 & 4 & 6 & 8 & 10 & \cdots \\
+    1 & 5 & 9 & 13 & 17 & \cdots \\
+    3 & 7 & 11 & 15 & 19 & \cdots \\
+    \end{array}
+    \]
+    Điều này tương ứng với hàm:
+    \[
+        f(n) =
+        \begin{cases}
+            n + 2 & \text{nếu } n \text{ chẵn}, \\
+            n + 4 & \text{nếu } n \text{ lẻ}.
+        \end{cases}
+    \]
+
+    Như ví dụ này cho thấy, không đúng rằng hàm \( f(n) - n \) phải luôn là hằng số. Tuy nhiên, nó vẫn là một dãy tuần hoàn.
+\end{remark*}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:IMO-2015-SL-P6}]
+    Chứng minh \( f \) là đơn ánh và mọi số đều sinh ra từ hữu hạn phần tử khởi tạo.
+    Dùng lập luận chia hết để chứng minh các hàng là cấp số cộng, từ đó suy ra dãy \( f(n) - n \) là tuần hoàn.
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:35M}}]
+\end{remark*}
+\newpage
 \fi

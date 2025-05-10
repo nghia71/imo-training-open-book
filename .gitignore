@@ -3,6 +3,7 @@
 */*/.DS_Store
 
 ## Core latex/pdflatex auxiliary files:
+*.ist
 *.aux
 *.lof
 *.log

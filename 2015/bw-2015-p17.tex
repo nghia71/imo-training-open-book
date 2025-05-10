@@ -1,10 +1,77 @@
-\ifshowproblem
-\begin{problem}[\gls{BW 2015}/P17]\label{example:BW-2015-P17}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{BW 2015}/P17]\label{problem:BW-2015-P17}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:BW-2015-P17}]\fi
     Tìm tất cả các số nguyên dương \( n \) sao cho \( 2^{2015} \mid n^{n-1} - 1 \) nhưng \( 2^{2016} \nmid n^{n-1} - 1 \).
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:25M}}]\footnotemark
+\ifshowsoln
+\begin{soln}\footnotemark
+    Ta xét các số nguyên dương \( n \) sao cho \( 2^{2015} \mid n^{n-1} - 1 \), nhưng \( 2^{2016} \nmid n^{n-1} - 1 \).
+
+    Vì \( n \) là số lẻ, nên ta có thể viết \( n = 2^d u + 1 \), với \( u \) là số lẻ. Khi đó:
+    \[
+        n^{n - 1} - 1 = (n^{2^d} - 1)\left(n^{2^d(u - 1)} + \cdots + n^{2^d} + 1\right).
+    \]
+
+    Ta cần \( 2^{2015} \Vert (n^{n - 1} - 1) \Rightarrow 2^{2015} \Vert (n^{2^d} - 1) \).
+
+    Khi đó:
+    \[
+        n^{2^d} - 1 = (n - 1)(n + 1)(n^2 + 1)(n^4 + 1) \cdots (n^{2^{d - 1}} + 1).
+    \]
+
+    Tất cả các thừa số bậc chẵn \( n^{2^k} + 1 \) với \( k \ge 0 \) đều chia hết cho đúng một lũy thừa của 2, tức là \( 2 \Vert n^{2^k} + 1 \). Trong khi đó:
+    \[
+        \nu_2(n - 1) = d,\quad \nu_2(n + 1) = 1,\quad \text{và có } d - 1 \text{ thừa số bậc chẵn}.
+    \]
+
+    Tổng lại:
+    \[
+        \nu_2(n^{2^d} - 1) = d + 1 + (d - 1) = 2d.
+    \]
+    
+    Ta muốn \( 2d = 2015 \), nhưng điều đó không thể vì 2015 lẻ. Do đó ta cần \( 2d = 2014 \Rightarrow d = 1007 \).
+
+    Với \( d = 1007 \), ta được:
+    \[
+        \nu_2(n^{2^d} - 1) = 2014.
+    \]
+
+    Ta cũng cần:
+    \[
+        \nu_2\left(n^{2^d(u - 1)} + \cdots + n^{2^d} + 1\right) = 1.
+    \]
+
+    Tổng trên có \( u \) số hạng, mà tổng là số lẻ, cho nên \( u \) lẻ.
+
+    Như vậy:
+    \[
+        n = 2^{1007} u + 1 = 2^{1007}(2^e v) + 1 = 2^{1007 + e} v + 1.
+    \]
+
+    Với \( v \) là số lẻ nguyên dương. Do đó:
+    \[
+        n = 2^{2014} v - 1.
+    \]
+
+    Kết luận: Tất cả các số nguyên dương \( n \) thỏa mãn điều kiện là các số có dạng:
+    \[
+        \boxed{n = 2^{2014} v - 1}, \quad \text{với } v \text{ là số lẻ}.
+    \]
+\end{soln}
 \footnotetext{\href{https://www.math.olympiaadid.ut.ee/eng/archive/bw/bw15sol.pdf}{Lời giải chính thức.}}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:BW-2015-P17}]
+    Viết \( n = 2^d u + 1 \) với \( u \) lẻ. Phân tích \( n^{n-1} - 1 \) thành các thừa số và dùng định lý về bậc chia hết của \( 2 \) trong lũy thừa.
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:20M}}]
+\end{remark*}
+\newpage
 \fi

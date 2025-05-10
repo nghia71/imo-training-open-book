@@ -1,5 +1,6 @@
-\ifshowproblem
-\begin{problem}[\gls{IMO 2015 SL}/P2]\label{example:IMO-2015-SL-P2}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{IMO 2015 SL}/P2]\label{problem:IMO-2015-SL-P2}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:IMO-2015-SL-P2}]\fi
     Cho \( a \) và \( b \) là các số nguyên dương sao cho \( a! + b! \mid a!b! \).  
     Chứng minh rằng:
     \[
@@ -8,7 +9,75 @@
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:20M}}]\footnotemark
+\ifshowsoln
+\begin{soln}[Lời giải 1.]\footnotemark
+    Nếu \( a > b \) thì bất đẳng thức \( 3a \ge 2b + 2 \) hiển nhiên. Nếu \( a = b \), thì điều này tương đương với \( a \ge 2 \).
+    Ta dễ dàng kiểm tra rằng \( (a, b) = (1,1) \) không thỏa mãn \( a! + b! \mid a!b! \). Vậy ta giả sử \( a < b \), đặt \( c = b - a \).
+    Khi đó, bất đẳng thức trở thành \( a \ge 2c + 2 \).
+
+    Giả sử ngược lại rằng \( a \le 2c + 1 \). Đặt
+    \[
+        M = \frac{b!}{a!} = (a+1)(a+2)\cdots(a+c).
+    \]
+
+    Từ điều kiện \( a! + b! \mid a!b! \Rightarrow 1 + M \mid a!M \), ta suy ra \( 1 + M \mid a! \). Ta nhận thấy nếu \( c \ge a \), thì \( 1 + M > a! \), mâu thuẫn.
+    Vậy \( c < a \).
+
+    Vì \( M \) là tích của \( c \) số liên tiếp, nên \( c! \mid M \Rightarrow \gcd(1 + M, c!) = 1 \), từ đó suy ra:
+    \[
+        1 + M \mid \frac{a!}{c!} = (c+1)(c+2)\cdots a. \tag{1}
+    \]
+
+    Nếu \( a \le 2c \), thì vế phải là tích của nhiều nhất \( c \) số không vượt quá \( a \), còn \( M \) là tích của \( c \) số lớn hơn \( a \).
+    Do đó, \( 1 + M > \frac{a!}{c!} \), mâu thuẫn.
+
+    Xét trường hợp còn lại \( a = 2c + 1 \Rightarrow a + 1 = 2(c + 1) \Rightarrow c + 1 \mid M \). Khi đó, từ (1), ta có:
+    \[
+        1 + M \mid (c+2)(c+3)\cdots a.
+    \]
+    Vế phải là tích của \( c \) số không vượt quá \( a \), trong khi \( M \) là tích của \( c \) số lớn hơn \( a \),
+    suy ra \( 1 + M > (c+2)(c+3)\cdots a \), mâu thuẫn.
+\end{soln}
 \footnotetext{\href{http://www.imo-official.org/problems/IMO2015SL.pdf}{Lời giải chính thức.}}
+
+\begin{soln}[Lời giải 2.]
+    Giống như lời giải 1, giả sử \( a < b \), đặt \( c = b - a \), và giả sử ngược lại \( a \le 2c + 1 \). Từ điều kiện \( a! + b! \mid a!b! \), ta có:
+    \[
+        N = 1 + (a+1)(a+2)\cdots(a+c) \mid (a+c)!.
+    \]
+
+    Điều đó nghĩa là mọi ước nguyên tố của \( N \) không lớn hơn \( a + c \).
+
+    Gọi \( p \) là một ước nguyên tố của \( N \). Nếu \( p \le c \) hoặc \( p \ge a+1 \), thì \( p \mid (a+1)\cdots(a+c) \Rightarrow p \mid N - 1 \), mâu thuẫn.
+    Do đó, \( c + 1 \le p \le a \). Hơn nữa, ta cần \( 2p > a + c \); nếu không, ta có:
+    \[
+        a + 1 \le 2c + 2 \le 2p \le a + c \Rightarrow p \mid N - 1,
+    \]
+    mâu thuẫn. Vậy \( p \in \left( \frac{a + c}{2}, a \right] \Rightarrow p^2 \mid (a + c)! \), vì \( 2p > a + c \).
+
+    Nếu \( a \le c + 2 \), thì đoạn \( \left( \frac{a + c}{2}, a \right] \) chứa nhiều nhất một số nguyên suy ra nhiều nhất một số nguyên tố, phải là \( a \).
+    Nhưng \( p^2 \mid N \Rightarrow N = a \) hoặc \( N = 1 \), đều vô lý vì \( N > a \).
+
+    Suy ra \( a \ge c + 3 \Rightarrow \frac{a + c + 1}{2} \ge c + 2 \). Mọi ước nguyên tố \( p \) của \( N \) nằm trong đoạn \( [c+2, a] \)
+    và mỗi \( p \) chỉ xuất hiện một lần. Vậy:
+    \[
+        N \mid (c+2)(c+3)\cdots a,
+    \]
+    nhưng tích này là của \( a - c - 1 \le c \) số nhỏ hơn hoặc bằng \( a \), trong khi \( N = 1 + (a+1)\cdots(a+c) > (c+2)\cdots a \), mâu thuẫn.
+
+    \textbf{Kết luận:} luôn có \( 3a \ge 2b + 2 \). Đẳng thức xảy ra khi \( (a, b) = (2, 2), (4, 5) \).
+\end{soln}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:IMO-2015-SL-P2}]
+    Xét biểu thức \( \frac{b!}{a!} \) và áp dụng giả thiết chia hết để đưa ra các điều kiện về \( a \) và \( b \). Sử dụng ước nguyên tố để đạt đến mâu thuẫn.
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:20M}}]
+\end{remark*}
+\newpage
 \fi

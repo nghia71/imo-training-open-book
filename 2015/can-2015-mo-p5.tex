@@ -1,13 +1,77 @@
-\ifshowproblem
-\begin{problem}[\gls{CAN 2015 MO}/P5]\label{example:CAN-2015-MO-P5}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{CAN 2015 MO}/P5]\label{problem:CAN-2015-MO-P5}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:CAN-2015-MO-P5}]\fi
     Cho $p$ là một số nguyên tố sao cho $\frac{p-1}{2}$ cũng là một số nguyên tố, và cho $a, b, c$ là các số nguyên không chia hết cho $p$.
     Chứng minh rằng có nhiều nhất $1 + \sqrt{2p}$ số nguyên dương $n$ thỏa mãn $n < p$ và $p$ chia hết $a^n + b^n + c^n$.
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:30M}}]\footnotemark
-\footnotetext{\href{https://artofproblemsolving.com/community/c6h1081588p4756514}{Thảo luận AoPS.}
-\href{https://cms.math.ca/wp-content/uploads/2019/07/sol2015.pdf}{Lời giải chính thức.}
-}
+\ifshowsoln
+\begin{soln}\footnotemark
+    Ta xét hai trường hợp sau:
+
+    \textbf{Trường hợp 1:} Giả sử \( b \equiv \pm a \pmod{p} \) và \( c \equiv \pm b \pmod{p} \). Khi đó, với mọi \( n \), ta có:
+    \[
+        a^n + b^n + c^n \equiv \pm a^n \text{ hoặc } \pm 3a^n \pmod{p}.
+    \]
+    
+    Vì \( p \ne 3 \) (do \( \frac{p - 1}{2} \) phải là số nguyên tố), và \( a \not\equiv 0 \pmod{p} \),
+    nên \( a^n + b^n + c^n \not\equiv 0 \pmod{p} \). Trường hợp này hiển nhiên do số lượng $n$ thoả mãn là 0 ($<1+\sqrt{2p}$).
+
+    \textbf{Trường hợp 2:} Giả sử \( b \not\equiv \pm a \pmod{p} \Rightarrow ba^{-1} \not\equiv \pm1 \pmod{p} \).
+
+    Đặt \( q = \frac{p - 1}{2} \). Gọi $d$ là bậc modulo $p$ của \( ba^{-1} \). Theo định lý Fermat, $d$ chia hết \( p - 1 = 2q \).
+    Do \( ba^{-1} \not\equiv \pm1 \), nên $d$ không chia hết 2. Vậy $d$ là \( q \) hoặc \( 2q \).
+
+    Gọi \( S \) là tập các số nguyên dương \( n < p \) sao cho \( a^n + b^n + c^n \equiv 0 \pmod{p} \).
+    Với mỗi \( t \), ký hiệu \( s_t \) là số cặp \((i, j) \in S^2\) sao cho \( i - j \equiv t \pmod{p - 1} \).
+
+    \begin{lemma*}
+        Nếu \( t \) là số nguyên dương nhỏ hơn \( 2q \) và \( t \ne q \), thì \( s_t \le 2 \).
+    \end{lemma*}
+
+    \begin{subproof}
+        Xét \( i, j \in S \) với \( j - i \equiv t \pmod{p - 1} \). Khi đó:
+        \[
+            a^i + b^i + c^i \equiv 0 \pmod{p},
+        \]
+        \[
+            \Rightarrow a^i c^t + b^i c^t + c^{j} \equiv 0,
+        \]
+        \[
+            \Rightarrow a^i (c^t - a^t) \equiv b^i (b^t - c^t) \pmod{p}.
+        \]
+
+        Nếu \( c^t \equiv a^t \pmod{p} \), thì suy ra \( c^t \equiv b^t \pmod{p} \), nên \( (ab^{-1})^t \equiv 1 \pmod{p} \).
+        Nhưng $d$, bậc modulo $p$ của \( ab^{-1} \), là \( q \) hoặc \( 2q \), trong khi \( q \nmid t \), nên mâu thuẫn. Do đó:
+        \[
+            (ab^{-1})^i \equiv \frac{b^t - c^t}{c^t - a^t} \pmod{p}.
+        \]
+        Với \( t \) cố định, vế phải là hằng số, nên chỉ có tối đa 2 giá trị \( i \) thỏa mãn. Suy ra \( s_t \le 2 \).
+    \end{subproof}
+
+    Mỗi phần tử \( i \in S \) có ít nhất \( |S| - 2 \) phần tử khác \( i \) mà hiệu không đồng dư \( q \mod (p - 1) \). Do đó:
+    \[
+        |S|(|S| - 2) \le \sum_{t \ne q} s_t \le 2(p - 2),
+    \]
+    \[
+        \Rightarrow (|S| - 1)^2 \le 2p - 3 \Rightarrow |S| < \sqrt{2p} + 1.
+    \]
+
+    Vậy số lượng giá trị \( n < p \) thoả mãn điều kiện là không quá \( \boxed{1 + \sqrt{2p}} \).
+\end{soln}
+\footnotetext{\href{https://cms.math.ca/wp-content/uploads/2019/07/sol2015.pdf}{Lời giải chính thức.}}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:CAN-2015-MO-P5}]
+    Dùng định lý Fermat và bậc modulo $p$ của phần tử trong nhóm để giới hạn số \( n \) sao cho \( a^n + b^n + c^n \equiv 0 \pmod{p} \).
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:30M}}]
+\end{remark*}
+\newpage
 \fi

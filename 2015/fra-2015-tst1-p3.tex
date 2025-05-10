@@ -1,5 +1,5 @@
 \ifshowproblem
-\begin{problem}[\gls{FRA 2015 TST}1/P3]\label{example:FRA-2015-TST1-P3}
+\begin{problem}[\gls{FRA 2015 TST}1/P3]\label{problem:FRA-2015-TST1-P3}
 	Cho \( n \) là một số nguyên dương sao cho \( n(n + 2015) \) là một số chính phương.
     \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
         \item Chứng minh rằng \( n \) không phải là số nguyên tố.
@@ -8,7 +8,62 @@
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:0M}}]\footnotemark
+\ifshowsoln
+\begin{soln}\footnotemark
+    \textbf{a)} Giả sử \( n \) là số nguyên tố và tồn tại một số nguyên \( m \) sao cho \( n(n + 2015) = m^2 \). Khi đó \( n \mid m^2 \), nên \( n \mid m \). Viết \( m = nr \), ta có:
+    \[
+        n(n + 2015) = n^2 r^2 \Rightarrow n + 2015 = nr^2 \Rightarrow 2015 = n(r^2 - 1).
+    \]
+    Suy ra \( n \mid 2015 \). Vì \( 2015 = 5 \times 13 \times 31 \), nên \( n \in \{5, 13, 31\} \).
+
+    - Nếu \( n = 5 \) thì \( r^2 - 1 = 403 \Rightarrow r^2 = 404 \), không là số chính phương.
+
+    - Nếu \( n = 13 \Rightarrow r^2 = \frac{2015}{13} + 1 = 156 \), không là số chính phương.
+
+    - Nếu \( n = 31 \Rightarrow r^2 = \frac{2015}{31} + 1 = 66 \), cũng không là số chính phương.
+
+    Vậy \( n \) không thể là số nguyên tố.
+
+    \textbf{b)} Ta cần tìm các số nguyên \( n, m \) sao cho:
+    \[
+        (2m)^2 = 4n(n + 2015).
+    \]
+    Nhân hai vế:
+    \[
+        (2m)^2 = (2n + 2015)^2 - 2015^2.
+    \]
+    Do đó:
+    \[
+        2015^2 = (2n + 2015 + 2m)(2n + 2015 - 2m).
+    \]
+
+    Đặt \( a = 2015 \times 5 = 10075 \), \( b = \frac{2015}{5} = 403 \). Khi đó:
+    \[
+        2n + 2015 + 2m = a, \quad 2n + 2015 - 2m = b.
+    \]
+    Cộng hai phương trình:
+    \[
+        4n + 4030 = a + b = 10478 \Rightarrow n = \frac{10478 - 4030}{4} = 1612.
+    \]
+    Trừ hai phương trình:
+    \[
+        4m = a - b = 9672 \Rightarrow m = \frac{9672}{4} = 2418.
+    \]
+
+    Vậy \( n = 1612 \) là một ví dụ thỏa mãn yêu cầu đề bài.
+\end{soln}
 \footnotetext{\href{https://maths-olympiques.fr/wp-content/uploads/2017/10/ofm-2014-2015-test-janvier-corrige.pdf}{Lời giải chính thức.}}
+\fi
+
+\ifshowhint
+\begin{hint*}
+    Giả sử \( n \) là số nguyên tố và sử dụng điều kiện \( n(n + 2015) = m^2 \) để dẫn đến mâu thuẫn. Sau đó thử viết biểu thức dưới dạng hiệu bình phương.
+\end{hint*}
+\fi
+
+\ifshowinfo
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:0M}}]
+\end{remark*}
+\newpage
 \fi

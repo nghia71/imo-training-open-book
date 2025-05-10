@@ -1,5 +1,6 @@
-\ifshowproblem
-\begin{problem}[\gls{EMC 2015}/S/P1]\label{example:EMC-2015-S-P1}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{EMC 2015}/S/P1]\label{problem:EMC-2015-S-P1}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:EMC-2015-S-P1}]\fi
     Cho \( A = \{a, b, c\} \) là một tập hợp gồm ba số nguyên dương.  
     Chứng minh rằng ta có thể tìm được một tập con \( B \subset A \), với \( B = \{x, y\} \), sao cho với mọi số nguyên dương lẻ \( m, n \), ta có:
     \[
@@ -8,7 +9,71 @@
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:30M}}]
+\ifshowsoln
+\begin{soln}\footnotemark
+    Gọi \( A = \{a, b, c\} \) là tập gồm ba số nguyên dương. Ta cần chỉ ra rằng tồn tại tập con \( B = \{x, y\} \subset A \)
+    sao cho với mọi số nguyên dương lẻ \( m, n \), ta có:
+    \[
+        10 \mid x^m y^n - x^n y^m.
+    \]
+
+    Gọi \( f(x, y) = x^m y^n - x^n y^m \). Nếu \( m = n \), thì biểu thức trở thành \( x^m y^m - x^m y^m = 0 \), hiển nhiên chia hết cho 10.
+    Do đó, ta giả sử \( n > m \) mà không mất tính tổng quát. Vì \( m \) và \( n \) đều lẻ nên \( n - m \) chẵn.
+
+    Khi đó:
+    \[
+        f(x, y) = x^m y^m (y^{n - m} - x^{n - m}).
+    \]
+
+    Do \( n - m \) chẵn, ta viết:
+    \[
+        y^{n - m} - x^{n - m} = (y^2 - x^2) Q(x, y) = (y - x)(y + x) Q(x, y),
+    \]
+    trong đó \( Q(x, y) \) là đa thức đối xứng:
+    \[
+        Q(x, y) = y^{n - m - 2} + y^{n - m - 4}x^2 + \cdots + x^{n - m - 2}.
+    \]
+
+    Suy ra:
+    \[
+        f(x, y) = x^m y^m (y - x)(y + x) Q(x, y).
+    \]
+
+    Do \( f(x, y) \) luôn chia hết cho \( 2 \):
+
+    - Nếu một trong hai số \( x, y \) là chẵn thì biểu thức chia hết cho 2;
+    - Nếu cả hai là lẻ thì \( x - y \) và \( x + y \) đều chẵn, nên tích cũng chia hết cho 2.
+
+    Vậy ta chỉ cần kiểm tra tính chia hết cho 5. Nếu \( A \) chứa phần tử chia hết cho 5, chọn phần tử đó và một phần tử bất kỳ để tạo thành \( B \).
+    Khi đó một trong hai số \( x \) hoặc \( y \) chia hết cho 5, nên \( f(x, y) \) chia hết cho 5.
+
+    Giả sử không phần tử nào trong \( A \) chia hết cho 5. Nếu có hai phần tử cùng đồng dư modulo 5,
+    thì hiệu của chúng chia hết cho 5 suy ra \( y - x \) chia hết cho 5 suy ra \( f(x, y) \) chia hết cho 5.
+
+    Trường hợp còn lại: cả ba phần tử trong \( A \) có phần dư khác nhau modulo 5.
+    Các phần dư khác nhau trong \( \mathbb{Z}_5 \) là \( \{1, 2, 3, 4\} \). Xét hai cặp:
+
+    - \( (1, 4) \): tổng là 5;
+    
+    - \( (2, 3) \): tổng là 5.
+
+    Do chỉ có ba phần tử và bốn phần dư khác nhau, theo nguyên lý Dirichlet, một trong hai cặp trên phải nằm trọn trong \( A \).
+    Khi đó \( x + y \) chia hết cho 5 suy ra \( f(x, y) \) chia hết cho 5.
+
+    Kết luận: tồn tại \( B = \{x, y\} \subset A \) sao cho với mọi số lẻ dương \( m, n \), \( 10 \mid x^m y^n - x^n y^m \).
+\end{soln}
 \footnotetext{\href{https://emc.mnm.hr/wp-content/uploads/2015/12/EMC_2015_Seniors_ENG_Solutions.pdf}{Lời giải chính thức.}}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:EMC-2015-S-P1}]
+    Phân tích biểu thức \( x^m y^n - x^n y^m \), kiểm tra tính chia hết cho 2 và 5 bằng cách xét chẵn/lẻ và các phần dư modulo 5.
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:25M}}]
+\end{remark*}
+\newpage
 \fi

@@ -1,6 +1,7 @@
-\ifshowproblem
-\begin{problem}[\gls{APMO 2015}/P3]\label{example:APMO-2015-P3}
-    Một dãy số thực \( a_0, a_1, \ldots \) được gọi là "tốt" nếu thỏa mãn ba điều kiện sau:
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{APMO 2015}/P3]\label{problem:APMO-2015-P3}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:APMO-2015-P3}]\fi
+    Một dãy số thực \( a_0, a_1, \ldots \) được gọi là \textit{tốt} nếu thỏa mãn ba điều kiện sau:
     \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
         \item Giá trị của \( a_0 \) là một số nguyên dương.
         \item Với mọi số nguyên không âm \( i \), ta có:
@@ -10,11 +11,106 @@
         \item Tồn tại một số nguyên dương \( k \) sao cho \( a_k = 2014 \).
     \end{itemize}
 
-    Tìm số nguyên dương nhỏ nhất \( n \) sao cho tồn tại một dãy "tốt" \( a_0, a_1, \ldots \) với \( a_n = 2014 \).
+    Tìm số nguyên dương nhỏ nhất \( n \) sao cho tồn tại một dãy \textit{tốt} \( a_0, a_1, \ldots \) với \( a_n = 2014 \).
 \end{problem}
 \fi
 
-\ifshowinfo
-[\textbf{\nameref{definition:30M}}]\footnotemark
+\ifshowsoln
+\begin{soln}[Lời giải 1.]\footnotemark
+    Xét biểu thức:
+    \[
+        a_{i+1} + 1 = 
+        \begin{cases}
+            2(a_i + 1), &\text{nếu } a_{i+1} = 2a_i + 1, \\
+            \dfrac{2(a_i + 1)}{a_i + 2}, &\text{nếu } a_{i+1} = \dfrac{a_i}{a_i + 2}.
+        \end{cases}
+    \Rightarrow \dfrac{1}{a_{i+1} + 1} = 
+        \begin{cases}
+            \dfrac{1}{2} \cdot \dfrac{1}{a_i + 1}, \\
+            \dfrac{1}{2} \cdot \dfrac{1}{a_i + 1} + \dfrac{1}{2}.
+        \end{cases}
+    \]
+
+    Vì vậy:
+    \[
+        \dfrac{1}{a_k + 1} = \dfrac{1}{2^k} \cdot \dfrac{1}{a_0 + 1} + \sum_{i=1}^k \dfrac{\varepsilon_i}{2^{k - i + 1}}, \quad \varepsilon_i \in \{0, 1\}.
+    \]
+
+    Nhân hai vế với \( 2^k(a_k + 1) \), đặt \( a_k = 2014 \Rightarrow a_k + 1 = 2015 \), ta được:
+    \[
+        2^k = \dfrac{2015}{a_0 + 1} + 2015 \cdot \left( \sum_{i=1}^k \varepsilon_i \cdot 2^{i - 1} \right).
+    \]
+
+    Vì \( \gcd(2, 2015) = 1 \), nên \( a_0 + 1 = 2015 \Rightarrow a_0 = 2014 \), và:
+    \[
+        2^k - 1 = 2015 \cdot \left( \sum_{i=1}^k \varepsilon_i \cdot 2^{i - 1} \right).
+    \]
+
+    Cần tìm \( k \) nhỏ nhất sao cho \( 2015 \mid 2^k - 1 \). Vì \( 2015 = 5 \cdot 13 \cdot 31 \), ta có:
+    \[
+        \text{ord}_{5}(2) = 4, \quad \text{ord}_{13}(2) = 12, \quad \text{ord}_{31}(2) = 30 \Rightarrow \text{ord}_{2015}(2) = \text{lcm}(4, 12, 30) = 60.
+    \]
+
+    Vậy \( k = 60 \) là giá trị nhỏ nhất thỏa mãn \( a_k = 2014 \).
+\end{soln}
 \footnotetext{\href{https://www.apmo-official.org/static/solutions/apmo2015_sol.pdf}{Lời giải chính thức.}}
+
+\newpage
+
+\begin{soln}[Lời giải 2.]
+    Từ \( a_k = 2014 \), xây dựng dãy ngược lại theo công thức:
+    \[
+        a_i = 
+        \begin{cases}
+            \dfrac{a_{i+1} - 1}{2}, &\text{nếu } a_{i+1} > 1, \\
+            \dfrac{2a_{i+1}}{1 - a_{i+1}}, &\text{nếu } a_{i+1} < 1.
+        \end{cases}
+    \]
+
+    Dãy ngược (được viết dạng phân số tối giản \( \frac{m}{n} \)):
+    \[
+        \begin{aligned}
+            &\frac{2014}{1},\ \frac{2013}{2},\ \frac{2011}{4},\ \frac{2007}{8},\ \frac{1999}{16},\ \frac{1983}{32},\ \frac{1951}{64},\ \frac{1887}{128},\ \frac{1759}{256},\ \frac{1503}{512},\\
+            &\frac{991}{1024},\ \frac{1982}{33},\ \frac{1949}{66},\ \frac{1883}{132},\ \frac{1751}{264},\ \frac{1487}{528},\ \frac{959}{1056},\ \frac{1918}{97},\ \frac{1821}{194},\ \frac{1627}{388},\\
+            &\frac{1239}{776},\ \frac{463}{1552},\ \frac{926}{1089},\ \frac{1852}{163},\ \frac{1689}{326},\ \frac{1363}{652},\ \frac{711}{1304},\ \frac{1422}{593},\ \frac{829}{1186},\ \frac{1658}{357},\\
+            &\frac{1301}{714},\ \frac{587}{1428},\ \frac{1174}{841},\ \frac{333}{1682},\ \frac{666}{1349},\ \frac{1332}{683},\ \frac{649}{1366},\ \frac{1298}{717},\ \frac{581}{1434},\ \frac{1162}{853},\\
+            &\frac{309}{1706},\ \frac{618}{1397},\ \frac{1236}{779},\ \frac{457}{1558},\ \frac{914}{1101},\ \frac{1828}{187},\ \frac{1641}{374},\ \frac{1267}{748},\ \frac{519}{1496},\ \frac{1038}{977},\\
+            &\frac{61}{1954},\ \frac{122}{1893},\ \frac{244}{1771},\ \frac{488}{1527},\ \frac{976}{1039},\ \frac{1952}{63},\ \frac{1889}{126},\ \frac{1763}{252},\ \frac{1511}{504},\ \frac{1007}{1008},
+            &\frac{2014}{1}.
+        \end{aligned}
+    \]
+
+    Có 61 phần tử, nên \( k = 60 \).
+\end{soln}
+
+\begin{soln}[Lời giải 3.]
+    Bắt đầu với \( a_k = \frac{2014}{1} = \frac{m_0}{n_0} \), xây dựng ngược dãy phân số:
+    \[
+        (m_{i+1}, n_{i+1}) =
+        \begin{cases}
+            (m_i - n_i,\ 2n_i), &\text{nếu } m_i > n_i; \\
+            (2m_i,\ n_i - m_i), &\text{nếu } m_i < n_i.
+        \end{cases}
+    \]
+
+    Ta chứng minh được \( m_i + n_i = 2015 \), \( \gcd(m_i, n_i) = 1 \) và dãy kết thúc khi \( n_k = 1 \), tức \( a_0 \in \mathbb{Z}_{>0} \). Dễ thấy:
+    \[
+        (m_i, n_i) \equiv (-2^i, 2^i) \pmod{2015} \Rightarrow 2^k \equiv 1 \pmod{2015}.
+    \]
+
+    Do đó \( k = 60 \).
+\end{soln}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:APMO-2015-P3}]
+    Tìm cách biểu diễn \( \frac{1}{a_i + 1} \) theo công thức đệ quy nhị phân và truy ngược dãy từ \( a_k = 2014 \).
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:25M}}]
+\end{remark*}
+\newpage
 \fi
