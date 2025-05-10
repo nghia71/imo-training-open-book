@@ -246,7 +246,8 @@
 
 \begin{theorem}[Định lý số dư Trung Hoa]
     \label{theorem:chinese-remainder-theorem}
-    Cho các số nguyên \( n_1, \dots, n_k \) đôi một nguyên tố cùng nhau và các số nguyên \( a_1, \dots, a_k \), tồn tại duy nhất \( x \mod N = n_1n_2\cdots n_k \) sao cho:
+    Cho các số nguyên \( n_1, \dots, n_k \) đôi một nguyên tố cùng nhau và các số nguyên \( a_1, \dots, a_k \),
+    tồn tại duy nhất \( x \mod N = n_1n_2\cdots n_k \) sao cho:
     \[
         x \equiv a_i \pmod{n_i},\quad \forall i.
     \]
@@ -948,6 +949,11 @@
     \[
         \sum_{d \mid n} \frac{1}{d} \le \log n + 1.
     \]
+\end{theorem}
+
+\begin{theorem}[Giả thuyết Beal]
+    \label{theorem:beal-conjecture}
+    Nếu \( A^x + B^y = C^z \) với \( A, B, C, x, y, z \in \mathbb{Z}_{>0} \), \( x, y, z > 2 \), thì \( \gcd(A, B, C) > 1 \).
 \end{theorem}
 
 \end{document}

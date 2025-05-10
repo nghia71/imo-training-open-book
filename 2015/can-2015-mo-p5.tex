@@ -18,7 +18,7 @@
     Vì \( p \ne 3 \) (do \( \frac{p - 1}{2} \) phải là số nguyên tố), và \( a \not\equiv 0 \pmod{p} \),
     nên \( a^n + b^n + c^n \not\equiv 0 \pmod{p} \). Trường hợp này hiển nhiên do số lượng $n$ thoả mãn là 0 ($<1+\sqrt{2p}$).
 
-    \textbf{Trường hợp 2:} Giả sử \( b \not\equiv \pm a \pmod{p} \Rightarrow ba^{-1} \not\equiv \pm1 \pmod{p} \).
+    \textbf{Trường hợp 2:} Giả sử \( b \not\equiv \pm a \pmod{p} \implies ba^{-1} \not\equiv \pm1 \pmod{p} \).
 
     Đặt \( q = \frac{p - 1}{2} \). Gọi $d$ là bậc modulo $p$ của \( ba^{-1} \). Theo định lý Fermat, $d$ chia hết \( p - 1 = 2q \).
     Do \( ba^{-1} \not\equiv \pm1 \), nên $d$ không chia hết 2. Vậy $d$ là \( q \) hoặc \( 2q \).
@@ -36,10 +36,10 @@
             a^i + b^i + c^i \equiv 0 \pmod{p},
         \]
         \[
-            \Rightarrow a^i c^t + b^i c^t + c^{j} \equiv 0,
+            \implies a^i c^t + b^i c^t + c^{j} \equiv 0,
         \]
         \[
-            \Rightarrow a^i (c^t - a^t) \equiv b^i (b^t - c^t) \pmod{p}.
+            \implies a^i (c^t - a^t) \equiv b^i (b^t - c^t) \pmod{p}.
         \]
 
         Nếu \( c^t \equiv a^t \pmod{p} \), thì suy ra \( c^t \equiv b^t \pmod{p} \), nên \( (ab^{-1})^t \equiv 1 \pmod{p} \).
@@ -55,7 +55,7 @@
         |S|(|S| - 2) \le \sum_{t \ne q} s_t \le 2(p - 2),
     \]
     \[
-        \Rightarrow (|S| - 1)^2 \le 2p - 3 \Rightarrow |S| < \sqrt{2p} + 1.
+        \implies (|S| - 1)^2 \le 2p - 3 \implies |S| < \sqrt{2p} + 1.
     \]
 
     Vậy số lượng giá trị \( n < p \) thoả mãn điều kiện là không quá \( \boxed{1 + \sqrt{2p}} \).

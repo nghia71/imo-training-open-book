@@ -10,7 +10,93 @@
 \end{problem}
 \fi
 
-\ifshowinfo
-Đánh giá [\textbf{\nameref{definition:20M}}]
+\ifshowsoln
+\begin{soln}\footnotemark
+    Các số thỏa mãn yêu cầu là:
+    \[
+        a = p - 1 \quad \text{và các số } a = \left\lfloor \frac{p}{q} \right\rfloor \text{ với } q = 2, 3, \ldots, p - 1.
+    \]
+
+    Nói cách khác, tập nghiệm bao gồm:
+    \[
+        p - 1, 1, 2, \ldots, \left\lfloor \sqrt{p} \right\rfloor,
+    \]
+    và các giá trị khác nhau của \( \left\lfloor \frac{p}{q} \right\rfloor \) với \( q = 2, \ldots, \left\lfloor \sqrt{p} \right\rfloor - 1 \).
+
+    \textbf{Phần thuận.} Trước tiên, ta chứng minh rằng các số này thỏa mãn điều kiện đề bài.
+
+    Với \( a = p - 1 \), ta có:
+    \[
+        R(m(p - 1)) = p - m, \quad \text{do } m(p - 1) \equiv -m \pmod{p}.
+    \]
+
+    Khi đó:
+    \[
+        m + R(m(p - 1)) = m + (p - m) = p > p - 1 = a.
+    \]
+
+    Tiếp theo, xét \( a = \left\lfloor \frac{p}{q} \right\rfloor \) với \( q > 1 \) và \( q < p \). Khi đó \( p = aq + r \) với \( 0 < r < q \).
+    Chọn một số nguyên \( m \in (0, p) \), và viết:
+    \[
+        m = xq + y \quad \text{với } x \in \mathbb{Z}_{\ge 0},\ 1 \le y \le q.
+    \]
+
+    Khi đó:
+    \[
+        ma = ay + xaq = ay + x(p - r) = ay - xr + xp.
+    \]
+
+    Suy ra:
+    \[
+        R(ma) = R(ay - xr) \quad \text{vì thêm bội của } p \text{ không thay đổi phần dư}.
+    \]
+
+    Vì \( ay \le aq < p \) nên \( ay - xr < p \), và:
+    \[
+        R(ma) \ge ay - xr.
+    \]
+
+    Do đó:
+    \[
+        m + R(ma) \ge (xq + y) + (ay - xr) = x(q - r) + y(a + 1) \ge a + 1,
+    \]
+    vì \( q > r \), \( y \ge 1 \).
+
+    \textbf{Phần đảo.} Giờ giả sử có một số \( a \in (0, p - 1) \) thỏa mãn điều kiện đề bài. 
+    Với \( a = 1 \) thì dễ thấy điều kiện đúng. Giả sử \( a \ge 2 \), viết \( p = aq + r \) với \( 0 < r < a \), 
+    tức là \( q = \left\lfloor \frac{p}{a} \right\rfloor \).
+
+    Khi đó, chọn \( m = q + 1 < p \), ta có:
+    \[
+        ma = aq + a = p + (a - r) \implies R(ma) = a - r.
+    \]
+
+    Do đó:
+    \[
+        m + R(ma) = q + 1 + a - r > a,
+    \]
+    tức là \( r < q + 1 \).
+
+    Nếu \( r = q \) thì \( p = q(a + 1) \), điều này là không thể vì \( a + 1 < p \). Do đó \( r < q \), và:
+    \[
+        0 \le \frac{p}{q} - a = \frac{r}{q} < 1 \implies a = \left\lfloor \frac{p}{q} \right\rfloor.
+    \]
+
+    Vậy mọi \( a \) thỏa mãn đều là dạng \( \left\lfloor \frac{p}{q} \right\rfloor \) với \( q \in (1, p) \).
+\end{soln}
 \footnotetext{\href{https://rmms.lbi.ro/rmm2015/index.php?id=solutions_math}{Lời giải chính thức.}}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:RMM-2015-P5}]
+    Hãy thử với \( a = p - 1 \), rồi xét các giá trị \( a \) dưới dạng \( \left\lfloor \frac{p}{q} \right\rfloor \).
+    Viết \( m = xq + y \) và khai triển \( ma \), sau đó phân tích phần dư \( R(ma) \) để tìm giới hạn dưới của \( m + R(ma) \).
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:20M}}]
+\end{remark*}
+\newpage
 \fi

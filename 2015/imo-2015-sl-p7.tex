@@ -23,7 +23,7 @@
     \textit{Không tồn tại hàm 1-tốt.} Giả sử tồn tại hàm \( f \) sao cho \( G_f(m,n) = 1 \) với mọi \( m \ne n \).
     Nếu tồn tại hai số chẵn phân biệt \( m, n \) sao cho \( f(m) \) và \( f(n) \) đều chẵn thì:
     \[
-        2 \mid f(m) + n,\quad 2 \mid f(n) + m \Rightarrow 2 \mid \gcd(f(m) + n,\ f(n) + m),
+        2 \mid f(m) + n,\quad 2 \mid f(n) + m \implies 2 \mid \gcd(f(m) + n,\ f(n) + m),
     \]
     mâu thuẫn với điều kiện.
     
@@ -48,7 +48,7 @@
 
     Ta chứng minh rằng \( 2^{g(m-1)+1} \ge B \). Điều này được suy ra từ:
     \[
-        g(k+1) > g(k) \Rightarrow 2^{g(k+1)+1} \ge 2^{g(k)+1+1}.
+        g(k+1) > g(k) \implies 2^{g(k+1)+1} \ge 2^{g(k)+1+1}.
     \]
 
     Áp dụng nhiều lần, ta có:
@@ -58,7 +58,7 @@
 
     Vì \( p \mid B \), ta có \( p - 1 < B \le 2^{g(m-1)+1} \), do đó:
     \[
-        p - 1 \mid (2^{g(m-1)+1})! = g(m) \Rightarrow 2^{g(m)} \equiv 1 \mod p.
+        p - 1 \mid (2^{g(m-1)+1})! = g(m) \implies 2^{g(m)} \equiv 1 \mod p.
     \]
 
     Khi đó \( A + B \equiv 2^{g(n)+1} \mod p \), nhưng \( A + B \equiv 0 \mod p \) suy ra \( p = 2 \), mâu thuẫn vì \( p \) lẻ.
@@ -117,7 +117,7 @@
 
     \textit{Kiểm tra điều kiện (iii).} Giả sử tồn tại \( n < m \) sao cho \( p \mid \gcd(f(n) + m,\ f(m) + n) \). Khi đó \( p \in X_m \) và \( p \mid f(m) + n \).
 
-    - Nếu \( p \ge m + 2 \): khi đó \( f(m) \equiv 0 \mod p \Rightarrow f(m) + n \equiv n \mod p \), mà \( n < m < p \)
+    - Nếu \( p \ge m + 2 \): khi đó \( f(m) \equiv 0 \mod p \implies f(m) + n \equiv n \mod p \), mà \( n < m < p \)
     suy ra \( n \not\equiv 0 \mod p \) suy ra mâu thuẫn.
 
     - Nếu \( p \le m + 1 \): từ định nghĩa \( f(m) + m \equiv -a_p \mod p \) và \( f(n) + n \not\equiv a_p \mod p \)

@@ -28,9 +28,9 @@
     \end{claim*}
 
     \begin{subproof}
-        Nếu \( a_n \mid b_n \), thì \( a_{n+1} = a_n + 1 \). Do \( a_n \mid s_n \), nên \( a_n \notin W_n \), và \( s_{n+1} = s_n \Rightarrow W_{n+1} = W_n \Rightarrow w_{n+1} = w_n \).
+        Nếu \( a_n \mid b_n \), thì \( a_{n+1} = a_n + 1 \). Do \( a_n \mid s_n \), nên \( a_n \notin W_n \), và \( s_{n+1} = s_n \implies W_{n+1} = W_n \implies w_{n+1} = w_n \).
 
-        Nếu \( a_n \nmid b_n \), thì \( a_n \nmid s_n \Rightarrow a_n \in W_n \Rightarrow w_n = a_n \). Ta chứng minh \( a_n \in W_{n+1} \), suy ra \( w_{n+1} \le a_n = w_n \).
+        Nếu \( a_n \nmid b_n \), thì \( a_n \nmid s_n \implies a_n \in W_n \implies w_n = a_n \). Ta chứng minh \( a_n \in W_{n+1} \), suy ra \( w_{n+1} \le a_n = w_n \).
 
         Cần chứng minh \( a_n \ge a_{n+1} \) và \( a_n \nmid s_{n+1} \). Điều này đúng vì \( \gcd(a_n, b_n) < a_n \) nên \( a_{n+1} = \gcd(a_n, b_n) + 1 \le a_n \). Hơn nữa, \( s_{n+1} = \gcd(a_n, b_n) + \text{lcm}(a_n, b_n) \), trong đó hạng thứ hai chia hết cho \( a_n \), nhưng hạng thứ nhất thì không, nên \( a_n \nmid s_{n+1} \).
     \end{subproof}
@@ -44,7 +44,7 @@
     \end{claim*}
 
     \begin{subproof}
-        Nếu \( a_n \mid b_n \), thì \( s_{n+1} = s_n \Rightarrow g_{n+1} = g_n \). Nếu \( a_n = w \) và \( a_n \nmid b_n \), thì:
+        Nếu \( a_n \mid b_n \), thì \( s_{n+1} = s_n \implies g_{n+1} = g_n \). Nếu \( a_n = w \) và \( a_n \nmid b_n \), thì:
         \[
             a_{n+1} = \gcd(a_n, b_n) + 1 = g_n + 1, \quad s_{n+1} = \gcd(a_n, b_n) + \text{lcm}(a_n, b_n)
         \]
@@ -69,7 +69,7 @@
 
     Gọi \( M = \text{lcm}(a_1, a_2, \ldots) \), và xét dãy \( (b_n \mod M) \). Gọi \( r_n = b_n \mod M \). Vì \( a_n \mid M \), ta có:
     \[
-        \gcd(a_n, b_n) = \gcd(a_n, r_n) \Rightarrow a_{n+1} = \gcd(a_n, r_n) + 1.
+        \gcd(a_n, b_n) = \gcd(a_n, r_n) \implies a_{n+1} = \gcd(a_n, r_n) + 1.
     \]
     Hơn nữa:
     \[
@@ -95,7 +95,7 @@
     
     Vì \( L \mid s_n \) và \( s_{n+1} \), nên \( L \mid \frac{w^2 - g^2}{g} \). Nếu \( w \ge 6 \), thì \( g + 1 \le \frac{w}{2} + 1 \le w - 2 \), suy ra:
     \[
-        (w - 2)(w - 1) \mid L \Rightarrow (w - 2)(w - 1) \mid \frac{w^2 - g^2}{g},
+        (w - 2)(w - 1) \mid L \implies (w - 2)(w - 1) \mid \frac{w^2 - g^2}{g},
     \]
     điều này dẫn đến mâu thuẫn trừ phi \( w \le 5 \). Với \( w \le 5 \) và \( g \mid w \), chỉ còn 4 cặp thỏa mãn.
 

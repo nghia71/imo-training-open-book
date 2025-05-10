@@ -1,11 +1,199 @@
-\ifshowproblem
-\begin{problem}[\gls{MEMO 2015}/I/P8]\label{problem:MEMO-2015-T-P8}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{MEMO 2015}/I/P8]\label{problem:MEMO-2015-T-P8}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:MEMO-2015-T-P8}]\fi
     Cho \( n \ge 2 \) là một số nguyên.  
     Xác định số lượng các số nguyên dương \( m \) sao cho \( m \le n \) và \( m^2 + 1 \) chia hết cho \( n \).
 \end{problem}
 \fi
 
-\ifshowinfo
-Đánh giá [\textbf{\nameref{definition:20M}}]
+\ifshowsoln
+\begin{soln}[Lời giải 1.]\footnotemark
+    \textbf{Đáp án:} Nếu \( n = 2^{\alpha_0} p_1^{\alpha_1} \cdots p_k^{\alpha_k} \), 
+    với các \( p_i \) là các số nguyên tố lẻ thỏa mãn \( p_i \equiv 1 \pmod{4} \), thì:
+    \[
+        D(n) = 2^k.
+    \]
+
+    Gọi \( D(n) \) là số lượng số nguyên dương \( m \leq n \) sao cho \( m^2 + 1 \) chia hết cho \( n \).
+
+    Không tồn tại số \( m \) sao cho \( m^2 + 1 \) chia hết cho 4, do đó nếu 4 chia hết cho \( n \) thì \( D(n) = 0 \). 
+    Cũng biết rằng \( D(n) = 0 \) nếu \( n \) chia hết cho một số có dạng \( 4k + 3 \). Ngoài ra, \( D(2) = 1 \).
+
+    \textbf{Bước 1.} Giả sử trước tiên \( n = p \) là một số nguyên tố lẻ có dạng \( 4k + 1 \). Ta sẽ chứng minh rằng \( D(p) = 2 \).
+
+    \begin{lemma*}[Bổ đề 1]
+        Nếu \( p = 4k + 1 \) với \( k \in \mathbb{Z}_{>0} \), và \( S = \{x_1, \ldots, x_p\} \) là hệ đại diện đầy đủ modulo \( p \),
+        thì tồn tại đúng hai phần tử \( x \in S \) sao cho \( x^2 \equiv -1 \pmod{p} \).
+    \end{lemma*}
+    \begin{subproof}
+        Trước tiên ta chứng minh rằng phương trình đồng dư \( x^2 \equiv -1 \pmod{p} \) có ít nhất một nghiệm khi \( p \equiv 1 \pmod{4} \).
+
+        Áp dụng định lý Wilson, ta có:
+        \[
+            \left(1 \cdot 2 \cdot \ldots \cdot \frac{p-1}{2} \right)^2 \equiv -1 \pmod{p},
+        \]
+        do đó \( x = \left( \frac{p - 1}{2} \right)! \) là một nghiệm.
+    
+        Hơn nữa, nếu \( x_i \in S \) là nghiệm thì \( x_j = p - x_i \in S \) cũng là nghiệm. 
+        Nếu \( p = 2q + 1 \), thì chính xác một trong hai số \( x_i, x_j \) nhỏ hơn hoặc bằng \( q \). Ta có thể giả sử \( x_i \leq q \).
+    
+        Nếu phương trình có nghiệm thứ ba \( x_k \in S \), ta cũng có thể giả sử \( x_k \leq q \). 
+        Tuy nhiên, \( x_i^2 \equiv x_k^2 \equiv -1 \pmod{p} \) dẫn đến:
+        \[
+            p \mid (x_k - x_i)(x_k + x_i),
+        \]
+        điều này không thể xảy ra vì \( x_i, x_k \leq q \) nên tích trên nhỏ hơn \( p \). Mâu thuẫn. Bổ đề được chứng minh.
+    \end{subproof}
+
+    \textbf{Bước 2.} Giả sử \( n = p^k \), với \( p \equiv 1 \pmod{4} \).
+    \begin{claim*}
+        \( D(p^k) = 2 \)
+    \end{claim*} 
+    \begin{subproof}
+        Ta chứng minh bằng quy nạp theo \( k \).
+
+        Cơ sở quy nạp: \( k = 1 \), đã chứng minh ở trên.
+
+        Giả sử \( D(p^k) = 2 \) với \( k \ge 1 \). Gọi \( i, j < p^k \) là hai số sao cho \( i^2 + 1 \) và \( j^2 + 1 \) chia hết cho \( p^k \).
+    
+        Tất cả các nghiệm của phương trình \( x^2 \equiv -1 \pmod{p^{k+1}} \) nhỏ hơn \( p^{k+1} \) là:
+        \[
+            m p^k + i \quad \text{với } m = 0, \ldots, p-1 \quad \text{và} \quad m p^k + j \quad \text{với } m = 0, \ldots, p - 1.
+        \]
+
+        Ta chứng minh rằng có đúng một trong các số \( (m p^k + i)^2 + 1 \) ($m = 0, \ldots, p-1$) chia hết cho \( p^{k+1} \).
+        Giả sử tồn tại hai giá trị \( m_1, m_2 \) sao cho:
+        \[
+            (m_1 p^k + i)^2 + 1 \equiv 0 \pmod{p^{k+1}},\quad (m_2 p^k + i)^2 + 1 \equiv 0 \pmod{p^{k+1}}.
+        \]
+
+        Lấy hiệu:
+        \[
+            (m_1 - m_2)p^k(2i + (m_1 + m_2)p^k) \equiv 0 \pmod{p^{k+1}}.
+        \]
+
+        Vế trái không chia hết cho \( p^{k+1} \) vì \( m_1 - m_2 \not\equiv 0 \pmod{p} \) và \( i \not\equiv 0 \pmod{p} \), mâu thuẫn.
+
+        Như vậy với mỗi trong \( i, j \), có đúng hai giá trị \( m_, m_j \in \{0, \ldots, p-1\} \) sao cho $(m_i p^k + i)^2 + 1$ và $(m_j p^k + i)^2 + 1$
+        chia hết cho \( p^{k+1} \). Vậy \( D(p^{k+1}) = 2 \).
+    \end{subproof}
+   
+    \textbf{Bước 3.} Giả sử \( n = p^a q^b \) với \( p, q \equiv 1 \pmod{4} \) là hai số nguyên tố khác nhau. Ta sẽ chứng minh rằng \( D(p^a q^b) = 4 \).
+
+    Theo trên, \( D(p^a) = 2 \). Gọi \( i, j \in [0, p^a) \) là hai số thỏa mãn \( i^2 + 1 \equiv j^2 + 1 \equiv 0 \pmod{p^a} \). 
+    Khi đó, các nghiệm modulo \( p^a q^b \) là:
+    \[
+        m p^a + i \quad \text{với } m = 0, \ldots, q^b - 1, \quad \text{và} \quad m p^a + j \quad \text{với } m = 0, \ldots, q^b - 1.
+    \]
+
+    Vì \( \{0, 1, \ldots, q^b - 1\} \) là hệ đại diện modulo \( q^b \), và \( \gcd(p^a, q^b) = 1 \), 
+    nên các dãy \( m p^a + i \) cũng là hệ đại diện modulo \( q^b \). Mỗi dãy chứa đúng hai giá trị sao cho \( x^2 \equiv -1 \pmod{q^b} \). 
+    Vậy \( D(p^a q^b) = 4 \).
+
+    Dùng quy nạp theo số lượng thừa số nguyên tố lẻ dạng \( 4k + 1 \), ta được:
+    \[
+        D(p_1^{\alpha_1} \cdots p_k^{\alpha_k}) = 2^k.
+    \]
+
+    \textbf{Bước 4.} Cuối cùng, chứng minh rằng:
+    \[
+        D(p_1^{\alpha_1} \cdots p_n^{\alpha_n}) = D(2 p_1^{\alpha_1} \cdots p_n^{\alpha_n}),
+    \]
+    với các \( p_i \equiv 1 \pmod{4} \) nguyên tố phân biệt.
+
+    Gọi \( a = p_1^{\alpha_1} \cdots p_n^{\alpha_n} \). Nếu \( i_1, i_2, \ldots, i_{2^n} \) là các số nguyên dương nhỏ hơn $a$
+    thoả mãn $x^2 \equiv -1 \Mod{a}$, thì tất cả các số nguyên dương nhỏ hơn $2a$ thoã mãn phương trình là
+    \[
+        \delta a + i_j,\ j=1,2,3,\ldots,2^n,\ \text{for}\ \delta = 0, 1.
+    \]
+
+    Dù vậy chỉ một trong hai số $i_j^2 + 1$ và $(a + i_j)^2 + 1$ là chẵn, do đó:
+    \[
+        D(p_1^{\alpha_1} \cdots p_n^{\alpha_n}) = D(2 p_1^{\alpha_1} \cdots p_n^{\alpha_n}).
+    \]
+
+    Tóm lại:
+    \[
+        D(a) = 2^n, \quad \text{nếu } a = 2^{\alpha_0} p_1^{\alpha_1} \cdots p_n^{\alpha_n},\ p_i \equiv 1 \pmod{4}.
+    \]
+\end{soln}
 \footnotetext{\href{https://www.k12mathcontests.com/download/memo/2015/team}{Lời giải chính thức.}}
+
+\newpage
+
+\begin{soln}[Lời giải 2.]
+    Không có số nào dạng \( m^2 + 1 \) chia hết cho 4, do đó nếu \( 4 \mid n \), thì \( D(n) = 0 \).
+
+    Viết \( n = p_0^{\alpha_0} \cdot p_1^{\alpha_1} \cdots p_k^{\alpha_k} \), trong đó:
+    \( p_0 = 2 \), \( \alpha_0 \in \{0,1\} \); các \( p_i \) với \( i \ge 1 \) là các số nguyên tố lẻ phân biệt; và \( \alpha_i \ge 1 \).
+
+    Bài toán yêu cầu tìm số lượng lớp đồng dư \( m \mod n \) sao cho \( m^2 \equiv -1 \pmod{n} \).
+
+    Rõ ràng, \( m^2 \equiv -1 \pmod{n} \) khi và chỉ khi:
+    \[
+        m^2 \equiv -1 \pmod{p_i^{\alpha_i}} \quad \text{với mọi } i.
+    \]
+
+    Ta sử dụng bổ đề sau:
+    \begin{lemma*}
+        Cho \( p \) là một số nguyên tố, \( \alpha \ge 1 \). Khi đó, số lượng lớp đồng dư \( m \) modulo \( p^\alpha \)
+        sao cho \( m^2 \equiv -1 \pmod{p^\alpha} \) là:
+        \[
+            \begin{cases}
+                0 & \text{nếu } p \equiv 3 \pmod{4}, \\
+                1 & \text{nếu } p = 2 \text{ và } \alpha = 1, \\
+                2 & \text{nếu } p \equiv 1 \pmod{4}.
+            \end{cases}
+        \]
+    \end{lemma*}
+    \begin{subproof}
+        Với \( p = 2 \) và \( \alpha = 1 \), \( m^2 \equiv -1 \pmod{2} \Leftrightarrow m \equiv 1 \pmod{2} \), nên có đúng 1 nghiệm.
+
+        Với \( p \equiv 3 \pmod{4} \), từ lý thuyết số học cổ điển, ta biết rằng \( -1 \) không phải là số chính phương modulo \( p \), 
+        nên phương trình vô nghiệm modulo \( p \), và do đó cũng vô nghiệm modulo \( p^\alpha \).
+    
+        Với \( p \equiv 1 \pmod{4} \), từ định lý về số dư bậc hai, ta biết rằng \( -1 \) là số chính phương modulo \( p \). 
+        Do đó, tồn tại \( m \) sao cho \( m^2 \equiv -1 \pmod{p} \).
+    
+        Theo định lý nâng Hensel (Hensel's Lemma), nếu một phương trình có nghiệm modulo \( p \) và đạo hàm không triệt tiêu modulo \( p \), 
+        thì có thể nâng nghiệm đó lên modulo \( p^\alpha \). Trong trường hợp này, \( f(x) = x^2 + 1 \), \( f'(x) = 2x \), 
+        và \( \gcd(2x, p) = 1 \) vì \( p \) lẻ, suy ra nâng được nghiệm lên modulo \( p^\alpha \).
+    
+        Giả sử \( m \) là một nghiệm của \( m^2 \equiv -1 \pmod{p^\alpha} \). Nếu \( r \) là một nghiệm khác, thì:
+        \[
+            r^2 \equiv -1 \equiv m^2 \pmod{p^\alpha} \implies p^\alpha \mid (r - m)(r + m).
+        \]
+
+        Do \( \gcd(r - m, r + m) \mid 2m \), và \( \gcd(2m, p) = 1 \), ta có:
+        \[
+            p^\alpha \mid r - m \quad \text{hoặc} \quad r \equiv -m \pmod{p^\alpha}.
+        \]
+
+        Do đó, hai nghiệm duy nhất là \( m \) và \( -m \), và \( m \not\equiv -m \pmod{p^\alpha} \) vì \( p \) lẻ.
+    
+        Có đúng 2 nghiệm modulo \( p^\alpha \). Bổ đề được chứng minh.    
+    \end{subproof} 
+    
+    Áp dụng bổ đề, ta thấy rằng \( \alpha_0 \) (số mũ của 2) không ảnh hưởng đến kết quả, vì nếu \( \alpha_0 \ge 2 \) thì vô nghiệm, 
+    còn nếu \( \alpha_0 = 1 \) thì chỉ góp hệ số nhân là 1.
+
+    Với mỗi \( i = 1, \ldots, k \), do \( p_i \equiv 1 \pmod{4} \), ta có đúng 2 nghiệm modulo \( p_i^{\alpha_i} \). 
+    Theo định lý Trung Hoa (CRT), số nghiệm modulo \( n \) là:
+    \[
+        D(n) = 2^k.
+    \]
+\end{soln}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:MEMO-2015-T-P8}]
+    Hãy bắt đầu với các giá trị \( n \) nhỏ như số nguyên tố \( p \equiv 1 \pmod{4} \), rồi xét \( p^2, p^3 \), v.v. để tìm quy luật. Dùng bổ đề về số nghiệm của phương trình \( x^2 \equiv -1 \pmod{p^k} \) và thử mở rộng nghiệm từ modulo \( p^k \) lên \( p^{k+1} \).
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:20M}}]
+\end{remark*}
+\newpage
 \fi

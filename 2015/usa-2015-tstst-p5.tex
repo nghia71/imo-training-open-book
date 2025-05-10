@@ -1,11 +1,77 @@
-\ifshowproblem
-\begin{problem}[\gls{USA 2015 TSTST}/P5]\label{problem:USA-2015-TSTST-P5}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{USA 2015 TSTST}/P5]\label{problem:USA-2015-TSTST-P5}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:USA-2015-TSTST-P5}]\fi
     Ký hiệu \( \varphi(n) \) là số lượng các số nguyên dương nhỏ hơn \( n \) và nguyên tố cùng nhau với \( n \).  
     Chứng minh rằng tồn tại một số nguyên dương \( m \) sao cho phương trình \( \varphi(n) = m \) có ít nhất \( 2015 \) nghiệm \( n \).
 \end{problem}
 \fi
 
-\ifshowinfo
-Đánh giá [\textbf{\nameref{definition:20M}}]\footnotemark
-\footnotetext{\href{https://web.evanchen.cc/exams/sols-TSTST-2015.pdf}{Lời giải Evan Chen soạn.}}
+\ifshowsoln
+\begin{soln}[Lời giải 1.]\footnotemark
+    Ta xét 11 số nguyên tố sau:
+    \[
+        S = \{11, 13, 17, 19, 29, 31, 37, 41, 43, 61, 71\}.
+    \]
+
+    Tập này có tính chất rằng với mọi \( p \in S \), tất cả các thừa số nguyên tố của \( p - 1 \) đều là số có một chữ số.
+
+    Đặt \( N = (210)^{\text{tỷ}} \), và xét:
+    \[
+        M = \varphi(N).
+    \]
+
+    Với mỗi tập con \( T \subseteq S \), ta có:
+    \[
+        \varphi\left( N \cdot \prod_{p \in T} (p - 1) \cdot \prod_{p \in T} p \right) = M.
+    \]
+
+    Vì số lượng tập con là \( 2^{|S|} = 2^{11} = 2048 > 2015 \), ta đã xây dựng được ít nhất 2015 số \( n \) khác nhau sao cho \( \varphi(n) = M \). Điều phải chứng minh được hoàn tất.
+
+    \textit{Chú thích.} Lời giải này được gợi cảm hứng từ một kết quả sâu sắc rằng chẳng hạn như:
+    \[
+        \varphi(11 \cdot 1000) = \varphi(10 \cdot 1000).
+    \]
+\end{soln}
+\footnotetext{\href{https://web.evanchen.cc/exams/sols-TSTST-2015.pdf}{Lời giải của Evan Chen.}}
+
+\begin{soln}[Lời giải 2]\footnotemark
+    Gọi \( 2 = p_1 < p_2 < \cdots < p_{2015} \) là 2015 số nguyên tố nhỏ nhất.
+
+    Ta xây dựng 2015 số:
+    \[
+        n_1 = (p_1 - 1)p_2 \cdots p_{2015},\quad
+        n_2 = p_1(p_2 - 1) \cdots p_{2015},\quad
+        \ldots,\quad
+        n_{2015} = p_1p_2 \cdots (p_{2015} - 1).
+    \]
+
+    Mỗi số \( n_i \) ở trên đều có cùng giá trị hàm Euler:
+    \[
+        \varphi(n_i) = \varphi(p_1p_2 \cdots p_{2015}) = \prod_{i = 1}^{2015} (p_i - 1).
+    \]
+
+    Như vậy, \( \varphi(n) = m \) có ít nhất 2015 nghiệm, với \( m = \prod_{i = 1}^{2015} (p_i - 1) \).
+\end{soln}
+\footnotetext{\href{https://web.evanchen.cc/exams/sols-TSTST-2015.pdf}{Lời giải của Yang Liu.}}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:USA-2015-TSTST-P5}]
+    Hãy thử chọn một số lớn \( N \) và xét \( \varphi(N) \). Với các số nguyên tố \( p \) sao cho \( p - 1 \) có nhiều ước nhỏ, 
+    nếu \( p \mid n \) và \( (p - 1) \mid n \), bạn có thể làm cho \( \varphi(n) \) bằng một giá trị cố định. 
+    Thử kết hợp nhiều tập con của các số nguyên tố dạng đó.
+\end{hint*}
+
+\begin{hint*}[\nameref{problem:USA-2015-TSTST-P5}]
+    Nhớ rằng \( \varphi(n) \) là tích \( \prod (p_i - 1)p_i^{k_i - 1} \) nếu \( n \) có phân tích nguyên tố \( p_i^{k_i} \). 
+    Hãy thử lấy tích của nhiều số nguyên tố nhỏ và thay thế một trong số các \( p_i \) bằng \( p_i - 1 \) rồi nhân với các \( p_j \) còn lại. 
+    Liệu \( \varphi \) có giữ nguyên không?
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:20M}}]
+\end{remark*}
+\newpage
 \fi

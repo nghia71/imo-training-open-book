@@ -13,7 +13,7 @@
 \begin{soln}\footnotemark
     Trước hết, ta nhận thấy rằng ba số \( a, b, c \) nguyên dương phân biệt đôi một này phải nguyên tố cùng nhau từng đôi một.
     Thật vậy, giả sử \( a \) và \( b \) cùng chia hết cho một số nguyên tố \( p \), thì \( p \mid b \), mà theo giả thiết 
-    \[ b \mid (a - c)^2 \Rightarrow p \mid (a - c)^2 \Rightarrow p \mid a - c \Rightarrow p \mid c. \]
+    \[ b \mid (a - c)^2 \implies p \mid (a - c)^2 \implies p \mid a - c \implies p \mid c. \]
     
     Vậy \( p \) là ước chung của \( a, b, c \), mâu thuẫn với giả thiết \( \gcd(a, b, c) = 1 \).
 
@@ -22,12 +22,12 @@
         M = 2ab + 2bc + 2ac - a^2 - b^2 - c^2.
     \]
     
-    Từ điều kiện bài toán, ta thấy rằng \( a \mid (b - c)^2 \Rightarrow a \mid b^2 - 2bc + c^2 \). Tương tự, \( b \mid (c - a)^2 \), \( c \mid (a - b)^2 \).
+    Từ điều kiện bài toán, ta thấy rằng \( a \mid (b - c)^2 \implies a \mid b^2 - 2bc + c^2 \). Tương tự, \( b \mid (c - a)^2 \), \( c \mid (a - b)^2 \).
     Cộng ba biểu thức lại, ta thu được rằng \( a \mid M \), \( b \mid M \), \( c \mid M \) suy ra \( abc \mid M \).
 
     Giả sử tồn tại tam giác có ba cạnh là \( a, b, c \), thì theo bất đẳng thức tam giác:
     \[
-        a < b + c \Rightarrow a^2 < ab + ac.
+        a < b + c \implies a^2 < ab + ac.
     \]
 
     Tương tự:
@@ -37,13 +37,13 @@
 
     Cộng ba bất đẳng thức trên, ta có:
     \[
-        a^2 + b^2 + c^2 < ab + bc + ca \Rightarrow M > 0.
+        a^2 + b^2 + c^2 < ab + bc + ca \implies M > 0.
     \]
     Vì \( abc \mid M \), nên \( M \ge abc \).
 
     Mặt khác:
     \[
-        a^2 + b^2 + c^2 > ab + bc + ac \Rightarrow M < ab + bc + ac.
+        a^2 + b^2 + c^2 > ab + bc + ac \implies M < ab + bc + ac.
     \]
 
     Giả sử không mất tính tổng quát \( a > b > c \), thì:
@@ -51,11 +51,11 @@
         M < 3ab.
     \]
 
-    Kết hợp với \( M \ge abc \Rightarrow abc < 3ab \Rightarrow c < 3 \Rightarrow c = 1 \text{ hoặc } c = 2 \).
+    Kết hợp với \( M \ge abc \implies abc < 3ab \implies c < 3 \implies c = 1 \text{ hoặc } c = 2 \).
 
-    - Nếu \( c = 1 \), thì \( b < a < b + 1 \Rightarrow a = b \), mâu thuẫn vì \( a \ne b \).
+    - Nếu \( c = 1 \), thì \( b < a < b + 1 \implies a = b \), mâu thuẫn vì \( a \ne b \).
 
-    - Nếu \( c = 2 \), thì \( b < a < b + 2 \Rightarrow a = b + 1 \). Khi đó \( c = 2 \not |\ 1 = (a - b)^2 = 1 \), mâu thuẫn.
+    - Nếu \( c = 2 \), thì \( b < a < b + 2 \implies a = b + 1 \). Khi đó \( c = 2 \not |\ 1 = (a - b)^2 = 1 \), mâu thuẫn.
 
     Vậy không tồn tại tam giác không suy biến nào có ba cạnh là \( a, b, c \). Điều phải chứng minh.
 \end{soln}

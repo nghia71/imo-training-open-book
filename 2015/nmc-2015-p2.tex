@@ -1,10 +1,54 @@
-\ifshowproblem
-\begin{problem}[\gls{NMC 2015}/P2]\label{problem:NMC-2015-P2}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{NMC 2015}/P2]\label{problem:NMC-2015-P2}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:NMC-2015-P2}]\fi
     Tìm các số nguyên tố \( p, q, r \) sao cho một trong hai số \( pqr \) và \( p + q + r \) bằng \( 101 \) lần số còn lại.
 \end{problem}
 \fi
 
-\ifshowinfo
-Đánh giá [\textbf{\nameref{definition:10M}}]
+\ifshowsoln
+\begin{soln}\footnotemark
+    Ta có thể giả sử \( r = \max\{p, q, r\} \). Khi đó:
+    \[
+        p + q + r \le 3r, \quad pqr \ge 4r.
+    \]
+
+    Do đó, tổng ba số luôn nhỏ hơn tích của chúng, suy ra trường hợp có thể xảy ra duy nhất là:
+    \[
+        pqr = 101(p + q + r).
+    \]
+
+    Ta nhận thấy rằng 101 là một số nguyên tố, nên một trong ba số \( p, q, r \) phải bằng 101. Giả sử \( r = 101 \). Khi đó ta có:
+    \[
+        pqr = 101(p + q + r) \implies pq \cdot 101 = 101(p + q + 101).
+    \]
+
+    Chia hai vế cho 101:
+    \[
+        pq = p + q + 101 \implies pq - p - q = 101 \implies (p - 1)(q - 1) = 102.
+    \]
+
+    Ta phân tích \( 102 = 1 \cdot 102 = 2 \cdot 51 = 3 \cdot 34 = 6 \cdot 17 \), nên các khả năng cho tập \( \{p, q\} \) là:
+    \[
+        \{2, 103\}, \{3, 52\}, \{4, 35\}, \{7, 18\}.
+    \]
+
+    Trong các trường hợp này, chỉ có cặp \( \{2, 103\} \) là cả hai đều là số nguyên tố.
+
+    Vậy nghiệm duy nhất là \( \{p, q, r\} = \{2, 101, 103\} \).
+\end{soln}
 \footnotetext{\href{https://www.georgmohr.dk/nmcperm/probl/2015/sol.pdf}{Lời giải chính thức.}}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:NMC-2015-P2}]
+    Giả sử \( r \) là số lớn nhất trong ba số nguyên tố \( p, q, r \). So sánh \( p + q + r \) và \( pqr \), rồi thử thay một trong các số bằng 101.
+    Sau đó tìm cách biến đổi phương trình thành tích hai biểu thức.
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:5M}}]
+\end{remark*}
+\newpage
 \fi

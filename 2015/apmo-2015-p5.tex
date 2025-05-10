@@ -25,12 +25,12 @@
     \]
     với \( \delta_n \in \{-2, 0, 2\} \). Gọi đây là phương trình (1).
 
-    Từ \( |s_2 - 2a_1| = 1 \Rightarrow a_0 = 3a_1 - a_2 \pm 1 \le 3a_1 \Rightarrow a_1 \ge \frac{a_0}{3} \ge 671 \).  
+    Từ \( |s_2 - 2a_1| = 1 \implies a_0 = 3a_1 - a_2 \pm 1 \le 3a_1 \implies a_1 \ge \frac{a_0}{3} \ge 671 \).  
     Thế \( n = 2 \) vào (1), ta được:
     \[
         a_3 = 3a_2 + 2a_1 + \delta_2.
     \]
-    Vì \( a_1 \mid a_3 \), nên \( a_1 \mid 3a_2 + \delta_2 \Rightarrow a_2 \ge 223 \), và do đó \( a_n \ge 223 \) với mọi \( n \ge 0 \).
+    Vì \( a_1 \mid a_3 \), nên \( a_1 \mid 3a_2 + \delta_2 \implies a_2 \ge 223 \), và do đó \( a_n \ge 223 \) với mọi \( n \ge 0 \).
 
     \begin{lemma*}
         Với mọi \( n \ge 4 \), ta có \( a_{n+2} = (n+1)(n+4)a_n \).
@@ -58,7 +58,7 @@
         \[
             a_{n+3} = (n+2)(n+4)a_{n+1} = (n+3)(n+1)(n+4)a_n + \delta_{n+2}.
         \]
-        Từ đây suy ra \( (n+2)(n+4)a_{n+1} - (n+3)(n+1)(n+4)a_n = \delta_{n+2} \), nên \( n+4 \mid \delta_{n+2} \Rightarrow \delta_{n+2} = 0 \), dẫn đến:
+        Từ đây suy ra \( (n+2)(n+4)a_{n+1} - (n+3)(n+1)(n+4)a_n = \delta_{n+2} \), nên \( n+4 \mid \delta_{n+2} \implies \delta_{n+2} = 0 \), dẫn đến:
         \[
             a_{n+1} = \frac{(n+1)(n+3)}{n+2} a_n.
         \]
@@ -78,7 +78,7 @@
     \]
     mâu thuẫn với cách chọn \( m \). Do đó \( \delta_{m+1} \ne 0 \).
 
-    Vì \( m + 3 \mid a_{m+1} \), đặt \( a_{m+1} = (m+3)k \Rightarrow a_{m+2} = (m+2)(m+4)k \). Khi đó:
+    Vì \( m + 3 \mid a_{m+1} \), đặt \( a_{m+1} = (m+3)k \implies a_{m+2} = (m+2)(m+4)k \). Khi đó:
     \[
         (m+1)a_m + \delta_{m+1} = a_{m+2} - (m+2)a_{m+1} = (m+2)k.
     \]
@@ -96,7 +96,7 @@
         a_{n+1} = \frac{(n+1)(n+3)}{n+2} a_n \text{ với mọi } n \ge 1.
     \]
 
-    Thế \( n = 1 \) ta có \( 3 \mid a_1 \). Đặt \( a_1 = 3c \Rightarrow a_n = c(n+2)n! \) với mọi \( n \ge 1 \).
+    Thế \( n = 1 \) ta có \( 3 \mid a_1 \). Đặt \( a_1 = 3c \implies a_n = c(n+2)n! \) với mọi \( n \ge 1 \).
 
     Sử dụng \( |s_2 - 2a_1| = 1 \) suy ra \( a_0 = c \pm 1 \). Vậy tồn tại hai họ nghiệm:
     \begin{itemize}[topsep=0pt, itemsep=0pt]

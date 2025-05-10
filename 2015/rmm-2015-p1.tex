@@ -1,11 +1,74 @@
-\ifshowproblem
-\begin{problem}[\gls{RMM 2015}/P1]\label{problem:RMM-2015-P1}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{RMM 2015}/P1]\label{problem:RMM-2015-P1}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:RMM-2015-P1}]\fi
     Có tồn tại một dãy vô hạn các số nguyên dương \( a_1, a_2, a_3, \ldots \)
     sao cho hai số \( a_m \) và \( a_n \) nguyên tố cùng nhau nếu và chỉ nếu \( |m - n| = 1 \) hay không?
 \end{problem}
 \fi
 
-\ifshowinfo
-Đánh giá [\textbf{\nameref{definition:25M}}]
+\ifshowsoln
+\begin{soln}\footnotemark
+    Câu trả lời là \textbf{có}.
+
+    Ý tưởng là xét một dãy các số nguyên tố đôi một khác nhau \( p_1, p_2, p_3, \ldots \),
+    và phân hoạch tập các số nguyên dương thành một dãy các tập con hữu hạn khác rỗng \( I_n \),
+    sao cho \( I_m \cap I_n = \emptyset \) khi và chỉ khi \( |m - n| = 1 \). Khi đó, ta đặt:
+    \[
+        a_n = \prod_{i \in I_n} p_i, \quad \text{với } n = 1, 2, 3, \ldots
+    \]
+
+    Một cách cụ thể để xây dựng các tập \( I_n \) là như sau:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Với mọi số nguyên dương \( n \), đưa số \( 2n \) vào \( I_k \) với mọi \( k = n, n+3, n+5, n+7, \ldots \)
+        \item Đưa số \( 2n - 1 \) vào \( I_k \) với mọi \( k = n, n+2, n+4, n+6, \ldots \)
+    \end{itemize}
+
+    Rõ ràng mỗi tập \( I_k \) là hữu hạn, vì nó không chứa các số lớn hơn \( 2k \).
+
+    Ta thấy:
+    \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+        \item Mỗi số chẵn \( 2n \) đảm bảo rằng \( I_n \) có phần tử chung với mỗi \( I_{n+2i} \),
+        \item Mỗi số lẻ \( 2n - 1 \) đảm bảo rằng \( I_n \) có phần tử chung với mỗi \( I_{n+2i+1} \), với \( i = 1, 2, \ldots \),
+        \item Cuối cùng, không có chỉ số nào xuất hiện trong hai tập liên tiếp.
+    \end{itemize}
+
+    Do đó, \( a_m \) và \( a_n \) nguyên tố cùng nhau nếu và chỉ nếu \( |m - n| = 1 \), như yêu cầu.
+\end{soln}
 \footnotetext{\href{https://rmms.lbi.ro/rmm2015/index.php?id=solutions_math}{Lời giải chính thức.}}
+
+\begin{remark*}
+    Các tập \( I_n \) trong lời giải ở trên có thể được mô tả tường minh như sau:
+    \[
+        I_n = \{2n - 4k - 1 \mid k = 0, 1, \ldots, \left\lfloor \tfrac{n - 1}{2} \right\rfloor \} \cup 
+        \{2n - 4k - 2 \mid k = 1, 2, \ldots, \left\lfloor \tfrac{n}{2} \right\rfloor - 1 \} \cup \{2n\}
+    \]
+
+    Cách xây dựng trên cũng có thể được mô tả theo công thức như sau:
+
+    Gọi \( p_1, p'_1, p_2, p'_2, \ldots \) là một dãy các số nguyên tố đôi một khác nhau. Với quy ước chuẩn rằng tích rỗng bằng 1, định nghĩa:
+    \[
+        P_n = 
+        \begin{cases}
+            p_1 p'_2 p_3 p'_4 \cdots p_{n-4} p'_{n-3} p_{n-2}, & \text{nếu } n \text{ lẻ} \\
+            p'_1 p_2 p'_3 p_4 \cdots p'_{n-3} p_{n-2}, & \text{nếu } n \text{ chẵn}
+        \end{cases}
+    \]
+    và đặt:
+    \[
+        a_n = P_n \cdot p_n \cdot p'_n.
+    \]
+\end{remark*}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:RMM-2015-P1}]
+    Hãy thử xây dựng dãy \( (a_n) \) sao cho mỗi số \( a_n \) là tích của một vài số nguyên tố phân biệt. Thiết kế các tập hợp chứa chỉ số nguyên tố để đảm bảo \( a_m \) và \( a_n \) có ước chung nếu và chỉ nếu \( |m - n| \ne 1 \).
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:25M}}]
+\end{remark*}
+\newpage
 \fi

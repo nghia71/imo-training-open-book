@@ -1,12 +1,77 @@
-\ifshowproblem
-\begin{problem}[\gls{USA 2015 TST}/P2]\label{problem:USA-2015-TST-P2}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{USA 2015 TST}/P2]\label{problem:USA-2015-TST-P2}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:USA-2015-TST-P2}]\fi
     Chứng minh rằng với mọi \( n \in \mathbb{N} \), tồn tại một tập hợp \( S \) gồm \( n \) số nguyên dương
     sao cho với mọi cặp phân biệt \( a, b \in S \), hiệu \( a - b \) chia hết cả \( a \) và \( b \),
     nhưng không chia hết bất kỳ phần tử nào khác của \( S \).
 \end{problem}
 \fi
 
-\ifshowinfo
-Đánh giá [\textbf{\nameref{definition:25M}}]\footnotemark
+\ifshowsoln
+\begin{soln}\footnotemark
+    Ý tưởng là tìm một dãy \( d_1, \ldots, d_{n-1} \) các “hiệu số” sao cho hai điều kiện sau được thỏa mãn. Gọi:
+    \[
+        s_i = d_1 + \cdots + d_{i-1}, \quad t_{i,j} = d_i + \cdots + d_{j-1} \quad \text{với } i \le j.
+    \]
+
+    \begin{enumerate}[topsep=0pt, partopsep=0pt, itemsep=0pt, label=(\roman*)]
+        \item Không có hai giá trị nào trong số các \( t_{i,j} \) chia hết cho nhau.
+        \item Tồn tại một số nguyên \( a \) thỏa hệ đồng dư:
+        \[
+            a \equiv -s_i \pmod{t_{i,j}} \quad \text{với mọi } i \le j.
+        \]
+    \end{enumerate}
+
+    Khi đó, dãy \( a + s_1,\ a + s_2,\ \ldots,\ a + s_n \) sẽ thỏa mãn điều kiện đề bài.
+
+    Ví dụ, khi \( n = 3 \), ta có thể chọn \( (d_1, d_2) = (2, 3) \), khi đó:
+    \[
+        s_1 = 0,\quad s_2 = 2,\quad s_3 = 5,
+    \]
+    nên dãy \( a + s_i \) là:
+    \[
+        10\overbrace{\underbrace{\ }_{2}12\underbrace{\ }_{3}}_{5}15.
+    \]
+
+    Vì các điều kiện cần thỏa mãn là:
+    \[
+        a \equiv 0 \pmod{2},\quad
+        a \equiv 0 \pmod{5},\quad
+        a \equiv -2 \pmod{3},
+    \]
+    nên ta chọn được \( a = 10 \).
+
+    Với cách xây dựng này, ta có thể xây dựng dãy \( d_i \) bằng quy nạp.
+
+    Để chuyển từ \( n \) sang \( n + 1 \), giả sử đã có \( d_1, \ldots, d_{n-1} \).
+    Chọn một số nguyên tố \( p \) không chia hết bất kỳ \( d_i \) nào. 
+    Hơn nữa, chọn \( M \) là bội số của \( \prod_{i \le j} t_{i,j} \), đồng thời \( \gcd(M, p) = 1 \).
+
+    Khi đó, ta khẳng định rằng dãy \( d_1M,\ d_2M,\ \ldots,\ d_{n-1}M,\ p \) là một dãy hiệu hợp lệ.
+
+    Ví dụ, từ ví dụ trước với \( M = 300 \) và \( p = 7 \), ta có thể mở rộng thành:
+    \[
+        a\overbrace{\underbrace{\ }_{600}b\overbrace{\underbrace{\ }_{900}c\underbrace{\ }_{7}}_{907}}_{1507}d.
+    \]
+
+    Các số mới như \( p,\ p + M t_{n-1,n},\ p + M t_{n-2,n},\ \ldots \) đều nguyên tố cùng nhau và với tất cả các số còn lại. Do đó, điều kiện (i) vẫn đúng.
+
+    Để thấy rằng điều kiện (ii) vẫn đúng, chỉ cần lưu ý rằng ta vẫn có thể tìm nghiệm \( a \) thỏa hệ đồng dư cho \( n \) phần tử đầu tiên, 
+    và phần tử thứ \( n + 1 \) có thể được xây dựng bởi định lý số dư Trung Hoa, vì tất cả các số \( p + M t_{i,n} \) đều nguyên tố cùng nhau.
+\end{soln}
 \footnotetext{\href{https://web.evanchen.cc/exams/sols-TST-IMO-2015.pdf}{Lời giải Evan Chen soạn.}}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:USA-2015-TST-P2}]
+    Thay vì chọn các số ngẫu nhiên, hãy thử xây dựng các số theo từng bước, sao cho hiệu giữa hai số bất kỳ là bội số của một giá trị đặc biệt. 
+    Sử dụng định lý số dư Trung Hoa để đảm bảo các phần tử trong tập có tính chất đồng dư phù hợp, và hiệu giữa hai số chỉ chia hết cho chính chúng.
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:25M}}]
+\end{remark*}
+\newpage
 \fi

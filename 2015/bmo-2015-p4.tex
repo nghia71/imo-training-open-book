@@ -22,7 +22,7 @@
 
     Vì \( d \equiv -1 \pmod{4} \), nên \( d \) không phải là một số chính phương. Do đó với mỗi \( n \in \mathbb{N} \), tồn tại \( a \in \mathbb{N} \):
     \[
-        a < \sqrt{n^2 d} < a + 1 \Rightarrow a^2 < n^2 d < (a + 1)^2.
+        a < \sqrt{n^2 d} < a + 1 \implies a^2 < n^2 d < (a + 1)^2.
     \]
 
     Ta sẽ chứng minh rằng \( n^2 d \ge a^2 + 5 \).
@@ -42,7 +42,7 @@
 
         Nâng hai vế lên lũy thừa \( \frac{p - 1}{2} \), ta được:
         \[
-            (a^2)^{\frac{p-1}{2}} \equiv (-1)^{\frac{p-1}{2}} \pmod{p} \Rightarrow a^{p-1} \equiv (-1)^{\frac{p-1}{2}} \pmod{p}.
+            (a^2)^{\frac{p-1}{2}} \equiv (-1)^{\frac{p-1}{2}} \pmod{p} \implies a^{p-1} \equiv (-1)^{\frac{p-1}{2}} \pmod{p}.
         \]
 
         Mặt khác, theo định lý Fermat nhỏ (vì \( p \) là số nguyên tố và \( p \nmid a \)):
@@ -55,9 +55,9 @@
             1 \equiv (-1)^{\frac{p-1}{2}} \pmod{p}.
         \]
 
-        Do \( p = 4k + 3 \Rightarrow \frac{p - 1}{2} = 2k + 1 \) là số lẻ, nên:
+        Do \( p = 4k + 3 \implies \frac{p - 1}{2} = 2k + 1 \) là số lẻ, nên:
         \[
-            (-1)^{2k + 1} = -1 \Rightarrow 1 \equiv -1 \pmod{p} \Rightarrow 2 \equiv 0 \pmod{p}.
+            (-1)^{2k + 1} = -1 \implies 1 \equiv -1 \pmod{p} \implies 2 \equiv 0 \pmod{p}.
         \]
 
         Điều này vô lý vì \( p \ge 7 \). Vậy giả thiết ban đầu là sai, tức là \( p \nmid a^2 + 1 \).
@@ -67,7 +67,7 @@
 
     Từ bổ đề suy ra các số \( a^2 + 1^2 = a^2 + 1 \) và \( a^2 + 2^2 = a^2 + 4 \) không chia hết cho \( p \), nên \( n^2 d \ne a^2 + 1, a^2 + 4 \).
 
-    Mặt khác, vì \( 5 \mid d \Rightarrow 5 \mid n^2 d \), mà \( 5 \nmid a^2 + 2, a^2 + 3 \), nên \( n^2 d \ne a^2 + 2, a^2 + 3 \).
+    Mặt khác, vì \( 5 \mid d \implies 5 \mid n^2 d \), mà \( 5 \nmid a^2 + 2, a^2 + 3 \), nên \( n^2 d \ne a^2 + 2, a^2 + 3 \).
 
     Do \( n^2 d > a^2 \) và đã loại trừ các giá trị \( a^2 + 1, \ldots, a^2 + 4 \), ta suy ra:
     \[

@@ -24,7 +24,7 @@
             2(a_i + 1), &\text{nếu } a_{i+1} = 2a_i + 1, \\
             \dfrac{2(a_i + 1)}{a_i + 2}, &\text{nếu } a_{i+1} = \dfrac{a_i}{a_i + 2}.
         \end{cases}
-    \Rightarrow \dfrac{1}{a_{i+1} + 1} = 
+    \implies \dfrac{1}{a_{i+1} + 1} = 
         \begin{cases}
             \dfrac{1}{2} \cdot \dfrac{1}{a_i + 1}, \\
             \dfrac{1}{2} \cdot \dfrac{1}{a_i + 1} + \dfrac{1}{2}.
@@ -36,19 +36,19 @@
         \dfrac{1}{a_k + 1} = \dfrac{1}{2^k} \cdot \dfrac{1}{a_0 + 1} + \sum_{i=1}^k \dfrac{\varepsilon_i}{2^{k - i + 1}}, \quad \varepsilon_i \in \{0, 1\}.
     \]
 
-    Nhân hai vế với \( 2^k(a_k + 1) \), đặt \( a_k = 2014 \Rightarrow a_k + 1 = 2015 \), ta được:
+    Nhân hai vế với \( 2^k(a_k + 1) \), đặt \( a_k = 2014 \implies a_k + 1 = 2015 \), ta được:
     \[
         2^k = \dfrac{2015}{a_0 + 1} + 2015 \cdot \left( \sum_{i=1}^k \varepsilon_i \cdot 2^{i - 1} \right).
     \]
 
-    Vì \( \gcd(2, 2015) = 1 \), nên \( a_0 + 1 = 2015 \Rightarrow a_0 = 2014 \), và:
+    Vì \( \gcd(2, 2015) = 1 \), nên \( a_0 + 1 = 2015 \implies a_0 = 2014 \), và:
     \[
         2^k - 1 = 2015 \cdot \left( \sum_{i=1}^k \varepsilon_i \cdot 2^{i - 1} \right).
     \]
 
     Cần tìm \( k \) nhỏ nhất sao cho \( 2015 \mid 2^k - 1 \). Vì \( 2015 = 5 \cdot 13 \cdot 31 \), ta có:
     \[
-        \text{ord}_{5}(2) = 4, \quad \text{ord}_{13}(2) = 12, \quad \text{ord}_{31}(2) = 30 \Rightarrow \text{ord}_{2015}(2) = \text{lcm}(4, 12, 30) = 60.
+        \text{ord}_{5}(2) = 4, \quad \text{ord}_{13}(2) = 12, \quad \text{ord}_{31}(2) = 30 \implies \text{ord}_{2015}(2) = \text{lcm}(4, 12, 30) = 60.
     \]
 
     Vậy \( k = 60 \) là giá trị nhỏ nhất thỏa mãn \( a_k = 2014 \).
@@ -95,7 +95,7 @@
 
     Ta chứng minh được \( m_i + n_i = 2015 \), \( \gcd(m_i, n_i) = 1 \) và dãy kết thúc khi \( n_k = 1 \), tức \( a_0 \in \mathbb{Z}_{>0} \). Dễ thấy:
     \[
-        (m_i, n_i) \equiv (-2^i, 2^i) \pmod{2015} \Rightarrow 2^k \equiv 1 \pmod{2015}.
+        (m_i, n_i) \equiv (-2^i, 2^i) \pmod{2015} \implies 2^k \equiv 1 \pmod{2015}.
     \]
 
     Do đó \( k = 60 \).

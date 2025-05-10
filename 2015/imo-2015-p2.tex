@@ -16,7 +16,7 @@
     \textbf{Trường hợp 1.} Có ít nhất hai số bằng nhau. Giả sử \( a = b \), khi đó \( a^2 - c \) và \( a(c - 1) \) là lũy thừa của 2
     suy ra \( a \) và \( c - 1 \) là lũy thừa của 2 suy ra tồn tại \( \alpha, \gamma \) sao cho \( a = 2^\alpha \), \( c = 2^\gamma + 1 \). Khi đó:
     \[
-        a^2 - c = 2^{2\alpha} - 2^\gamma - 1 \text{ là lũy thừa của 2} \Rightarrow \gamma \le 1.
+        a^2 - c = 2^{2\alpha} - 2^\gamma - 1 \text{ là lũy thừa của 2} \implies \gamma \le 1.
     \]
 
     Do \( 2^{2\alpha} - 2 \) và \( 2^{2\alpha} - 3 \) chỉ là lũy thừa của 2 khi \( \alpha = 1 \) suy ra chỉ có thể là \( (2, 2, 2) \) hoặc \( (2, 2, 3) \).
@@ -28,10 +28,10 @@
 
     Từ điều kiện, dễ thấy \( \alpha > \beta > \gamma \).
 
-    \textbf{Trường hợp 2.1.} \( a = 2 \). Giả sử \( \gamma > 0 \Rightarrow ab - c \) chẵn suy ra \( c \) chẵn
-    suy ra \( b \) chẵn suy ra \( bc \equiv 2 \mod 4 \), mâu thuẫn suy ra \( \gamma = 0 \Rightarrow c = 2b - 1 \).
+    \textbf{Trường hợp 2.1.} \( a = 2 \). Giả sử \( \gamma > 0 \implies ab - c \) chẵn suy ra \( c \) chẵn
+    suy ra \( b \) chẵn suy ra \( bc \equiv 2 \mod 4 \), mâu thuẫn suy ra \( \gamma = 0 \implies c = 2b - 1 \).
 
-    Thế vào \( ac - b = 2\beta \Rightarrow 3b - 2 = 2^\beta \). Với \( b > 2 \), chỉ có thể là \( \beta = 4 \Rightarrow b = 6, c = 11 \)
+    Thế vào \( ac - b = 2\beta \implies 3b - 2 = 2^\beta \). Với \( b > 2 \), chỉ có thể là \( \beta = 4 \implies b = 6, c = 11 \)
     suy ra nghiệm \( (2, 6, 11) \). Với \( \beta \ge 5 \), vế phải không chia hết cho 32 suy ra mâu thuẫn với \( \alpha > \beta \).
 
     \textbf{Trường hợp 2.2.} \( a \ge 3 \). Chọn \( \vartheta \in \{-1, +1\} \) sao cho \( c - \vartheta \) không chia hết cho 4. Khi đó:
@@ -42,11 +42,11 @@
     Do \( b + a\vartheta \) chia hết cho \( 2^{\beta - 1} \), mà \( a, b < 2^{\beta - 1} \),
     điều này chỉ có thể nếu \( \vartheta = 1 \), và \( a + b = 2^{\beta - 1} \). Khi đó:
     \[
-        ac - b = 2(a + b), \Rightarrow c = b + 2.
+        ac - b = 2(a + b), \implies c = b + 2.
     \]
 
     Thế vào \( bc - a = (b - 1)(b + 3) \) là lũy thừa của 2 suy ra hai thừa số cách nhau 4
-    suy ra \( b = 5 \Rightarrow c = 7 \Rightarrow a = 3 \). Vậy nghiệm \( (3, 5, 7) \).
+    suy ra \( b = 5 \implies c = 7 \implies a = 3 \). Vậy nghiệm \( (3, 5, 7) \).
 \end{soln}
 \footnotetext{\href{http://www.imo-official.org/problems/IMO2015SL.pdf}{Lời giải chính thức.}}
 
@@ -55,36 +55,36 @@
 
     \textbf{Trường hợp 1.} Cả ba số chẵn. Gọi \( 2^A, 2^B, 2^C \) là lũy thừa 2 lớn nhất chia \( a, b, c \), giả sử \( A \le B \le C \).
 
-    Khi đó \( ac - b = 2^B \le b \), và \( bc - a = 2^A \le a \). Cộng lại được \( (a + b)c \le 2(a + b) \Rightarrow c \le 2 \Rightarrow a = b = c = 2 \).
+    Khi đó \( ac - b = 2^B \le b \), và \( bc - a = 2^A \le a \). Cộng lại được \( (a + b)c \le 2(a + b) \implies c \le 2 \implies a = b = c = 2 \).
 
-    \textbf{Trường hợp 2.} Cả ba số lẻ. Nếu có hai số bằng nhau, ví dụ \( a = b \Rightarrow ac - b = a(c - 1) \) có ước lẻ suy ra không là lũy thừa 2 suy ra loại.
+    \textbf{Trường hợp 2.} Cả ba số lẻ. Nếu có hai số bằng nhau, ví dụ \( a = b \implies ac - b = a(c - 1) \) có ước lẻ suy ra không là lũy thừa 2 suy ra loại.
 
     Giả sử \( a < b < c \). Với \( \alpha, \beta \) như trên:
     \[
-        bc - a = 2^\alpha, \quad ac - b = 2^\beta \Rightarrow 2^\beta \mid b^2 - a^2 = (b + a)(b - a).
+        bc - a = 2^\alpha, \quad ac - b = 2^\beta \implies 2^\beta \mid b^2 - a^2 = (b + a)(b - a).
     \]
 
     Một trong hai thừa số chia hết cho \( 2^{\beta - 1} \), từ đó:
     \[
-        ac - b \le 2(a + b) \Rightarrow a = 3, \quad c = b + 2.
+        ac - b \le 2(a + b) \implies a = 3, \quad c = b + 2.
     \]
     
-    Thế vào \( bc - a = (b - 1)(b + 3) \Rightarrow b = 5, c = 7 \Rightarrow a = 3 \) suy ra nghiệm \( (3, 5, 7) \).
+    Thế vào \( bc - a = (b - 1)(b + 3) \implies b = 5, c = 7 \implies a = 3 \) suy ra nghiệm \( (3, 5, 7) \).
 
     \textbf{Trường hợp 3.} Có cả số chẵn và lẻ. Giả sử \( c \) lẻ, \( a \le b \). Khi đó \( ab - c \) lẻ suy ra phải bằng 1 suy ra
     \[
         ab - c = 1. \tag{1}
     \]
 
-    Nếu \( a = b \Rightarrow c = a^2 - 1 \), và \( ac - b = a(a^2 - 2) \) là lũy thừa của 2
-    suy ra \( a, a^2 - 2 \) là lũy thừa của 2 suy ra \( a = 2 \Rightarrow (2, 2, 3) \).
+    Nếu \( a = b \implies c = a^2 - 1 \), và \( ac - b = a(a^2 - 2) \) là lũy thừa của 2
+    suy ra \( a, a^2 - 2 \) là lũy thừa của 2 suy ra \( a = 2 \implies (2, 2, 3) \).
 
     Nếu \( a < b \), gọi \( \alpha, \beta \) như trên:
     \[
         bc - a = 2^\alpha, \quad ac - b = 2^\beta. \tag{2}
     \]
 
-    Nếu \( \beta = 0 \Rightarrow ac - b = 1 \) và từ (1) suy ra \( b = c = 1 \), mâu thuẫn suy ra \( \beta > 0 \Rightarrow a, b \) chẵn.
+    Nếu \( \beta = 0 \implies ac - b = 1 \) và từ (1) suy ra \( b = c = 1 \), mâu thuẫn suy ra \( \beta > 0 \implies a, b \) chẵn.
 
     Thế \( c = ab - 1 \) vào (2), ta có:
     \[
@@ -100,7 +100,7 @@
 
     Từ hai biểu thức ta được:
     \[
-        a = 2^\tau A, \quad b = 2^\tau B, \quad a + b = 2^{3\tau}C \Rightarrow \tau = 1, A = 1, B = 3, C = 1.
+        a = 2^\tau A, \quad b = 2^\tau B, \quad a + b = 2^{3\tau}C \implies \tau = 1, A = 1, B = 3, C = 1.
     \]
 
     Suy ra \( a = 2, b = 6, c = 11 \).
@@ -109,7 +109,7 @@
 \begin{remark*}
     Xét lại Trường hợp 3 trong Lời giải 2: đặt \( d = \gcd(a, b), a = dp, b = dq, \gcd(p, q) = 1 \). Khi đó:
     \[
-        ab - c = 1 \Rightarrow c = d^2pq - 1.
+        ab - c = 1 \implies c = d^2pq - 1.
     \]
 
     Thế vào:
@@ -119,7 +119,141 @@
 
     Hiệu hai biểu thức:
     \[
-        d^3pq(q - p) \Rightarrow \text{phân tích chia hết và rút gọn, được } p = 1, q = d^2 - 1 \Rightarrow d = 2.
+        d^3pq(q - p) \implies \text{phân tích chia hết và rút gọn, được } p = 1, q = d^2 - 1 \implies d = 2.
+    \]
+
+    Suy ra \( a = 2, b = 6, c = 11 \).
+\end{remark*}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:IMO-2015-P2}]
+    Áp dụng điều kiện tích trừ đi một số bằng lũy thừa của 2. Bắt đầu xét các trường hợp: hai số bằng nhau, ba số phân biệt, các hoán vị chẵn lẻ khác nhau.
+\end{hint*}
+\fi
+
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{IMO 2015}/P2]\label{problem:IMO-2015-P2}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:IMO-2015-P2}]\fi
+    Find all positive integers $(a,b,c)$ such that
+    $$ab-c,\quad bc-a,\quad ca-b$$are all powers of $2$.
+\end{problem}
+\fi
+
+\ifshowsoln
+\begin{soln}[Lời giải 1.]\footnotemark
+    Dễ thấy rằng mười sáu bộ ba sau thỏa mãn yêu cầu: \( (2, 2, 2) \), ba hoán vị của \( (2, 2, 3) \), và sáu hoán vị của mỗi bộ \( (2, 6, 11) \) và \( (3, 5, 7) \).
+
+    Giả sử \( (a, b, c) \) là bộ ba bất kỳ thỏa mãn điều kiện. Nếu \( a = 1 \), thì \( bc - a \) và \( cb - a \) đều là lũy thừa của 2,
+    nên tổng của chúng là 0 suy ra mâu thuẫn suy ra \( a, b, c \ge 2 \).
+
+    \textbf{Trường hợp 1.} Có ít nhất hai số bằng nhau. Giả sử \( a = b \), khi đó \( a^2 - c \) và \( a(c - 1) \) là lũy thừa của 2
+    suy ra \( a \) và \( c - 1 \) là lũy thừa của 2 suy ra tồn tại \( \alpha, \gamma \) sao cho \( a = 2^\alpha \), \( c = 2^\gamma + 1 \). Khi đó:
+    \[
+        a^2 - c = 2^{2\alpha} - 2^\gamma - 1 \text{ là lũy thừa của 2} \implies \gamma \le 1.
+    \]
+
+    Do \( 2^{2\alpha} - 2 \) và \( 2^{2\alpha} - 3 \) chỉ là lũy thừa của 2 khi \( \alpha = 1 \) suy ra chỉ có thể là \( (2, 2, 2) \) hoặc \( (2, 2, 3) \).
+
+    \textbf{Trường hợp 2.} Ba số phân biệt. Giả sử \( 2 \le a < b < c \). Khi đó tồn tại số nguyên không âm \( \alpha, \beta, \gamma \) sao cho:
+    \[
+        bc - a = 2^\alpha, \quad ac - b = 2^\beta, \quad ab - c = 2^\gamma.
+    \]
+
+    Từ điều kiện, dễ thấy \( \alpha > \beta > \gamma \).
+
+    \textbf{Trường hợp 2.1.} \( a = 2 \). Giả sử \( \gamma > 0 \implies ab - c \) chẵn suy ra \( c \) chẵn
+    suy ra \( b \) chẵn suy ra \( bc \equiv 2 \mod 4 \), mâu thuẫn suy ra \( \gamma = 0 \implies c = 2b - 1 \).
+
+    Thế vào \( ac - b = 2\beta \implies 3b - 2 = 2^\beta \). Với \( b > 2 \), chỉ có thể là \( \beta = 4 \implies b = 6, c = 11 \)
+    suy ra nghiệm \( (2, 6, 11) \). Với \( \beta \ge 5 \), vế phải không chia hết cho 32 suy ra mâu thuẫn với \( \alpha > \beta \).
+
+    \textbf{Trường hợp 2.2.} \( a \ge 3 \). Chọn \( \vartheta \in \{-1, +1\} \) sao cho \( c - \vartheta \) không chia hết cho 4. Khi đó:
+    \[
+        2^\alpha + \vartheta 2^\beta = (b + a\vartheta)(c - \vartheta).
+    \]
+    
+    Do \( b + a\vartheta \) chia hết cho \( 2^{\beta - 1} \), mà \( a, b < 2^{\beta - 1} \),
+    điều này chỉ có thể nếu \( \vartheta = 1 \), và \( a + b = 2^{\beta - 1} \). Khi đó:
+    \[
+        ac - b = 2(a + b), \implies c = b + 2.
+    \]
+
+    Thế vào \( bc - a = (b - 1)(b + 3) \) là lũy thừa của 2 suy ra hai thừa số cách nhau 4
+    suy ra \( b = 5 \implies c = 7 \implies a = 3 \). Vậy nghiệm \( (3, 5, 7) \).
+\end{soln}
+\footnotetext{\href{http://www.imo-official.org/problems/IMO2015SL.pdf}{Lời giải chính thức.}}
+
+\begin{soln}[Lời giải 2.]
+    Giống phần đầu lời giải 1, \( a, b, c \ge 2 \). Xét theo tính chẵn lẻ của các số.
+
+    \textbf{Trường hợp 1.} Cả ba số chẵn. Gọi \( 2^A, 2^B, 2^C \) là lũy thừa 2 lớn nhất chia \( a, b, c \), giả sử \( A \le B \le C \).
+
+    Khi đó \( ac - b = 2^B \le b \), và \( bc - a = 2^A \le a \). Cộng lại được \( (a + b)c \le 2(a + b) \implies c \le 2 \implies a = b = c = 2 \).
+
+    \textbf{Trường hợp 2.} Cả ba số lẻ. Nếu có hai số bằng nhau, ví dụ \( a = b \implies ac - b = a(c - 1) \) có ước lẻ suy ra không là lũy thừa 2 suy ra loại.
+
+    Giả sử \( a < b < c \). Với \( \alpha, \beta \) như trên:
+    \[
+        bc - a = 2^\alpha, \quad ac - b = 2^\beta \implies 2^\beta \mid b^2 - a^2 = (b + a)(b - a).
+    \]
+
+    Một trong hai thừa số chia hết cho \( 2^{\beta - 1} \), từ đó:
+    \[
+        ac - b \le 2(a + b) \implies a = 3, \quad c = b + 2.
+    \]
+    
+    Thế vào \( bc - a = (b - 1)(b + 3) \implies b = 5, c = 7 \implies a = 3 \) suy ra nghiệm \( (3, 5, 7) \).
+
+    \textbf{Trường hợp 3.} Có cả số chẵn và lẻ. Giả sử \( c \) lẻ, \( a \le b \). Khi đó \( ab - c \) lẻ suy ra phải bằng 1 suy ra
+    \[
+        ab - c = 1. \tag{1}
+    \]
+
+    Nếu \( a = b \implies c = a^2 - 1 \), và \( ac - b = a(a^2 - 2) \) là lũy thừa của 2
+    suy ra \( a, a^2 - 2 \) là lũy thừa của 2 suy ra \( a = 2 \implies (2, 2, 3) \).
+
+    Nếu \( a < b \), gọi \( \alpha, \beta \) như trên:
+    \[
+        bc - a = 2^\alpha, \quad ac - b = 2^\beta. \tag{2}
+    \]
+
+    Nếu \( \beta = 0 \implies ac - b = 1 \) và từ (1) suy ra \( b = c = 1 \), mâu thuẫn suy ra \( \beta > 0 \implies a, b \) chẵn.
+
+    Thế \( c = ab - 1 \) vào (2), ta có:
+    \[
+        bc - a = ab^2 - (a + b) = 2^\alpha, \quad ac - b = a^2b - (a + b) = 2^\beta.
+    \]
+
+    Cộng hai phương trình:
+    \[
+        2^\alpha + 2^\beta = (ab - 2)(a + b).
+    \]
+
+    Phía trái là lũy thừa của 2 suy ra \( ab - 2 \) chẵn nhưng không chia hết 4 suy ra \( a + b \) chia hết \( 2^{\beta - 1} \).
+
+    Từ hai biểu thức ta được:
+    \[
+        a = 2^\tau A, \quad b = 2^\tau B, \quad a + b = 2^{3\tau}C \implies \tau = 1, A = 1, B = 3, C = 1.
+    \]
+
+    Suy ra \( a = 2, b = 6, c = 11 \).
+\end{soln}
+
+\begin{remark*}
+    Xét lại Trường hợp 3 trong Lời giải 2: đặt \( d = \gcd(a, b), a = dp, b = dq, \gcd(p, q) = 1 \). Khi đó:
+    \[
+        ab - c = 1 \implies c = d^2pq - 1.
+    \]
+
+    Thế vào:
+    \[
+        bc - a = dpd^2q^2 - (p + q), \quad ac - b = dpd^2p^2q - (p + q).
+    \]
+
+    Hiệu hai biểu thức:
+    \[
+        d^3pq(q - p) \implies \text{phân tích chia hết và rút gọn, được } p = 1, q = d^2 - 1 \implies d = 2.
     \]
 
     Suy ra \( a = 2, b = 6, c = 11 \).

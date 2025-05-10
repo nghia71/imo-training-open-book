@@ -1,5 +1,6 @@
-\ifshowproblem
-\begin{problem}[\gls{USA 2015 TSTST}/P3]\label{problem:USA-2015-TSTST-P3}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{USA 2015 TSTST}/P3]\label{problem:USA-2015-TSTST-P3}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:USA-2015-TSTST-P3}]\fi
     Gọi \( P \) là tập hợp tất cả các số nguyên tố, và \( M \) là một tập con không rỗng của \( P \).  
     Giả sử rằng với mọi tập con không rỗng \( \{p_1, p_2, \ldots, p_k\} \) của \( M \),  
     tất cả các thừa số nguyên tố của \( p_1p_2\cdots p_k + 1 \) đều nằm trong \( M \).  
@@ -7,7 +8,62 @@
 \end{problem}
 \fi
 
-\ifshowinfo
-Đánh giá [\textbf{\nameref{definition:25M}}]\footnotemark
-\footnotetext{\href{https://web.evanchen.cc/exams/sols-TSTST-2015.pdf}{Lời giải Evan Chen soạn.}}
+\ifshowsoln
+\begin{soln}\footnotemark
+    Giả sử ngược lại rằng \( M \ne \mathbb{P} \), tức là tồn tại một số nguyên tố \( p \notin M \). 
+
+    Ta nói rằng một số nguyên tố \( q \in M \) là \textit{thưa thớt (sparse)} nếu chỉ có hữu hạn nhiều phần tử trong \( M \) đồng dư với \( q \pmod{p} \). 
+    Rõ ràng, chỉ có hữu hạn số nguyên tố thưa thớt (vì tổng số lớp đồng dư modulo \( p \) là hữu hạn).
+
+    Gọi \( C \) là tích của tất cả các số nguyên tố thưa thớt (chú ý rằng \( p \nmid C \)).
+
+    Ta đặt \( a_0 = 1 \), và xây dựng dãy như sau: với \( k \ge 0 \), xét phân tích thừa số nguyên tố của số:
+    \[
+        C a_k + 1.
+    \]
+
+    Do định nghĩa, mọi thừa số nguyên tố của số này không thể là nguyên tố thưa thớt, suy ra chúng đều là các phần tử "không thưa thớt" thuộc \( M \).
+
+    Với mỗi thừa số nguyên tố \( q \) trong phân tích này, ta chọn một đại diện nào đó thuộc lớp đồng dư của \( q \mod p \) và nằm trong \( M \). 
+    Bằng cách nhân các đại diện này lại, ta xây dựng một số mới:
+    \[
+        a_{k+1},
+    \]
+    sao cho:
+    \begin{enumerate}[topsep=0pt, partopsep=0pt, itemsep=0pt, label=(\roman*)]
+        \item \( a_{k+1} \equiv C a_k + 1 \pmod{p} \),
+        \item \( a_{k+1} \) là tích của các số nguyên tố phân biệt trong \( M \).
+    \end{enumerate}
+
+    Khi đó theo quy luật truy hồi:
+    \[
+        a_k \equiv C^k + C^{k-1} + \cdots + 1 \pmod{p}.
+    \]
+
+    Vì \( C \not\equiv 0 \pmod{p} \), nên tổng trên là cấp số nhân hữu hạn với công sai \( C \not\equiv 1 \pmod{p} \) hoặc \( C \equiv 1 \pmod{p} \). 
+    Trong cả hai trường hợp, ta có thể chọn \( k = p - 1 \) (nếu \( C \equiv 1 \)) hoặc \( k = p - 2 \) (nếu \( C \not\equiv 1 \)) để đảm bảo:
+    \[
+        a_k \equiv 0 \pmod{p}.
+    \]
+
+    Tuy nhiên, điều này là mâu thuẫn vì \( a_k \) là tích của các số nguyên tố trong \( M \), mà \( p \notin M \), nên \( p \nmid a_k \).
+
+    Mâu thuẫn, suy ra giả thiết sai. Vậy \( M = \mathbb{P} \).
+\end{soln}
+\footnotetext{\href{https://aops.com/community/p5017928}{Lời giải của \textbf{Aiscrim}.}}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:USA-2015-TSTST-P3}]
+    Giả sử tồn tại một số nguyên tố không thuộc tập \( M \). Hãy xét các lớp đồng dư modulo số nguyên tố đó. 
+    Nếu có quá ít phần tử trong \( M \) thuộc mỗi lớp đồng dư, hãy thử xây dựng một chuỗi số sử dụng các phần tử còn lại trong \( M \), 
+    và dùng điều kiện của bài toán để dẫn đến mâu thuẫn.
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:25M}}]
+\end{remark*}
+\newpage
 \fi

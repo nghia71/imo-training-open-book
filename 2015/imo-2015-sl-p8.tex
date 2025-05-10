@@ -8,7 +8,7 @@
     Nói cách khác, \( \mho(n) \) là tổng số mũ của các thừa số nguyên tố lớn hơn \( 10^{100} \)
     trong phân tích thừa số nguyên tố của \( n \), tính cả bội số.
     
-    Tìm tất cả các hàm \( f: \mathbb{Z} \to \mathbb{Z} \) \textit{tăng chặt} (tức là \( a > b \Rightarrow f(a) > f(b) \)) sao cho:
+    Tìm tất cả các hàm \( f: \mathbb{Z} \to \mathbb{Z} \) \textit{tăng chặt} (tức là \( a > b \implies f(a) > f(b) \)) sao cho:
     \[
         \mho(f(a) - f(b)) \le \mho(a - b) \quad \text{với mọi } a > b \text{ trong } \mathbb{Z}.
     \]    
@@ -84,7 +84,7 @@
     Xét tập \( T \) các số nguyên tố lớn. Với mọi \( t \in T \), theo Bước 1: \( L(f(t)) = L(t) = t \) suy ra \( f(t)/t \in \mathbb{Z} \).
     Do \( f(t) < ct \), tỉ số \( f(t)/t \) chỉ nhận hữu hạn giá trị suy ra tồn tại tập con vô hạn \( T' \subseteq T \) và \( a \in \mathbb{Z}_{>0} \) 
     sao cho \( f(t) = at \) với mọi \( t \in T' \).
-    Khi đó \( L(at) = aL(t) \Rightarrow L(a) = 1 \) suy ra \( a \) là số nhỏ.
+    Khi đó \( L(at) = aL(t) \implies L(a) = 1 \) suy ra \( a \) là số nhỏ.
 
     \textbf{Bước 3.} Ta chứng minh rằng \( f(x) = ax \) với mọi \( x \in \mathbb{Z} \).
     Gọi \( R_i = \{ x \in \mathbb{Z} : x \equiv i \mod N! \} \).

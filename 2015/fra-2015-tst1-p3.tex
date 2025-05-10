@@ -1,5 +1,6 @@
-\ifshowproblem
-\begin{problem}[\gls{FRA 2015 TST}1/P3]\label{problem:FRA-2015-TST1-P3}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{FRA 2015 TST}1/P3]\label{problem:FRA-2015-TST1-P3}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:FRA-2015-TST1-P3}]\fi
 	Cho \( n \) là một số nguyên dương sao cho \( n(n + 2015) \) là một số chính phương.
     \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
         \item Chứng minh rằng \( n \) không phải là số nguyên tố.
@@ -12,15 +13,15 @@
 \begin{soln}\footnotemark
     \textbf{a)} Giả sử \( n \) là số nguyên tố và tồn tại một số nguyên \( m \) sao cho \( n(n + 2015) = m^2 \). Khi đó \( n \mid m^2 \), nên \( n \mid m \). Viết \( m = nr \), ta có:
     \[
-        n(n + 2015) = n^2 r^2 \Rightarrow n + 2015 = nr^2 \Rightarrow 2015 = n(r^2 - 1).
+        n(n + 2015) = n^2 r^2 \implies n + 2015 = nr^2 \implies 2015 = n(r^2 - 1).
     \]
     Suy ra \( n \mid 2015 \). Vì \( 2015 = 5 \times 13 \times 31 \), nên \( n \in \{5, 13, 31\} \).
 
-    - Nếu \( n = 5 \) thì \( r^2 - 1 = 403 \Rightarrow r^2 = 404 \), không là số chính phương.
+    - Nếu \( n = 5 \) thì \( r^2 - 1 = 403 \implies r^2 = 404 \), không là số chính phương.
 
-    - Nếu \( n = 13 \Rightarrow r^2 = \frac{2015}{13} + 1 = 156 \), không là số chính phương.
+    - Nếu \( n = 13 \implies r^2 = \frac{2015}{13} + 1 = 156 \), không là số chính phương.
 
-    - Nếu \( n = 31 \Rightarrow r^2 = \frac{2015}{31} + 1 = 66 \), cũng không là số chính phương.
+    - Nếu \( n = 31 \implies r^2 = \frac{2015}{31} + 1 = 66 \), cũng không là số chính phương.
 
     Vậy \( n \) không thể là số nguyên tố.
 
@@ -43,11 +44,11 @@
     \]
     Cộng hai phương trình:
     \[
-        4n + 4030 = a + b = 10478 \Rightarrow n = \frac{10478 - 4030}{4} = 1612.
+        4n + 4030 = a + b = 10478 \implies n = \frac{10478 - 4030}{4} = 1612.
     \]
     Trừ hai phương trình:
     \[
-        4m = a - b = 9672 \Rightarrow m = \frac{9672}{4} = 2418.
+        4m = a - b = 9672 \implies m = \frac{9672}{4} = 2418.
     \]
 
     Vậy \( n = 1612 \) là một ví dụ thỏa mãn yêu cầu đề bài.
@@ -56,7 +57,7 @@
 \fi
 
 \ifshowhint
-\begin{hint*}
+\begin{hint*}[\nameref{problem:FRA-2015-TST1-P3}]
     Giả sử \( n \) là số nguyên tố và sử dụng điều kiện \( n(n + 2015) = m^2 \) để dẫn đến mâu thuẫn. Sau đó thử viết biểu thức dưới dạng hiệu bình phương.
 \end{hint*}
 \fi

@@ -1,5 +1,6 @@
-\ifshowproblem
-\begin{problem}[\gls{MEMO 2015}/I/P7]\label{problem:MEMO-2015-T-P7}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{MEMO 2015}/I/P7]\label{problem:MEMO-2015-T-P7}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:MEMO-2015-T-P7}]\fi
     Tìm tất cả các cặp số nguyên dương \( (a, b) \) sao cho:
     \[
         a! + b! = a^b + b^a.
@@ -7,7 +8,61 @@
 \end{problem}
 \fi
 
-\ifshowinfo
-Đánh giá [\textbf{\nameref{definition:15M}}]
+\ifshowsoln
+\begin{soln}\footnotemark
+    \textbf{Đáp án:} Các cặp nghiệm là \( (1,1), (1,2), (2,1) \).
+
+    Nếu \( a = b \), thì phương trình trở thành \( a! = a^a \). Vì \( a^a > a! \) với mọi \( a \geq 2 \), nghiệm duy nhất trong trường hợp này là \( a = b = 1 \).
+
+    Nếu \( a = 1 \), thì phương trình trở thành \( 1! + b! = 1^b + b^1 \Leftrightarrow 1 + b! = 1 + b \Leftrightarrow b! = b \), 
+    điều này chỉ xảy ra khi \( b = 1 \) hoặc \( b = 2 \). Vậy \( (1,1), (1,2) \) là nghiệm.
+
+    Tương tự, nếu \( b = 1 \), thì \( a! + 1 = a^1 + 1 \Leftrightarrow a! = a \), điều này xảy ra khi \( a = 1 \) hoặc \( a = 2 \). Vậy \( (2,1) \) là nghiệm.
+
+    Bây giờ ta chứng minh không có nghiệm nào khác với \( a, b \geq 2 \).
+
+    Không mất tính tổng quát, giả sử \( 1 < a < b \). 
+
+    Vì \( a! + b! = a^b + b^a \), nên $a \mid b!$ do đó $a \mid b^a$.
+    Gọi \( p \) là một ước nguyên tố của \( a \). Khi đó \( p \mid b \) và do $b > a$ nên $p \mid \frac{b!}{a!}$.
+
+    Viết lại vế trái:
+    \[
+        a! + b! = a! \left( \frac{b!}{a!} + 1 \right)
+    \]
+    Do $p \mid \frac{b!}{a!}$, và \( \frac{b!}{a!}, \frac{b!}{a!} + 1 \) nguyên tố cùng nhau,
+    nên số mũ của \( p \) trong phân tích thừa số nguyên tố của vế trái là bằng số mũ của \( p \) trong \( a! \).
+
+    Ta biết rằng số mũ của \( p \) trong phân tích thừa số nguyên tố của \( a! \) là:
+    \[
+        \sum_{k=1}^{\infty} \left\lfloor \frac{a}{p^k} \right\rfloor =
+        \left\lfloor \frac{a}{p} \right\rfloor + \left\lfloor \frac{a}{p^2} \right\rfloor + \left\lfloor \frac{a}{p^3} \right\rfloor + \cdots
+    \]
+
+    Ta có bất đẳng thức:
+    \[
+        \sum_{k=1}^{\infty} \left\lfloor \frac{a}{p^k} \right\rfloor < \frac{a}{p} + \frac{a}{p^2} + \cdots = a\left( \frac{1}{p - 1} \right) \leq a.
+    \]
+
+    Trong khi đó, số mũ của \( p \) trong phân tích thừa số nguyên tố của vế phải $a^b + b^a$ là ít nhất \( a \), vì \( p \mid a \), \( p \mid b \), và \( b > a \).
+
+    Điều này dẫn đến mâu thuẫn.
+
+    \textbf{Kết luận:} Các nghiệm duy nhất là \( (a, b) \in \{(1,1), (1,2), (2,1)\} \).
+\end{soln}
 \footnotetext{\href{https://www.k12mathcontests.com/download/memo/2015/team}{Lời giải chính thức.}}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:MEMO-2015-T-P7}]
+    Hãy thử kiểm tra trực tiếp các giá trị nhỏ của \(a\) và \(b\), đặc biệt khi \(a = 1\) hoặc \(b = 1\).
+    Sau đó giả sử \(a, b \ge 2\) và chọn một ước nguyên tố của \(a\) để so sánh số mũ của nó trong phân tích thừa số nguyên tố của hai vế của phương trình.
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:15M}}]
+\end{remark*}
+\newpage
 \fi

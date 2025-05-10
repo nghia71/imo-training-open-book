@@ -16,6 +16,7 @@
 
 \ifshowsoln
 \begin{soln}[Lời giải 1.]\footnotemark
+
     Cách định nghĩa khác của hàm \( f(n) \) là:
     \[
         f(n) = \sum_{k \mid n,\, k \ge 1} d(k).
@@ -26,15 +27,16 @@
         d(n) = \prod_{i=1}^r (a_i + 1).
     \]
 
-    Ta chứng minh rằng hàm \( f \) là hàm nhân, nghĩa là nếu \( \gcd(n, m) = 1 \), thì:
-    \[
-        f(nm) = f(n)f(m).
-    \]
-
-    Áp dụng tính nhân của hàm \( d \), ta có:
-    \[
-        f(nm) = \sum_{k \mid nm} d(k) = \sum_{k_1 \mid n,\, k_2 \mid m} d(k_1 k_2) = \sum_{k_1 \mid n,\, k_2 \mid m} d(k_1)d(k_2) = f(n)f(m).
-    \]
+    Ta chứng minh rằng hàm \( f \) là hàm nhân tính, nghĩa là
+    \begin{claim*}
+        Nếu \( \gcd(n, m) = 1 \), thì: $f(nm) = f(n)f(m).$
+    \end{claim*}
+    \begin{subproof}
+        Áp dụng tính nhân của hàm \( d \), ta có:
+        \[
+            f(nm) = \sum_{k \mid nm} d(k) = \sum_{k_1 \mid n,\, k_2 \mid m} d(k_1 k_2) = \sum_{k_1 \mid n,\, k_2 \mid m} d(k_1)d(k_2) = f(n)f(m).
+        \]
+    \end{subproof}
 
     Nếu \( r = 1 \) thì \( n = p^{a_1} \). Khi đó các ước của \( n \) là \( 1, p, p^2, \ldots, p^{a_1} \), nên:
     \[
@@ -47,16 +49,17 @@
     \]
 
     Ta sẽ chứng minh rằng với \( p \ge 5 \), và với \( p = 3 \) khi \( a \ge 3 \), thì:
-    \[
-        f(p^a) = \frac{(a+1)(a+2)}{2} < \frac{2}{3}p^a.
-    \]
+    \begin{claim*}
+        $f(p^a) = \frac{(a+1)(a+2)}{2} < \frac{2}{3}p^a.$
+    \end{claim*}
+    \begin{subproof}
+        \textit{Cơ sở:} Dễ thấy \( 3 < \frac{2}{3}p \) với \( p \ge 5 \), và \( 6 < \frac{2}{3} \cdot 27 \).
 
-    \textit{Cơ sở:} Dễ thấy \( 3 < \frac{2}{3}p \) với \( p \ge 5 \), và \( 6 < \frac{2}{3} \cdot 27 \).
-
-    \textit{Bước quy nạp:} Chứng minh:
-    \[
-        \frac{a+3}{a+1} \le 2 < p.
-    \]
+        \textit{Bước quy nạp:} nhận thấy:
+        \[
+            \frac{a+3}{a+1} \le 2 < p.
+        \]
+    \end{subproof}
 
     Tương tự, ta cũng chứng minh được rằng với \( p = 2 \), thì \( f(2^a) < 2^a \) khi \( a \ge 4 \).
     Kiểm tra trực tiếp với \( p = 2 \), \( a = 1, 2, 3 \), và \( p = 3 \), \( a = 1, 2 \), ta có:
@@ -73,32 +76,43 @@
     Nếu \( r = 1 \), thì nghiệm duy nhất là \( n = 3 \).
 
     Nếu \( r = 2 \), với \( p_1 = 2, p_2 = 3 \), và \( 1 \le a_1 \le 2, 1 \le a_2 \le 2 \), có 4 trường hợp để kiểm tra, trong đó \( n = 18, 36 \) thỏa mãn.
+
+    Vậy:
+    \[
+        \boxed{\text{Tất cả các số gần hoàn hảo là } 3,\ 18,\ 36.}
+    \]
 \end{soln}
 \footnotetext{\href{https://emc.mnm.hr/wp-content/uploads/2015/12/EMC_2015_Juniors_ENG_Solutions.pdf}{Lời giải chính thức.}}
 
-\begin{soln}[Lời giải 2.]
+\newpage
+
+\begin{soln}[Lời giải 2.]\footnotemark
     Ta đưa ra lời giải khác không sử dụng quá nhiều tính chất của hàm \( f \).
 
+    Trước tiên, ta chứng minh bổ đề sau:
     \begin{lemma*}
         Với mọi số nguyên \( n > 1 \) và số nguyên tố \( p \), ta có:
         \[
             f(pn) \le 3f(n),
         \]
-        và dấu "=" xảy ra khi và chỉ khi \( \gcd(p, n) = 1 \).
+        và dấu $=$ xảy ra khi và chỉ khi \( \gcd(p, n) = 1 \).
     \end{lemma*}
     \begin{subproof}
-        Tập các ước của \( pn \) là hợp của hai tập:
-        \begin{itemize}
-            \item các ước của \( n \);
-            \item các ước của \( n \) nhân với \( p \).
+        Với mọi số nguyên \( m \), tập hợp các ước của \( pm \) là hợp của hai tập:
+        \begin{itemize}[topsep=0pt, partopsep=0pt, itemsep=0pt]
+            \item Tập các ước của \( m \),
+            \item Tập các ước của \( m \) nhân với \( p \).
         \end{itemize}
 
-        Hai tập trên rời nhau khi và chỉ khi \( \gcd(p, n) = 1 \), và do đó:
+        Hai tập này rời nhau khi và chỉ khi \( \gcd(p, m) = 1 \): nếu \( p \) và \( m \) nguyên tố cùng nhau, rõ ràng không có ước nào thuộc cả hai tập;
+        nếu không cùng nhau, thì \( p \) thuộc cả hai.
+
+        Do đó, ta có \( d(pm) \le 2d(m) \), và:
         \[
             f(pn) = \sum_{k \mid pn} d(k) \le \sum_{k \mid n} d(k) + \sum_{k \mid n} d(pk) \le f(n) + 2f(n) = 3f(n).
         \]
 
-        Đẳng thức xảy ra khi và chỉ khi hai tập là rời nhau.
+        Cả hai dấu $=$ xảy ra khi và chỉ khi hai tập là rời nhau, tức \( \gcd(p, n) = 1 \).
     \end{subproof}
 
     Ngoài ra, ta có:
@@ -106,33 +120,71 @@
         f(2^k) = d(1) + d(2) + \cdots + d(2^k) = 1 + 2 + \cdots + (k+1) = \frac{(k+1)(k+2)}{2}.
     \]
 
-    Nếu \( f(n) < n \), thì với mọi \( p > 3 \), ta có:
+    Lưu ý rằng nếu tồn tại số nguyên dương \( n \) sao cho \( f(n) < n \), thì với mọi \( p > 3 \), ta có:
     \[
-        f(pn) \le 3f(n) < pf(n) < pn.
+        f(pn) \le 3f(n) \le pf(n) < pn.
     \]
 
-    Do đó, nếu \( f(n) < n \), thì mọi bội \textit{đẹp} (nice multiple) của \( n \) không thể là số gần hoàn hảo.
+    Do đó, nếu \( f(n) < n \), thì với mọi số lẻ \( m \), ta có \( f(mn) < mn \).
 
-    Ta định nghĩa: \( n \) là bội đẹp của \( m \) nếu \( m \mid n \) và \( \frac{n}{m} \) là số lẻ.
+    Vì điều này, ta đưa ra định nghĩa:
+    \begin{definition*}
+        Một số \( n \) là \textit{bội đẹp (nice multiple)} của \( m \) nếu \( m \mid n \) và \( \frac{n}{m} \) là số lẻ. 
+        Tương tự, ta định nghĩa \textit{ước đẹp (nice divisor)}.
+    \end{definition*}
 
-    Chiến lược: kiểm tra thủ công các số nhỏ \( n \) và tính tỉ lệ \( \frac{f(n)}{n} \), nếu nhỏ hơn 1 thì loại bỏ các bội đẹp của \( n \).
-    Với công thức \( f(2^k) \), ta chứng minh \( f(2^k) < 2^k \) với \( k > 4 \) bằng quy nạp.
-    Vậy các số dạng \( 2^k \cdot m \) với \( k > 4 \), \( m \) lẻ, đều bị loại.
+    Khẳng định từ trên: nếu với một số \( n \) nào đó ta có \( f(n) < n \), thì không có bội đẹp nào của \( n \) là số gần hoàn hảo.
 
-    \textbf{Trường hợp 1: \( k = 0 \)}  
-    Với mọi số nguyên tố lẻ \( p \), ta có \( f(p) = 3 \le p \), nên \( n = 3 \) là nghiệm duy nhất. Các lũy thừa cao hơn của 3 đều không thỏa.
+    \textbf{Chiến lược:} ta sẽ kiểm tra các số nhỏ và xét tỉ lệ \( f(n) / n \). Khi \( f(n) < n \), ta loại mọi bội đẹp của \( n \). 
+    Với công thức \( f(2^k) \), ta kết luận rằng với \( k \) đủ lớn (khi \( f(2^k) < 2^k \)) thì không còn số gần hoàn hảo nào. 
+    Dễ thấy rằng bằng quy nạp ta có \( f(2^k) < 2^k \) với \( k > 4 \).
 
-    \textbf{Trường hợp 2: \( k = 1 \)}  
-    Với mọi số nguyên tố \( p \), \( f(2p) = 3f(2) = 9 \). Với \( p > 5 \), \( 2p > 9 \Rightarrow f(2p) < 2p \), loại. Chỉ còn các \( p \in \{3,5\} \), thử được \( n = 18 \) là nghiệm duy nhất.
+    Do đó, không có số gần hoàn hảo nào có dạng \( 2^k \cdot m \) với \( k > 4 \) và \( m \) lẻ, vì tất cả những số này có \( 2^k \) là ước đẹp.
 
-    \textbf{Trường hợp 3: \( k = 2 \)}  
-    Tương tự, \( f(4p) = 3f(4) = 18 \), loại các số lớn, chỉ còn \( n = 36 \) là nghiệm duy nhất.
+    Vậy ta chỉ cần kiểm tra các số có dạng \( 2^k \cdot m \) với \( k \le 3 \) và \( m \) lẻ.
 
-    \textbf{Trường hợp 4: \( k = 3 \)}  
-    \( f(8p) = 3f(8) = 30 \), chỉ còn thử các số \( 8 \cdot 3^l \). Nhưng \( f(72) = 60 < 72 \Rightarrow \) loại.
+    \textbf{Trường hợp 1: \( k = 0 \)}
 
-    \textbf{Kết luận:} Các số gần hoàn hảo là \( \boxed{3,\, 18,\, 36} \).
+    Với mọi số nguyên tố lẻ \( p \), ta có \( f(p) = d(1) + d(p) = 3 \le p \). Suy ra \( n = 3 \) là một nghiệm. 
+    Không có nghiệm nào khác: nếu một số lẻ có ước nguyên tố khác 3 thì do \( f(p) < p \), nó không thể là số gần hoàn hảo; 
+    nếu là lũy thừa của 3 lớn hơn 3 thì \( f(9) < 3f(3) = 9 \), nên cũng không thỏa. (9 là ước đẹp của mọi lũy thừa lớn hơn của 3.)
+
+    \textbf{Trường hợp 2: \( k = 1 \)}
+
+    Với mọi số nguyên tố lẻ \( p \), ta có \( f(2p) = 3f(2) = 9 \). Nếu \( p > 5 \), thì \( 2p > f(2p) \), 
+    nên mọi số gần hoàn hảo dạng \( 2 \cdot m \) phải có các ước nguyên tố là 3 và/hoặc 5. Dễ thấy \( 6 \) và \( 10 \) đều không là số gần hoàn hảo. 
+    Vậy ứng viên phải có ước đẹp là \( 2 \cdot 9,\ 2 \cdot 15,\ 2 \cdot 25 \). Với \( n = 18 \), ta có nghiệm. Hai trường hợp còn lại cho \( f(n) < n \).
+
+    Nếu muốn tìm nghiệm mới, do chúng không thể là bội đẹp của 30 hay 50, khả năng duy nhất là có ước đẹp \( 2 \cdot 27 \). 
+    Nhưng theo trường hợp đẳng thức của bổ đề:
+    \[
+        f(2 \cdot 27) < 3f(2 \cdot 9) = 2 \cdot 27.
+    \]
+    Không còn nghiệm nào trong trường hợp này.
+
+    \textbf{Trường hợp 3: \( k = 2 \)}
+
+    Với mọi số nguyên tố lẻ \( p \), ta có \( f(4p) = 3f(4) = 18 \). Nếu \( p > 5 \), thì \( 4p > f(4p) \), 
+    nên mọi số gần hoàn hảo dạng này có các ước nguyên tố là 3 và/hoặc 5. Dễ thấy \( 12 \) và \( 20 \) không là số gần hoàn hảo. 
+    Ứng viên phải có ước đẹp là \( 4 \cdot 9,\ 4 \cdot 15,\ 4 \cdot 25 \). Với \( n = 36 \), ta có nghiệm. Hai trường hợp còn lại cho \( f(n) < n \).
+
+    Nếu muốn nghiệm mới, do chúng không thể là bội đẹp của 60 hay 100, khả năng duy nhất là có ước đẹp \( 4 \cdot 27 \). Nhưng:
+    \[
+        f(4 \cdot 27) < 3f(4 \cdot 9) = 4 \cdot 27.
+    \]
+    Không có nghiệm nào khác.
+
+    \textbf{Trường hợp 4: \( k = 3 \)}
+
+    Với mọi số nguyên tố lẻ \( p \), ta có \( f(8p) = 3f(8) = 30 \). Tương tự các trường hợp trên, chỉ xét các số dạng \( 8 \cdot 3^l \). 
+    Ta có \( 8 \cdot 3 = 24 \) không là số gần hoàn hảo. Tất cả các ứng viên khác có ước đẹp là \( 8 \cdot 9 = 72 \), mà \( f(72) = 60 < 72 \).
+
+    Như vậy:
+    \[
+        \boxed{3,\ 18,\ 36 \text{ là tất cả các số gần hoàn hảo.}}
+    \]
 \end{soln}
+\footnotetext{\href{https://emc.mnm.hr/wp-content/uploads/2015/12/EMC_2015_Juniors_ENG_Solutions.pdf}{Lời giải chính thức.}}
 \fi
 
 \ifshowhint

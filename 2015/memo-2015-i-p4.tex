@@ -1,5 +1,6 @@
-\ifshowproblem
-\begin{problem}[\gls{MEMO 2015}/I/P4]\label{problem:MEMO-2015-I-P4}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{MEMO 2015}/I/P4]\label{problem:MEMO-2015-I-P4}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:MEMO-2015-I-P4}]\fi
     Tìm tất cả các cặp số nguyên dương \( (m, n) \) sao cho tồn tại các số nguyên \( a, b > 1 \) nguyên tố cùng nhau, thỏa mãn:
     \[
         \frac{a^m + b^m}{a^n + b^n} \in \mathbb{Z}.
@@ -7,7 +8,104 @@
 \end{problem}
 \fi
 
-\ifshowinfo
-Đánh giá [\textbf{\nameref{definition:25M}}]
+\ifshowsoln
+\begin{soln}[Lời giải 1.]\footnotemark
+    \textbf{Đáp án.} Tất cả các cặp \( (m, n) = (qn, n) \), trong đó \( q \) là số nguyên dương lẻ và \( n \) là số nguyên dương tùy ý.
+
+    Nếu \( \frac{m}{n} = q \) là một số nguyên lẻ, thì:
+    \[
+        \frac{a^m + b^m}{a^n + b^n} = \frac{a^{qn} + b^{qn}}{a^n + b^n}
+    \]
+    là một số nguyên, bởi vì tử số chia hết cho mẫu số theo công thức chia đa thức.
+
+    Ta sẽ chứng minh rằng các cặp \( (qn, n) \), với \( q \) là một số nguyên lẻ, là các nghiệm duy nhất.
+
+    Giả sử ngược lại, rằng tồn tại các cặp \( (m, n) \) là nghiệm cho bài toán nhưng \( \frac{m}{n} \) không phải là số nguyên lẻ. Trong các cặp đó, chọn cặp có tổng \( m + n \) nhỏ nhất.
+
+    Rõ ràng \( m > n \). Gọi \( m = n + k \), với \( k \in \mathbb{Z}_{>0} \). Không mất tính tổng quát, ta giả sử \( a = b \). Khi đó:
+    \[
+        \frac{a^m + b^m}{a^n + b^n} = \frac{a^{n+k} + b^{n+k}}{a^n + b^n} = \frac{b^k(a^n + b^n)}{a^n + b^n} + t = b^k + t,\ \text{với}\ t \in \mathbb{Z}_{>0}.
+    \]
+
+    Do đó tồn tại số nguyên dương \( t \) sao cho:
+    \[
+        \frac{a^m + b^m}{a^n + b^n} = b^k + t.
+    \]
+
+    Phương trình tương đương:
+    \[
+        a^m + b^m = (b^k + t)(a^n + b^n).
+    \]
+
+    Vì \( a \) và \( b \) nguyên tố cùng nhau, nên \( a^n + b^n \) và \( a^n \) cũng nguyên tố cùng nhau.
+    
+    Từ đó suy ra \( t \) chia hết cho \( a^n \). Gọi \( c \in \mathbb{Z}_{>0} \) sao cho \( t = c a^n \). Khi đó:
+    \[
+        a^m + b^m = (b^k + c a^n)(a^n + b^n).
+    \]
+
+    Vế phải lớn hơn \( a^n \), nên ta kết luận rằng \( k > n \).
+
+    Ta viết lại phương trình:
+    \[
+        a^n(a^{k - n} - c) = b^n(b^{k - n} + c).
+    \]
+
+    Gọi \( x \in \mathbb{Z}_{>0} \) sao cho:
+    \[
+        b^{k - n} + c = x a^n + c,\quad a^{k - n} - c = x b^n.
+    \]
+
+    Cộng hai phương trình trên:
+    \[
+        a^{k - n} + b^{k - n} = x(a^n + b^n) \implies \frac{a^{k - n} + b^{k - n}}{a^n + b^n} = x \in \mathbb{Z}.
+    \]
+
+    Vì \( k - n < m \), và \( (m, n) \) là cặp được chọn sao cho tổng \( m + n \) là nhỏ nhất (sao cho $\frac{m}{n}$ không phải là số nguyên lẻ),
+    nên ta suy ra rằng \( \frac{k - n}{n} \) là một số nguyên lẻ. Gọi \( \frac{k - n}{n} = 2r + 1 \), khi đó:
+    \[
+        k = (2r + 2)n \implies m = n + k = (2r + 3)n,
+    \]
+    là bội số lẻ của \( n \), mâu thuẫn với giả thiết rằng \( \frac{m}{n} \) không phải là số nguyên lẻ.
+
+    Do đó, các nghiệm duy nhất là các cặp \( (m, n) = (qn, n) \), với \( q \) là số nguyên dương lẻ.
+\end{soln}
 \footnotetext{\href{https://www.k12mathcontests.com/download/memo/2015/individual}{Lời giải chính thức.}}
+
+\begin{soln}[Lời giải 2.]
+    Rõ ràng \( m > n \). Viết \( m = kn + r \), với \( k \ge 1 \), \( 0 \le r < n \). Khi đó:
+    \[
+        \frac{a^m + b^m}{a^n + b^n} = a^{(k - 1)n + r} + \frac{b^m - a^{(k - 1)n + r} b^n}{a^n + b^n}.
+    \]
+
+    Từ giả thiết, biểu thức trên là số nguyên, nên:
+    \[
+        \frac{b^m - a^{(k - 1)n + r} b^n}{a^n + b^n} \in \mathbb{Z}.
+    \]
+
+    Vì \( a \) và \( b \) nguyên tố cùng nhau:
+    \[
+        \frac{b^{m-n} - a^{(k - 1)n + r}}{a^n + b^n} = -a^{(k - 2)n + r} + \frac{a^{(k - 2)n + r}b^n + b^{m-n}}{a^n+b^n}
+    \]
+    cũng là một số nguyên.
+
+    Tiếp tục quy trình ta nhận được: $a^n+b^n$ chia hết $b^r + (-1)^k a^r.$
+
+    Vì \( |b^{r} + (-1)^k a^r| < a^n + b^n \), nên điều này chỉ có thể xảy ra khi $b^{r} + (-1)^k a^r = 0$, tức là \( r = 0 \) và \( k \) lẻ.
+    Vậy các nghiệm duy nhất là \( (m, n) = (kn, n) \) với \( k \) lẻ.
+\end{soln}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:MEMO-2015-I-P4}]
+    Thử chia \( m \) cho \( n \), đặt \( m = kn + r \). Với \( a = b \), xét biểu thức \(\frac{a^m + b^m}{a^n + b^n}\), tách thành \( b^k + t \). 
+    Suy luận chia hết và giả sử ngược lại để tìm mâu thuẫn với giả thiết về \( \frac{m}{n} \).
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:25M}}]
+\end{remark*}
+\newpage
 \fi

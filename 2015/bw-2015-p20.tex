@@ -17,12 +17,12 @@
 
     Với một số nguyên \( m \), khoảng cách từ \( n \) đến bội gần nhất của \( m \) là \( d \), khi đó:
     \[
-        m \mid n \pm d \Rightarrow n \equiv \pm d \pmod{m}.
+        m \mid n \pm d \implies n \equiv \pm d \pmod{m}.
     \]
 
     Nếu khoảng cách từ \( n \) đến bội gần nhất của \( m \) bằng khoảng cách từ \( n^3 \) đến bội gần nhất của \( m \), thì:
     \[
-        n \equiv \pm d \pmod{m},\quad n^3 \equiv \pm d \pmod{m} \Rightarrow n \equiv \pm n^3 \pmod{m}.
+        n \equiv \pm d \pmod{m},\quad n^3 \equiv \pm d \pmod{m} \implies n \equiv \pm n^3 \pmod{m}.
     \]
 
     Ngược lại, nếu \( n \equiv \pm n^3 \pmod{m} \), thì tồn tại \( 0 \le d \le \frac{m}{2} \) sao cho \( n \equiv \pm d \pmod{m} \),
@@ -51,7 +51,6 @@
     Do đó, \( n^3 - n \) và \( n^3 + n \) không là chính phương suy ra \( \tau(n^3 - n) \), \( \tau(n^3 + n) \) đều chẵn.
 
     Vậy \( A_n \) lẻ khi và chỉ khi \( \gcd(n^3 - n, n^3 + n) \) là chính phương.
-
     Ta có:
     \[
         \gcd(n^2 - 1, n^2 + 1) = \gcd(n^2 - 1, 2) = 
@@ -59,9 +58,7 @@
             1 & \text{n chẵn}, \\
             2 & \text{n lẻ}.
         \end{cases}
-    \]
-    Suy ra:
-    \[
+        \implies
         \gcd(n^3 - n, n^3 + n) = 
         \begin{cases}
             n & \text{n chẵn}, \\

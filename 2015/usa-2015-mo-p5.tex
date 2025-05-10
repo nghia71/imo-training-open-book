@@ -1,14 +1,151 @@
-\ifshowproblem
-\begin{problem}[\gls{USA 2015 MO}/P5]\label{problem:USA-2015-MO-P5}
+\ifshowproblemandsoln
+\ifshowproblem\begin{problem}[\gls{USA 2015 MO}/P5]\label{problem:USA-2015-MO-P5}\fi
+\ifshowsoln\begin{problem}[\nameref{problem:USA-2015-MO-P5}]\fi
     Cho \( a, b, c, d, e \) là các số nguyên dương phân biệt thỏa mãn:
     \[
-    a^4 + b^4 = c^4 + d^4 = e^5.
+        a^4 + b^4 = c^4 + d^4 = e^5.
     \]
+
     Chứng minh rằng \( ac + bd \) là một hợp số.
 \end{problem}
 \fi
 
-\ifshowinfo
-Đánh giá [\textbf{\nameref{definition:25M}}]\footnotemark
-\footnotetext{\href{https://artofproblemsolving.com/wiki/index.php/2015_USAMO_Problems/Problem_5}{Lời giải chính thức.}}
+\ifshowsoln
+\begin{soln}[Lời giải 1.]\footnotemark
+    Xét đẳng thức \( a^4 + b^4 = e^5 \). Đây là một trường hợp đặc biệt của Giả thuyết Beal, 
+    phát biểu rằng phương trình \( A^x + B^y = C^z \) không có nghiệm nguyên dương với \( \gcd(a,b,c) = 1 \) và \( x, y, z > 2 \).
+
+    Trường hợp đặc biệt với bộ mũ \( (4, 4, 5) \) đã được chứng minh vào năm 2009 bởi Michael Bennett, Jordan Ellenberg và Nathan Ng. 
+    Điều đó có nghĩa là \( a \) và \( b \) phải có ước chung lớn hơn 1.
+
+    Gọi \( f = \gcd(a, b) > 1 \). Khi đó \( a = f \cdot a_1 \), \( b = f \cdot b_1 \) với \( a_1, b_1 \in \mathbb{Z}_{>0} \). Xét biểu thức:
+    \[
+        ac + bd = f a_1 c + f b_1 d = f(a_1 c + b_1 d).
+    \]
+
+    Vì \( c, d \) là các số dương, nên \( a_1 c + b_1 d > 1 \), và vì \( f > 1 \), nên tích trên lớn hơn 1 và chia hết cho \( f \).
+
+    Vậy \( ac + bd \) là hợp số.
+\end{soln}
+\footnotetext{\href{https://w.wiki/E4kL}{Dựa trên Giả thuyết Beal.}}
+
+\begin{soln}[Lời giải 2.]\footnotemark
+    Ta sử dụng phản chứng.
+
+    Không mất tính tổng quát, giả sử \( a > d \).
+
+    Vì \( a^4 + b^4 = c^4 + d^4 \), nên rõ ràng \( b < c \).
+
+    Ta xây dựng biểu thức:
+    \[
+        (a^4 + b^4)c^2d^2 - (c^4 + d^4)a^2b^2 = (a^2c^2 - b^2d^2)(a^2d^2 - b^2c^2),
+    \]
+    (vế phải là phân tích nhân tử của vế trái)
+
+    Sử dụng giả thiết \( a^4 + b^4 = c^4 + d^4 = e^5 \), ta có thể phân tích thành:
+    \[
+        e^5(cd - ab)(cd + ab) = (ac - bd)(ac + bd)(ad - bc)(ad + bc).
+    \]
+
+    Nếu \( ac - bd \) hoặc \( ad - bc \) bằng 0, thì \( \frac{a}{b} = \frac{c}{d} \) hoặc \( \frac{a}{b} = \frac{d}{c} \) tương ứng, 
+    điều này là không thể vì \( a^4 + b^4 = c^4 + d^4 \) và các số \( a, b, c, d, e \) là phân biệt.
+
+    Do đó, vế phải của phương trình trên là khác 0, và vế trái phải chia hết cho \( ac + bd \).
+
+    Giả sử \( ac + bd \) là một số nguyên tố.
+    Khi đó, ta có:
+    \[
+        ac + bd - (cd + ab) = (a - d)(c - b) > 0,
+    \]
+    vì \( a > d \) và \( c > b \).
+
+    Điều đó dẫn đến:
+    \[
+        ac + bd > cd + ab > cd - ab,
+    \]
+    và do đó, không thể có \( cd + ab \) hoặc \( cd - ab \) chia hết cho \( ac + bd \).
+    
+    Điều này có nghĩa là \( e \) phải chia hết cho \( ac + bd \), tức là tồn tại số nguyên \( k \) sao cho:
+    \[
+        e = k(ac + bd).
+    \]
+
+    Nhưng rõ ràng điều này là vô lý vì:
+    \[
+        (k(ac + bd))^5 > a^4 + b^4.
+    \]
+
+    Do đó, theo phản chứng, \( ac + bd \) không thể là số nguyên tố. Vậy nên nó là một hợp số.
+\end{soln}
+\footnotetext{\href{https://artofproblemsolving.com/wiki/index.php/2015_USAMO_Problems/Problem_5}{Lời giải từ AoPS.}}
+
+\begin{soln}[Lời giải 3.]\footnotemark
+    Giả sử ngược lại rằng \( p = ac + bd \). Khi đó:
+    \[
+        ac \equiv -bd \pmod{p}
+        \implies a^4 c^4 \equiv b^4 d^4 \pmod{p}.
+    \]
+
+    Sử dụng \( a^4 + b^4 = c^4 + d^4 = e^5 \), ta thay thế \( c^4 = e^5 - d^4 \), \( b^4 = e^5 - a^4 \), được:
+    \[
+        a^4 (e^5 - d^4) \equiv (e^5 - a^4) d^4 \pmod{p}
+        \implies a^4 e^5 \equiv d^4 e^5 \pmod{p}
+        \implies e^5 (a^4 - d^4) \equiv 0 \pmod{p}.
+    \]
+
+    Suy ra:
+    \[
+        p \mid e^5 (a - d)(a + d)(a^2 + d^2).
+    \]
+
+    \begin{claim*}
+        \( p > e \)
+    \end{claim*}
+    \begin{subproof}
+        Ta có:
+        \[
+            e^5 = a^4 + b^4 \le a^5 + b^5 < (ac + bd)^5 = p^5 \implies p > e.
+        \]
+    \end{subproof}
+
+    Từ phép chia ở trên, ta suy ra:
+    \[
+        p \le \max\{a - d,\ a + d,\ a^2 + d^2\} = a^2 + d^2.
+    \]
+
+    Tương tự, ta có:
+    \[
+        p \le b^2 + c^2.
+    \]
+
+    Do đó:
+    \[
+        p = ac + bd \le \min\{a^2 + d^2,\ b^2 + c^2\}.
+    \]
+
+    Trừ hai vế:
+    \[
+        0 \le \min\{a(a - c) + d(d - b),\ b(b - d) + c(c - a)\}.
+    \]
+
+    Nhưng vì \( a^4 + b^4 = c^4 + d^4 \), nên hiệu \( a - c \) và \( d - b \) phải cùng dấu.
+    Khi đó tổng \( a(a - c) + d(d - b) \) có dấu dương, dẫn đến mâu thuẫn với bất đẳng thức trên.
+
+    Vậy giả thiết \( p = ac + bd \) là sai, suy ra \( ac + bd \) không thể là số nguyên tố, suy ra nó là hợp số.
+\end{soln}
+\footnotetext{\href{https://web.evanchen.cc/exams/USAMO-2015-notes.pdf}{Từ lời giải do Evan Chen biên soạn.}}
+\fi
+
+\ifshowhint
+\begin{hint*}[\nameref{problem:USA-2015-MO-P5}]
+    Hãy giả sử ngược lại rằng \( ac + bd \) là một số nguyên tố. Từ giả thiết \( a^4 + b^4 = c^4 + d^4 \), 
+    hãy thử xây dựng một biểu thức đối xứng chứa \( ac + bd \) và sử dụng phân tích nhân tử để dẫn đến mâu thuẫn với giả thiết số nguyên tố.
+\end{hint*}
+\fi
+
+\ifshowremark
+\begin{remark*}
+    Đánh giá [\textbf{\nameref{definition:25M}}]
+\end{remark*}
+\newpage
 \fi
